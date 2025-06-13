@@ -1,0 +1,47 @@
+/* hexagon.css */
+.hexagon {
+  width: 120px;
+  height: 69.28px;
+  background: #fff;
+  position: relative;
+  margin: 35px auto;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 35px solid #fff;
+}
+
+.hexagon:after {
+  top: 100%;
+  border-top: 35px solid #fff;
+}
+.hex-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hex-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.hex-row.shifted {
+  transform: translateX(60px); /* Điều chỉnh để lệch nhẹ */
+}
