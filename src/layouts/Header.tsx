@@ -39,7 +39,7 @@ const menuItems = [
     { label: 'News', href: '/new' },
 ]
 const subMenus: Record<string, SubMenuItem[]> = {
- 
+
     Services: [
         {
             label: 'Software Development',
@@ -67,117 +67,117 @@ const subMenus: Record<string, SubMenuItem[]> = {
             icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/menu_item_20250331075046.201.webp',
         },
     ],
- Industries: [
-    {
-      label: 'Telecom',
-      href: '/industries/telecom',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Telecom.webp',
-    },
-    {
-      label: 'Finance',
-      href: '/industries/finance',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Finance.webp',
-    },
-    {
-      label: 'Insurance',
-      href: '/industries/insurance',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Insurance.webp',
-    },
-    {
-      label: 'E-Commerce & Retail',
-      href: '/industries/e-commerce-retail',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/E-Commerce-Retail.webp',
-    },
-    {
-      label: 'Healthcare',
-      href: '/industries/healthcare',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Healthcare.webp',
-    },
-    {
-      label: 'Logistics',
-      href: '/industries/logistics',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Logistics.webp',
-    },
-    {
-      label: 'Automotive',
-      href: '/industries/automotive',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Automotive.webp',
-    },
-  ],
+    Industries: [
+        {
+            label: 'Telecom',
+            href: '/industries/telecom',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Telecom.webp',
+        },
+        {
+            label: 'Finance',
+            href: '/industries/finance',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Finance.webp',
+        },
+        {
+            label: 'Insurance',
+            href: '/industries/insurance',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Insurance.webp',
+        },
+        {
+            label: 'E-Commerce & Retail',
+            href: '/industries/e-commerce-retail',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/E-Commerce-Retail.webp',
+        },
+        {
+            label: 'Healthcare',
+            href: '/industries/healthcare',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Healthcare.webp',
+        },
+        {
+            label: 'Logistics',
+            href: '/industries/logistics',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Logistics.webp',
+        },
+        {
+            label: 'Automotive',
+            href: '/industries/automotive',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Automotive.webp',
+        },
+    ],
     Technologies: [
-    {
-      label: 'Big Data & Analytics',
-      href: '/technologies/big-data-analytics',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Big-Data-Analytics.webp',
-    },
-    {
-      label: 'AI/ML & Data Sciences',
-      href: '/technologies/ai-ml-data-sciences',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/AI-ML-Data-Science.webp',
-    },
-    {
-      label: 'RPA',
-      href: '/technologies/rpa',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/RPA.webp',
-    },
-    {
-      label: '5G',
-      href: '/technologies/5g',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/5G.webp',
-    },
-    {
-      label: 'IoT',
-      href: '/technologies/iot',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/IOT.webp',
-    },
-    {
-      label: 'Cloud',
-      href: '/technologies/cloud',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Cloud.webp',
-    },
-    {
-      label: 'DevOps',
-      href: '/technologies/devops',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/DevOps.webp',
-    },
-    {
-      label: 'Low Code',
-      href: '/technologies/low-code',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Low-Code.webp',
-    },
-    {
-      label: 'Hardware Integration',
-      href: '/technologies/hardware-integration',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/service/tma-hardware-lab.webp',
-    },
-  ],
-  About :[
-     {
-      label: 'Why',
-      href: '/about/why',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701172550.100.webp',
-    },
-    {
-      label: 'Leadership',
-      href: '/about/leadership',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/Leadership.webp',
-    },
-    {
-      label: 'CSR',
-      href: '/about/csr',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/csr.webp',
-    },
-    {
-      label: 'Image Gallery',
-      href: '/about/image-gallery',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/image-gallery.webp',
-    },
-    {
-      label: 'Company History',
-      href: '/about/company-history',
-      icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/company-history.webp',
-    },
-  ]
+        {
+            label: 'Big Data & Analytics',
+            href: '/technologies/big-data-analytics',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Big-Data-Analytics.webp',
+        },
+        {
+            label: 'AI/ML & Data Sciences',
+            href: '/technologies/ai-ml-data-sciences',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/AI-ML-Data-Science.webp',
+        },
+        {
+            label: 'RPA',
+            href: '/technologies/rpa',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/RPA.webp',
+        },
+        {
+            label: '5G',
+            href: '/technologies/5g',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/5G.webp',
+        },
+        {
+            label: 'IoT',
+            href: '/technologies/iot',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/IOT.webp',
+        },
+        {
+            label: 'Cloud',
+            href: '/technologies/cloud',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Cloud.webp',
+        },
+        {
+            label: 'DevOps',
+            href: '/technologies/devops',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/DevOps.webp',
+        },
+        {
+            label: 'Low Code',
+            href: '/technologies/low-code',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/technologies/Low-Code.webp',
+        },
+        {
+            label: 'Hardware Integration',
+            href: '/technologies/hardware-integration',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/service/tma-hardware-lab.webp',
+        },
+    ],
+    About: [
+        {
+            label: 'Why',
+            href: '/about/why',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701172550.100.webp',
+        },
+        {
+            label: 'Leadership',
+            href: '/about/leadership',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/Leadership.webp',
+        },
+        {
+            label: 'CSR',
+            href: '/about/csr',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/csr.webp',
+        },
+        {
+            label: 'Image Gallery',
+            href: '/about/image-gallery',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/image-gallery.webp',
+        },
+        {
+            label: 'Company History',
+            href: '/about/company-history',
+            icon: 'https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/AboutTMA/company-history.webp',
+        },
+    ]
 
 
 }
@@ -502,18 +502,18 @@ const Header: React.FC = () => {
                                                 },
                                             }}
                                         >
-                                            <Typography>  
+                                            <Typography>
                                                 <Link
-                                                href={item.href}
-                                                key={item.label}
-                                                underline="none"
-                                                sx={{ display: 'flex', alignItems: 'center', gap: 1, py: 0.5 }}
-                                            >
-                                                {item.icon && (
-                                                    <Box component="img" src={item.icon} alt={item.label} width={20} height={20} />
-                                                )}
-                                                <Typography variant="body2">{item.label}</Typography>
-                                            </Link></Typography>
+                                                    href={item.href}
+                                                    key={item.label}
+                                                    underline="none"
+                                                    sx={{ display: 'flex', alignItems: 'center', gap: 1, py: 0.5 }}
+                                                >
+                                                    {item.icon && (
+                                                        <Box component="img" src={item.icon} alt={item.label} width={20} height={20} />
+                                                    )}
+                                                    <Typography variant="body2">{item.label}</Typography>
+                                                </Link></Typography>
                                         </Box>
                                     ))}
                                 </Box>
@@ -560,18 +560,42 @@ const Header: React.FC = () => {
                                         }
                                     }}
                                 >
-                                    <ListItemText
-                                        primary={item.label}
-                                        primaryTypographyProps={{
-                                            fontWeight: openMenuIndex === index ? 'bold' : 'normal',
+                                    <ListItem
+                                        disableGutters // Bỏ padding trái/phải nếu muốn gọn
+                                        sx={{
+                                            borderBottom: 'none', // Bỏ gạch dưới
+                                            color: 'black', // Màu chữ hoặc có thể dùng theme.palette.text.primary
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            px: 2, // Padding trái phải nếu cần
+                                            py: 1,
+                                            '&:hover': {
+                                                backgroundColor: 'rgba(0, 0, 0, 0.04)', // Hover nhẹ
+                                            },
                                         }}
-                                    />
-                                    {item.hasSubMenu &&
-                                        (openMenuIndex === index ? (
-                                            <KeyboardArrowUpIcon />
-                                        ) : (
-                                            <KeyboardArrowDownIcon />
-                                        ))}
+                                    >
+                                        <Link
+                                            href={item.href}
+                                            underline="none" // Bỏ gạch dưới của link
+                                            color="inherit" // Kế thừa màu chữ từ ListItem
+                                            style={{ flex: 1 }} // Cho chiếm phần lớn không gian
+                                        >
+                                            <ListItemText
+                                                primary={item.label}
+                                                primaryTypographyProps={{
+                                                    fontWeight: openMenuIndex === index ? 'bold' : 'normal',
+                                                }}
+                                            />
+                                        </Link>
+
+                                        {item.hasSubMenu &&
+                                            (openMenuIndex === index ? (
+                                                <KeyboardArrowUpIcon sx={{ ml: 1 }} />
+                                            ) : (
+                                                <KeyboardArrowDownIcon sx={{ ml: 1 }} />
+                                            ))}
+                                    </ListItem>
                                 </ListItem>
                                 {/* Submenu mobile */}
                                 {item.hasSubMenu && openMenuIndex === index && (
@@ -579,29 +603,45 @@ const Header: React.FC = () => {
                                         {(subMenus[item.label] || []).map((subItem, idx) => (
                                             <ListItem
                                                 key={idx}
-                                                button
+                                                disableGutters
                                                 onClick={() => setMobileMenuOpen(false)}
                                                 sx={{ py: 0.5 }}
                                             >
-                                                <ListItemText primary={subItem.label} />
+                                                <Link
+                                                    href={subItem.href}
+                                                    underline="none"
+                                                    color="inherit"
+                                                    style={{ width: '100%' }} // để Link chiếm toàn bộ chiều ngang ListItem
+                                                >
+                                                    <ListItemText
+                                                        primary={subItem.label}
+                                                        primaryTypographyProps={{
+                                                            fontSize: 14,
+                                                        }}
+                                                    />
+                                                </Link>
                                             </ListItem>
                                         ))}
                                     </List>
                                 )}
+
                             </React.Fragment>
                         ))}
                         <ListItem>
+
                             <Button
                                 fullWidth
                                 variant="contained"
                                 sx={{
                                     bgcolor: '#1976d2',
-                                    color: 'white',
+
                                     fontWeight: 600,
                                 }}
                                 onClick={() => setMobileMenuOpen(false)}
                             >
-                                Liên hệ
+                                <Link style={{ color: 'white' }} href="/contact">
+                                    Contact Us
+                                </Link>
                             </Button>
                         </ListItem>
                     </List>

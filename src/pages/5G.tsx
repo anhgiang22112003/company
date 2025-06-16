@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
@@ -83,7 +83,7 @@ const caseStudies = [
         image: 'https://tmastorage.azureedge.net/uploadfiles/5G/5G_5.webp',
 
     },
-  
+
 ]
 
 const tabData = [
@@ -226,7 +226,8 @@ const GPage = () => {
     const [tabIndex, setTabIndex] = useState(0)
     const study = caseStudies[tabIndex]
     const [selectedIndex, setSelectedIndex] = useState(0)
-
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const currentTab = tabData[selectedIndex]
 
 
@@ -376,11 +377,17 @@ const GPage = () => {
                         <Box mt={4} textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={800} mb={3} variant='h4'>
-                                 5G Solution Lab
+                                5G Solution Lab
                             </Typography>
                         </Box>
                         <Container>
-                            <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/pageSection_image_20240516153109.929.webp" alt="" />
+                            <img width={"100%"} src="" alt="" />
+                            <Box
+                                component="img"
+                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/pageSection_image_20240516153109.929.webp"
+
+                                sx={{ width: "100%", height: { xs: "180px", md: "auto" }, }}
+                            />
                         </Container>
                     </Box>
                 </FadeSection>
@@ -442,42 +449,42 @@ const GPage = () => {
 
                             <Box sx={{ p: 4 }}>
                                 <Stack
-                                    direction="row"
-                                    spacing={{ xs: 1, sm: 2 }}
-                                    flexWrap="wrap"
-                                    justifyContent={{ xs: 'center', sm: 'flex-start' }}
-                                    rowGap={1}
-                                    mb={3}
+                                    direction={isMobile ? undefined : "row"}
+                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
+                                    justifyContent={{ xs: "center", sm: "flex-start" }}
+                                    spacing={2}
+                                    mb={2}
                                 >
-                                    {caseStudies.map((tab, index) => (
+                                    {tabData.map((tab, index) => (
                                         <Button
                                             key={index}
                                             variant={tabIndex === index ? "contained" : "outlined"}
                                             onClick={() => setTabIndex(index)}
                                             sx={{
-                                                px: { xs: 1, sm: 2.5 },
-                                                py: { xs: 0.25, sm: 1 },
-                                                minWidth: 'auto',
-                                                fontSize: { xs: 10, sm: 12 },
+                                                px: 3,
+                                                py: 1.2,
                                                 borderRadius: 2,
+                                                minWidth: 160,
+                                                boxShadow: tabIndex === index ? 3 : 0,
+                                                transition: "all 0.3s ease",
+                                                whiteSpace: "wrap",
                                             }}
                                         >
-                                            {tab.label}
+                                            <Typography fontSize={13} fontWeight="bold">
+                                                {tab.label}
+                                            </Typography>
                                         </Button>
                                     ))}
                                 </Stack>
                                 <Grid container spacing={4}>
-                                   
-
-                                    
-                                        <Box
+                                    <Box
                                         mt={4}
-                                            component="img"
-                                            src={study.image}
-                                            alt={study.label}
-                                            sx={{ width: '100%', display: 'block', mx: 'auto' }}
-                                        />
-                                   
+                                        component="img"
+                                        src={study.image}
+                                        alt={study.label}
+                                        sx={{ width: '100%', display: 'block', mx: 'auto', height: { xs: "200px", md: "auto" } }}
+                                    />
+
                                 </Grid>
                             </Box>
                         </Box>

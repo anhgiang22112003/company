@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
@@ -135,6 +135,8 @@ const tabData = [
 
 
 const DigitalTransformation = () => {
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     const [tabIndex, setTabIndex] = useState(0)
     const study = caseStudies[tabIndex]
@@ -233,81 +235,7 @@ const DigitalTransformation = () => {
 
                     </Box>
                 </FadeSection>
-                {/* <FadeSection id='about' >
-                    <Box sx={{ mt: 10 }}>
-                        <Box >
-                            <Container sx={{ textAlign: "center" }}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
-                                    Agile Testing Process
-                                </Typography>
-                                <Typography textAlign={"center"} >With extensive expertise in offshore software development, TMA Solutions delivers amazing agile software outsourcing services. Our team ensures efficient project management, rapid delivery, and continuous improvement, making us the preferred choice for businesses seeking intensive Agile experience.</Typography>
-                            </Container>
-                        </Box>
-                        <Container sx={{ mt: 4, mb: 4 }}>
-                            <Box width="100%">
-                               
-                                <Stack
-                                    direction="row"
-                                    justifyContent="center"
-                                    alignItems="center"
-                                    spacing={0}
-                                    sx={{ mb: 3 }}
-                                >
-                                    {imageList.map((item, index) => (
-                                        <Box
-                                            key={item.label}
-                                            onClick={() => setActiveIndex(index)}
-                                            sx={{
-                                                cursor: "pointer",
-                                                px: 2,
-                                                position: "relative",
-                                                color: activeIndex === index ? "#1976d2" : "#444",
-                                                fontWeight: activeIndex === index ? "bold" : "normal",
-                                                transition: "color 0.3s",
-                                                "&:not(:last-child)::after": {
-                                                    content: '"|"',
-                                                    position: "absolute",
-                                                    right: "-8px",
-                                                    top: "50%",
-                                                    transform: "translateY(-50%)",
-                                                    color: "#999"
-                                                },
-                                                "&::before": {
-                                                    content: '""',
-                                                    position: "absolute",
-                                                    bottom: 0,
-                                                    left: 0,
-                                                    width: 0,
-                                                    height: "2px",
-                                                    backgroundColor: "#1976d2",
-                                                    transition: "width 0.3s ease"
-                                                },
-                                                "&:hover::before": {
-                                                    width: "100%"
-                                                }
-                                            }}
-                                        >
-                                            <Typography variant="body1">{item.label}</Typography>
-                                        </Box>
-                                    ))}
-                                </Stack>
 
-                                <Box
-                                    component="img"
-                                    src={imageList[activeIndex].url}
-                                    alt={imageList[activeIndex].label}
-                                    sx={{
-                                        width: "100%",
-                                        maxHeight: "600px",
-                                        objectFit: "contain",
-                                        mt: 2
-                                    }}
-                                />
-                            </Box>
-                        </Container>
-                    </Box>
-                </FadeSection> */}
 
                 <FadeSection id='Microsoft'>
                     <Container>
@@ -319,23 +247,36 @@ const DigitalTransformation = () => {
                                 </Typography>
                             </Box>
                             <Box sx={{ p: 4 }}>
-                                <Stack direction="row" spacing={2} mb={3}>
+                                <Stack
+                                    direction={isMobile ? undefined : "row"}
+                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
+                                    justifyContent={{ xs: "center", sm: "flex-start" }}
+                                    spacing={2}
+                                    mb={2}
+                                >
                                     {caseStudies.map((tab, index) => (
                                         <Button
                                             key={index}
                                             variant={tabIndex === index ? "contained" : "outlined"}
                                             onClick={() => setTabIndex(index)}
                                             sx={{
-                                                px: { xs: 1.5, sm: 2.5 },
-                                                py: { xs: 0.5, sm: 1 },
-                                                minWidth: 'auto'
+                                                px: 3,
+                                                py: 1.2,
+                                                borderRadius: 2,
+                                                minWidth: 160,
+                                                boxShadow: tabIndex === index ? 3 : 0,
+                                                transition: "all 0.3s ease",
+                                                whiteSpace: "nowrap",
                                             }}
                                         >
-                                            <Typography fontSize={{ xs: 10, sm: 12 }}>{tab.label}</Typography>
+                                            <Typography fontSize={13} fontWeight="bold">
+                                                {tab.label}
+                                            </Typography>
                                         </Button>
-
                                     ))}
                                 </Stack>
+
+
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={6}>
                                         <Stack spacing={3}>

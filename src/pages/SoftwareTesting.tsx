@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
@@ -118,7 +118,7 @@ const tabData = [
         ]
     },
     {
-        label: "Enable Network Transformation to NGNs",
+        label: "Enable Network Transformation",
         image: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240325164259.128.webp",
         solutions: [
             "Test strategy, test plan, test cases development",
@@ -251,7 +251,8 @@ const SoftwareTestingPage = () => {
     const [activeIndex, setActiveIndex] = useState(0)
     const myRef = useRef<HTMLDivElement | null>(null)
     const [selectedIndex, setSelectedIndex] = useState(0)
-
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const currentTab = tabData[selectedIndex]
 
 
@@ -290,42 +291,37 @@ const SoftwareTestingPage = () => {
                                 <Typography textAlign={"center"} >At Solutions, we offer comprehensive software development services covering the entire software development life cycle (SDLC). From Product Enhancement to MVP development, R&D, PoC and Prototype development, Maintenance & Support, Porting & Migration - we cater to all your software needs with the utmost expertise.</Typography>
                             </Container>
                         </Box>
-                        <Container sx={{ mt: 4, mb: 4 }}>
-                            <Grid container spacing={4}>
-                                <Container sx={{ mt: 4, mb: 4 }}>
 
-                                    <Grid container spacing={4}>
-                                        {testingServices.map((service, index) => (
-                                            <Grid item xs={12} sm={4} key={index}>
-                                                <Paper elevation={3} sx={{ padding: 3, borderRadius: 2, bgcolor: '#E3F2FD', textAlign: 'center' }}>
-                                                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                                        <img
-                                                            src={service.imageUrl}
-                                                            alt={service.title}
-                                                            style={{ width: "10%", marginRight: 16 }}
-                                                        />
-                                                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                                                            {service.title}
+                        <Container sx={{ mt: 6, mb: 4 }}>
+                            <Grid container spacing={4}>
+                                {testingServices.map((service, index) => (
+                                    <Grid item xs={12} sm={4} key={index}>
+                                        <Paper elevation={3} sx={{ padding: 3, borderRadius: 2, bgcolor: '#E3F2FD', textAlign: 'center' }}>
+                                            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                                <img
+                                                    src={service.imageUrl}
+                                                    alt={service.title}
+                                                    style={{ width: "10%", marginRight: 16 }}
+                                                />
+                                                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                                                    {service.title}
+                                                </Typography>
+                                            </Box>
+                                            <Divider sx={{ mb: 2 }} />
+                                            <Box sx={{ listStyleType: 'none', pl: 0 }}>
+                                                {service.items.map((item, idx) => (
+                                                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }} key={idx}>
+                                                        <Circle sx={{ color: '#00BFFF', fontSize: 12, mr: 1 }} />
+                                                        <Typography variant="body2" sx={{ textAlign: 'left' }}>
+                                                            {item}
                                                         </Typography>
                                                     </Box>
-                                                    <Divider sx={{ mb: 2 }} />
-                                                    <Box sx={{ listStyleType: 'none', pl: 0 }}>
-                                                        {service.items.map((item, idx) => (
-                                                            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }} key={idx}>
-                                                                <Circle sx={{ color: '#00BFFF', fontSize: 12, mr: 1 }} />
-                                                                <Typography variant="body2" sx={{ textAlign: 'left' }}>
-                                                                    {item}
-                                                                </Typography>
-                                                            </Box>
-                                                        ))}
-                                                    </Box>
-                                                </Paper>
-                                            </Grid>
-                                        ))}
+                                                ))}
+                                            </Box>
+                                        </Paper>
                                     </Grid>
-                                </Container>
+                                ))}
                             </Grid>
-
                         </Container>
                     </Box>
                 </FadeSection>
@@ -557,32 +553,55 @@ const SoftwareTestingPage = () => {
                 </FadeSection>
                 <FadeSection id='Microsoft'>
                     <Container>
-                        <Box mt={3} sx={{ bgcolor: "#f5f5f5", }} p={5} >
-                            <Box textAlign={"center"}>
+                        <Box mt={3} sx={{ bgcolor: "#f5f5f5" }} p={5}>
+                            <Box textAlign="center">
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} variant='h4'>
+                                <Typography fontWeight="bold" variant="h4">
                                     Case studies
                                 </Typography>
                             </Box>
+
                             <Box sx={{ width: "100%", p: 2 }}>
                                 {/* Buttons as menu */}
-                                <Stack direction="row" spacing={2} mb={3}>
-                                    {tabData.map((tab, index) => (
-                                        <Button
-                                            key={index}
-                                            variant={selectedIndex === index ? "contained" : "outlined"}
-                                            onClick={() => setSelectedIndex(index)}
-                                            sx={{
-                                                px: { xs: 1.5, sm: 2.5 },
-                                                py: { xs: 0.5, sm: 1 },
-                                                minWidth: 'auto'
-                                            }}
-                                        >
-                                            <Typography fontSize={{ xs: 10, sm: 12 }}>{tab.label}</Typography>
-                                        </Button>
+                                <Box
+                                    sx={{
+                                        overflowX: "auto",
+                                        width: "100%",
+                                        pb: 1,
+                                    }}
+                                >
+                                    <Stack
+                                        direction={isMobile ? undefined : "row"}
+                                        flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
+                                        justifyContent={{ xs: "center", sm: "flex-start" }}
+                                        spacing={2}
+                                        mb={2}
+                                    >
+                                        {tabData.map((tab, index) => (
+                                            <Button
+                                                key={index}
+                                                variant={selectedIndex === index ? "contained" : "outlined"}
+                                                onClick={() => setSelectedIndex(index)}
+                                                sx={{
+                                                    px: 3,
+                                                    py: 1.2,
+                                                    borderRadius: 2,
+                                                    minWidth: 160,
+                                                    boxShadow: selectedIndex === index ? 3 : 0,
+                                                    transition: "all 0.3s ease",
+                                                    whiteSpace: "nowrap",
+                                                }}
+                                            >
+                                                <Typography fontSize={13} fontWeight="bold">
+                                                    {tab.label}
+                                                </Typography>
+                                            </Button>
+                                        ))}
+                                    </Stack>
+                                    {/* Buttons as menu */}
 
-                                    ))}
-                                </Stack>
+
+                                </Box>
 
                                 {/* Content display */}
                                 <Stack direction={{ xs: "column", md: "row" }} spacing={4}>
@@ -608,9 +627,7 @@ const SoftwareTestingPage = () => {
                                             alt={currentTab.label}
                                             sx={{
                                                 width: "100%",
-
                                                 objectFit: "contain",
-
                                                 boxShadow: 3,
                                             }}
                                         />
@@ -619,6 +636,7 @@ const SoftwareTestingPage = () => {
                             </Box>
                         </Box>
                     </Container>
+
                 </FadeSection>
                 <FadeSection id="download">
                     <Container sx={{ mt: 20 }} >

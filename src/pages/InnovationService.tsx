@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 const bannerData = [
     {
@@ -197,7 +198,8 @@ const serviceData = [
 ]
 
 const InnovationService = () => {
-
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const [tabIndex, setTabIndex] = useState(0)
     const study = caseStudies[tabIndex]
     const [selectedIndex, setSelectedIndex] = useState(0)
@@ -303,228 +305,160 @@ const InnovationService = () => {
                 <FadeSection id="about">
                     <Box sx={{ p: 4 }}>
                         <Container>
-                            <Box sx={{ p: 6, position: 'relative' }}>
+                        <Box sx={{ p: 6, position: 'relative' }}>
+  <Grid container spacing={4} alignItems="center" justifyContent="center">
+    {/* Left Column */}
+    <Grid item xs={12} md={5}>
+      <Box
+        sx={{
+          border: '1px solid #d0e5f7',
+          borderRadius: 2,
+          p: 2,
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
+            px: 2,
+            py: 0.5,
+            borderRadius: 1,
+            color: '#fff',
+            fontWeight: 'bold',
+          }}
+        >
+          Your Organization
+        </Box>
 
-                                <Grid container spacing={4} alignItems="center" justifyContent="center">
-                                    {/* Left Column */}
-                                    <Grid item xs={12} md={5}>
-                                        <Box
-                                            sx={{
-                                                border: '1px solid #d0e5f7',
-                                                borderRadius: 2,
-                                                p: 2,
-                                                position: 'relative',
-                                            }}
-                                        >
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    top: -20,
-                                                    left: '50%',
-                                                    transform: 'translateX(-50%)',
-                                                    background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
-                                                    px: 2,
-                                                    py: 0.5,
-                                                    borderRadius: 1,
-                                                    color: '#fff',
-                                                    fontWeight: 'bold',
-                                                }}
-                                            >
-                                                Your Organization
-                                            </Box>
+        {['Industry Knowledge', 'Issues & Challenges', 'Innovation Goals'].map((text) => (
+          <Paper
+            key={text}
+            variant="outlined"
+            sx={{
+              p: { xs: 1, md: 2 },
+              mt: 2,
+              bgcolor: '#f5faff',
+              fontSize: { xs: '0.85rem', md: '1rem' },
+            }}
+          >
+            {text}
+          </Paper>
+        ))}
+      </Box>
+    </Grid>
 
-                                            {['Industry Knowledge', 'Issues & Challenges', 'Innovation Goals'].map((text) => (
-                                                <Paper
-                                                    key={text}
-                                                    variant="outlined"
-                                                    sx={{
-                                                        p: { xs: 1, md: 2 },
-                                                        mt: 2,
-                                                        bgcolor: '#f5faff',
-                                                        fontSize: { xs: '0.85rem', md: '1rem' },
-                                                    }}
-                                                >
-                                                    {text}
-                                                </Paper>
-                                            ))}
-                                            <Box
-                                                sx={{
-                                                    display: { xs: 'block', md: 'block' },
-                                                    position: 'absolute',
-                                                    width: 2,
-                                                    height: { xs: 80, md: 120 },
-                                                    backgroundColor: '#339dff',
-                                                    left: { xs: '50%', md: '60%' },
-                                                    bottom: { xs: -100, md: -130 },
-                                                }}
-                                            />
-                                        </Box>
-                                    </Grid>
+    {/* Arrow icons */}
+<Grid item xs={12} md={2} textAlign="center">
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: { xs: 'column', md: 'row' },
+      justifyContent: 'center',
+      alignItems: 'center',
+      mt: 2,
+    }}
+  >
+    {/* Mobile: Mũi tên xuống trên cùng */}
+    <ArrowUpwardIcon
+      sx={{
+        fontSize: 32,
+        color: '#9cc8f7',
+        display: { xs: 'block', md: 'none' },
+        mb: -1,
+      }}
+    />
 
+    {/* PC: Mũi tên trái */}
+    <ArrowBackIcon
+      sx={{
+        fontSize: 32,
+        color: '#9cc8f7',
+        display: { xs: 'none', md: 'block' },
+      }}
+    />
 
-                                    {/* Arrow Center - Ẩn trên mobile */}
-                                    <Grid item xs={12} md={2} textAlign="center" sx={{ display: { xs: 'none', md: 'block' } }}>
-                                        <Box sx={{ fontSize: 32, color: '#9cc8f7', mt: 4 }}>
-                                            <ArrowBackIcon />
-                                            <ArrowForwardIcon />
-                                        </Box>
-                                    </Grid>
+    {/* PC: Mũi tên phải */}
+    <ArrowForwardIcon
+      sx={{
+        fontSize: 32,
+        color: '#9cc8f7',
+        display: { xs: 'none', md: 'block' },
+      }}
+    />
 
-                                    {/* Right Column */}
-                                    <Grid item xs={12} md={5}>
-                                        <Box
-                                            sx={{
-                                                border: '1px solid #d0e5f7',
-                                                borderRadius: 2,
-                                                p: 2,
-                                                position: 'relative',
-                                            }}
-                                        >
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    top: -20,
-                                                    left: '50%',
-                                                    transform: 'translateX(-50%)',
-                                                    background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
-                                                    px: 2,
-                                                    py: 0.5,
-                                                    borderRadius: 1,
-                                                    color: '#fff',
-                                                    fontWeight: 'bold',
-                                                }}
-                                            >
-                                                IT
-                                            </Box>
-
-                                            {[
-                                                'Skilled R&D team',
-                                                'Wide range of technologies and solutions',
-                                                'Intensive experience from many innovation projects',
-                                            ].map((text) => (
-                                                <Paper
-                                                    key={text}
-                                                    variant="outlined"
-                                                    sx={{
-                                                        p: { xs: 1, md: 2 },
-                                                        mt: 2,
-                                                        bgcolor: '#f5faff',
-                                                        fontSize: { xs: '0.85rem', md: '1rem' },
-                                                    }}
-                                                >
-                                                    {text}
-                                                </Paper>
-                                            ))}
-                                            <Box
-                                                sx={{
-                                                    display: { xs: 'block', md: 'block' },
-                                                    position: 'absolute',
-                                                    width: 2,
-                                                    height: { xs: 80, md: 120 },
-                                                    backgroundColor: '#339dff',
-                                                    left: { xs: '50%', md: '45%' },
-                                                    bottom: { xs: -100, md: -130 },
-                                                }}
-                                            />
-                                        </Box>
-                                    </Grid>
-
-                                    {/* Line down to center - TMA */}
+    {/* Mobile: Mũi tên lên dưới cùng */}
+    <ArrowDownwardIcon
+      sx={{
+        fontSize: 32,
+        color: '#9cc8f7',
+        display: { xs: 'block', md: 'none' },
+        mt: -1,
+      }}
+    />
+  </Box>
+</Grid>
 
 
-                                    {/* Connector & Final Result */}
-                                    <Grid item xs={12} sx={{ mt: 4, textAlign: 'center' }}>
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                flexDirection: 'column',
-                                            }}
-                                        >
-                                            {/* Line and arrow only on desktop */}
-                                            <Box
-                                                sx={{
-                                                    display: { xs: 'none', md: 'block' }, // ẩn trên mobile
-                                                    position: 'absolute',
-                                                    top: 414,
-                                                    left: 'calc(25% + 12px)',
-                                                    width: '50%',
-                                                    height: 2,
-                                                    backgroundColor: '#339dff',
-                                                }}
-                                            >
-                                                <ArrowDownwardIcon
-                                                    sx={{
-                                                        position: 'absolute',
-                                                        top: -5,
-                                                        left: '49%',
-                                                        transform: 'translateX(-50%)',
-                                                        color: '#339dff',
-                                                        fontSize: 32,
-                                                    }}
-                                                />
-                                            </Box>
+    {/* Right Column */}
+    <Grid item xs={12} md={5}>
+      <Box
+        sx={{
+          border: '1px solid #d0e5f7',
+          borderRadius: 2,
+          p: 2,
+          position: 'relative',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: -20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
+            px: 2,
+            py: 0.5,
+            borderRadius: 1,
+            color: '#fff',
+            fontWeight: 'bold',
+          }}
+        >
+          IT
+        </Box>
 
-                                            {/* Final Result Box */}
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    top: { xs: 'auto', md: 430 },
-                                                    bottom: { xs: 0, md: 'auto' },
-                                                    left: '50%',
-                                                    transform: 'translateX(-50%)',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    flexDirection: 'column',
-                                                    mt: { xs: 4, md: 0 },
-                                                }}
-                                            >
-                                                <Box
-                                                    sx={{
-                                                        background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
-                                                        px: { xs: 2, md: 3 },
-                                                        py: { xs: 0.5, md: 1 },
-                                                        borderRadius: 1,
-                                                    }}
-                                                >
-                                                    <Typography
-                                                        variant="subtitle1"
-                                                        sx={{
-                                                            color: '#fff',
-                                                            fontWeight: 'bold',
-                                                            fontSize: { xs: '0.85rem', md: '1rem' },
-                                                        }}
-                                                    >
-                                                        Innovative products & solutions
-                                                    </Typography>
-                                                </Box>
+        {[
+          'Skilled R&D team',
+          'Wide range of technologies and solutions',
+          'Intensive experience from many innovation projects',
+        ].map((text) => (
+          <Paper
+            key={text}
+            variant="outlined"
+            sx={{
+              p: { xs: 1, md: 2 },
+              mt: 2,
+              bgcolor: '#f5faff',
+              fontSize: { xs: '0.85rem', md: '1rem' },
+            }}
+          >
+            {text}
+          </Paper>
+        ))}
+      </Box>
+    </Grid>
+  </Grid>
+</Box>
 
-                                                {/* Mobile connector lines from two boxes */}
-                                                <Box
-                                                    sx={{
-                                                        display: { xs: 'flex', md: 'none' },
-                                                        flexDirection: 'row',
-                                                        justifyContent: 'space-between',
-                                                        width: '100%',
-                                                        mt: 1,
-                                                    }}
-                                                >
-                                                    <Box sx={{ width: '45%', height: 2, backgroundColor: '#339dff' }} />
-                                                    <Box sx={{ width: '10%', height: 2 }} />
-                                                    <Box sx={{ width: '45%', height: 2, backgroundColor: '#339dff' }} />
-                                                </Box>
-                                            </Box>
-                                        </Box>
-                                    </Grid>
-                                </Grid>
-                            </Box>
                         </Container>
                     </Box>
                 </FadeSection>
                 <FadeSection id='about' >
                     <Box p={5} bgcolor={"#f5f5f5"} sx={{
-                        mt: 20,
+                        mt: 2,
                         clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                     }}
                     >
@@ -597,23 +531,27 @@ const InnovationService = () => {
                             </Box>
                             <Box sx={{ p: 4 }}>
 
-                                <Stack direction="row" spacing={2} mb={3}>
-                                                                   {caseStudies.map((tab, index) => (
-                                                                       <Button
-                                                                           key={index}
-                                                                           variant={tabIndex === index ? "contained" : "outlined"}
-                                                                           onClick={() => setTabIndex(index)}
-                                                                           sx={{
-                                                                               px: { xs: 1.5, sm: 2.5 },
-                                                                               py: { xs: 0.5, sm: 1 },
-                                                                               minWidth: 'auto'
-                                                                           }}
-                                                                       >
-                                                                           <Typography fontSize={{ xs: 10, sm: 12 }}>{tab.label}</Typography>
-                                                                       </Button>
-                               
-                                                                   ))}
-                                                               </Stack>
+                                <Stack direction={isMobile ? undefined : "row"}
+                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
+                                    justifyContent={{ xs: "center", sm: "flex-start" }}
+                                    spacing={2}
+                                    mb={2}>
+                                    {caseStudies.map((tab, index) => (
+                                        <Button
+                                            key={index}
+                                            variant={tabIndex === index ? "contained" : "outlined"}
+                                            onClick={() => setTabIndex(index)}
+                                            sx={{
+                                                px: { xs: 1.5, sm: 2.5 },
+                                                py: { xs: 0.5, sm: 1 },
+                                                minWidth: 'auto'
+                                            }}
+                                        >
+                                            <Typography fontSize={{ xs: 10, sm: 12 }}>{tab.label}</Typography>
+                                        </Button>
+
+                                    ))}
+                                </Stack>
 
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={6}>

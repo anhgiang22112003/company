@@ -181,7 +181,7 @@ const coreStats = [
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110038.416.webp',
-        text: 'Services: design, test, integrate, and maintain',
+        text: 'Services: design, test, integrate',
     },
 ]
 
@@ -265,10 +265,10 @@ const HardWarePage = () => {
                             {/* Left Content */}
                             <Grid item xs={12} md={6}>
                                 <Typography variant="h4" fontWeight="bold" gutterBottom>
-                                 Hardware Lab
+                                    Hardware Lab
                                 </Typography>
                                 <Typography variant="body1" mb={4}>
-                                 Hardware Lab has designed, integrated and tested hundreds of devices for IoT, telecom, network, healthcare, automotive, robotics, manufacturing and smart city.
+                                    Hardware Lab has designed, integrated and tested hundreds of devices for IoT, telecom, network, healthcare, automotive, robotics, manufacturing and smart city.
                                 </Typography>
 
                                 <Grid container spacing={2}>
@@ -286,73 +286,8 @@ const HardWarePage = () => {
                             </Grid>
 
                             {/* Right Content */}
-                            <Grid item xs={12} md={6} sx={{ position: 'relative', height: 400 }}>
-                                <Paper
-                                    elevation={6}
-                                    sx={{
-                                        width: 220,
-                                        height: 240,
-                                        mx: 'auto',
-                                        mt: 5,
-                                        position: 'relative',
-                                        backgroundColor: '#fff',
-                                        color: '#1ea0f2',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                        fontSize: 20,
-                                    }}
-                                >
-                                    Hardware<br />Integration
-                                </Paper>
-
-                                {/* Floating icons with connectors */}
-                                {hardwareFields.map((field, i) => {
-                                    const pos = positionMap[i]
-                                    return (
-                                        <Box
-                                            key={i}
-                                            sx={{
-                                                position: 'absolute',
-                                                ...pos,
-                                                width: iconBoxWidth,
-                                                height: iconBoxHeight,
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                zIndex: 2,
-                                                transform: 'translateY(-50%)',
-                                                ...(pos.left !== undefined ? { left: pos.left } : { right: pos.right }),
-                                            }}
-                                        >
-                                            {/* Connector line */}
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    width: '140px', // Length of the connector line
-                                                    height: '2px',
-                                                    backgroundColor: '#fff',
-                                                    top: '50%', // Center the line vertically
-                                                    ...(pos.left !== undefined
-                                                        ? { left: iconBoxWidth } // Position for left icons
-                                                        : { right: iconBoxWidth }), // Position for right icons
-                                                    transform: 'translateY(-50%)',
-                                                    zIndex: 0,
-                                                }}
-                                            />
-
-                                            <Avatar
-                                                src={field.icon}
-                                                alt={field.name}
-                                                sx={{ width: 48, height: 48, mb: 1, bgcolor: 'white' }}
-                                            />
-                                            <Typography variant="body2" sx={{ color: '#fff' }}>{field.name}</Typography>
-                                        </Box>
-                                    )
-                                })}
+                            <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
+                                <img width={"100%"} src="https://tse1.mm.bing.net/th?id=OIP.Y3t0u1KPNLz7mLnk95hNjQHaEK&pid=Api&P=0&h=220" alt="" />
                             </Grid>
 
                         </Grid>
@@ -450,6 +385,7 @@ const HardWarePage = () => {
                                     <Box
                                         key={index}
                                         display="flex"
+                                        flexDirection={{ xs: 'column', sm: 'row' }} // Mobile: column, Tablet+: row
                                         mb={2}
                                         borderRadius={1}
                                         overflow="hidden"
@@ -458,13 +394,14 @@ const HardWarePage = () => {
                                     >
                                         {/* Blue Label */}
                                         <Box
-                                            width={180}
+                                            width={{ xs: '100%', sm: 160, md: 180 }} // full width on mobile
                                             bgcolor="#1ea0f2"
                                             color="#fff"
                                             display="flex"
                                             alignItems="center"
                                             justifyContent="center"
                                             fontWeight="bold"
+                                            textAlign="center"
                                             px={2}
                                             py={2}
                                         >
@@ -487,6 +424,7 @@ const HardWarePage = () => {
                                     </Box>
                                 ))}
                             </Grid>
+
                         </Grid>
                     </Container>
                 </Box>
@@ -502,11 +440,25 @@ const HardWarePage = () => {
                         </Typography>
 
                         <Grid container spacing={2}>
-                            {/* Left Column: 3 blocks, each 1/3 height */}
+                            {/* Left Column */}
                             <Grid item xs={12} md={6}>
-                                <Grid container direction="column" spacing={2} sx={{ height: '100%' }}>
+                                <Grid
+                                    container
+                                    direction="column"
+                                    spacing={2}
+                                    sx={{
+                                        height: { xs: 'auto', md: '100%' }, // Mobile: auto height, PC: full height
+                                    }}
+                                >
                                     {leftBlocks.map((block, idx) => (
-                                        <Grid item xs key={idx} sx={{ flex: 1 }}>
+                                        <Grid
+                                            item
+                                            key={idx}
+                                            sx={{
+                                                flex: { xs: 'unset', md: 1 },
+                                                height: { xs: 'auto', md: '100%' },
+                                            }}
+                                        >
                                             <Box
                                                 bgcolor="#1ea0f2"
                                                 color="#fff"
@@ -521,9 +473,7 @@ const HardWarePage = () => {
                                                     {block.items.map((item, i) => (
                                                         <ListItem key={i} disableGutters>
                                                             <ListItemIcon sx={{ minWidth: 20 }}>
-                                                                <FiberManualRecordIcon
-                                                                    sx={{ fontSize: 8, color: 'white' }}
-                                                                />
+                                                                <FiberManualRecordIcon sx={{ fontSize: 8, color: 'white' }} />
                                                             </ListItemIcon>
                                                             <ListItemText primary={item} />
                                                         </ListItem>
@@ -535,16 +485,25 @@ const HardWarePage = () => {
                                 </Grid>
                             </Grid>
 
-                            {/* Right Column: 2 blocks stacked but stretch to match left column */}
+                            {/* Right Column */}
                             <Grid item xs={12} md={6}>
                                 <Grid
                                     container
                                     direction="column"
                                     spacing={2}
-                                    sx={{ height: '100%' }}
+                                    sx={{
+                                        height: { xs: 'auto', md: '100%' }, // Responsive height
+                                    }}
                                 >
                                     {rightBlocks.map((block, idx) => (
-                                        <Grid item xs key={idx} sx={{ flex: 1 }}>
+                                        <Grid
+                                            item
+                                            key={idx}
+                                            sx={{
+                                                flex: { xs: 'unset', md: 1 },
+                                                height: { xs: 'auto', md: '100%' },
+                                            }}
+                                        >
                                             <Box
                                                 bgcolor="#1ea0f2"
                                                 color="#fff"
@@ -559,9 +518,7 @@ const HardWarePage = () => {
                                                     {block.items.map((item, i) => (
                                                         <ListItem key={i} disableGutters>
                                                             <ListItemIcon sx={{ minWidth: 20 }}>
-                                                                <FiberManualRecordIcon
-                                                                    sx={{ fontSize: 8, color: 'white' }}
-                                                                />
+                                                                <FiberManualRecordIcon sx={{ fontSize: 8, color: 'white' }} />
                                                             </ListItemIcon>
                                                             <ListItemText primary={item} />
                                                         </ListItem>
@@ -573,6 +530,7 @@ const HardWarePage = () => {
                                 </Grid>
                             </Grid>
                         </Grid>
+
                     </Container>
                 </Box>
             </FadeSection>
@@ -629,7 +587,7 @@ const HardWarePage = () => {
                         </Grid>
 
                         {/* Center image */}
-                        <Grid item>
+                        {/* <Grid item>
                             <Box
                                 component="img"
                                 src="https://www.tmasolutions.com/media/services/tmaHardwareLab/development/image-bg-box.webp"
@@ -644,7 +602,7 @@ const HardWarePage = () => {
                                     zIndex: 1,
                                 }}
                             />
-                        </Grid>
+                        </Grid> */}
 
                         {/* Right column */}
                         <Grid item>

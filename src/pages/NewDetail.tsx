@@ -140,9 +140,37 @@ const NewsDetailPage: React.FC = () => {
             </FadeSection>
             <FadeSection>
                 <Container>
-                    <Box sx={{ display: 'flex', gap: 4, p: 4 }}>
-                        {/* Main content */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: {
+                                xs: 'column',
+                                md: 'row',
+                            },
+                            gap: 4,
+                            p: {
+                                xs: 2,
+                                md: 4,
+                            },
+                        }}
+                    >
+                        {/* Social Icons */}
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: {
+                                    xs: 'row',
+                                    md: 'column',
+                                },
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                gap: 2,
+                                mb: {
+                                    xs: 2,
+                                    md: 0,
+                                },
+                            }}
+                        >
                             <LinkedIn
                                 sx={{
                                     color: '#0e76a8',
@@ -175,14 +203,13 @@ const NewsDetailPage: React.FC = () => {
                             />
                         </Box>
 
+                        {/* Main content */}
                         <Box sx={{ flex: 2 }}>
                             <Typography variant="caption" color="text.secondary">
                                 10/12/2024
                             </Typography>
                             <Typography variant="body1" sx={{ mt: 2 }}>
-                                December 5, 2024, NVIDIA has announced the opening of its first Research and Development (R&D) Center in Vietnam, marking a significant milestone for the country’s growing artificial intelligence (AI) ecosystem.
-                                The new center will focus on developing AI software, leveraging Vietnam’s talented STEM workforce, and collaborating with industry leaders, startups, government agencies, and universities. The goal is to accelerate AI adoption across key sectors such as healthcare, education, transportation, and finance. “We are excited to open NVIDIA’s R&D center to support Vietnam’s AI journey,” said Jensen Huang, founder and CEO of NVIDIA. “By partnering with local researchers, startups, and organizations, we aim to build innovative AI solutions right here in Vietnam.”
-                                {/* ...truncated content... */}
+                                December 5, 2024, NVIDIA has announced the opening of its first Research and Development (R&D) Center in Vietnam, marking a significant milestone for the country’s growing artificial intelligence (AI) ecosystem. The new center will focus on developing AI software, leveraging Vietnam’s talented STEM workforce, and collaborating with industry leaders, startups, government agencies, and universities. The goal is to accelerate AI adoption across key sectors such as healthcare, education, transportation, and finance. “We are excited to open NVIDIA’s R&D center to support Vietnam’s AI journey,” said Jensen Huang, founder and CEO of NVIDIA. “By partnering with local researchers, startups, and organizations, we aim to build innovative AI solutions right here in Vietnam.”
                             </Typography>
 
                             <Box sx={{ my: 3, textAlign: 'center' }}>
@@ -194,11 +221,9 @@ const NewsDetailPage: React.FC = () => {
                             </Box>
 
                             <Typography variant="body1">
-                                Vietnam has emerged as one of the fastest-growing economies globally, fueled by advancements in technology and manufacturing. AI has become a key focus for the country, with government initiatives promoting innovation and digital transformation. Since 2021, Vietnam has been working to establish itself as a regional leader in AI research and development.
-                                Prime Minister Pham Minh Chinh welcomed the collaboration, stating, “Innovation is a core element of Vietnam’s development strategy. This partnership with NVIDIA represents an important step in strengthening Vietnam’s position in AI and high-tech industries in Southeast Asia.”
+                                Vietnam has emerged as one of the fastest-growing economies globally, fueled by advancements in technology and manufacturing. AI has become a key focus for the country, with government initiatives promoting innovation and digital transformation. Since 2021, Vietnam has been working to establish itself as a regional leader in AI research and development. Prime Minister Pham Minh Chinh welcomed the collaboration, stating, “Innovation is a core element of Vietnam’s development strategy. This partnership with NVIDIA represents an important step in strengthening Vietnam’s position in AI and high-tech industries in Southeast Asia.”
                                 NVIDIA’s presence in Vietnam isn’t new. Over the past eight years, the company has supported over 100 Vietnamese AI startups through its Inception program and partnered with 65 local universities. NVIDIA has also worked with FPT Smart Cloud, its first Vietnamese cloud partner, to drive AI advancements in the region.
-                                This R&D center reinforces Vietnam’s potential to become a hub for AI innovation, fostering collaboration and creating opportunities for researchers, businesses, and students alike
-                                {/* ...remaining main content... */}
+                                This R&D center reinforces Vietnam’s potential to become a hub for AI innovation, fostering collaboration and creating opportunities for researchers, businesses, and students alike.
                             </Typography>
 
                             <Typography variant="body2" sx={{ mt: 3 }}>
@@ -207,34 +232,62 @@ const NewsDetailPage: React.FC = () => {
                         </Box>
 
                         {/* Sidebar */}
-                        <Box sx={{ flex: 1 }}>
+                        <Box sx={{ flex: 1, mt: { xs: 4, md: 0 } }}>
                             <Typography variant="h6" sx={{ mb: 2 }}>
                                 Latest News
                             </Typography>
-                            <Grid container direction="column" spacing={2}>
-                                {newsList.map((news, index) => (
-                                    <Grid item key={index}>
-                                        <Card sx={{ display: 'flex', height: 100 }}>
-                                            <CardMedia
-                                                component="img"
-                                                image={news.img}
-                                                alt={news.title}
-                                                sx={{ width: 120, objectFit: 'cover' }}
-                                            />
-                                            <CardContent sx={{ flex: 1, p: 1 }}>
-                                                <Typography variant="body2" noWrap>
-                                                    {news.title}
-                                                </Typography>
-                                                <Typography variant="caption" color="text.secondary">
-                                                    {news.date}
-                                                </Typography>
-                                            </CardContent>
-                                        </Card>
-                                    </Grid>
-                                ))}
-                            </Grid>
 
-                            {/* Contact button */}
+                            <Box sx={{ width: '100%', overflow: 'hidden' }}>
+                                <Grid container direction="column" spacing={2}>
+                                    {newsList.map((news, index) => (
+                                        <Grid item key={index}>
+                                            <Card
+                                                sx={{
+                                                    display: 'flex',
+                                                    width: '100%',
+                                                    height: 100,
+                                                    boxSizing: 'border-box',
+                                                    overflow: 'hidden',
+                                                }}
+                                            >
+                                                <CardMedia
+                                                    component="img"
+                                                    image={news.img}
+                                                    alt={news.title}
+                                                    sx={{
+                                                        width: 100,
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        flexShrink: 0,
+                                                    }}
+                                                />
+                                                <CardContent
+                                                    sx={{
+                                                        flex: 1,
+                                                        p: 1,
+                                                        overflow: 'hidden',
+                                                    }}
+                                                >
+                                                    <Typography
+                                                        variant="body2"
+                                                        noWrap
+                                                        sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                                                    >
+                                                        {news.title}
+                                                    </Typography>
+                                                    <Typography variant="caption" color="text.secondary">
+                                                        {news.date}
+                                                    </Typography>
+                                                </CardContent>
+                                            </Card>
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Box>
+
+
+
+
                             <Box sx={{ mt: 4, p: 2, bgcolor: '#f0f4ff', borderRadius: 1, textAlign: 'center' }}>
                                 <Typography variant="body2" sx={{ mb: 1 }}>
                                     Start your project today!
@@ -247,49 +300,51 @@ const NewsDetailPage: React.FC = () => {
                     </Box>
                 </Container>
             </FadeSection>
+
+
             <FadeSection>
-                <Box  bgcolor={"#f5f5f5"}>
-                <Container>
-                    <Box p={4} sx={{ mt: 6 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 3 }}>
-                            Other News
-                        </Typography>
-                        <Grid container spacing={3}>
-                            {otherNews.map((news, index) => (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card  sx={{ boxShadow: 'none',p:2 }}>
-                                        <CardMedia
-                                            component="img"
-                                            height="140"
-                                            image={news.image}
-                                            alt={news.title}
-                                            sx={{
-                                                borderRadius: '4px',
-                                                transition: 'transform 0.3s ease',
-                                                '&:hover': {
-                                                    transform: 'scale(1.02)',
-                                                },
-                                            }}
-                                        />
-                                        <CardContent sx={{ px: 0 }}>
-                                            <Typography
-                                                variant="subtitle2"
-                                                sx={{ mt: 1.5, fontWeight: 500, lineHeight: 1.4 }}
-                                            >
-                                                {news.title}
-                                            </Typography>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', mt: 1, color: '#888' }}>
-                                                <CalendarMonthIcon sx={{ fontSize: 16, mr: 0.5 }} />
-                                                <Typography variant="caption">{news.date}</Typography>
-                                            </Box>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Box>
+                <Box bgcolor={"#f5f5f5"}>
+                    <Container>
+                        <Box p={4} sx={{ mt: 6 }}>
+                            <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 3 }}>
+                                Other News
+                            </Typography>
+                            <Grid container spacing={3}>
+                                {otherNews.map((news, index) => (
+                                    <Grid item xs={12} sm={6} md={3} key={index}>
+                                        <Card sx={{ boxShadow: 'none', p: 2 }}>
+                                            <CardMedia
+                                                component="img"
+                                                height="140"
+                                                image={news.image}
+                                                alt={news.title}
+                                                sx={{
+                                                    borderRadius: '4px',
+                                                    transition: 'transform 0.3s ease',
+                                                    '&:hover': {
+                                                        transform: 'scale(1.02)',
+                                                    },
+                                                }}
+                                            />
+                                            <CardContent sx={{ px: 0 }}>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    sx={{ mt: 1.5, fontWeight: 500, lineHeight: 1.4 }}
+                                                >
+                                                    {news.title}
+                                                </Typography>
+                                                <Box sx={{ display: 'flex', alignItems: 'center', mt: 1, color: '#888' }}>
+                                                    <CalendarMonthIcon sx={{ fontSize: 16, mr: 0.5 }} />
+                                                    <Typography variant="caption">{news.date}</Typography>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
                     </Container>
-                    </Box>
+                </Box>
             </FadeSection>
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 4 }}>
                 <Pagination count={5} variant="outlined" shape="rounded" />

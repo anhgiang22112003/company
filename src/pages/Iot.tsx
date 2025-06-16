@@ -128,7 +128,7 @@ const telecomIcons = [
     },
     {
         src: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240621151641.245.webp',
-        title: 'Customers from Europe, Canada, Australia, Singapore, Hong Kong, Korea, Vietnams',
+        title: 'Customers Vietnams',
     },
     {
         src: "https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240521111533.980.webp",
@@ -295,7 +295,8 @@ const IotPage = () => {
                                 flexWrap="wrap"
                                 justifyContent="center"
                                 alignItems="center"
-                                gap={4}
+                                gap={{ xs: 2, sm: 3, md: 4 }} // 👈 responsive khoảng cách giữa các khối
+                                sx={{ px: { xs: 1, sm: 2, md: 0 } }} // 👈 padding ngang nhẹ cho mobile
                             >
                                 {telecomIcons.map((item, index) => (
                                     <Box
@@ -303,14 +304,40 @@ const IotPage = () => {
                                         display="flex"
                                         flexDirection="column"
                                         alignItems="center"
-                                        width={120}
+                                        justifyContent="center"
                                         textAlign="center"
+                                        sx={{
+                                            width: {
+                                                xs: 100,   // Mobile
+                                                sm: 110,   // Tablet
+                                                md: 130,   // PC
+                                            },
+                                            mx: 'auto',
+                                        }}
                                     >
-                                        <Avatar src={item.src} sx={{ width: 56, height: 56, mb: 1 }} />
-                                        <Typography variant="body2">{item.title}</Typography>
+                                        <Avatar
+                                            src={item.src}
+                                            alt={item.title}
+                                            sx={{
+                                                width: { xs: 48, sm: 52, md: 56 }, // 👈 Avatar scale theo màn hình
+                                                height: { xs: 48, sm: 52, md: 56 },
+                                                mb: 1,
+                                            }}
+                                        />
+                                        <Typography
+                                            variant="body2"
+                                            sx={{
+                                                fontSize: { xs: '0.75rem', sm: '0.85rem', md: '0.9rem' }, // 👈 text scale
+                                                fontWeight: 500,
+                                                whiteSpace: 'normal',
+                                            }}
+                                        >
+                                            {item.title}
+                                        </Typography>
                                     </Box>
                                 ))}
                             </Box>
+
                         </Container>
                     </Box>
                 </FadeSection>
@@ -459,7 +486,7 @@ const IotPage = () => {
                                 Technologies
                             </Typography>
 
-                            <Grid container border="1px solid #d1e0ff"  overflow="hidden">
+                            <Grid container border="1px solid #d1e0ff" overflow="hidden">
                                 {technologies.map((tech, idx) => (
                                     <React.Fragment key={idx}>
                                         {/* Left label cell */}

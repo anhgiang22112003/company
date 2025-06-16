@@ -5,17 +5,17 @@ import FadeSection from '../components/FadeSection'
 import { Avatar, Box, Breadcrumbs, Container, Divider, Grid, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
 import './hexagon.css'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import SchoolIcon from '@mui/icons-material/School'
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
 import WifiIcon from '@mui/icons-material/Wifi'
 import StoreIcon from '@mui/icons-material/Store'
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
-import { Stack } from '@mui/system'
+import { Stack, useMediaQuery, useTheme } from '@mui/system'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import WysiwygIcon from '@mui/icons-material/Wysiwyg'
 import { Wifi, LocalShipping, ShoppingCart, AttachMoney, DirectionsCar } from '@mui/icons-material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
+import { motion } from 'framer-motion'
 
 const items = [
     { title: 'Healthcare', icon: '🏥' },
@@ -107,31 +107,43 @@ const industries = [
 ]
 
 const IndustriePage = () => {
-    const Hexagon = ({ title, icon }: { title: string; icon: string }) => (
-        <Box
-            sx={{
-                width: 160,
-                height: 140,
-                bgcolor: 'white',
-                clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                boxShadow: 3,
-                mx: 1,
-                my: { xs: 0.5, md: 1 }, // giảm khoảng cách hàng
-            }}
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+    const Hexagon = ({ title, icon, delay = 0 }: { title: string; icon: string ,delay:number}) => (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+              transition={{ delay, duration: 0.5 }}
         >
-            <Typography variant="h5" fontSize={24}>
-                {icon}
-            </Typography>
-            <Typography variant="body2" fontWeight="bold">
-                {title}
-            </Typography>
-        </Box>
+            <Box
+                sx={{
+                    width: { xs: 140, md: 170 },
+                    height: { xs: 105, md: 140 },
+                    bgcolor: 'white',
+                    clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    boxShadow: 3,
+                }}
+            >
+                <Typography variant="h5" fontSize={{ xs: 18, md: 24 }}>
+                    {icon}
+                </Typography>
+                <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    fontSize={{ xs: '0.75rem', md: '0.875rem' }}
+                >
+                    {title}
+                </Typography>
+            </Box>
+        </motion.div>
     )
+
+
 
 
     const CategoryCard = ({ icon, title, items }: any) => (
@@ -189,7 +201,7 @@ const IndustriePage = () => {
                             As one of the top software outsourcing companies in Vietnam, Solutions leverages our 28-year experiences working with leading technology companies to offer end-to-end software services and solutions for a variety of industries, helping our clients be more successful in their business.                            </Typography>
                     </Container>
                     {/* HEXAGON GRID SECTION */}
-                    <Box sx={{ py: { xs: 4, md: 6 }, position: 'relative' }}>
+                    <Box sx={{ py: { xs: 4, md: 4 }, position: 'relative' }}>
                         <Container>
                             <Box
                                 sx={{
@@ -199,48 +211,104 @@ const IndustriePage = () => {
                                     gap: { xs: 2, md: 3 },
                                 }}
                             >
-                                {/* Row 1 */}
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        flexWrap: 'wrap',
-                                    }}
-                                >
-                                    {items.slice(0, 3).map((item, index) => (
-                                        <Hexagon key={index} title={item.title} icon={item.icon} />
-                                    ))}
-                                </Box>
+                                {isMobile ? (
+                                    <>
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                gap: { xs: 1, md: 3 },
+                                            }}
+                                        >
+                                            {Array.from({ length: Math.ceil(items.length / 3) }).map((_, groupIndex) => {
+                                                const i = groupIndex * 3
+                                                const item1 = items[i]
+                                                const item2 = items[i + 1]
+                                                const center = items[i + 2]
 
-                                {/* Row 2 – lệch */}
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        flexWrap: 'wrap',
-                                        mt: { xs: '-16px', md: '-56px' }, // khoảng âm để khớp đỉnh - đáy
-                                        ml: { xs: '40px', md: '10px' },    // lệch hàng
-                                    }}
-                                >
-                                    {items.slice(3, 7).map((item, index) => (
-                                        <Hexagon key={index + 3} title={item.title} icon={item.icon} />
-                                    ))}
-                                </Box>
+                                                return (
+                                                    <Box key={groupIndex} sx={{ mb: { xs: -4, md: 2 } }}>
+                                                        {/* Row with 2 hexagons */}
+                                                        <Box
+                                                            sx={{
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                                gap: 3,
+                                                            }}
+                                                        >
+                                                            {item1 && <Hexagon title={item1.title} icon={item1.icon} delay={groupIndex * 0.2} />}
+                                                            {item2 && <Hexagon title={item2.title} icon={item2.icon} delay={groupIndex * 0.2} />}
+                                                        </Box>
 
-                                {/* Row 3 */}
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        flexWrap: 'wrap',
-                                        mt: { xs: '-16px', md: '-53px' }, // khoảng âm để khớp đỉnh - đáy
-                                        ml: { xs: '40px', md: '10px' },
-                                    }}
-                                >
-                                    {items.slice(7).map((item, index) => (
-                                        <Hexagon key={index + 6} title={item.title} icon={item.icon} />
-                                    ))}
-                                </Box>
+                                                        {/* Center hexagon below, centered horizontally */}
+                                                        {center && (
+                                                            <Box
+                                                                sx={{
+                                                                    mt: '-25px', // overlap a bit
+                                                                    display: 'flex',
+                                                                    justifyContent: 'center',
+                                                                }}
+                                                            >
+                                                                <Box sx={{ transform: 'translateY(0)' }}>
+                                                                    <Hexagon title={center.title} icon={center.icon} delay={groupIndex * 0.2} />
+                                                                </Box>
+                                                            </Box>
+                                                        )}
+                                                    </Box>
+                                                )
+                                            })}
+                                        </Box>
+
+                                    </>
+                                ) : (
+                                    <>
+                                        {/* Row 1 */}
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                flexWrap: 'wrap',
+                                            }}
+                                        >
+                                            {items.slice(0, 3).map((item, index) => (
+                                                <Hexagon key={index} title={item.title} icon={item.icon} delay={index * 0.2}/>
+                                            ))}
+                                        </Box>
+
+                                        {/* Row 2 – lệch ở mobile */}
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                flexWrap: 'wrap',
+                                                mt: { xs: '-20px', md: '-56px' },
+                                                ml: { xs: '80px', md: '1px' }, // dịch phải mạnh hơn ở mobile
+                                            }}
+                                        >
+                                            {items.slice(3, 7).map((item, index) => (
+                                                <Hexagon key={index + 3} title={item.title} icon={item.icon} delay={index * 0.2}/>
+                                            ))}
+                                        </Box>
+
+                                        {/* Row 3 – lệch ở mobile */}
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                flexWrap: 'wrap',
+                                                mt: { xs: '-20px', md: '-55px' },
+                                                ml: { xs: '40px', md: '1px' },
+                                            }}
+                                        >
+                                            {items.slice(7).map((item, index) => (
+                                                <Hexagon key={index + 6} title={item.title} icon={item.icon} delay={index * 0.2} />
+                                            ))}
+                                        </Box>
+                                    </>
+                                )}
+
+
                             </Box>
                         </Container>
                     </Box>

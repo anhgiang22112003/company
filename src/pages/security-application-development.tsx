@@ -6,49 +6,49 @@ import Header from '../layouts/Header'
 import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 const skillsData = [
-  {
-    title: 'Network & Endpoint Security Skills',
-    items: [
-      'Firewalls, Intrusion Detection/Prevention Systems',
-      'Antivirus, Anti-malware Software, Device Encryption',
-      'Network Forensics & Monitoring: Kali, Wireshark, Metasploit, NMAP, Aircrack-NG, OpenVas',
-    ],
-  },
-  {
-    title: 'Cloud Security & Data Protection Skills',
-    items: [
-      'Secure Cloud Configurations, Cloud Monitoring',
-      'Regular Backups, Data Encryption',
-      'Secure Cloud Practices (Perl, Python, JavaScript, SQL, Cloud Tech)',
-      'Secure Cloud Platforms (AWS, GCP, Azure, Private Cloud, Hybrid, ONPREM)',
-      'Adaptive Clientless Rendering (ACR), Secure Web Gateway',
-      'DevSecOps & CI/CD Security Integration',
-    ],
-  },
-  {
-    title: 'Security Awareness & Compliance Skill',
-    items: [
-      'Employee Training, Phishing Simulations',
-      'Security Standards & Compliance: NIST Cybersecurity Framework, PCI DSS, ISO 27034, CIS Control 16',
-    ],
-  },
-  {
-    title: 'Threat Detection & Incident Response Skill',
-    items: [
-      'SIEM (Security Information & Event Management) – Real-Time Monitoring, Auto Alert',
-      'Threat Intelligence – Threat Feeds, Threat Analysis',
-      'Vulnerability Management – Web, Application & Infrastructure Scanning (Nessus, Qualys, BurpSuite, OWASP ZAP)',
-      'Penetration Testing – Web, Cloud, and Mobile Security Testing',
-    ],
-  },
-  {
-    title: 'Identity & Access Management Skills',
-    items: [
-      'Multi-Factor Authentication (MFA), Role-Based Access Control (RBAC)',
-      'Identity & Access Management: Microsoft, Duo, Okta',
-    ],
-  },
-];
+    {
+        title: 'Network & Endpoint Security Skills',
+        items: [
+            'Firewalls, Intrusion Detection/Prevention Systems',
+            'Antivirus, Anti-malware Software, Device Encryption',
+            'Network Forensics & Monitoring: Kali, Wireshark, Metasploit, NMAP, Aircrack-NG, OpenVas',
+        ],
+    },
+    {
+        title: 'Cloud Security & Data Protection Skills',
+        items: [
+            'Secure Cloud Configurations, Cloud Monitoring',
+            'Regular Backups, Data Encryption',
+            'Secure Cloud Practices (Perl, Python, JavaScript, SQL, Cloud Tech)',
+            'Secure Cloud Platforms (AWS, GCP, Azure, Private Cloud, Hybrid, ONPREM)',
+            'Adaptive Clientless Rendering (ACR), Secure Web Gateway',
+            'DevSecOps & CI/CD Security Integration',
+        ],
+    },
+    {
+        title: 'Security Awareness & Compliance Skill',
+        items: [
+            'Employee Training, Phishing Simulations',
+            'Security Standards & Compliance: NIST Cybersecurity Framework, PCI DSS, ISO 27034, CIS Control 16',
+        ],
+    },
+    {
+        title: 'Threat Detection & Incident Response Skill',
+        items: [
+            'SIEM (Security Information & Event Management) – Real-Time Monitoring, Auto Alert',
+            'Threat Intelligence – Threat Feeds, Threat Analysis',
+            'Vulnerability Management – Web, Application & Infrastructure Scanning (Nessus, Qualys, BurpSuite, OWASP ZAP)',
+            'Penetration Testing – Web, Cloud, and Mobile Security Testing',
+        ],
+    },
+    {
+        title: 'Identity & Access Management Skills',
+        items: [
+            'Multi-Factor Authentication (MFA), Role-Based Access Control (RBAC)',
+            'Identity & Access Management: Microsoft, Duo, Okta',
+        ],
+    },
+]
 const techData = [
     {
         title: 'Programming Languages',
@@ -114,7 +114,7 @@ const TechBox = ({ title, items }: any) => (
         </Typography>
         <List dense sx={{ paddingTop: 0 }}>
             {items.map((item: any, index: any) => (
-                <ListItem key={index} disableGutters sx={{ alignItems: 'center' ,  }}>
+                <ListItem key={index} disableGutters sx={{ alignItems: 'center', }}>
                     <ListItemIcon sx={{ minWidth: 20, mt: 0.5 }}>
                         <FiberManualRecordIcon sx={{ fontSize: 6, color: '#00AEEF' }} />
                     </ListItemIcon>
@@ -131,7 +131,7 @@ const SecurityApplicationDevelopment = () => {
         <>
             <Header />
             <FadeSection>
-                <Box sx={{ backgroundColor: '#1da1f2', p: 4, color: 'white', mt: 18 }}>
+                <Box sx={{ backgroundColor: '#1976d2', p: 4, color: 'white', mt: 18 }}>
                     <Container>
                         <Grid container spacing={4} alignItems="flex-start">
                             {/* Left Content */}
@@ -145,11 +145,12 @@ const SecurityApplicationDevelopment = () => {
                                 </Typography>
 
                                 {/* Info Boxes */}
-                                <Grid container spacing={2}>
+                                <Grid container spacing={2} alignItems="stretch">
                                     {/* Box 1 */}
-                                    <Grid item>
+                                    <Grid item xs={6} sx={{ height: '100%' }}>
                                         <Paper
                                             sx={{
+                                                height: '100%',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 gap: 2,
@@ -174,9 +175,10 @@ const SecurityApplicationDevelopment = () => {
                                     </Grid>
 
                                     {/* Box 2 */}
-                                    <Grid item>
+                                    <Grid item xs={6} sx={{ height: '100%' }}>
                                         <Paper
                                             sx={{
+                                                height: { xs: '87px', md: '100%' },
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 gap: 2,
@@ -200,6 +202,8 @@ const SecurityApplicationDevelopment = () => {
                                         </Paper>
                                     </Grid>
                                 </Grid>
+
+
                             </Grid>
 
                             {/* Right Image */}
@@ -278,7 +282,7 @@ const SecurityApplicationDevelopment = () => {
                     </Box>
                 </Container>
             </FadeSection>
-             <FadeSection>
+            <FadeSection>
                 <Container>
 
                     <Box sx={{ backgroundColor: '#f0f7ff', py: 6, px: 2 }}>
@@ -308,7 +312,7 @@ const SecurityApplicationDevelopment = () => {
                                 <Grid container spacing={3} direction="column">
                                     <Grid item><TechBox {...skillsData[3]} /></Grid>
                                     <Grid item><TechBox {...skillsData[4]} /></Grid>
-                                    
+
                                 </Grid>
                             </Grid>
                         </Grid>

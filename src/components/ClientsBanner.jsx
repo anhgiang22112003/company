@@ -11,7 +11,7 @@ const MapBanner = () => {
                 textAlign: 'center', 
                 width:"100%",
                 height:"100%",
-                mt:22
+                mt:10
             }}
         >
             <Container>

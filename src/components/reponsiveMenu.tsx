@@ -19,7 +19,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const ITEMS_PER_PAGE = isMobile ? 2 : 5
     const totalPages = Math.ceil(sections.length / ITEMS_PER_PAGE)
-const [isAtBottom, setIsAtBottom] = useState(false)
+    const [isAtBottom, setIsAtBottom] = useState(false)
 
     const visibleItems = sections.slice(menuPage * ITEMS_PER_PAGE, (menuPage + 1) * ITEMS_PER_PAGE)
 
@@ -40,33 +40,36 @@ const [isAtBottom, setIsAtBottom] = useState(false)
         }
         setActiveMenu(id)
     }
-useEffect(() => {
-    const bottomAnchor = document.getElementById('bottom-anchor')
-    if (!bottomAnchor) return
+    useEffect(() => {
+        const bottomAnchor = document.getElementById('bottom-anchor')
+        if (!bottomAnchor) return
 
-    const bottomObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                setIsAtBottom(entry.isIntersecting)
-            })
-        },
-        {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1,
+        const bottomObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    setIsAtBottom(entry.isIntersecting)
+                })
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1,
+            }
+        )
+
+        bottomObserver.observe(bottomAnchor)
+
+        return () => {
+            bottomObserver.disconnect()
         }
-    )
-
-    bottomObserver.observe(bottomAnchor)
-
-    return () => {
-        bottomObserver.disconnect()
-    }
-}, [])
+    }, [])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
+                 entries.forEach((entry) => {
+            console.log(entry.target.id, entry.isIntersecting, entry.intersectionRatio)
+        })
                 // Tìm entry đang intersecting và có tỉ lệ lớn hơn threshold
                 for (const entry of entries) {
                     if (entry.isIntersecting) {
@@ -83,18 +86,16 @@ useEffect(() => {
                         })
 
                         setActiveMenu(id)
-                        break 
+                        break
                     }
                 }
             },
             {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.5,
+                threshold: 0.1,
             }
         )
-
-        // Observe từng section theo id
         sections.forEach((sec) => {
             const el = document.getElementById(sec.id)
             if (el) observer.observe(el)
@@ -105,19 +106,19 @@ useEffect(() => {
     }, [sections, ITEMS_PER_PAGE])
 
     return (
-  <Box
-  sx={{
-    position: 'sticky',
-    top: 140,
-    zIndex: 1500,
-    py: 1,
-    transform: isAtBottom ? 'translateY(-100%)' : 'translateY(0)',
-    transition: 'transform 0.3s ease',
-  }}
->
+        <Box
+            sx={{
+                position: 'sticky',
+                top: 140,
+                zIndex: 1500,
+                py: 1,
+                transform: isAtBottom ? 'translateY(-100%)' : 'translateY(0)',
+                transition: 'transform 0.3s ease',
+            }}
+        >
 
             <Container>
-                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4,bgcolor:"white" }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4, bgcolor: "white" }}>
                     <Box
                         sx={{
                             display: 'flex',
@@ -198,7 +199,8 @@ useEffect(() => {
                             onClick={handleNext}
                             disabled={menuPage >= totalPages - 1}
                             size="small"
-                            sx={{ visibility: menuPage >= totalPages - 1 ? 'hidden' : 'visible' }}
+                            sx={{ visibility: menuPage >= totalPages - 1 ? 'hidden' : 'visible', }}
+                            
                         >
                             <ArrowForwardIosIcon fontSize="small" />
                         </IconButton>

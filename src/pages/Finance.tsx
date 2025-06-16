@@ -345,7 +345,7 @@ const Finance = () => {
             <FadeSection id='about' >
                 <Box p={5} bgcolor={"#f5f5f5"} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
+                    
                 }}
                 >
                     <Box >

@@ -97,7 +97,15 @@ const Insurance = () => {
                             component="img"
                             src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20240624164520.514.webp"
                             alt="banner"
-                            sx={{ width: '100%', height: 'auto', display: 'block' }}
+                            sx={{
+                                width: '100%',
+                                height: {
+                                    xs: '210px',     // chiều cao lớn hơn ở mobile
+                                    md: 'auto',      // trở về mặc định ở desktop
+                                },
+                                objectFit: 'cover',
+                                display: 'block',
+                            }}
                         />
                         <Typography
                             variant="h5"
@@ -109,11 +117,16 @@ const Insurance = () => {
                                 color: 'white',
                                 fontWeight: 'bold',
                                 textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
+                                fontSize: {
+                                    xs: '18px',      // nhỏ hơn ở mobile
+                                    md: '28px',      // mặc định to ở desktop
+                                },
                             }}
                         >
                             InsurTech Center
                         </Typography>
                     </Container>
+
                 </Box>
             </FadeSection>
             <FadeSection >
@@ -139,7 +152,6 @@ const Insurance = () => {
             <FadeSection id='about' >
                 <Box p={5} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                 }}
                 >
                     <Box >
@@ -270,24 +282,49 @@ const Insurance = () => {
                     <Container>
                         <Typography variant='h4' fontWeight={"bold"} textAlign={"center"} >Backend High-Level Architecture</Typography>
                         <Typography>
-                            We have built a framework that can cover the key modules in an insurance company such as customer relationship management, document management, claim management, learning services, etc.​
+                            We have built a framework that can cover the key modules in an insurance company such as customer relationship management, document management, claim management, learning services, etc.
                         </Typography>
-                        <img style={{marginTop:'20px'}} width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625084733.760.webp" alt="" />
+                        <Box
+                            component="img"
+                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625084733.760.webp"
+                            alt=""
+                            sx={{
+                                width: '100%',
+                                height: {
+                                    xs: '150px',     // chiều cao lớn hơn ở mobile
+                                    md: 'auto',      // trở về mặc định ở desktop
+                                },
+                             
+                            }}
+                        />
+                        
                     </Container>
                 </Box>
             </FadeSection>
-              <FadeSection>
+            <FadeSection>
                 <Box mt={4}>
                     <Container>
                         <Typography variant='h4' fontWeight={"bold"} textAlign={"center"} >Mobile High-Level Architecture</Typography>
                         <Typography>
                             We develop mobile architecture that optimizes the interaction with customer and enhance employee productivity
                         </Typography>
-                        <img style={{marginTop:'20px'}} width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625084744.650.webp" alt="" />
+                     <Box
+                            component="img"
+                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625084744.650.webp"
+                            alt=""
+                            sx={{
+                                width: '100%',
+                                height: {
+                                    xs: '150px',     // chiều cao lớn hơn ở mobile
+                                    md: 'auto',      // trở về mặc định ở desktop
+                                },
+                               
+                            }}
+                        />
                     </Container>
                 </Box>
             </FadeSection>
-              <FadeSection id="download">
+            <FadeSection id="download">
                 <Container sx={{ mt: 4 }} >
                     <Box
                         sx={{

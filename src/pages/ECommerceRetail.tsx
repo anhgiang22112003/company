@@ -30,7 +30,7 @@ const topSections = [
 
 const bottomSections = [
     { key: 'ai', label: 'AI Features', icon: <TipsAndUpdatesIcon />, content: ['Recommendation System', 'Chatbot'] },
-    { key: 'delivery', label: 'Delivery/Shipping', icon: <LocalShippingIcon />, content: ['Carrier Integration', 'Tracking'] },
+    { key: 'delivery', label: 'Shipping', icon: <LocalShippingIcon />, content: ['Carrier Integration', 'Tracking'] },
     { key: 'Warehouse Management​', label: 'Warehouse', icon: <WarehouseIcon />, content: ['Payment Gateways', 'Refund System'] },
     { key: 'Order Management​​', label: 'Order', icon: <PeopleIcon />, content: ['Stock Management', 'Supplier Integration'] },
 ]
@@ -139,27 +139,6 @@ const services = [
             'Optimization',
         ],
     },
-]
-const imageUrls = [
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112627.082.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112824.251.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112854.529.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112919.816.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112941.514.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113006.739.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113054.791.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113030.589.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113117.504.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113423.950.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113152.694.webp',
-]
-
-const techLabels = [
-    'Angular', 'React.js', 'Java', 'Spring Boot',
-    'Node.js', 'Python', 'Kotlin', 'Django',
-    'Solidity', 'Scikit-learn', 'Ethereum', 'Hyperledger',
-    'Polygon', 'IPFS', 'TensorFlow', 'PyTorch',
-    'Azure', 'OpenAI', 'Hugging Face',
 ]
 
 

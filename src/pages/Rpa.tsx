@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
@@ -244,11 +244,8 @@ const solutions = [
 
 const RpaPage = () => {
 
-    const [tabIndex, setTabIndex] = useState(0)
-    const study = caseStudies[tabIndex]
-    const [selectedIndex, setSelectedIndex] = useState(0)
-
-    const currentTab = tabData[selectedIndex]
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
 
     return (
@@ -256,11 +253,10 @@ const RpaPage = () => {
             <Header />
             <Box>
                 <FadeSection>
-                    <Box mt={18} sx={{
+                    <Box mt={16} sx={{
                         backgroundColor: '#1976d2',
                         color: 'white',
-                        mt: 18,
-                        py: 8,
+                        py: 4,
                         clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
                         WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
                         overflow: 'hidden',
@@ -270,36 +266,43 @@ const RpaPage = () => {
                         <Container>
                             <Grid
                                 container
-                                spacing={4}
+                                spacing={{ xs: 2, sm: 4 }} // giảm spacing trên mobile
                                 alignItems="center"
                                 justifyContent="center"
-                                sx={{ py: 6 }}
+                                sx={{ py: { xs: 2, md: 6 }, textAlign: { xs: 'center', md: 'left' } }}
                             >
                                 {/* Cột hình lục giác */}
                                 <Grid item xs={12} md={6}>
                                     <Box
                                         sx={{
                                             display: 'grid',
-                                            gridTemplateColumns: 'repeat(3, 140px)',
+                                            gridTemplateColumns: {
+                                                xs: 'repeat(2, 100px)',  // mobile
+                                                sm: 'repeat(3, 120px)',  // tablet
+                                                md: 'repeat(3, 140px)',  // desktop
+                                            },
                                             gap: '16px',
                                             justifyContent: 'center',
                                             alignItems: 'center',
-
+                                             
                                         }}
                                     >
                                         {hexImages.map((src, index) => (
                                             <Box
                                                 key={index}
                                                 sx={{
-                                                    width: 140,
-                                                    height: 120,
+                                                    width: { xs: 100, sm: 120, md: 140 },
+                                                    height: { xs: 90, sm: 105, md: 120 },
                                                     backgroundColor: src ? 'white' : 'transparent',
                                                     clipPath:
                                                         'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
                                                     display: 'flex',
                                                     alignItems: 'center',
                                                     justifyContent: 'center',
-                                                    transform: `translateY(${Math.floor(index / 3) % 2 === 1 ? '48px' : '0'})`,
+                                                    transform: {
+                                                        xs: 'translateY(0)',
+                                                        md: `translateY(${Math.floor(index / 3) % 2 === 1 ? '48px' : '0'})`,
+                                                    },
                                                     transition: 'transform 0.3s',
                                                     '&:hover img': {
                                                         transform: 'scale(1.1)',
@@ -324,12 +327,12 @@ const RpaPage = () => {
 
                                 {/* Cột chữ RPA */}
                                 <Grid item xs={12} md={5}>
-                                    <Box textAlign="left">
+                                    <Box sx={{ textAlign: { xs: 'center', md: 'left' }}}>
                                         <Typography
                                             variant="h4"
                                             sx={{
                                                 fontWeight: 700,
-                                                mb: 1,
+
                                                 transition: 'color 0.3s',
                                                 '&:hover': { color: '#00e5ff', cursor: 'pointer' },
                                             }}
@@ -346,33 +349,48 @@ const RpaPage = () => {
                                     </Box>
                                 </Grid>
                             </Grid>
+                            <Grid container justifyContent="center" spacing={{ xs: 2, sm: 3 }}
+                                mt={{ xs: 2, sm: 3, md: 4 }} >
+                                {stats.map((stat, index) => (
+                                    <Grid item key={index} xs={6} sm={4} md="auto">
+                                        <Paper
+                                            elevation={2}
+                                            sx={{
+                                                px: 1,
+                                                py: 1,
+                                                borderRadius: 2,
+                                                textAlign: 'center',
+                                                width: { xs: 130, sm: 140, md: 160 },
 
+                                                mx: 'auto',
+                                            }}
+                                        >
+                                            <Box
+                                                component="img"
+                                                src={stat.icon}
+                                                alt="icon"
+                                                sx={{ width: 32, height: 32, mb: 1 }}
+                                            />
+                                            <Typography variant="subtitle1" color="primary" fontWeight={600}>
+                                                {stat.number}
+                                            </Typography>
+                                            <Typography
+                                                variant="caption"
+                                                color="text.secondary"
+                                                sx={{ fontSize: { xs: '0.75rem', sm: '0.8rem' } }}
+                                            >
+                                                {stat.label}
+                                            </Typography>
+                                        </Paper>
+                                    </Grid>
+                                ))}
+                            </Grid>
                         </Container>
+
                         {/* Stats */}
-                        <Grid container justifyContent="center" spacing={4} mt={6}>
-                            {stats.map((stat, index) => (
-                                <Grid item key={index}>
-                                    <Paper
-                                        elevation={3}
-                                        sx={{
-                                            px: 4,
-                                            py: 3,
-                                            borderRadius: 2,
-                                            textAlign: 'center',
-                                            width: 160,
-                                        }}
-                                    >
-                                        <Box component="img" src={stat.icon} alt="icon" sx={{ width: 40, height: 40 }} />
-                                        <Typography variant="h6" color="primary" mt={1}>
-                                            {stat.number}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {stat.label}
-                                        </Typography>
-                                    </Paper>
-                                </Grid>
-                            ))}
-                        </Grid>
+
+
+
                     </Box>
                 </FadeSection>
                 <FadeSection >
@@ -412,7 +430,7 @@ const RpaPage = () => {
                             <Grid item xs={12} md={1}></Grid>
                             <Grid item xs={12} md={6}>
                                 <Grid container spacing={2}>
-                                    <img src="/images/overview.png" alt="overview" />
+                                    <img width={"100%"} src="/images/overview.png" alt="overview" />
                                 </Grid>
                             </Grid>
                         </Grid>

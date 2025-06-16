@@ -208,20 +208,49 @@ const Healthcare = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Container sx={{ mb: 4 }}>
-                        <Box sx={{ p: 4 }}>
+                    <Container sx={{ mb: { xs: 2, md: 4 } }}>
+                        <Box sx={{ p: { xs: 2, md: 4 } }}>
                             <Container>
-
-                                <Grid container spacing={4} justifyContent="center">
+                                <Grid container spacing={3} justifyContent="center">
                                     {servicesData.map((service, index) => (
-                                        <Grid item xs={12} sm={4} key={index}>
-                                            <Paper elevation={3} sx={{ padding: 3, bgcolor: '#2196F3', color: 'white', textAlign: 'center' }}>
+                                        <Grid
+                                            item
+                                            xs={12}
+                                            sm={6}
+                                            md={4}
+                                            key={index}
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
+                                            <Paper
+                                                elevation={3}
+                                                sx={{
+                                                    width: '100%',
+                                                    maxWidth: 300,
+                                                    padding: { xs: 2, md: 3 },
+                                                    bgcolor: '#2196F3',
+                                                    color: 'white',
+                                                    textAlign: 'center',
+                                                }}
+                                            >
                                                 <img
                                                     src={service.image}
                                                     alt={service.title}
-                                                    style={{ width: '60px', height: '60px', marginBottom: '16px' }}
+                                                    style={{
+                                                        width: '40px',
+                                                        height: '40px',
+                                                        marginBottom: '12px',
+                                                    }}
                                                 />
-                                                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                                                <Typography
+                                                    variant="h6"
+                                                    sx={{
+                                                        fontWeight: 'bold',
+                                                        fontSize: { xs: '16px', md: '20px' },
+                                                    }}
+                                                >
                                                     {service.title}
                                                 </Typography>
                                             </Paper>
@@ -231,6 +260,7 @@ const Healthcare = () => {
                             </Container>
                         </Box>
                     </Container>
+
                 </Box>
             </FadeSection>
             <FadeSection id='about' >

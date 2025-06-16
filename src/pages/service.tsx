@@ -19,6 +19,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 const servicesData = [
     {
         title: 'Software Development',
+        href: "/services/software-development",
         description: [
             'Develop new products',
             'Enhance existing products',
@@ -26,30 +27,33 @@ const servicesData = [
             'Porting & Migration',
             'Application re-design',
         ],
-        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103842.723.webp" alt="Software Development"  />,
+        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103842.723.webp" alt="Software Development" />,
     },
     {
         title: 'Software Testing',
+        href: "/services/testing",
         description: [
             'Functional testing',
             'System and integration testing',
             'Performance testing',
             'Security testing',
         ],
-        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103852.647.webp" alt="Software Testing"  />,
+        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103852.647.webp" alt="Software Testing" />,
     },
     {
         title: 'Innovation as a Service',
+        href: "/services/innovation-as-a-service",
         description: [
             'R&D',
             'PoC and Prototype development',
             'Technology roadmap',
             'Find technical solutions',
         ],
-        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103902.235.webp" alt="Innovation as a Service"  />,
+        icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103902.235.webp" alt="Innovation as a Service" />,
     },
     {
         title: 'Digital Transformation',
+        href: "/services/digital-transformation",
         description: [
             'Go Online',
             'Go Mobile',
@@ -67,73 +71,73 @@ const sections = [
     { id: "Whatourclientssay", label: "What our clients say" }
 ]
 
-   const categories = [
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154741.713.webp",
-            title: 'Telecom',
-            items: [
-                '5G Applications',
-                '4G MVNO LTE EPC & MANO',
-                'Network Transformation Solutions',
-                'Enterprise Communication Solution',
-            ],
-        },
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154756.705.webp",
-            title: 'Logistics & Transportation',
-            items: [
-                'Vehicle Traffic Management',
-                'Navigation Solution',
-                'Route Information Lookup',
-                'Lane and Vehicle Detection',
-            ],
-        },
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154806.114.webp",
-            title: 'E-Commerce, Retail & Distribution',
-            items: [
-                'Deal Management',
-                'Mobile Ecommerce',
-                'Cosmetic Ecommerce Platform',
-                'School Furniture Sales and Distribution Management System',
-            ],
-        },
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154817.034.webp",
-            title: 'Healthcare',
-            items: [
-                " Remote Health Monitoring Platform",
-                "Health Information Systems Programme (HISP)",
-                "World Mosquito Program (WMP)",
-                "Clinical Research Tools",
-                "Fitness Solution"
-            ],
-        },
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154834.691.webp",
-            title: 'Finance',
-            items: [
-                "  Cash Flow Management Application​",
-                "Digital Product Trading",
-                "NFT Trading Platform​",
-                "Stable Coin​",
-            ],
-        },
-        {
-            img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154849.798.webp",
-            title: 'Automotive',
-            items: [
-                'Infotainment HMI',
-                'ECU MCU Modeling',
-                'AR Navigation',
-                'Traffic Management,'
-            ],
-        },
-    ]
+const categories = [
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154741.713.webp",
+        title: 'Telecom',
+        items: [
+            '5G Applications',
+            '4G MVNO LTE EPC & MANO',
+            'Network Transformation Solutions',
+            'Enterprise Communication Solution',
+        ],
+    },
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154756.705.webp",
+        title: 'Logistics & Transportation',
+        items: [
+            'Vehicle Traffic Management',
+            'Navigation Solution',
+            'Route Information Lookup',
+            'Lane and Vehicle Detection',
+        ],
+    },
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154806.114.webp",
+        title: 'E-Commerce, Retail & Distribution',
+        items: [
+            'Deal Management',
+            'Mobile Ecommerce',
+            'Cosmetic Ecommerce Platform',
+            'School Furniture Sales and Distribution Management System',
+        ],
+    },
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154817.034.webp",
+        title: 'Healthcare',
+        items: [
+            " Remote Health Monitoring Platform",
+            "Health Information Systems Programme (HISP)",
+            "World Mosquito Program (WMP)",
+            "Clinical Research Tools",
+            "Fitness Solution"
+        ],
+    },
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154834.691.webp",
+        title: 'Finance',
+        items: [
+            "  Cash Flow Management Application​",
+            "Digital Product Trading",
+            "NFT Trading Platform​",
+            "Stable Coin​",
+        ],
+    },
+    {
+        img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154849.798.webp",
+        title: 'Automotive',
+        items: [
+            'Infotainment HMI',
+            'ECU MCU Modeling',
+            'AR Navigation',
+            'Traffic Management,'
+        ],
+    },
+]
 
 const ServicePage = () => {
     const [hovered, setHovered] = useState<any>(null)
-  const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({})
+    const [expandedItems, setExpandedItems] = useState<{ [key: number]: boolean }>({})
 
     const toggleExpand = (index: number) => {
         setExpandedItems((prev) => ({
@@ -171,7 +175,7 @@ const ServicePage = () => {
                                 <Link underline="hover" color="#00A1F1" href="/">
                                     <Typography fontWeight={700}>Home</Typography>
                                 </Link>
-                                <Typography color="text.primary">About</Typography>
+                                <Typography color="text.primary">Service</Typography>
                             </Breadcrumbs>
                         </Box>
                     </Container>
@@ -185,80 +189,101 @@ const ServicePage = () => {
                     </Typography>
                     <Container>
                         <Typography textAlign={"center"}  >
-                         Solutions, the leading software outsourcing company in Vietnam, possesses several years of expertise in the software development life cycle (SDLC) process and agile approach. We can guarantee exceptional solutions, and craft tailored solutions for your needs.
+                            Solutions, the leading software outsourcing company in Vietnam, possesses several years of expertise in the software development life cycle (SDLC) process and agile approach. We can guarantee exceptional solutions, and craft tailored solutions for your needs.
                         </Typography>
                     </Container>
                     <Container sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={4}>
                             {servicesData.map((service, index) => (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Paper elevation={3} sx={{ padding: 2, bgcolor: '#E3F2FD' }}>
+                                <Grid item xs={12} sm={6} md={3} key={index} sx={{ height: '100%' }}>
+                                    <Paper
+                                        elevation={3}
+                                        sx={{
+                                            padding: 2,
+                                            bgcolor: '#E3F2FD',
+                                            height: '100%',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'space-between', // Giữ Explore More ở đáy
+                                        }}
+                                    >
                                         {/* Icon */}
                                         <Box>{service.icon}</Box>
-                                        <Typography variant="h6" sx={{ fontWeight: 'bold', }}>
-                                            {service.title}
-                                        </Typography>
-                                        <Divider  sx={{mb:2}}/>
-                                        <Box >
-                                            {service.description.map((item, idx) => (
-                                                <Box
-                                                    component="li"
-                                                    key={idx}
-                                                    sx={{ display: 'flex', mb: 0.5 }}
-                                                >
+
+                                        <Box>
+                                            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                                                {service.title}
+                                            </Typography>
+                                            <Divider sx={{ mb: 2 }} />
+
+                                            <Box>
+                                                {service.description.map((item, idx) => (
                                                     <Box
-                                                        sx={{
-                                                            width: 8,
-                                                            height: 8,
-                                                            borderRadius: '50%',
-                                                            bgcolor: '#1976d2',
-                                                            mt: '6px',
-                                                            mr: 1,
-                                                        }}
-                                                    />
-                                                    <Typography variant="body2">{item}</Typography>
-                                                </Box>
-                                            ))}
+                                                        component="li"
+                                                        key={idx}
+                                                        sx={{ display: 'flex', mb: 0.5 }}
+                                                    >
+                                                        <Box
+                                                            sx={{
+                                                                width: 8,
+                                                                height: 8,
+                                                                borderRadius: '50%',
+                                                                bgcolor: '#1976d2',
+                                                                mt: '6px',
+                                                                mr: 1,
+                                                            }}
+                                                        />
+                                                        <Typography variant="body2">{item}</Typography>
+                                                    </Box>
+                                                ))}
+                                            </Box>
                                         </Box>
+
                                         {/* Explore more */}
-                                        <Typography
-                                            variant="body2"
-                                            sx={{
-                                                display: 'inline-flex',
-                                                alignItems: 'center',
-                                                position: 'relative',
-                                                cursor: 'pointer',
-                                                color: 'inherit',
-                                                transition: 'color 0.3s ease',
-                                                '&::after': {
-                                                    content: '""',
-                                                    position: 'absolute',
-                                                    left: 0,
-                                                    bottom: -2,
-                                                    height: '2px',
-                                                    backgroundColor: 'blue',
-                                                    width: 0,
-                                                    transition: 'width 0.5s ease',
-                                                },
-                                                '&:hover': {
-                                                    color: 'blue',
-                                                    '&::after': {
-                                                        width: '100%',
-                                                    },
-                                                    '& svg': {
-                                                        color: 'blue',
+                                        <Box mt={2}>
+                                            <Link href={service.href}>
+                                                <Typography
+                                                    component="a"
+                                                    variant="body2"
+                                                    sx={{
+                                                        display: 'inline-flex',
+                                                        alignItems: 'center',
+                                                        position: 'relative',
+                                                        cursor: 'pointer',
+                                                        color: 'inherit',
                                                         transition: 'color 0.3s ease',
-                                                    },
-                                                },
-                                                '& svg': {
-                                                    ml: 1,
-                                                    transition: 'color 0.3s ease',
-                                                },
-                                            }}
-                                        >
-                                            Explore More
-                                            <ArrowForwardIcon />
-                                        </Typography>
+                                                        textDecoration: 'none',
+                                                        '&::after': {
+                                                            content: '""',
+                                                            position: 'absolute',
+                                                            left: 0,
+                                                            bottom: -2,
+                                                            height: '2px',
+                                                            backgroundColor: 'blue',
+                                                            width: 0,
+                                                            transition: 'width 0.5s ease',
+                                                        },
+                                                        '&:hover': {
+                                                            color: 'blue',
+                                                            '&::after': {
+                                                                width: '100%',
+                                                            },
+                                                            '& svg': {
+                                                                color: 'blue',
+                                                                transition: 'color 0.3s ease',
+                                                            },
+                                                        },
+                                                        '& svg': {
+                                                            ml: 1,
+                                                            transition: 'color 0.3s ease',
+                                                        },
+                                                    }}
+                                                >
+                                                    Explore More
+                                                    <ArrowForwardIcon />
+                                                </Typography>
+                                            </Link>
+                                        </Box>
                                     </Paper>
                                 </Grid>
                             ))}
@@ -266,144 +291,144 @@ const ServicePage = () => {
                     </Container>
 
                 </FadeSection>
-                <FadeSection  id='SamplePartners'>
+                <FadeSection id='SamplePartners'>
                     <Box>
-                    <Box mt={15} textAlign={"center"}>
-                        <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
-                    </Box>
-                    <Typography textAlign={"center"} variant='h4' >
-                        Sample Partners
-                    </Typography>
-                    <Container sx={{ mt: 2 }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                flexWrap: 'wrap',
-                                gap: 2,
-                            }}
-                        >
-                            <img
-                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095819.642.webp"
-                                alt=""
-                                style={{ width: '22%', height: '100%' }}
-                            />
-                            <img
-                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095831.690.webp"
-                                alt=""
-                                style={{ width: '22%', height: '100%' }}
-                            />
-                            <img
-                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095840.768.webp"
-                                alt=""
-                                style={{ width: '18%', height: '100%' }}
-                            />
-                            <img
-                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095851.914.webp"
-                                alt=""
-                                style={{ width: '18%', height: '100%' }}
-                            />
+                        <Box mt={15} textAlign={"center"}>
+                            <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
                         </Box>
-                    </Container>
+                        <Typography textAlign={"center"} variant='h4' >
+                            Sample Partners
+                        </Typography>
+                        <Container sx={{ mt: 2 }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    flexWrap: 'wrap',
+                                    gap: 2,
+                                }}
+                            >
+                                <img
+                                    src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095819.642.webp"
+                                    alt=""
+                                    style={{ width: '22%', height: '100%' }}
+                                />
+                                <img
+                                    src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095831.690.webp"
+                                    alt=""
+                                    style={{ width: '22%', height: '100%' }}
+                                />
+                                <img
+                                    src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095840.768.webp"
+                                    alt=""
+                                    style={{ width: '18%', height: '100%' }}
+                                />
+                                <img
+                                    src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240701095851.914.webp"
+                                    alt=""
+                                    style={{ width: '18%', height: '100%' }}
+                                />
+                            </Box>
+                        </Container>
                     </Box>
                 </FadeSection>
                 <FadeSection id='CaseStudies'>
-                    <Box   mt={10}>
+                    <Box mt={10}>
                         <Container>
-                     <Box textAlign={"center"}>
-                        <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
-                    </Box>
-                    <Typography  textAlign={"center"} variant='h4' >
-                        Sample Partners
-                    </Typography>
-                    <Container>
-                        <Typography textAlign={"center"}  >
-                            Discover Solutions' sample projects, featuring success stories achieved by our software engineers.
-                            Witness the impact of our software outsourcing services on businesses and operations.
-                        </Typography>
-                    </Container>
-                    
-                        <Grid container sx={{ py: 8 }} spacing={2} alignItems="flex-start">
-                        {categories.map((cat, index) => {
-                            const hasExtra = cat.items.length > 3
-                            const visibleItems = cat.items.slice(0, 3)
-                            const hiddenItems = cat.items.slice(3)
+                            <Box textAlign={"center"}>
+                                <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
+                            </Box>
+                            <Typography textAlign={"center"} variant='h4' >
+                               Case Studies
+                            </Typography>
+                            <Container>
+                                <Typography textAlign={"center"}  >
+                                    Discover Solutions' sample projects, featuring success stories achieved by our software engineers.
+                                    Witness the impact of our software outsourcing services on businesses and operations.
+                                </Typography>
+                            </Container>
 
-                            return (
-                                <Grid item xs={12} md={4} key={index}>
-                                    <Box
-                                        sx={{
-                                            position: 'relative',
-                                            backgroundColor: '#f5f9ff',
-                                            borderRadius: 2,
-                                            p: 3,
-                                            height: '100%',
-                                            overflow: 'hidden',
-                                            '&::before': {
-                                                content: '""',
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '99%',
-                                                height: '98%',
-                                                border: '2px solid #1976d2',
-                                                borderRadius: 2,
-                                                opacity: 0,
-                                                transform: 'scale(0.9)',
-                                                transition: 'opacity 0.4s ease, transform 0.4s ease',
-                                                pointerEvents: 'none',
-                                            },
-                                            '&:hover::before': {
-                                                opacity: 1,
-                                                transform: 'scale(1)',
-                                            },
-                                        }}
-                                    >
-                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                            <img src={cat.img} width={"10%"} alt="" />
-                                            <Typography variant="h6" fontWeight="bold">
-                                                {cat.title}
-                                            </Typography>
-                                        </Box>
+                            <Grid container sx={{ py: 8 }} spacing={2} alignItems="flex-start">
+                                {categories.map((cat, index) => {
+                                    const hasExtra = cat.items.length > 3
+                                    const visibleItems = cat.items.slice(0, 3)
+                                    const hiddenItems = cat.items.slice(3)
 
-                                        <Divider sx={{ my: 1 }} />
+                                    return (
+                                        <Grid item xs={12} md={4} key={index}>
+                                            <Box
+                                                sx={{
+                                                    position: 'relative',
+                                                    backgroundColor: '#f5f9ff',
+                                                    borderRadius: 2,
+                                                    p: 3,
+                                                    height: '100%',
+                                                    overflow: 'hidden',
+                                                    '&::before': {
+                                                        content: '""',
+                                                        position: 'absolute',
+                                                        top: 0,
+                                                        left: 0,
+                                                        width: '99%',
+                                                        height: '98%',
+                                                        border: '2px solid #1976d2',
+                                                        borderRadius: 2,
+                                                        opacity: 0,
+                                                        transform: 'scale(0.9)',
+                                                        transition: 'opacity 0.4s ease, transform 0.4s ease',
+                                                        pointerEvents: 'none',
+                                                    },
+                                                    '&:hover::before': {
+                                                        opacity: 1,
+                                                        transform: 'scale(1)',
+                                                    },
+                                                }}
+                                            >
+                                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                                    <img src={cat.img} width={"10%"} alt="" />
+                                                    <Typography variant="h6" fontWeight="bold">
+                                                        {cat.title}
+                                                    </Typography>
+                                                </Box>
 
-                                        <List dense>
-                                            {visibleItems.map((item, i) => (
-                                                <ListItem key={i} disableGutters>
-                                                    <ListItemIcon sx={{ minWidth: 24 }}>
-                                                        <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
-                                                    </ListItemIcon>
-                                                    <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
-                                                </ListItem>
-                                            ))}
+                                                <Divider sx={{ my: 1 }} />
 
-                                            <Collapse in={!!expandedItems[index]} timeout="auto" unmountOnExit>
-                                                {hiddenItems.map((item, i) => (
-                                                    <ListItem key={i} disableGutters>
-                                                        <ListItemIcon sx={{ minWidth: 24 }}>
-                                                            <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
-                                                        </ListItemIcon>
-                                                        <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
-                                                    </ListItem>
-                                                ))}
-                                            </Collapse>
-                                        </List>
+                                                <List dense>
+                                                    {visibleItems.map((item, i) => (
+                                                        <ListItem key={i} disableGutters>
+                                                            <ListItemIcon sx={{ minWidth: 24 }}>
+                                                                <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
+                                                            </ListItemIcon>
+                                                            <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
+                                                        </ListItem>
+                                                    ))}
 
-                                        {hasExtra && (
-                                            <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)' }}>
-                                                <IconButton size="small" onClick={() => toggleExpand(index)}>
-                                                    {expandedItems[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                                                </IconButton>
+                                                    <Collapse in={!!expandedItems[index]} timeout="auto" unmountOnExit>
+                                                        {hiddenItems.map((item, i) => (
+                                                            <ListItem key={i} disableGutters>
+                                                                <ListItemIcon sx={{ minWidth: 24 }}>
+                                                                    <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
+                                                                </ListItemIcon>
+                                                                <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
+                                                            </ListItem>
+                                                        ))}
+                                                    </Collapse>
+                                                </List>
+
+                                                {hasExtra && (
+                                                    <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)' }}>
+                                                        <IconButton size="small" onClick={() => toggleExpand(index)}>
+                                                            {expandedItems[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                                                        </IconButton>
+                                                    </Box>
+                                                )}
                                             </Box>
-                                        )}
-                                    </Box>
-                                </Grid>
-                            )
-                        })}
-                    </Grid></Container>
-                 
-</Box>
+                                        </Grid>
+                                    )
+                                })}
+                            </Grid></Container>
+
+                    </Box>
 
                 </FadeSection>
                 <FadeSection id="Whatourclientssay">

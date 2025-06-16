@@ -3,94 +3,105 @@ import { Box, Button, Container, Typography } from '@mui/material';
 
 const NewsletterBanner = () => {
     return (
-        <Box 
-            sx={{ 
-                bgcolor: '#1976d2', 
-                padding: '50px 0', 
-                position: 'relative',
-                overflow: 'hidden',
-                width: "100%",
-                height: "100%",
-                mt: 24,
-                display: 'flex', // Sử dụng Flexbox
-                alignItems: 'center', // Căn giữa theo chiều dọc
-                justifyContent: 'center', // Căn giữa theo chiều ngang
-            }}
+       <Box
+  sx={{
+    bgcolor: '#1976d2',
+    padding: { xs: '30px 16px', md: '50px 0' }, // padding nhỏ hơn cho mobile
+    position: 'relative',
+    overflow: 'hidden',
+    width: '100%',
+    height: '100%',
+    mt: { xs: 6, md: 10 },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <Container>
+    <Box sx={{ textAlign: 'center' }}>
+      <Typography
+        variant="h3"
+        sx={{
+          color: 'white',
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          mb: { xs: 3, md: 4 },
+          border: '2px solid white',
+          padding: { xs: '10px', md: '15px' },
+          borderRadius: '5px',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          fontSize: { xs: '1.5rem', md: '2.25rem' }, // responsive font size
+        }}
+      >
+        AI Newsletter Quarter I of 2025
+      </Typography>
+
+      <Typography
+        variant="h6"
+        sx={{
+          color: 'white',
+          mb: { xs: 3, md: 4 },
+          fontSize: { xs: '1rem', md: '1.25rem' },
+        }}
+      >
+        Welcome to AI Quarterly Newsletter. Please contact:
+        <a
+          href="mailto:biz@tma.com.vn"
+          style={{ color: 'white', textDecoration: 'underline' }}
         >
-            <Container>
-                <Box sx={{ textAlign: 'center' }}> {/* Căn giữa nội dung */}
-                    <Typography 
-                        variant="h3" // Đổi từ h4 thành h3
-                        sx={{ 
-                            color: 'white', 
-                            fontWeight: 'bold', 
-                            textTransform: 'uppercase',
-                            mb: 4,
-                            border: '2px solid white',
-                            padding: '15px', // Tăng padding
-                            borderRadius: '5px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                        }}
-                    >
-                         AI Newsletter Quarter I of 2025
-                    </Typography>
-                    <Typography 
-                        variant="h6" // Đổi từ body1 thành h6
-                        sx={{ 
-                            color: 'white', 
-                            mb: 4 
-                        }}
-                    >
-                        Welcome to AI Quarterly Newsletter. Please contact: 
-                        <a href="mailto:biz@tma.com.vn" style={{ color: 'white', textDecoration: 'underline' }}>
-                            biz@.com.vn
-                        </a> for detailed information.
-                    </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-                        <Button 
-                            variant="contained" 
-                            sx={{ 
-                                margin: '0 10px', 
-                                backgroundColor: 'white', 
-                                color: '#00A1F1', 
-                                fontSize: '1.2rem' // Tăng kích thước chữ
-                            }}
-                        >
-                            All Training & Development
-                        </Button>
-                        <Button 
-                            variant="contained" 
-                            sx={{ 
-                                margin: '0 10px', 
-                                backgroundColor: 'white', 
-                                color: '#00A1F1', 
-                                fontSize: '1.2rem' // Tăng kích thước chữ
-                            }}
-                        >
-                            New Solutions
-                        </Button>
-                    </Box>
-                    <Typography 
-                        variant="body1" // Đổi từ body2 thành body1
-                        sx={{ 
-                            color: 'white', 
-                            textAlign: 'center' 
-                        }}
-                    >
-                        <Button 
-                            variant="outlined" 
-                            sx={{ 
-                                color: 'white', 
-                                borderColor: 'white',
-                                fontSize: '1.2rem' // Tăng kích thước chữ
-                            }}
-                        >
-                            Explore More
-                        </Button>
-                    </Typography>
-                </Box>
-            </Container>
-        </Box>
+          biz@tma.com.vn
+        </a>{' '}
+        for detailed information.
+      </Typography>
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' }, // column on mobile
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 2,
+          mb: 4,
+        }}
+      >
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: 'white',
+            color: '#00A1F1',
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            width: { xs: '100%', sm: 'auto' },
+          }}
+        >
+          All Training & Development
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: 'white',
+            color: '#00A1F1',
+            fontSize: { xs: '1rem', md: '1.2rem' },
+            width: { xs: '100%', sm: 'auto' },
+          }}
+        >
+          New Solutions
+        </Button>
+      </Box>
+
+      <Button
+        variant="outlined"
+        sx={{
+          color: 'white',
+          borderColor: 'white',
+          fontSize: { xs: '1rem', md: '1.2rem' },
+        }}
+      >
+        Explore More
+      </Button>
+    </Box>
+  </Container>
+</Box>
+
     );
 };
 

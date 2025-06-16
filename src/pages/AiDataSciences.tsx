@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia } from '@mui/material'
+import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia, useMediaQuery, useTheme } from '@mui/material'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import ScrollToTopButton from '../components/ScrollToTopButton'
@@ -360,12 +360,13 @@ const caseStudies = [
         title: 'Pest Detection Solution Crop Protection With AI Technology',
         tags: ['Agriculture', 'Data Science & AI/ML', 'IoT'],
         description: 'Leverage AI to detect and identify pests and diseases in the field, supporting managing and monitoring.',
-       link: 'https://example.com/case-study-6',
+        link: 'https://example.com/case-study-6',
 
     },
 ]
 const AiDataSciencesPage = () => {
-
+    const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
     return (
         <>
@@ -446,7 +447,6 @@ const AiDataSciencesPage = () => {
             <FadeSection id='about' >
                 <Box p={5} sx={{
                     mt: 4,
-
                 }}
                 >
                     <Box >
@@ -465,22 +465,21 @@ const AiDataSciencesPage = () => {
                                         <Box
                                             sx={{
                                                 position: 'relative',
-                                                p: 3,
+                                                p: isMobile ? 1 : 3,
                                                 borderRadius: 3,
                                                 boxShadow: 3,
                                                 height: '100%',
                                                 overflow: 'hidden',
                                                 backgroundColor: '#f5f5f5',
                                                 '&:hover .overlay': {
-                                                    transform: 'translateY(100%)',
+                                                    transform:  'translateY(100%)',
                                                 },
                                                 '&:hover .content': {
-                                                    opacity: 2,
+                                                    opacity: 1,
                                                 },
                                             }}
                                         >
                                             {/* Overlay nền xanh */}
-
                                             <Box
                                                 className="overlay"
                                                 sx={{
@@ -497,28 +496,53 @@ const AiDataSciencesPage = () => {
                                                     justifyContent: 'center',
                                                     transition: 'transform 0.5s ease',
                                                     zIndex: 2,
+                                                    transform: isMobile ? 'none' : 'translateY(0)',
                                                 }}
                                             >
-                                                <img src={service.icon} width={"10%"} alt="" />
-                                                <Typography textAlign={"center"} variant="h6" fontWeight="bold">
+                                                <img
+                                                    src={service.icon}
+                                                    alt=""
+                                                    style={{
+                                                        width: isMobile ? '18%' : '10%',
+                                                        marginBottom: 8,
+                                                    }}
+                                                />
+                                                <Typography
+                                                    textAlign="center"
+                                                    variant="h6"
+                                                    fontWeight="bold"
+                                                    fontSize={isMobile ? '1rem' : '1.125rem'}
+                                                >
                                                     {service.title}
                                                 </Typography>
                                             </Box>
 
                                             {/* Nội dung thực */}
                                             <Box display="flex" mb={5} flexDirection="column" gap={1}>
-                                                <Box key={index} display="flex" alignItems="flex-start" gap={1}>
-                                                    <FiberManualRecordIcon sx={{ fontSize: 10, color: "#1E40AF", mt: "6px" }} />
-                                                    <Typography sx={{ fontSize: 16, color: "#333", lineHeight: 1.6 }}>
+                                                <Box display="flex" alignItems="flex-start" gap={1}>
+                                                    <FiberManualRecordIcon
+                                                        sx={{
+                                                            fontSize: 10,
+                                                            color: '#1E40AF',
+                                                            mt: '6px',
+                                                        }}
+                                                    />
+                                                    <Typography
+                                                        sx={{
+                                                            fontSize: isMobile ? 14 : 16,
+                                                            color: '#333',
+                                                            lineHeight: 1.6,
+                                                        }}
+                                                    >
                                                         {service.description}
                                                     </Typography>
                                                 </Box>
-
                                             </Box>
                                         </Box>
                                     </Grid>
                                 ))}
                             </Grid>
+
                         </Container>
                     </Box>
                 </Box>
@@ -619,69 +643,69 @@ const AiDataSciencesPage = () => {
             </FadeSection>
             <FadeSection>
                 <Container>
-                <Box sx={{ px: 4, py: 6, backgroundColor: '#f7fafd' }}>
-      <Typography variant="h4" fontWeight="bold" mb={4} textAlign="center">
-        Case Studies
-      </Typography>
+                    <Box sx={{ px: 4, py: 6, backgroundColor: '#f7fafd' }}>
+                        <Typography variant="h4" fontWeight="bold" mb={4} textAlign="center">
+                            Case Studies
+                        </Typography>
 
-      <Grid container spacing={4}>
-        {caseStudies.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Link href={item.link} underline="none" target="_blank" rel="noopener noreferrer">
-              <Card
-                sx={{
-                  height: '100%',
-                  border: '1px solid #e0e0e0',
-                  boxShadow: '0px 2px 8px rgba(0,0,0,0.05)',
-                  transition: 'transform 0.2s, box-shadow 0.3s',
-                  '&:hover': {
-                    boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
-                    transform: 'translateY(-4px)',
-                  },
-                }}
-              >
-                <Box sx={{ overflow: 'hidden' }}>
-                  <CardMedia
-                    component="img"
-                    height="160"
-                    image={item.image}
-                    alt={item.title}
-                    sx={{
-                      objectFit: 'cover',
-                      transition: 'transform 0.4s ease',
-                      '&:hover': {
-                        transform: 'scale(1.05)',
-                      },
-                    }}
-                  />
-                </Box>
-                <CardContent>
-                  <Typography
-                    variant="subtitle1"
-                    fontWeight={600}
-                    gutterBottom
-                    sx={{
-                      transition: 'color 0.3s',
-                      '&:hover': { color: '#007bff' },
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Box mb={1} display="flex" flexWrap="wrap" gap={1}>
-                    {item.tags.map((tag, i) => (
-                      <Chip key={i} label={tag} size="small" sx={{ backgroundColor: '#f0f0f0' }} />
-                    ))}
-                  </Box>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+                        <Grid container spacing={4}>
+                            {caseStudies.map((item, index) => (
+                                <Grid item xs={12} sm={6} md={4} key={index}>
+                                    <Link href={item.link} underline="none" target="_blank" rel="noopener noreferrer">
+                                        <Card
+                                            sx={{
+                                                height: '100%',
+                                                border: '1px solid #e0e0e0',
+                                                boxShadow: '0px 2px 8px rgba(0,0,0,0.05)',
+                                                transition: 'transform 0.2s, box-shadow 0.3s',
+                                                '&:hover': {
+                                                    boxShadow: '0 6px 16px rgba(0,0,0,0.12)',
+                                                    transform: 'translateY(-4px)',
+                                                },
+                                            }}
+                                        >
+                                            <Box sx={{ overflow: 'hidden' }}>
+                                                <CardMedia
+                                                    component="img"
+                                                    height="160"
+                                                    image={item.image}
+                                                    alt={item.title}
+                                                    sx={{
+                                                        objectFit: 'cover',
+                                                        transition: 'transform 0.4s ease',
+                                                        '&:hover': {
+                                                            transform: 'scale(1.05)',
+                                                        },
+                                                    }}
+                                                />
+                                            </Box>
+                                            <CardContent>
+                                                <Typography
+                                                    variant="subtitle1"
+                                                    fontWeight={600}
+                                                    gutterBottom
+                                                    sx={{
+                                                        transition: 'color 0.3s',
+                                                        '&:hover': { color: '#007bff' },
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Typography>
+                                                <Box mb={1} display="flex" flexWrap="wrap" gap={1}>
+                                                    {item.tags.map((tag, i) => (
+                                                        <Chip key={i} label={tag} size="small" sx={{ backgroundColor: '#f0f0f0' }} />
+                                                    ))}
+                                                </Box>
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {item.description}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </Link>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
                 </Container>
             </FadeSection>
             <FadeSection id="download">

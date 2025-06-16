@@ -115,11 +115,11 @@ const AboutPage = () => {
         "Testing Center",
         "Cloud, DevOps",
     ]
-  const briefProfileData = {
-    established: '1997',
-    coreValues: '4,000 Employees',
-    capabilities: "Ha noi City ,Vietnam",
-};
+    const briefProfileData = {
+        established: '1997',
+        coreValues: '4,000 Employees',
+        capabilities: "Ha noi City ,Vietnam",
+    }
     const locations = [
         { country: "Vietnam", cities: ["Ho Chi Minh City", "Quy Nhon City"] },
         { country: "USA", cities: ["San Jose"] },
@@ -231,7 +231,7 @@ const AboutPage = () => {
                                             <Typography variant="body2" sx={{ mb: 2 }}>
                                                 {card.description}
                                             </Typography>
-                                            <Typography
+                                            {/* <Typography
                                                 variant="body2"
                                                 sx={{
                                                     display: 'inline-flex',
@@ -268,7 +268,7 @@ const AboutPage = () => {
                                             >
                                                 Explore More
                                                 <ArrowForwardIcon />
-                                            </Typography>
+                                            </Typography> */}
                                         </Box>
                                     </Grid>
                                 ))}
@@ -298,22 +298,39 @@ const AboutPage = () => {
                                 Global Software Outsourcing Company
                             </Typography>
                             <Typography variant="body1" align="center" sx={{ mb: 4, color: 'white' }}>
-                             Solutions, headquartered in Vietnam, is a leading software outsourcing company with a global footprint. Explore our 8 overseas offices (USA, Canada, Germany, Japan, Australia, Singapore) for outstanding IT solutions.
+                                Solutions, headquartered in Vietnam, is a leading software outsourcing company with a global footprint. Explore our 8 overseas offices (USA, Canada, Germany, Japan, Australia, Singapore) for outstanding IT solutions.
                             </Typography>
-                            <Grid container spacing={4} justifyContent="center">
+                            <Grid
+                                container
+                                spacing={2}              // spacing ngang
+                                rowSpacing={4}           // spacing dọc riêng biệt cho mobile rõ hơn
+                                justifyContent="center"
+                            >
                                 {infoData.map((item, index) => (
                                     <Grid item xs={12} sm={4} key={index}>
-                                        <Box sx={hexagonStyle}>
-                                            <Typography variant="h6" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+                                        <Box
+                                            sx={{
+                                                ...hexagonStyle,
+                                                mb: { xs: 3, sm: 0 }, // khoảng cách dưới khi là mobile
+                                            }}
+                                        >
+                                            <Typography
+                                                variant="h6"
+                                                sx={{ fontWeight: 'bold', textAlign: 'center' }}
+                                            >
                                                 {item.title}
                                             </Typography>
-                                            <Typography variant="body2" sx={{ textAlign: 'center', padding: 1 }}>
+                                            <Typography
+                                                variant="body2"
+                                                sx={{ textAlign: 'center', padding: 1 }}
+                                            >
                                                 {item.description}
                                             </Typography>
                                         </Box>
                                     </Grid>
                                 ))}
                             </Grid>
+
                         </Container>
                         <img
                             src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/decor_left.8fb5f39e.webp"
@@ -382,67 +399,67 @@ const AboutPage = () => {
                             <Typography variant="body1" align="center" sx={{ mb: 4 }}>
                                 With TMA Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, providing high-quality services to clients around the world.
                             </Typography>
-                         <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} sm={4}>
-                <Box sx={{ textAlign: 'center' }}>
-                    <IconButton>
-                        <img 
-                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094234.630.webp" 
-                            alt="Established Icon" 
-                            style={{ width: '60px', height: '60px' }} 
-                        />
-                    </IconButton>
-                    <Typography variant="h6" sx={{ mt: 1 }}>
-                        Established
-                    </Typography>
-                    <Typography variant="body2">
-                        {briefProfileData.established}
-                    </Typography>
-                </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-                <Box sx={{ textAlign: 'center' }}>
-                    <IconButton>
-                        <img 
-                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094316.629.webp" 
-                            alt="Core Values Icon" 
-                            style={{ width: '60px', height: '60px' }} 
-                        />
-                    </IconButton>
-                    <Typography variant="h6" sx={{ mt: 1 }}>
-                        Company size
-                    </Typography>
-                    <Box sx={{ listStyleType: 'disc', pl: 2 }}>
-                        
-                            <Typography variant="body2">
-                                {briefProfileData.coreValues}
-                            </Typography>
-                      
-                    </Box>
-                </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-                <Box sx={{ textAlign: 'center' }}>
-                    <IconButton>
-                        <img 
-                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094417.412.webp" 
-                            alt="Capabilities Icon" 
-                            style={{ width: '60px', height: '60px' }} 
-                        />
-                    </IconButton>
-                    <Typography variant="h6" sx={{ mt: 1 }}>
-                        Headquarter
-                    </Typography>
-                    <Box sx={{ listStyleType: 'disc', pl: 2 }}>
-                        
-                            <Typography variant="body2">
-                                 {briefProfileData.capabilities}
-                            </Typography>
-                      
-                    </Box>
-                </Box>
-            </Grid>
-        </Grid>
+                            <Grid container spacing={4} justifyContent="center">
+                                <Grid item xs={12} sm={4}>
+                                    <Box sx={{ textAlign: 'center' }}>
+                                        <IconButton>
+                                            <img
+                                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094234.630.webp"
+                                                alt="Established Icon"
+                                                style={{ width: '60px', height: '60px' }}
+                                            />
+                                        </IconButton>
+                                        <Typography variant="h6" sx={{ mt: 1 }}>
+                                            Established
+                                        </Typography>
+                                        <Typography variant="body2">
+                                            {briefProfileData.established}
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={4}>
+                                    <Box sx={{ textAlign: 'center' }}>
+                                        <IconButton>
+                                            <img
+                                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094316.629.webp"
+                                                alt="Core Values Icon"
+                                                style={{ width: '60px', height: '60px' }}
+                                            />
+                                        </IconButton>
+                                        <Typography variant="h6" sx={{ mt: 1 }}>
+                                            Company size
+                                        </Typography>
+                                        <Box sx={{ listStyleType: 'disc', pl: 2 }}>
+
+                                            <Typography variant="body2">
+                                                {briefProfileData.coreValues}
+                                            </Typography>
+
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                                <Grid item xs={12} sm={4}>
+                                    <Box sx={{ textAlign: 'center' }}>
+                                        <IconButton>
+                                            <img
+                                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702094417.412.webp"
+                                                alt="Capabilities Icon"
+                                                style={{ width: '60px', height: '60px' }}
+                                            />
+                                        </IconButton>
+                                        <Typography variant="h6" sx={{ mt: 1 }}>
+                                            Headquarter
+                                        </Typography>
+                                        <Box sx={{ listStyleType: 'disc', pl: 2 }}>
+
+                                            <Typography variant="body2">
+                                                {briefProfileData.capabilities}
+                                            </Typography>
+
+                                        </Box>
+                                    </Box>
+                                </Grid>
+                            </Grid>
                             <Container sx={{ mt: 4, mb: 4, bgcolor: 'white', padding: 4, borderRadius: 2 }}>
                                 <Grid container spacing={4}>
                                     {/* Locations */}

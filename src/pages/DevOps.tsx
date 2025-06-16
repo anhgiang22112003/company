@@ -213,8 +213,16 @@ const DevOpsPage = () => {
                                 <Box
                                     sx={{
                                         position: 'relative',
-                                        width: '300px',
-                                        height: '300px',
+                                        width: {
+                                            xs: 200,  // Mobile nhỏ hơn
+                                            sm: 250,  // Tablet
+                                            md: 300,  // Desktop giữ nguyên
+                                        },
+                                        height: {
+                                            xs: 200,
+                                            sm: 270,
+                                            md: 310,
+                                        },
                                         margin: 'auto',
                                     }}
                                 >
@@ -224,8 +232,16 @@ const DevOpsPage = () => {
                                         src={centerImage}
                                         alt="DevOps Center"
                                         sx={{
-                                            width: 170,
-                                            height: 170,
+                                            width: {
+                                                xs: 100,
+                                                sm: 130,
+                                                md: 170,
+                                            },
+                                            height: {
+                                                xs: 100,
+                                                sm: 130,
+                                                md: 170,
+                                            },
                                             position: 'absolute',
                                             top: '50%',
                                             left: '50%',
@@ -241,8 +257,16 @@ const DevOpsPage = () => {
                                             src={src}
                                             alt={`Hex ${index + 1}`}
                                             sx={{
-                                                width: 150,
-                                                height: 150,
+                                                width: {
+                                                    xs: 90,
+                                                    sm: 120,
+                                                    md: 150,
+                                                },
+                                                height: {
+                                                    xs: 90,
+                                                    sm: 120,
+                                                    md: 150,
+                                                },
                                                 position: 'absolute',
                                                 ...positions[index],
                                             }}
@@ -250,6 +274,7 @@ const DevOpsPage = () => {
                                     ))}
                                 </Box>
                             </Grid>
+
                         </Grid>
                     </Container>
                 </Box>
@@ -358,50 +383,50 @@ const DevOpsPage = () => {
                     </Box>
                 </Container>
             </FadeSection>
-       
-            <FadeSection>
-     <Container>
-                <Box sx={{ py: 6, backgroundColor: '#f3f7fd', textAlign: 'center' }}>
-                    <Typography variant="h4" fontWeight="bold" mb={4}>
-                        Technologies
-                    </Typography>
 
-                    <Grid container spacing={2} justifyContent="center">
-                        {techCategories.map((item, index) => (
-                            <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-                                <Paper
-                                    elevation={0}
-                                    sx={{
-                                        border: '1px solid #2196f3',
-                                        borderRadius: '2px',
-                                        height:"100%",
-                                        p: 2,
-                                        backgroundColor: '#fff',
-                                    }}
-                                >
-                                    <Box
+            <FadeSection>
+                <Container>
+                    <Box sx={{ py: 6, backgroundColor: '#f3f7fd', textAlign: 'center' }}>
+                        <Typography variant="h4" fontWeight="bold" mb={4}>
+                            Technologies
+                        </Typography>
+
+                        <Grid container spacing={2} justifyContent="center">
+                            {techCategories.map((item, index) => (
+                                <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+                                    <Paper
+                                        elevation={0}
                                         sx={{
-                                            backgroundColor: '#2196f3',
-                                            color: '#fff',
-                                            p: 1,
-                                            fontWeight: 'bold',
-                                            fontSize: '0.9rem',
+                                            border: '1px solid #2196f3',
+                                            borderRadius: '2px',
+                                            height: "100%",
+                                            p: 2,
+                                            backgroundColor: '#fff',
                                         }}
                                     >
-                                        {item.title}
-                                    </Box>
-                                    <Box
-                                        component="img"
-                                        src={item.image}
-                                        alt={item.title}
-                                        sx={{ width: '100%', height: 'auto', mt: 1 }}
-                                    />
-                                </Paper>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-            </Container>
+                                        <Box
+                                            sx={{
+                                                backgroundColor: '#2196f3',
+                                                color: '#fff',
+                                                p: 1,
+                                                fontWeight: 'bold',
+                                                fontSize: '0.9rem',
+                                            }}
+                                        >
+                                            {item.title}
+                                        </Box>
+                                        <Box
+                                            component="img"
+                                            src={item.image}
+                                            alt={item.title}
+                                            sx={{ width: '100%', height: 'auto', mt: 1 }}
+                                        />
+                                    </Paper>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+                </Container>
             </FadeSection>
             <FadeSection>
                 <Container>
