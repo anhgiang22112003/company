@@ -236,6 +236,7 @@ const Header: React.FC = () => {
 
             <AppBar
                 position="fixed"
+
                 elevation={0}
                 sx={{
                     bgcolor: isScrolled ? 'white' : '#1976d2',
@@ -243,6 +244,7 @@ const Header: React.FC = () => {
                     boxShadow: isScrolled ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
                     transition: 'all 0.3s ease-in-out',
                     px: 3,
+                    zIndex: 1500
                 }}
             >
                 <Toolbar
@@ -320,7 +322,6 @@ const Header: React.FC = () => {
                                     onMouseEnter={() => {
                                         if (item.hasSubMenu) {
                                             setOpenMenuIndex(index)
-                                            setSearchOpen(false)
                                         } else {
                                             setOpenMenuIndex(null)
                                         }
@@ -387,11 +388,10 @@ const Header: React.FC = () => {
                         left: 0,
                         width: '100%',
                         bgcolor: 'white',
-                        py: 2,
-                        px: 3,
-                        zIndex: 1301,
+                        py: { xs: 1.5, md: 2 },
+                        px: { xs: 2, md: 4 },
+                        zIndex: 1200,
                         display: 'flex',
-                        alignItems: 'center',
                         justifyContent: 'center',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                     }}
@@ -400,21 +400,33 @@ const Header: React.FC = () => {
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            bgcolor: '#f1f1f1',
-                            px: 2,
-                            py: 0.5,
-                            borderRadius: 2,
-                            width: '60%',
+                            bgcolor: '#f9f9f9',
+                            px: { xs: 1.5, md: 2.5 },
+                            py: { xs: 1, md: 0.5 },
+                            borderRadius: 3,
+                            width: { xs: '90%', sm: '80%', md: '60%' },
+                            border: '1px solid #ddd',
                         }}
                     >
-                        <SearchIcon sx={{ color: 'gray', mr: 1 }} />
-                        <InputBase placeholder="Tìm kiếm..." sx={{ flex: 1, fontSize: 26 }} />
-                        <IconButton onClick={() => setSearchOpen(false)} sx={{ ml: 2 }}>
-                            <CloseIcon />
+                        <SearchIcon sx={{ color: '#999', mr: 1, fontSize: { xs: 22, md: 28 } }} />
+                        <InputBase
+                            placeholder="Tìm kiếm..."
+                            sx={{
+                                flex: 1,
+                                fontSize: { xs: 18, md: 24 },
+                                color: '#333',
+                            }}
+                        />
+                        <IconButton
+                            onClick={() => setSearchOpen(false)}
+                            sx={{ ml: 1 }}
+                        >
+                            <CloseIcon sx={{ fontSize: { xs: 22, md: 28 } }} />
                         </IconButton>
                     </Box>
                 </Box>
             </Slide>
+
 
             {/* SubMenu Desktop */}
             {!isMobile && (
@@ -432,7 +444,7 @@ const Header: React.FC = () => {
                                     bgcolor: 'white',
                                     p: 3,
                                     boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
-                                    zIndex: 1400,
+                                    zIndex: 1600,
                                     borderRadius: 1,
                                     boxSizing: 'border-box',
                                     maxWidth: 'calc(100% - 120px)',
@@ -530,7 +542,8 @@ const Header: React.FC = () => {
                             width: '75%',
                             maxWidth: 300,
                             p: 2,
-                        },
+
+                        }, zIndex: 1550
                     }}
                 >
                     <Box sx={{ mb: 2, display: 'flex', justifyContent: 'flex-end' }}>

@@ -33,13 +33,20 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
         if (menuPage < totalPages - 1) setMenuPage(menuPage + 1)
     }
 
-    const handleMenuClick = (id: string) => {
-        const section = document.getElementById(id)
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-        setActiveMenu(id)
+  const handleMenuClick = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Tránh bị header che mất: delay thêm 100ms rồi kéo lên 1 đoạn = chiều cao header
+        setTimeout(() => {
+            window.scrollBy({ top: -140, behavior: 'smooth' }); // 140 là chiều cao header
+        }, 100);
     }
+
+    setActiveMenu(id);
+};
+
     useEffect(() => {
         const bottomAnchor = document.getElementById('bottom-anchor')
         if (!bottomAnchor) return
@@ -110,7 +117,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
             sx={{
                 position: 'sticky',
                 top: 140,
-                zIndex: 1500,
+                 zIndex: 1100, // thấp hơn header
                 py: 1,
                 transform: isAtBottom ? 'translateY(-100%)' : 'translateY(0)',
                 transition: 'transform 0.3s ease',

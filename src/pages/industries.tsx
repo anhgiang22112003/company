@@ -108,12 +108,12 @@ const industries = [
 
 const IndustriePage = () => {
     const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-    const Hexagon = ({ title, icon, delay = 0 }: { title: string; icon: string ,delay:number}) => (
+    const isMobile = useMediaQuery(theme.breakpoints.down('md')) // xs + sm + md
+    const Hexagon = ({ title, icon, delay = 0 }: { title: string; icon: string, delay: number }) => (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-              transition={{ delay, duration: 0.5 }}
+            transition={{ delay, duration: 0.5 }}
         >
             <Box
                 sx={{
@@ -186,6 +186,12 @@ const IndustriePage = () => {
             </List>
         </Paper>
     )
+    const mobileItems = [
+        items[0], // đầu tiên
+        items[1], // thứ 2
+        items[9], // đẩy thằng cuối lên thứ 3
+        ...items.slice(2, 9), // còn lại từ 2 đến 8
+    ]
 
     return (
         <>
@@ -218,41 +224,54 @@ const IndustriePage = () => {
                                                 display: 'flex',
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
-                                                gap: { xs: 1, md: 3 },
+                                                gap: 1,
+                                                mb:5
                                             }}
                                         >
                                             {Array.from({ length: Math.ceil(items.length / 3) }).map((_, groupIndex) => {
                                                 const i = groupIndex * 3
-                                                const item1 = items[i]
-                                                const item2 = items[i + 1]
-                                                const center = items[i + 2]
+                                                const top = items[i]
+                                                const left = items[i + 1]
+                                                const right = items[i + 2]
 
                                                 return (
-                                                    <Box key={groupIndex} sx={{ mb: { xs: -4, md: 2 } }}>
-                                                        {/* Row with 2 hexagons */}
-                                                        <Box
-                                                            sx={{
-                                                                display: 'flex',
-                                                                justifyContent: 'center',
-                                                                gap: 3,
-                                                            }}
-                                                        >
-                                                            {item1 && <Hexagon title={item1.title} icon={item1.icon} delay={groupIndex * 0.2} />}
-                                                            {item2 && <Hexagon title={item2.title} icon={item2.icon} delay={groupIndex * 0.2} />}
-                                                        </Box>
-
-                                                        {/* Center hexagon below, centered horizontally */}
-                                                        {center && (
+                                                    <Box key={groupIndex} sx={{ mb: -4.5 }}>
+                                                        {/* 1 Hexagon ở giữa */}
+                                                        {top && (
                                                             <Box
                                                                 sx={{
-                                                                    mt: '-25px', // overlap a bit
                                                                     display: 'flex',
                                                                     justifyContent: 'center',
+                                                                    mb: '-30px',
                                                                 }}
                                                             >
-                                                                <Box sx={{ transform: 'translateY(0)' }}>
-                                                                    <Hexagon title={center.title} icon={center.icon} delay={groupIndex * 0.2} />
-                                                                </Box>
+                                                                <Hexagon title={top.title} icon={top.icon} delay={groupIndex * 0.3} />
+                                                            </Box>
+                                                        )}
+
+                                                        {/* 2 Hexagon bên dưới */}
+                                                        {(left || right) && (
+                                                            <Box
+                                                                sx={{
+                                                                    display: 'flex',
+                                                                    justifyContent: 'center',
+                                                                    gap: 3,
+                                                                }}
+                                                            >
+                                                                {left && (
+                                                                    <Hexagon
+                                                                        title={left.title}
+                                                                        icon={left.icon}
+                                                                        delay={groupIndex * 0.3 + 0.1}
+                                                                    />
+                                                                )}
+                                                                {right && (
+                                                                    <Hexagon
+                                                                        title={right.title}
+                                                                        icon={right.icon}
+                                                                        delay={groupIndex * 0.3 + 0.2}
+                                                                    />
+                                                                )}
                                                             </Box>
                                                         )}
                                                     </Box>
@@ -272,7 +291,7 @@ const IndustriePage = () => {
                                             }}
                                         >
                                             {items.slice(0, 3).map((item, index) => (
-                                                <Hexagon key={index} title={item.title} icon={item.icon} delay={index * 0.2}/>
+                                                <Hexagon key={index} title={item.title} icon={item.icon} delay={index * 0.2} />
                                             ))}
                                         </Box>
 
@@ -287,7 +306,7 @@ const IndustriePage = () => {
                                             }}
                                         >
                                             {items.slice(3, 7).map((item, index) => (
-                                                <Hexagon key={index + 3} title={item.title} icon={item.icon} delay={index * 0.2}/>
+                                                <Hexagon key={index + 3} title={item.title} icon={item.icon} delay={index * 0.2} />
                                             ))}
                                         </Box>
 

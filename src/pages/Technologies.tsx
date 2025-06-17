@@ -4,7 +4,7 @@ import { flexbox, Stack, styled, useTheme } from '@mui/system'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
-
+import { motion } from 'framer-motion'
 import {
     FaCloud, FaCogs, FaJava, FaRobot, FaMobileAlt,
     FaCode, FaChartBar, FaMicrosoft, FaNetworkWired,
@@ -14,13 +14,7 @@ import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import FadeSection from '../components/FadeSection'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import SchoolIcon from '@mui/icons-material/School'
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
 import WifiIcon from '@mui/icons-material/Wifi'
-import StoreIcon from '@mui/icons-material/Store'
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 import MachineLearningCard from '../components/MachineLearningCard'
 import CodeIcon from '@mui/icons-material/Code'
 import CloudIcon from '@mui/icons-material/Cloud'
@@ -30,7 +24,6 @@ import ScrollToTopButton from '../components/ScrollToTopButton'
 import IoTTopics from '../components/Iottopics'
 import { Label } from '@mui/icons-material'
 import ScrollDots from '../components/ScrollDots'
-import { href } from 'react-router-dom'
 const dataDev = [
     { title: 'CI/CD', img: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530092107.010.webp' },
     { title: 'LOG MANAGEMENT', img: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530092113.599.webp' },
@@ -239,50 +232,50 @@ const HardwareData = [
 const industries = [
     {
         icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/iconBigdataHover.webp",
-        href:"/technologies/big-data-analytics",
+        href: "/technologies/big-data-analytics",
         title: 'Big Data & Analytics',
         description: 'Customer Data, Healthcare & Insurance Data, Phishing Simulation Training, Data Warehousing Recruitment System, Data Warehouse',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/iconDataSciencesHover.webp',
         title: 'AI/ML & Data Sciences',
-        href:"/technologies/ai-ml-data-sciences",
+        href: "/technologies/ai-ml-data-sciences",
         description: 'Computer vision, Pattern recognition, NLP, MLaaS, Supervised Learning, Unsupervised Learning, Recommendation',
     },
     {
         icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/iconCloudHover.webp",
         title: 'Cloud',
-        href:"/technologies/cloud",
+        href: "/technologies/cloud",
         description: 'AWS Services, Azure Services, Google Cloud, OpenStack Services, IBM cloud ,cloud administrator',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/iconRPAHover.webp',
         title: 'RPA',
-        href:"/technologies/rpa",
+        href: "/technologies/rpa",
         description: 'Account Creation Make Easy, Inventory Alert, COD Automation, Traffic Image Processing, Logistics Data Process, Debt reminder, Insurance',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/iconDevopsHover.webp',
         title: 'DevOps',
-        href:"/technologies/devops",
+        href: "/technologies/devops",
         description: 'CICD, Monitoring & Logging, Migration, DevOps Consulting',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon5GHover.webp',
         title: '5G',
-        href:"/technologies/big-data-analytics",
+        href: "/technologies/big-data-analytics",
         description: 'Platform development, 5G Core development, RAN development, UE Simulation development, 5G applications development, 5G Software',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/iconIotHover.webp',
         title: 'Iot',
-        href:"/technologies/iot",
+        href: "/technologies/iot",
         description: 'Inventory Monitoring, Dryer Machine Optimization, Remote Container Monitoring System, Air Conditioner Smart Control System, Embedded',
     },
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/iconLowcodeHover.webp',
         title: 'Low Code',
-        href:"/technologies/low-code",
+        href: "/technologies/low-code",
         description: 'Modernize the legacy ecosystems, Integrate the ecosystems, Automate processes, Digital transformation for business, Innovate workplace',
     },
 ]
@@ -467,31 +460,51 @@ const TechnologiesPage = () => {
     for (let i = 0; i < dataMobile.length; i += columns) {
         rows.push(dataMobile.slice(i, i + columns))
     }
-   const section :any= [
-    {id:"AllData Analytics",label:"AllData Analytics"},
-    {id:"AI & Machine Learning",label:"AI & Machine Learning"},
-    {id:"RPA",label:"RPA"},
-    {id:"5G",label:"5G"},
-    {id:"LOT",label:"LOT"},
-    {id:"Cloud",label:"Cloud"},
-    {id:"DevOps",label:"DevOps"},
-    {id:"Java",label:"Java"},
-    {id:"Microsoft",label:"Microsoft"},
-    {id:"Web Development",label:"Web Development"},
-    {id:"Mobile",label:"Mobile"},
-    {id:"Low code",label:"Low code"},
-    {id:"Hardware",label:"Hardware"},
-    {id:"download",label:"download"},
-   ]
+    const section: any = [
+        { id: "AllData Analytics", label: "AllData Analytics" },
+        { id: "AI & Machine Learning", label: "AI & Machine Learning" },
+        { id: "RPA", label: "RPA" },
+        { id: "5G", label: "5G" },
+        { id: "LOT", label: "LOT" },
+        { id: "Cloud", label: "Cloud" },
+        { id: "DevOps", label: "DevOps" },
+        { id: "Java", label: "Java" },
+        { id: "Microsoft", label: "Microsoft" },
+        { id: "Web Development", label: "Web Development" },
+        { id: "Mobile", label: "Mobile" },
+        { id: "Low code", label: "Low code" },
+        { id: "Hardware", label: "Hardware" },
+        { id: "download", label: "download" },
+    ]
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.2, // Delay giữa mỗi item
+            },
+        },
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.5, y: 20 },
+        visible: { opacity: 1, scale: 1, y: 0 },
+    }
     return (
         <>
-        
+
             <Header />
-            <ScrollDots sections={section}/>
+            <ScrollDots sections={section} />
             <Box bgcolor="#f5f5f5">
                 <FadeSection>
+
                     <Box bgcolor={"#1976d2"}>
-                        <img style={{ position: "absolute" }} width={"30%"} src="https://www.tmasolutions.com/media/services/decorLeft.webp" alt="" />
+                        <img
+                            style={{ position: "absolute" }}
+                            width={"30%"}
+                            src="https://www.tmasolutions.com/media/services/decorLeft.webp"
+                            alt=""
+                        />
+
                         <Box
                             bgcolor="#1976d2"
                             py={isMobile ? 25 : 16}
@@ -504,7 +517,9 @@ const TechnologiesPage = () => {
                                 textAlign: 'center',
                             }}
                         >
+
                             <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
+
                                 {technologies.map((tech, i) => {
                                     const IconComponent = tech.icon as React.ElementType
                                     const angle = (360 / technologies.length) * i
@@ -513,15 +528,24 @@ const TechnologiesPage = () => {
                                     const y = centerY + radius * Math.sin(rad) - itemOffset
 
                                     return (
-                                        <Item key={tech.label} sx={{ top: y, left: x }} small={isMobile}>
-                                            <IconComponent size={isMobile ? 20 : 30} color={tech.color} />
-                                            <Typography
-                                                variant="caption"
-                                                sx={{ textAlign: 'center', mt: 0.5, fontSize: isMobile ? '0.7rem' : 'inherit' }}
-                                            >
-                                                {tech.label}
-                                            </Typography>
-                                        </Item>
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 30 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: i * 0.2, duration: 0.5 }}
+                                        >
+                                            <Item key={tech.label} sx={{ top: y, left: x }} small={isMobile}>
+                                                <IconComponent size={isMobile ? 20 : 30} color={tech.color} />
+                                                <Typography
+                                                    variant="caption"
+                                                    sx={{
+                                                        textAlign: 'center',
+                                                        mt: 0.5,
+                                                        fontSize: isMobile ? '0.7rem' : 'inherit'
+                                                    }}
+                                                >
+                                                    {tech.label}
+                                                </Typography>
+                                            </Item></motion.div>
                                     )
                                 })}
 
@@ -550,66 +574,74 @@ const TechnologiesPage = () => {
                                 </CenterCircle>
                             </Box>
                         </Box>
-                        {/* <img style={{:"flex"}} src="https://www.tmasolutions.com/media/technologies/decorItem.webp" alt="" /> */}
                     </Box>
+
                 </FadeSection>
                 <FadeSection>
-                    <Container>
-                        <Box
-                            sx={{
-                                position: 'relative',
-                                bgcolor: 'white',
-                                p: 3,
-                                mt: { xs: -10, md: -8 },
-                                zIndex: 10,
-                            }}
-                        >
-                            <Grid
-                                container
-                                direction={isMobile ? 'column' : 'row'}
-                                // alignItems="center"
-                                justifyContent="center"
-                                spacing={isMobile ? 3 : 0}
-                            >
-                                {data.map((item, index) => (
-                                    <React.Fragment key={index}>
-                                        <Grid item >
-                                            <Box
-                                                sx={{
-                                                    textAlign: 'center',
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    alignItems: 'center',
-                                                    height: '100%',
-                                                }}
-                                            >
-                                                <Typography variant="h4" fontWeight="bold" color="#007bff">
-                                                    {item.count}
-                                                </Typography>
-                                                <Typography variant="body1" color="#000000">
-                                                    {item.type}
-                                                </Typography>
-                                            </Box>
-                                        </Grid>
-
-                                        <>
-                                            {index < data.length - 1 && (
-                                                <Grid item>
-                                                    <Box
-                                                        sx={{
-                                                            height: '100%',
-                                                            borderLeft: '2px solid #ccc',
-                                                            mx: { xs: 2, md: 4 },
-                                                        }}
-                                                    />
-                                                </Grid>
-                                            )}</>
-
-                                    </React.Fragment>
-                                ))}
-                            </Grid>
-                        </Box>
-                    </Container>
+  <Container maxWidth="lg">
+      <Box
+        sx={{
+          position: 'relative',
+          bgcolor: 'white',
+          p: { xs: 2, md: 4 },
+          mt: { xs: -10, md: -8 },
+          zIndex: 10,
+          borderRadius: 2,
+        }}
+      >
+        <Grid container spacing={4}>
+          {data.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Box
+                sx={{
+                  height: '100%',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  px: 2,
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    mb: 1,
+                    fontWeight: 500,
+                    color: '#666',
+                    fontSize: isMobile ? '0.75rem' : '0.9rem',
+                    whiteSpace: isMobile ? 'normal' : 'nowrap',
+                    overflow: isMobile ? 'visible' : 'hidden',
+                    textOverflow: isMobile ? 'unset' : 'ellipsis',
+                    maxWidth: 200,
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="h4"
+                  fontWeight="bold"
+                  color="#007bff"
+                  sx={{
+                    fontSize: isMobile ? '1.4rem' : '1.9rem',
+                    lineHeight: 1,
+                  }}
+                >
+                  {item.count}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="#000000"
+                  sx={{ fontSize: isMobile ? '0.75rem' : '0.95rem' }}
+                >
+                  {item.type}
+                </Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Container>
                 </FadeSection>
                 <FadeSection >
                     <Container>
@@ -664,46 +696,46 @@ const TechnologiesPage = () => {
                                                     {item.description}
                                                 </Typography>
                                                 <Link href={item.href}>
-                                                <Typography
-                                                    variant="body2"
-                                                    sx={{
-                                                        display: 'inline-flex',
-                                                        alignItems: 'center',
-                                                        position: 'relative',
-                                                        cursor: 'pointer',
-                                                        mt: 1,
-                                                        fontWeight: 600,
-                                                        color: 'inherit',
-                                                        transition: 'color 0.3s ease',
-                                                        '&::after': {
-                                                            content: '""',
-                                                            position: 'absolute',
-                                                            left: 0,
-                                                            bottom: -2,
-                                                            height: '2px',
-                                                            backgroundColor: 'blue',
-                                                            width: 0,
-                                                            transition: 'width 0.5s ease',
-                                                        },
-                                                        '&:hover': {
-                                                            color: 'blue',
+                                                    <Typography
+                                                        variant="body2"
+                                                        sx={{
+                                                            display: 'inline-flex',
+                                                            alignItems: 'center',
+                                                            position: 'relative',
+                                                            cursor: 'pointer',
+                                                            mt: 1,
+                                                            fontWeight: 600,
+                                                            color: 'inherit',
+                                                            transition: 'color 0.3s ease',
                                                             '&::after': {
-                                                                width: '100%',
+                                                                content: '""',
+                                                                position: 'absolute',
+                                                                left: 0,
+                                                                bottom: -2,
+                                                                height: '2px',
+                                                                backgroundColor: 'blue',
+                                                                width: 0,
+                                                                transition: 'width 0.5s ease',
+                                                            },
+                                                            '&:hover': {
+                                                                color: 'blue',
+                                                                '&::after': {
+                                                                    width: '100%',
+                                                                },
+                                                                '& svg': {
+                                                                    color: 'blue',
+                                                                    transition: 'color 0.3s ease',
+                                                                },
                                                             },
                                                             '& svg': {
-                                                                color: 'blue',
+                                                                ml: 1,
                                                                 transition: 'color 0.3s ease',
                                                             },
-                                                        },
-                                                        '& svg': {
-                                                            ml: 1,
-                                                            transition: 'color 0.3s ease',
-                                                        },
-                                                    }}
-                                                >
-                                                    Explore More
-                                                    <ArrowForwardIcon />
-                                                </Typography>
+                                                        }}
+                                                    >
+                                                        Explore More
+                                                        <ArrowForwardIcon />
+                                                    </Typography>
                                                 </Link>
                                             </Box>
                                         </Stack>
@@ -773,6 +805,69 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 ))}
                                 <Link href="/technologies/big-data-analytics">
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            position: 'relative',
+                                            cursor: 'pointer',
+                                            mt: 1,
+                                            fontWeight: 600,
+                                            color: 'inherit',
+                                            transition: 'color 0.3s ease',
+                                            '&::after': {
+                                                content: '""',
+                                                position: 'absolute',
+                                                left: 0,
+                                                bottom: -2,
+                                                height: '2px',
+                                                backgroundColor: 'blue',
+                                                width: 0,
+                                                transition: 'width 0.5s ease',
+                                            },
+                                            '&:hover': {
+                                                color: 'blue',
+                                                '&::after': {
+                                                    width: '100%',
+                                                },
+                                                '& svg': {
+                                                    color: 'blue',
+                                                    transition: 'color 0.3s ease',
+                                                },
+                                            },
+                                            '& svg': {
+                                                ml: 1,
+                                                transition: 'color 0.3s ease',
+                                            },
+                                        }}
+                                    >
+                                        Explore More
+                                        <ArrowForwardIcon />
+                                    </Typography>
+                                </Link>
+                            </Container>
+                        </Box>
+                    </Container>
+                </FadeSection>
+                {/*Ai Machine */}
+                <FadeSection id='AI & Machine Learning'>
+                    <Container>
+                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                AI & Machine Learning
+                            </Typography>
+                            <Box sx={{ px: 4, mb: 4 }}>
+                                <Grid container spacing={4}>
+                                    {machineLearningData.map((section, index) => (
+                                        <Grid item xs={12} sm={6} md={4} key={index}>
+                                            <MachineLearningCard section={section} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Box>
+                            <Link href="/technologies/ai-ml-data-sciences">
                                 <Typography
                                     variant="body2"
                                     sx={{
@@ -813,70 +908,7 @@ const TechnologiesPage = () => {
                                     Explore More
                                     <ArrowForwardIcon />
                                 </Typography>
-                                </Link>
-                            </Container>
-                        </Box>
-                    </Container>
-                </FadeSection>
-                {/*Ai Machine */}
-                <FadeSection id='AI & Machine Learning'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                AI & Machine Learning
-                            </Typography>
-                            <Box sx={{ px: 4, mb: 4 }}>
-                                <Grid container spacing={4}>
-                                    {machineLearningData.map((section, index) => (
-                                        <Grid item xs={12} sm={6} md={4} key={index}>
-                                            <MachineLearningCard section={section} />
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Box>
-                            <Link href="/technologies/ai-ml-data-sciences">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 1,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
-                                        '&::after': {
-                                            width: '100%',
-                                        },
-                                        '& svg': {
-                                            color: 'blue',
-                                            transition: 'color 0.3s ease',
-                                        },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
-</Link>
+                            </Link>
                         </Box>
 
                     </Container>
@@ -891,46 +923,46 @@ const TechnologiesPage = () => {
                             </Typography>
                             <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240529142332.676.webp" alt="" />
                             <Link href="/technologies/rpa">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 3,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        mt: 3,
+                                        fontWeight: 600,
+                                        color: 'inherit',
+                                        transition: 'color 0.3s ease',
                                         '&::after': {
-                                            width: '100%',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
+                                            '&::after': {
+                                                width: '100%',
+                                            },
+                                            '& svg': {
+                                                color: 'blue',
+                                                transition: 'color 0.3s ease',
+                                            },
                                         },
                                         '& svg': {
-                                            color: 'blue',
+                                            ml: 1,
                                             transition: 'color 0.3s ease',
                                         },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
                             </Link>
                         </Box>
 
@@ -1004,47 +1036,47 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 ))}
                             </Grid>
-                             <Link href='/technologies/5g'>
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 4,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
+                            <Link href='/technologies/5g'>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        mt: 4,
+                                        fontWeight: 600,
+                                        color: 'inherit',
+                                        transition: 'color 0.3s ease',
                                         '&::after': {
-                                            width: '100%',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
+                                            '&::after': {
+                                                width: '100%',
+                                            },
+                                            '& svg': {
+                                                color: 'blue',
+                                                transition: 'color 0.3s ease',
+                                            },
                                         },
                                         '& svg': {
-                                            color: 'blue',
+                                            ml: 1,
                                             transition: 'color 0.3s ease',
                                         },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
                             </Link>
                         </Box>
 
@@ -1061,46 +1093,46 @@ const TechnologiesPage = () => {
 
                             <IoTTopics />
                             <Link href="/technologies/iot">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 4,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        mt: 4,
+                                        fontWeight: 600,
+                                        color: 'inherit',
+                                        transition: 'color 0.3s ease',
                                         '&::after': {
-                                            width: '100%',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
+                                            '&::after': {
+                                                width: '100%',
+                                            },
+                                            '& svg': {
+                                                color: 'blue',
+                                                transition: 'color 0.3s ease',
+                                            },
                                         },
                                         '& svg': {
-                                            color: 'blue',
+                                            ml: 1,
                                             transition: 'color 0.3s ease',
                                         },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
                             </Link>
                         </Box>
 
@@ -1147,46 +1179,46 @@ const TechnologiesPage = () => {
                             </Grid>
                             <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530090956.184.webp" alt="" />
                             <Link href="/technologies/cloud">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 4,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        mt: 4,
+                                        fontWeight: 600,
+                                        color: 'inherit',
+                                        transition: 'color 0.3s ease',
                                         '&::after': {
-                                            width: '100%',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
+                                            '&::after': {
+                                                width: '100%',
+                                            },
+                                            '& svg': {
+                                                color: 'blue',
+                                                transition: 'color 0.3s ease',
+                                            },
                                         },
                                         '& svg': {
-                                            color: 'blue',
+                                            ml: 1,
                                             transition: 'color 0.3s ease',
                                         },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
                             </Link>
                         </Box>
                     </Container>
@@ -1237,46 +1269,46 @@ const TechnologiesPage = () => {
                                 ))}
                             </Grid>
                             <Link href="/technologies/devops">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 4,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        mt: 4,
+                                        fontWeight: 600,
+                                        color: 'inherit',
+                                        transition: 'color 0.3s ease',
                                         '&::after': {
-                                            width: '100%',
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
+                                            '&::after': {
+                                                width: '100%',
+                                            },
+                                            '& svg': {
+                                                color: 'blue',
+                                                transition: 'color 0.3s ease',
+                                            },
                                         },
                                         '& svg': {
-                                            color: 'blue',
+                                            ml: 1,
                                             transition: 'color 0.3s ease',
                                         },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
                             </Link>
                         </Box>
                     </Container>
@@ -1340,7 +1372,7 @@ const TechnologiesPage = () => {
                                 </Grid>
                             </Box>
                             <Box textAlign={"center"}>
-                              
+
                             </Box>
                         </Box>
                     </Container>
@@ -1407,7 +1439,7 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 ))}
                                 <Box textAlign={"center"}>
-                                    
+
 
                                 </Box>
                             </Container>
@@ -1461,7 +1493,7 @@ const TechnologiesPage = () => {
                                 </Grid>
                             </Box>
                             <Box textAlign={"center"}>
-                            
+
                             </Box>
                         </Box>
                     </Container>
@@ -1537,7 +1569,7 @@ const TechnologiesPage = () => {
                                 ))}
                             </Box>
                             <Box textAlign={"center"}>
-                              
+
                             </Box>
                         </Box>
                     </Container>
@@ -1649,6 +1681,70 @@ const TechnologiesPage = () => {
                             </Box>
                             <Box textAlign={"center"}>
                                 <Link href="/technologies/low-code">
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            position: 'relative',
+                                            cursor: 'pointer',
+
+                                            mt: 4,
+                                            fontWeight: 600,
+                                            color: 'inherit',
+                                            transition: 'color 0.3s ease',
+                                            '&::after': {
+                                                content: '""',
+                                                position: 'absolute',
+                                                left: 0,
+                                                bottom: -2,
+                                                height: '2px',
+                                                backgroundColor: 'blue',
+                                                width: 0,
+                                                transition: 'width 0.5s ease',
+                                            },
+                                            '&:hover': {
+                                                color: 'blue',
+                                                '&::after': {
+                                                    width: '100%',
+                                                },
+                                                '& svg': {
+                                                    color: 'blue',
+                                                    transition: 'color 0.3s ease',
+                                                },
+                                            },
+                                            '& svg': {
+                                                ml: 1,
+                                                transition: 'color 0.3s ease',
+                                            },
+                                        }}
+                                    >
+                                        Explore More
+                                        <ArrowForwardIcon />
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </Box>
+                    </Container>
+                </FadeSection>
+                {/*hard were */}
+                <FadeSection id='Hardware'>
+                    <Container>
+                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                Hardware Integration
+                            </Typography>
+                            <Box sx={{ px: 4, mb: 4 }}>
+                                <Grid container spacing={4}>
+                                    {HardwareData.map((section, index) => (
+                                        <Grid item xs={12} sm={6} md={3} key={index}>
+                                            <MachineLearningCard section={section} />
+                                        </Grid>
+                                    ))}
+                                </Grid>
+                            </Box>
+                            <Link href="/technologies/hardware-integration">
                                 <Typography
                                     variant="body2"
                                     sx={{
@@ -1656,8 +1752,7 @@ const TechnologiesPage = () => {
                                         alignItems: 'center',
                                         position: 'relative',
                                         cursor: 'pointer',
-
-                                        mt: 4,
+                                        mt: 1,
                                         fontWeight: 600,
                                         color: 'inherit',
                                         transition: 'color 0.3s ease',
@@ -1690,78 +1785,15 @@ const TechnologiesPage = () => {
                                     Explore More
                                     <ArrowForwardIcon />
                                 </Typography>
-                                </Link>
-                            </Box>
-                        </Box>
-                    </Container>
-                </FadeSection>
-                  {/*hard were */}
-                <FadeSection id='Hardware'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                Hardware Integration
-                            </Typography>
-                            <Box sx={{ px: 4, mb: 4 }}>
-                                <Grid container spacing={4}>
-                                    {HardwareData.map((section, index) => (
-                                        <Grid item xs={12} sm={6} md={3} key={index}>
-                                            <MachineLearningCard section={section} />
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Box>
-                            <Link href="/technologies/hardware-integration">
-                            <Typography
-                                variant="body2"
-                                sx={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    position: 'relative',
-                                    cursor: 'pointer',
-                                    mt: 1,
-                                    fontWeight: 600,
-                                    color: 'inherit',
-                                    transition: 'color 0.3s ease',
-                                    '&::after': {
-                                        content: '""',
-                                        position: 'absolute',
-                                        left: 0,
-                                        bottom: -2,
-                                        height: '2px',
-                                        backgroundColor: 'blue',
-                                        width: 0,
-                                        transition: 'width 0.5s ease',
-                                    },
-                                    '&:hover': {
-                                        color: 'blue',
-                                        '&::after': {
-                                            width: '100%',
-                                        },
-                                        '& svg': {
-                                            color: 'blue',
-                                            transition: 'color 0.3s ease',
-                                        },
-                                    },
-                                    '& svg': {
-                                        ml: 1,
-                                        transition: 'color 0.3s ease',
-                                    },
-                                }}
-                            >
-                                Explore More
-                                <ArrowForwardIcon />
-                            </Typography>
                             </Link>
 
                         </Box>
 
                     </Container>
                 </FadeSection>
-                  {/*dowload code */}
+                {/*dowload code */}
                 <FadeSection id="download">
-                    <Container sx={{ mt:4 }} >
+                    <Container sx={{ mt: 4 }} >
                         <Box
                             sx={{
                                 background: '#009BFF',
@@ -1772,7 +1804,7 @@ const TechnologiesPage = () => {
                                 position: 'relative',
                                 zIndex: 1,
                                 mb: -15,
-                                textAlign:"center"
+                                textAlign: "center"
 
 
                             }}
