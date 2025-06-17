@@ -389,7 +389,7 @@ const Header: React.FC = () => {
                         width: '100%',
                         bgcolor: 'white',
                         py: { xs: 1.5, md: 2 },
-                        px: { xs: 2, md: 4 },
+                        px: { xs: 0.1, md: 4 },
                         zIndex: 1200,
                         display: 'flex',
                         justifyContent: 'center',
@@ -401,10 +401,10 @@ const Header: React.FC = () => {
                             display: 'flex',
                             alignItems: 'center',
                             bgcolor: '#f9f9f9',
-                            px: { xs: 1.5, md: 2.5 },
+                            px: { xs: 1, md: 2.5 },
                             py: { xs: 1, md: 0.5 },
                             borderRadius: 3,
-                            width: { xs: '90%', sm: '80%', md: '60%' },
+                            width: { xs: '80%', sm: '80%', md: '60%' },
                             border: '1px solid #ddd',
                         }}
                     >
