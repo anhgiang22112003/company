@@ -117,8 +117,8 @@ const IndustriePage = () => {
         >
             <Box
                 sx={{
-                    width: { xs: 140, md: 170 },
-                    height: { xs: 105, md: 140 },
+                    width: { xs: 175, md: 170 },
+                    height: { xs: 135, md: 140 },
                     bgcolor: 'white',
                     clipPath: 'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
                     display: 'flex',
@@ -225,7 +225,7 @@ const IndustriePage = () => {
                                                 flexDirection: 'column',
                                                 alignItems: 'center',
                                                 gap: 1,
-                                                mb:5
+                                                mb: 5
                                             }}
                                         >
                                             {Array.from({ length: Math.ceil(items.length / 3) }).map((_, groupIndex) => {
@@ -235,7 +235,7 @@ const IndustriePage = () => {
                                                 const right = items[i + 2]
 
                                                 return (
-                                                    <Box key={groupIndex} sx={{ mb: -4.5 }}>
+                                                    <Box key={groupIndex} sx={{ mb: -4.7 }}>
                                                         {/* 1 Hexagon ở giữa */}
                                                         {top && (
                                                             <Box
