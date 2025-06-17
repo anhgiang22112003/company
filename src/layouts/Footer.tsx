@@ -53,7 +53,6 @@ const Footer = () => {
             <Link href="#" underline="hover" color="#fff">DevOps</Link>
             <Link href="#" underline="hover" color="#fff">Low Code</Link>
             <Link href="#" underline="hover" color="#fff">Hardware Integration</Link>
-            <Link href="#" underline="hover" color="#fff">Wi-Fi HaLow</Link>
           </Stack>
         </Grid>
 
@@ -79,7 +78,7 @@ const Footer = () => {
             Street #10, Quality Tech Solution Complex (QTSC),<br />
             District 12, Ho Chi Minh City
           </Typography>
-
+          
           <Button
             variant="outlined"
             sx={{
@@ -92,7 +91,8 @@ const Footer = () => {
               }
             }}
           >
-            Contact Us
+            <Link underline="hover" href="contact">Contact Us</Link>
+            
           </Button>
 
           <Typography mt={3} fontWeight="bold">

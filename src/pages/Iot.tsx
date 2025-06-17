@@ -393,7 +393,7 @@ const IotPage = () => {
                     <Box bgcolor="#f6f9fc" px={{ xs: 2, md: 8 }} py={6}>
                         <Container>
                             <Typography textAlign={"center"} variant="h5" fontWeight="bold" mb={4}>
-                                TMA IoT Platform (T-Connect)
+                                 IoT Platform (T-Connect)
                             </Typography>
                             <Grid container spacing={4}>
                                 {features.map((item, index) => (

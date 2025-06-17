@@ -193,16 +193,6 @@ const Header: React.FC = () => {
     const subMenuRef = useRef<HTMLDivElement | null>(null)
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-
-    const [openSubMenuMobile, setOpenSubMenuMobile] = React.useState<{ [key: string]: boolean }>({})
-
-    // Toggle submenu mobile
-    const handleToggleSubMenuMobile = (menuKey: string) => {
-        setOpenSubMenuMobile((prev) => ({
-            ...prev,
-            [menuKey]: !prev[menuKey],
-        }))
-    }
     useEffect(() => {
         const onScroll = () => setIsScrolled(window.scrollY > 10)
         window.addEventListener('scroll', onScroll)
@@ -263,7 +253,13 @@ const Header: React.FC = () => {
                         display: 'flex',
                     }}
                 >
-                    <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
+                    <Typography variant="h4" sx={{
+                        fontWeight: 'bold', fontSize: {
+                            xs: '1.2rem',  // Mobile
+                            sm: '1.5rem',  // Tablet
+                            md: '2rem',    // Desktop
+                        },
+                    }}>
                         IT Outsourcing
                     </Typography>
 

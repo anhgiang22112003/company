@@ -32,7 +32,7 @@ const MapBanner = () => {
                         mb: 4 
                     }}
                 >
-                    As a Vietnam IT outsourcing company, TMA provides quality technology solutions worldwide, gaining trust from clients worldwide.
+                    As a Vietnam IT outsourcing company, provides quality technology solutions worldwide, gaining trust from clients worldwide.
                 </Typography>
                 <img 
                     src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20240801083917.148.webp" 

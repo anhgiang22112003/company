@@ -450,7 +450,7 @@ const GPage = () => {
                             <Box sx={{ p: 4 }}>
                                 <Stack
                                     direction={isMobile ? undefined : "row"}
-                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
+                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "wrap" }}
                                     justifyContent={{ xs: "center", sm: "flex-start" }}
                                     spacing={2}
                                     mb={2}

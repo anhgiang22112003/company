@@ -46,7 +46,7 @@ const NewsletterBanner = () => {
       >
         Welcome to AI Quarterly Newsletter. Please contact:
         <a
-          href="mailto:biz@tma.com.vn"
+          href="mailto:biz@.com.vn"
           style={{ color: 'white', textDecoration: 'underline' }}
         >
           biz@tma.com.vn

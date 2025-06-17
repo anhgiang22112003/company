@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Box, IconButton, Tooltip } from '@mui/material';
+import { Box, IconButton, Tooltip, useTheme } from '@mui/material';
+
 interface ScrollDotsProps {
     sections: { id: string; label: string }[];
 }
+
 const ScrollDots: React.FC<ScrollDotsProps> = ({ sections }) => {
     const [activeSection, setActiveSection] = useState('');
-    console.log(activeSection);
+    const theme = useTheme();
+
     const handleClick = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
@@ -32,27 +35,29 @@ const ScrollDots: React.FC<ScrollDotsProps> = ({ sections }) => {
                     }
                 }
             });
-            setActiveSection(current);
+            if (current && current !== activeSection) {
+                setActiveSection(current);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
         handleScroll();
-
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [sections, activeSection]);
 
     return (
         <Box
             sx={{
                 position: 'fixed',
-                top: '50%',
-                right: '20px',
-                transform: 'translateY(-50%)',
-                zIndex: 1000,
+                right: { xs: 10, md: 20 },
+                top: '50%' ,
+                bottom: { xs: 20, md: 'auto' },
+                transform: { xs: 'none', md: 'translateY(-50%)' },
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center', // Căn giữa các nút
                 gap: 2,
+                zIndex: 1300,
+                alignItems: 'center',
             }}
         >
             {sections.map((section) => (
@@ -61,16 +66,14 @@ const ScrollDots: React.FC<ScrollDotsProps> = ({ sections }) => {
                         size="small"
                         onClick={() => handleClick(section.id)}
                         sx={{
-                            width: activeSection === section.id ? 16 : 12,
-                            height: activeSection === section.id ? 16 : 12,
+                            width: 12,
+                            height: 12,
                             borderRadius: '50%',
-                            backgroundColor: activeSection === section.id ? 'blue' : '#ccc',
-                            transition: 'background-color 0.3s, width 0.3s, height 0.3s',
-                            display: 'flex', // Đảm bảo nút căn giữa
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            backgroundColor: activeSection === section.id ? "green" : '#ccc',
+                            transform: activeSection === section.id ? 'scale(1.3)' : 'scale(1)',
+                            transition: 'all 0.3s ease',
                             '&:hover': {
-                                backgroundColor: '#007ACC',
+                                backgroundColor: theme.palette.primary.dark,
                             },
                         }}
                     />

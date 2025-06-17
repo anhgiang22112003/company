@@ -94,84 +94,114 @@ const WhyTMALayout = () => {
     <>
       <Header />
       <FadeSection>
-        <Box
+       <Box
+  sx={{
+    backgroundColor: '#1976d2',
+    py: { xs: 4, md: 6 },
+    px: 2,
+    mt: 16,
+    display: 'flex',
+    justifyContent: 'center',
+  }}
+>
+  <Grid
+    container
+    spacing={{ xs: 2, md: 4 }}
+    justifyContent="center"
+    alignItems="center"
+    sx={{ maxWidth: 1000 }}
+  >
+    {/* Row 1 */}
+    <Grid
+      container
+      item
+      xs={12}
+      spacing={2}
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Grid item>
+        <InfoCard>
+          <img src={items[0].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[0].text}</Typography>
+        </InfoCard>
+      </Grid>
+      <Grid item>
+        <InfoCard>
+          <img src={items[1].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[1].text}</Typography>
+        </InfoCard>
+      </Grid>
+    </Grid>
+
+    {/* Row 2 */}
+    <Grid
+      container
+      item
+      xs={12}
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Grid item sx={{ mr: { xs: 0, sm: 5 }, mb: { xs: 2, sm: 0 } }}>
+        <InfoCard>
+          <img src={items[5].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[5].text}</Typography>
+        </InfoCard>
+      </Grid>
+
+      <Grid item>
+        <Button
+          variant="contained"
           sx={{
-            backgroundColor: '#1976d2',
-            py: 6,
-            px: 2,
-            mt: 16,
-            display: 'flex',
-            justifyContent: 'center',
+            fontSize: { xs: '16px', sm: '20px' },
+            px: 5,
+            py: 2,
+            backgroundColor: '#0066ff',
+            fontWeight: 'bold',
+            height: 80,
+            mx: { xs: 0, sm: 4 },
           }}
         >
-          <Grid container spacing={4} justifyContent="center" alignItems="center" maxWidth={1000}>
-            {/* Row 1: item1 & item2 */}
-            <Grid container item xs={12} justifyContent="center" spacing={4}>
-              <Grid item>
-                <InfoCard>
-                  <img src={items[0].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[0].text}</Typography>
-                </InfoCard>
-              </Grid>
-              <Grid item>
-                <InfoCard>
-                  <img src={items[1].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[1].text}</Typography>
-                </InfoCard>
-              </Grid>
-            </Grid>
+          WHY
+        </Button>
+      </Grid>
 
-            {/* Row 2: item6, WHY TMA?, item3 */}
-            <Grid container item xs={12} justifyContent="center" alignItems="center">
-              <Grid item sx={{ mr: 5 }}>
-                <InfoCard>
-                  <img src={items[5].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[5].text}</Typography>
-                </InfoCard>
-              </Grid>
+      <Grid item sx={{ ml: { xs: 0, sm: 5 }, mt: { xs: 2, sm: 0 } }}>
+        <InfoCard>
+          <img src={items[2].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[2].text}</Typography>
+        </InfoCard>
+      </Grid>
+    </Grid>
 
-              <Grid item>
-                <Button
-                  variant="contained"
-                  sx={{
-                    fontSize: '20px',
-                    px: 5,
-                    py: 2,
-                    backgroundColor: '#0066ff',
-                    fontWeight: 'bold',
-                    height: 80,
-                    mx: 4, // khoảng cách trái phải giữa button với 2 bên
-                  }}
-                >
-                  WHY TMA?
-                </Button>
-              </Grid>
+    {/* Row 3 */}
+    <Grid
+      container
+      item
+      xs={12}
+      spacing={2}
+      direction={{ xs: 'column', sm: 'row' }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Grid item>
+        <InfoCard>
+          <img src={items[4].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[4].text}</Typography>
+        </InfoCard>
+      </Grid>
+      <Grid item>
+        <InfoCard>
+          <img src={items[3].icon} alt="" style={{ width: 50, height: 50 }} />
+          <Typography variant="body2" mt={2} textAlign="center">{items[3].text}</Typography>
+        </InfoCard>
+      </Grid>
+    </Grid>
+  </Grid>
+</Box>
 
-              <Grid item sx={{ ml: 5 }}>
-                <InfoCard>
-                  <img src={items[2].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[2].text}</Typography>
-                </InfoCard>
-              </Grid>
-            </Grid>
-
-            {/* Row 3: item5 & item4 */}
-            <Grid container item xs={12} justifyContent="center" spacing={4}>
-              <Grid item>
-                <InfoCard>
-                  <img src={items[4].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[4].text}</Typography>
-                </InfoCard>
-              </Grid>
-              <Grid item>
-                <InfoCard>
-                  <img src={items[3].icon} alt="" style={{ width: 50, height: 50 }} />
-                  <Typography variant="body2" mt={2}>{items[3].text}</Typography>
-                </InfoCard>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Box>
       </FadeSection>
       <FadeSection>
         <FadeSection >

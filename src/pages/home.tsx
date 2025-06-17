@@ -305,8 +305,7 @@ const OutsourceHomePage: React.FC = () => {
             [index]: !prev[index],
         }))
     }
-    const sections = [
-        { id: 'banner', label: 'Banner' },
+    const sections = [  
         { id: 'overview', label: 'Overview' },
         { id: 'why', label: 'Why' },
         { id: 'services', label: 'Services' },
@@ -314,7 +313,6 @@ const OutsourceHomePage: React.FC = () => {
         { id: 'industries', label: 'Industries' },
         { id: 'technologies', label: 'Technologies' },
         { id: 'feedback', label: 'Feedback' },
-        { id: 'what-clients', label: 'What Clients' },
         { id: 'footer', label: 'Footer' },
     ]
 
@@ -507,7 +505,7 @@ const OutsourceHomePage: React.FC = () => {
                     />
                     <Container>
                         <Grid container spacing={2}>
-                            <Grid textAlign={"justify"} item xs={12} md={5}>
+                            <Grid  item xs={12} md={5}>
                                 <Typography variant='h4' sx={{ fontWeight: "bold", color: "white" }}>Services</Typography>
                                 <Typography sx={{ color: "white" }} mt={2}>
                                     We provide end-to-end solutions from ideas to design, implementation, testing, deployment, maintenance and support, across Software Development, Software Testing, Digital Transformation, and Innovation as a Service.

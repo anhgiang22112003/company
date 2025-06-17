@@ -24,33 +24,6 @@ const telecomIcons = [
 ]
 
 
-// const menuItems = [
-//     {
-//         label: '5G',
-//         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_icon_20240801090712.997.webp',
-//         image: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240801090710.777.webp',
-//     },
-//     {
-//         label: 'Cloud/NFV',
-//         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_icon_20240801090830.256.webp',
-//         image: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240801090829.010.webp',
-//     },
-//     {
-//         label: 'Enterprise Solutions',
-//         icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_icon_20240801090947.496.webp',
-//         image: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240801090945.957.webp',
-//     },
-//     {
-//         label: 'Clients',
-//         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_icon_20240801091012.382.webp',
-//         image: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240801091011.351.webp',
-//     },
-//     {
-//         label: 'Networking',
-//         icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_icon_20240801091041.734.webp',
-//         image: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240801091040.792.webp',
-//     },
-// ]
 const data = [
     {
         title: "Fintech Application Development",

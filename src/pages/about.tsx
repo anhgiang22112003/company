@@ -356,7 +356,7 @@ const AboutPage = () => {
                                             <img width={"10%"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_header.734c55dc.webp" alt="" />
                                         </Box>
                                         <Typography variant='h4' sx={{ fontWeight: "bold" }}>Our Expertise</Typography>
-                                        <Typography  >With Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs. With TMA Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs.</Typography>
+                                        <Typography  >With Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs. With  Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs.</Typography>
                                     </Grid>
                                     <Box sx={{ listStyleType: 'disc', mt: 2 }}>
                                         {expertiseData.map((item, index) => (
@@ -397,7 +397,7 @@ const AboutPage = () => {
                                 Brief Profile
                             </Typography>
                             <Typography variant="body1" align="center" sx={{ mb: 4 }}>
-                                With TMA Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, providing high-quality services to clients around the world.
+                                With Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, providing high-quality services to clients around the world.
                             </Typography>
                             <Grid container spacing={4} justifyContent="center">
                                 <Grid item xs={12} sm={4}>
@@ -562,7 +562,7 @@ const AboutPage = () => {
                             </Typography>
                         </Box>
                         <Typography textAlign={"center"} sx={{ mb: 4 }}>
-                            TMA Solutions has garnered numerous accolades, notably the VINASA award, ranking among the Top 10 Software Outsourcing and IT Services enterprises in Vietnam. Our core mission is to ensure our customers' success through the delivery of effective and innovative software solutions.
+                              Has garnered numerous accolades, notably the VINASA award, ranking among the Top 10 Software Outsourcing and IT Services enterprises in Vietnam. Our core mission is to ensure our customers' success through the delivery of effective and innovative software solutions.
                         </Typography>
 
                         {/* Hàng trên: 2 giải đầu - nhỏ hơn và nằm giữa */}

@@ -270,7 +270,7 @@ const AutomotivePage = () => {
                             Automotive
                         </Typography>
                         <Typography variant="body1" mb={4}>
-                            With more than 8 years of experience in providing software development services for global automotive suppliers, TMA Automotive Software Center has intensive experience in a wide range of automotive software including in-vehicle system, door and window power system, car controller system, car pilot diagnostic, navigation for Android Automotive OS, car mobile remote, traffic image processing, automotive NAD, and V2X Stack.
+                            With more than 8 years of experience in providing software development services for global automotive suppliers, Automotive Software Center has intensive experience in a wide range of automotive software including in-vehicle system, door and window power system, car controller system, car pilot diagnostic, navigation for Android Automotive OS, car mobile remote, traffic image processing, automotive NAD, and V2X Stack.
                         </Typography>
 
                         <Box >
