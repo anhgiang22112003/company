@@ -255,7 +255,7 @@ const IndustriePage = () => {
                                                                 sx={{
                                                                     display: 'flex',
                                                                     justifyContent: 'center',
-                                                                    gap: 3,
+                                                                    gap: 0.1,
                                                                 }}
                                                             >
                                                                 {left && (
