@@ -50,7 +50,7 @@ const ScrollDots: React.FC<ScrollDotsProps> = ({ sections }) => {
             sx={{
                 position: 'fixed',
                 right: { xs: 10, md: 20 },
-                top: '30%' ,
+                top: { xs: "30%",sm:"45%", md: '50%' } ,
                 bottom: { xs: 20, md: 'auto' },
                 transform: { xs: 'none', md: 'translateY(-50%)' },
                 display: 'flex',
