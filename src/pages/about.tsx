@@ -200,10 +200,17 @@ const AboutPage = () => {
                         <Container sx={{ mt: 6 }}>
                             <Grid container spacing={3}>
                                 {cards.map((card, index) => (
-                                    <Grid item xs={12} sm={6} md={2.4} key={index}>
+                                    <Grid
+                                        item
+                                        xs={12}      // mobile: 1 card mỗi hàng
+                                        sm={6}       // tablet: 2 cards mỗi hàng
+                                        md={3}       // PC: 4 cards mỗi hàng (vì 12 / 3 = 4)
+                                        lg={2.4}     // lớn hơn: 5 cards mỗi hàng
+                                        key={index}
+                                    >
                                         <Box
                                             sx={{
-                                                height: "200px",
+                                                height: { xs: 'auto', md: '200px' }, // cao cố định trên PC, tự động ở mobile/tablet
                                                 border: '1px solid #e0e0e0',
                                                 borderRadius: 2,
                                                 padding: 3,
@@ -220,10 +227,18 @@ const AboutPage = () => {
                                                 },
                                             }}
                                         >
-                                            <img
+                                            <Box
+                                                component="img"
                                                 src={card.image}
                                                 alt={card.title}
-                                                style={{ width: '30%', }} // Kích thước hình ảnh
+                                                sx={{
+                                                    width: {
+                                                        xs: '25%',   // mobile
+                                                        sm: '25%',   // tablet
+                                                        md: '30%',   // PC
+                                                    },
+                                                    mb: 2,
+                                                }}
                                             />
                                             <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
                                                 {card.title}
@@ -231,48 +246,11 @@ const AboutPage = () => {
                                             <Typography variant="body2" sx={{ mb: 2 }}>
                                                 {card.description}
                                             </Typography>
-                                            {/* <Typography
-                                                variant="body2"
-                                                sx={{
-                                                    display: 'inline-flex',
-                                                    alignItems: 'center',
-                                                    position: 'relative',
-                                                    cursor: 'pointer',
-                                                    color: 'inherit',
-                                                    transition: 'color 0.3s ease',
-                                                    '&::after': {
-                                                        content: '""',
-                                                        position: 'absolute',
-                                                        left: 0,
-                                                        bottom: -2,
-                                                        height: '2px',
-                                                        backgroundColor: 'blue',
-                                                        width: 0,
-                                                        transition: 'width 0.5s ease',
-                                                    },
-                                                    '&:hover': {
-                                                        color: 'blue',
-                                                        '&::after': {
-                                                            width: '100%',
-                                                        },
-                                                        '& svg': {
-                                                            color: 'blue',
-                                                            transition: 'color 0.3s ease',
-                                                        },
-                                                    },
-                                                    '& svg': {
-                                                        ml: 1,
-                                                        transition: 'color 0.3s ease',
-                                                    },
-                                                }}
-                                            >
-                                                Explore More
-                                                <ArrowForwardIcon />
-                                            </Typography> */}
                                         </Box>
                                     </Grid>
                                 ))}
                             </Grid>
+
                         </Container>
                     </Box>
                 </FadeSection>
@@ -562,7 +540,7 @@ const AboutPage = () => {
                             </Typography>
                         </Box>
                         <Typography textAlign={"center"} sx={{ mb: 4 }}>
-                              Has garnered numerous accolades, notably the VINASA award, ranking among the Top 10 Software Outsourcing and IT Services enterprises in Vietnam. Our core mission is to ensure our customers' success through the delivery of effective and innovative software solutions.
+                            Has garnered numerous accolades, notably the VINASA award, ranking among the Top 10 Software Outsourcing and IT Services enterprises in Vietnam. Our core mission is to ensure our customers' success through the delivery of effective and innovative software solutions.
                         </Typography>
 
                         {/* Hàng trên: 2 giải đầu - nhỏ hơn và nằm giữa */}

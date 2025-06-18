@@ -456,7 +456,7 @@ const Header: React.FC = () => {
                                 <Box
                                     sx={{
                                         position: 'absolute',
-                                        top: -20,
+                                        top: -26,
                                         left: `${arrowLeft}px`,
                                         transform: 'translateX(-50%)',
                                         zIndex: 1401,
@@ -464,10 +464,12 @@ const Header: React.FC = () => {
                                 >
                                     <KeyboardArrowUpIcon
                                         sx={{
-                                            fontSize: 34,
-                                            color: 'white',
+                                            fontSize: 44,
+                                            color: isScrolled ? 'blue' : 'white',
+                                            transition: 'color 0.3s ease',
                                         }}
                                     />
+
                                 </Box>
 
                                 {/* ⭐️ Tên menu chính hiện tại */}

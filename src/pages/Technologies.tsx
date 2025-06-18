@@ -578,70 +578,70 @@ const TechnologiesPage = () => {
 
                 </FadeSection>
                 <FadeSection>
-  <Container maxWidth="lg">
-      <Box
-        sx={{
-          position: 'relative',
-          bgcolor: 'white',
-          p: { xs: 2, md: 4 },
-          mt: { xs: -10, md: -8 },
-          zIndex: 10,
-          borderRadius: 2,
-        }}
-      >
-        <Grid container spacing={4}>
-          {data.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Box
-                sx={{
-                  height: '100%',
-                  textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  px: 2,
-                }}
-              >
-                <Typography
-                  variant="subtitle2"
-                  sx={{
-                    mb: 1,
-                    fontWeight: 500,
-                    color: '#666',
-                    fontSize: isMobile ? '0.75rem' : '0.9rem',
-                    whiteSpace: isMobile ? 'normal' : 'nowrap',
-                    overflow: isMobile ? 'visible' : 'hidden',
-                    textOverflow: isMobile ? 'unset' : 'ellipsis',
-                    maxWidth: 200,
-                  }}
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="h4"
-                  fontWeight="bold"
-                  color="#007bff"
-                  sx={{
-                    fontSize: isMobile ? '1.4rem' : '1.9rem',
-                    lineHeight: 1,
-                  }}
-                >
-                  {item.count}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="#000000"
-                  sx={{ fontSize: isMobile ? '0.75rem' : '0.95rem' }}
-                >
-                  {item.type}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
+                    <Container maxWidth="lg">
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                bgcolor: 'white',
+                                p: { xs: 2, md: 4 },
+                                mt: { xs: -10, md: -8 },
+                                zIndex: 10,
+                                borderRadius: 2,
+                            }}
+                        >
+                            <Grid container spacing={4}>
+                                {data.map((item, index) => (
+                                    <Grid item xs={12} sm={6} md={4} key={index}>
+                                        <Box
+                                            sx={{
+                                                height: '100%',
+                                                textAlign: 'center',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                px: 2,
+                                            }}
+                                        >
+                                            <Typography
+                                                variant="subtitle2"
+                                                sx={{
+                                                    mb: 1,
+                                                    fontWeight: 500,
+                                                    color: '#666',
+                                                    fontSize: isMobile ? '0.75rem' : '0.9rem',
+                                                    whiteSpace: isMobile ? 'normal' : 'nowrap',
+                                                    overflow: isMobile ? 'visible' : 'hidden',
+                                                    textOverflow: isMobile ? 'unset' : 'ellipsis',
+                                                    maxWidth: 200,
+                                                }}
+                                            >
+                                                {item.title}
+                                            </Typography>
+                                            <Typography
+                                                variant="h4"
+                                                fontWeight="bold"
+                                                color="#007bff"
+                                                sx={{
+                                                    fontSize: isMobile ? '1.4rem' : '1.9rem',
+                                                    lineHeight: 1,
+                                                }}
+                                            >
+                                                {item.count}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="#000000"
+                                                sx={{ fontSize: isMobile ? '0.75rem' : '0.95rem' }}
+                                            >
+                                                {item.type}
+                                            </Typography>
+                                        </Box>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
+                    </Container>
                 </FadeSection>
                 <FadeSection >
                     <Container>

@@ -17,7 +17,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
     const [menuPage, setMenuPage] = useState(0)
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-    const ITEMS_PER_PAGE = isMobile ? 2 : 5
+    const ITEMS_PER_PAGE = isMobile ? 2 : 7
     const totalPages = Math.ceil(sections.length / ITEMS_PER_PAGE)
     const [isAtBottom, setIsAtBottom] = useState(false)
 
@@ -33,19 +33,13 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
         if (menuPage < totalPages - 1) setMenuPage(menuPage + 1)
     }
 
-  const handleMenuClick = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // Tránh bị header che mất: delay thêm 100ms rồi kéo lên 1 đoạn = chiều cao header
-        setTimeout(() => {
-            window.scrollBy({ top: -140, behavior: 'smooth' }); // 140 là chiều cao header
-        }, 100);
+    const handleMenuClick = (id: string) => {
+        const section = document.getElementById(id)
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        setActiveMenu(id)
     }
-
-    setActiveMenu(id);
-};
 
     useEffect(() => {
         const bottomAnchor = document.getElementById('bottom-anchor')
@@ -74,9 +68,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                 entries.forEach((entry) => {
-            console.log(entry.target.id, entry.isIntersecting, entry.intersectionRatio)
-        })
+
                 // Tìm entry đang intersecting và có tỉ lệ lớn hơn threshold
                 for (const entry of entries) {
                     if (entry.isIntersecting) {
