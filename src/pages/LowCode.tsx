@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia } from '@mui/material'
+import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia, IconButton, Pagination } from '@mui/material'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import ScrollToTopButton from '../components/ScrollToTopButton'
@@ -8,7 +8,15 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import DiamondIcon from '@mui/icons-material/Diamond'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/autoplay'
+import SwiperCore from 'swiper'
+import { Pagination as SwiperPagination, Navigation, Autoplay } from 'swiper/modules'
 
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 const lowCodeImages = [
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240515142845.908.webp',
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240515142932.937.webp',
@@ -16,81 +24,25 @@ const lowCodeImages = [
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240515142957.216.webp',
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240515143003.259.webp',
 ]
-const caseStudies = [
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611041847.860.webp',
-        title: 'Boost productivity with AI-powered Smart Call Center Assistant',
-        tags: ['Telecom', 'E-Commerce & Retail'],
-        description: 'An application running on agent’s PC to capture real-time audio and provide suggestions for customers’ queries using GenAI',
-        link: 'https://example.com/case-study-6',
 
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611042037.731.webp',
-        title: 'Public safety monitoring with smart camera',
-        tags: ['Data Science & AI/ML', 'Public Safety'],
-        description: 'The solution integrates smart cameras equipped with edge AI to provide comprehensive real-time surveillance and alerts in public spaces.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611042651.146.webp',
-        title: 'Apply OCR in Healthcare solutions to automate data collection',
-        tags: ['Healthcare', 'Data Science & AI/ML'],
-        description: 'Extract health indexes such as blood pressure, blood glucose, body temperature from 30 medical devices, prescriptions, and in-body physical.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044638.466.webp',
-        title: 'AI sound-based fault detection system in manufacturing',
-        tags: ['Manufacturing', 'Data Science & AI/ML', 'IoT'],
-        description: 'Utilize AI-based sound analysis to enhance real-time fault detection during value manufacturing, improving product quality.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044337.448.webp',
-        title: 'Enhance Credit Risk Analysis with AI/ML Technologies',
-        tags: ['Finance', 'Data Science & AI/ML'],
-        description: 'Provide credit scoring algorithm leveraging AI/ML models to enhance risk assessment from many data sources, reducing efforts.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611045307.545.webp',
-        title: 'Pest Detection Solution Crop Protection With AI Technology',
-        tags: ['Agriculture', 'Data Science & AI/ML', 'IoT'],
-        description: 'Leverage AI to detect and identify pests and diseases in the field, supporting managing and monitoring.',
-        link: 'https://example.com/case-study-6',
-
-    },
-]
 
 const technologies = [
     {
         title: 'OutSystems',
         items: [
-            'Live Style Guide',
             'OutSystems UI',
             'Service Studio',
             'Integration Studio',
-            'Architecture Dashboard',
-            'Service Center, Lifetime',
-            'Workflow Builder, Integration Builder, DB Connectors, CMF, BPT',
             'Forge',
         ],
     },
     {
         title: 'Salesforce',
         items: [
-            'Visualforce and Apex',
             'Lightning',
-            'Salesforce Object Query Language',
-            'Salesforce CPQ platform',
+            'Visualforce and Apex',
             'Sales Cloud',
             'Service Cloud',
-            'Community Cloud',
         ],
     },
     {
@@ -98,10 +50,10 @@ const technologies = [
         items: [
             'Power BI',
             'Power Automate',
-            'Virtual Agent',
         ],
     },
 ]
+
 const individualItems = [
     { label: 'Delivery Methodology', icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084034.702.webp' },
     { label: 'UX/UI', icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084117.835.webp' },
@@ -159,11 +111,7 @@ const services = [
     },
 ]
 const topImages = [
-    {
-        src: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515151814.283.webp',
-        alt: 'Click & Drag Applications',
-        caption: 'Simple click and drag applications',
-    },
+
     {
         src: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515151823.221.webp',
         alt: 'Architecture Design',
@@ -201,20 +149,22 @@ const LowCodePage = () => {
             <FadeSection>
                 <Box
                     sx={{
-                        background: '#1976d2',
-                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 65% 100%, 0 100%)',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         py: 6,
                         mt: 18,
                         px: 2,
                         textAlign: 'center',
                         color: 'white',
+                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                        WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                        overflow: 'hidden',
                     }}
                 >
                     <Typography variant="h4" fontWeight="bold" mb={2}>
                         Low-Code Solution Services
                     </Typography>
                     <Typography variant="body1" maxWidth="900px" mx="auto" mb={4}>
-                     has 7 years of experience in providing professional low code, high performance and quality solution services to our valued customers of Finance, Insurance, Banking in USA and Australia.
+                        has 7 years of experience in providing professional low code, high performance and quality solution services to our valued customers of Finance, Insurance, Banking in USA and Australia.
                     </Typography>
 
                     <Grid container spacing={2} justifyContent="center">
@@ -267,124 +217,127 @@ const LowCodePage = () => {
                             <Grid container spacing={4} justifyContent="center">
                                 {/* Left Column: Cross-Functional Teams */}
                                 <Grid item xs={12} md={6}>
-                                    <Typography variant="h5" fontWeight="bold" mb={2}>
-                                        Cross-Functional Teams
-                                    </Typography>
+                                    <SlideInOnScroll>
+                                        <Typography variant="h5" fontWeight="bold" mb={2}>
+                                            Cross-Functional Teams
+                                        </Typography>
 
-                                    <Grid container spacing={2}>
-                                        {/* Render individual items */}
-                                        {individualItems.map((item, index) => (
-                                            <Grid item xs={6} sm={4} key={index}>
+                                        <Grid container spacing={2}>
+                                            {/* Render individual items */}
+                                            {individualItems.map((item, index) => (
+                                                <Grid item xs={6} sm={4} key={index}>
+                                                    <Paper
+                                                        variant="outlined"
+                                                        sx={{
+                                                            p: 2,
+                                                            textAlign: 'center',
+                                                            height: '100%',
+                                                            borderStyle: 'dashed',
+                                                            borderColor: '#00AEEF',
+                                                            borderRadius: 2,
+                                                        }}
+                                                    >
+                                                        {item.icon && (
+                                                            <Box
+                                                                component="img"
+                                                                src={item.icon}
+                                                                alt={item.label}
+                                                                sx={{ width: 30, height: 30, mb: 1 }}
+                                                            />
+                                                        )}
+                                                        <Typography variant="body2" fontWeight="500">
+                                                            {item.label}
+                                                        </Typography>
+                                                    </Paper>
+                                                </Grid>
+                                            ))}
+
+                                            {/* DevOps Block */}
+                                            <Grid item xs={12}>
                                                 <Paper
                                                     variant="outlined"
                                                     sx={{
                                                         p: 2,
-                                                        textAlign: 'center',
-                                                        height: '100%',
                                                         borderStyle: 'dashed',
                                                         borderColor: '#00AEEF',
                                                         borderRadius: 2,
+                                                        textAlign: 'center',
                                                     }}
                                                 >
-                                                    {item.icon && (
+                                                    {/* DevOps */}
+                                                    <Box mb={2}>
                                                         <Box
                                                             component="img"
-                                                            src={item.icon}
-                                                            alt={item.label}
+                                                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084332.791.webp"
+                                                            alt="DevOps"
                                                             sx={{ width: 30, height: 30, mb: 1 }}
                                                         />
-                                                    )}
-                                                    <Typography variant="body2" fontWeight="500">
-                                                        {item.label}
-                                                    </Typography>
+                                                        <Typography variant="body2" fontWeight="500">
+                                                            DevOps
+                                                        </Typography>
+                                                    </Box>
+
+                                                    {/* Release Management in nested dashed box */}
+                                                    <Box
+                                                        sx={{
+                                                            border: '1px dashed #00AEEF',
+                                                            borderRadius: 2,
+                                                            py: 1.5,
+                                                            px: 2,
+                                                            mb: 2,
+                                                            display: 'inline-block',
+                                                        }}
+                                                    >
+                                                        <Box
+                                                            component="img"
+                                                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084530.145.webp"
+                                                            alt="Release Management"
+                                                            sx={{ width: 30, height: 30, mb: 1 }}
+                                                        />
+                                                        <Typography variant="body2" fontWeight="500">
+                                                            Release Management
+                                                        </Typography>
+                                                    </Box>
+
+                                                    {/* Test Automation & Monitoring side by side */}
+                                                    <Grid container spacing={2} justifyContent="center">
+                                                        {['Test Automation', 'Monitoring'].map((label, idx) => (
+                                                            <Grid item xs={6} sm={4} key={idx}>
+                                                                <Paper
+                                                                    variant="outlined"
+                                                                    sx={{
+                                                                        p: 1.5,
+                                                                        borderStyle: 'dashed',
+                                                                        borderColor: '#00AEEF',
+                                                                        borderRadius: 2,
+                                                                        textAlign: 'center',
+                                                                    }}
+                                                                >
+                                                                    <Typography variant="body2" fontWeight="500">
+                                                                        {label}
+                                                                    </Typography>
+                                                                </Paper>
+                                                            </Grid>
+                                                        ))}
+                                                    </Grid>
                                                 </Paper>
                                             </Grid>
-                                        ))}
-
-                                        {/* DevOps Block */}
-                                        <Grid item xs={12}>
-                                            <Paper
-                                                variant="outlined"
-                                                sx={{
-                                                    p: 2,
-                                                    borderStyle: 'dashed',
-                                                    borderColor: '#00AEEF',
-                                                    borderRadius: 2,
-                                                    textAlign: 'center',
-                                                }}
-                                            >
-                                                {/* DevOps */}
-                                                <Box mb={2}>
-                                                    <Box
-                                                        component="img"
-                                                        src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084332.791.webp"
-                                                        alt="DevOps"
-                                                        sx={{ width: 30, height: 30, mb: 1 }}
-                                                    />
-                                                    <Typography variant="body2" fontWeight="500">
-                                                        DevOps
-                                                    </Typography>
-                                                </Box>
-
-                                                {/* Release Management in nested dashed box */}
-                                                <Box
-                                                    sx={{
-                                                        border: '1px dashed #00AEEF',
-                                                        borderRadius: 2,
-                                                        py: 1.5,
-                                                        px: 2,
-                                                        mb: 2,
-                                                        display: 'inline-block',
-                                                    }}
-                                                >
-                                                    <Box
-                                                        component="img"
-                                                        src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240528084530.145.webp"
-                                                        alt="Release Management"
-                                                        sx={{ width: 30, height: 30, mb: 1 }}
-                                                    />
-                                                    <Typography variant="body2" fontWeight="500">
-                                                        Release Management
-                                                    </Typography>
-                                                </Box>
-
-                                                {/* Test Automation & Monitoring side by side */}
-                                                <Grid container spacing={2} justifyContent="center">
-                                                    {['Test Automation', 'Monitoring'].map((label, idx) => (
-                                                        <Grid item xs={6} sm={4} key={idx}>
-                                                            <Paper
-                                                                variant="outlined"
-                                                                sx={{
-                                                                    p: 1.5,
-                                                                    borderStyle: 'dashed',
-                                                                    borderColor: '#00AEEF',
-                                                                    borderRadius: 2,
-                                                                    textAlign: 'center',
-                                                                }}
-                                                            >
-                                                                <Typography variant="body2" fontWeight="500">
-                                                                    {label}
-                                                                </Typography>
-                                                            </Paper>
-                                                        </Grid>
-                                                    ))}
-                                                </Grid>
-                                            </Paper>
                                         </Grid>
-                                    </Grid>
+                                    </SlideInOnScroll>
                                 </Grid>
 
                                 {/* Right Column: Development Cycle */}
                                 <Grid item xs={12} md={6} textAlign="center">
-                                    <Typography variant="h5" fontWeight="bold" mb={2}>
-                                        Development Cycle
-                                    </Typography>
-                                    <Box
-                                        component="img"
-                                        src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515143721.146.webp"
-                                        alt="Development Cycle"
-                                        sx={{ maxWidth: '100%', height: 'auto' }}
-                                    />
+                                    <SlideInOnScroll direction='right'>
+                                        <Typography variant="h5" fontWeight="bold" mb={2}>
+                                            Development Cycle
+                                        </Typography>
+                                        <Box
+                                            component="img"
+                                            src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515143721.146.webp"
+                                            alt="Development Cycle"
+                                            sx={{ maxWidth: '100%', height: 'auto' }}
+                                        /></SlideInOnScroll>
                                 </Grid>
                             </Grid>
                         </Box>
@@ -397,9 +350,10 @@ const LowCodePage = () => {
                         py: 8,
                         background: 'linear-gradient(to bottom, #007cf0, #00dfd8)',
                         textAlign: 'center',
-                        position: 'relative',
+
                     }}
-                > <Container>
+                >
+                    <Container>
                         {/* Header */}
                         <Box mb={4}>
                             <Box
@@ -413,45 +367,103 @@ const LowCodePage = () => {
                             </Typography>
                         </Box>
 
-                        {/* Cards */}
-                        <Grid container spacing={4} justifyContent="center">
-                            {services.map((service, index) => (
-                                <Grid item xs={12} sm={6} md={4} key={index}>
-                                    <Paper
-                                        elevation={3}
-                                        sx={{
-                                            p: 3,
-                                            textAlign: 'left',
-                                            minHeight: 240,
-                                        }}
-                                    >
-                                        <Box display="flex" alignItems="center" mb={1}>
-                                            <Box
-                                                component="img"
-                                                src={service.icon}
-                                                alt={service.title}
-                                                sx={{ width: 24, height: 24, mr: 1 }}
-                                            />
-                                            <Typography variant="subtitle1" fontWeight="bold">
-                                                {service.title}
-                                            </Typography>
-                                        </Box>
-                                        <Box component="hr" sx={{ borderColor: '#ccc', my: 1 }} />
-                                        <List dense>
-                                            {service.items.map((item, i) => (
-                                                <ListItem key={i} disablePadding>
-                                                    <ListItemIcon sx={{ minWidth: 24 }}>
-                                                        <FiberManualRecordIcon sx={{ fontSize: 6, color: '#007cf0' }} />
-                                                    </ListItemIcon>
-                                                    <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </Paper>
-                                </Grid>
-                            ))}
-                        </Grid>
+                        {/* Swiper navigation buttons */}
+                        <Box sx={{ position: 'relative', width: '100%' }}>
+                            <Swiper
+                                modules={[Navigation, SwiperPagination, Autoplay]}
+                                navigation={{
+                                    prevEl: '.custom-swiper-prev',
+                                    nextEl: '.custom-swiper-next',
+                                }}
+                                pagination={{ clickable: true }}
+                                autoplay={{ delay: 2000 }}
+                                spaceBetween={30}
+                                breakpoints={{
+                                    0: { slidesPerView: 1 },
+                                    768: { slidesPerView: 2 },
+                                    1024: { slidesPerView: 3 },
+                                }}
+                            >
+                                {services.map((service, index) => (
+                                    <SwiperSlide key={index}>
+                                        <Paper
+                                            elevation={3}
+                                            sx={{
+                                                p: 3,
+                                                textAlign: 'left',
+                                                minHeight: 240,
+                                            }}
+                                        >
+                                            <Box display="flex" alignItems="center" mb={1}>
+                                                <Box
+                                                    component="img"
+                                                    src={service.icon}
+                                                    alt={service.title}
+                                                    sx={{ width: 24, height: 24, mr: 1 }}
+                                                />
+                                                <Typography variant="subtitle1" fontWeight="bold">
+                                                    {service.title}
+                                                </Typography>
+                                            </Box>
+                                            <Box component="hr" sx={{ borderColor: '#ccc', my: 1 }} />
+                                            <List dense>
+                                                {service.items.map((item, i) => (
+                                                    <ListItem key={i} disablePadding>
+                                                        <ListItemIcon sx={{ minWidth: 24 }}>
+                                                            <FiberManualRecordIcon sx={{ fontSize: 6, color: '#007cf0' }} />
+                                                        </ListItemIcon>
+                                                        <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Paper>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                            {/* Nút prev */}
+                            <IconButton
+                                className="custom-swiper-prev"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowBackIosNewIcon />
+                            </IconButton>
+
+                            {/* Nút next */}
+                            <IconButton
+                                className="custom-swiper-next"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    right: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowForwardIosIcon />
+                            </IconButton>
+                        </Box>
+
+
+
+
+                        {/* Swiper pagination dots will render here */}
+
                     </Container>
+                </Box>  <Box mt={3}>
+                    <div className="swiper-pagination" />
                 </Box>
 
             </FadeSection>
@@ -471,7 +483,7 @@ const LowCodePage = () => {
                             </Box>
 
                             {/* Top Images with captions */}
-                            <Grid container spacing={6} mb={2}>
+                            <Grid container spacing={6} >
                                 {topImages.map(({ src, alt, caption }, idx) => (
                                     <Grid item xs={12} key={idx}>
                                         <Box
@@ -480,15 +492,13 @@ const LowCodePage = () => {
                                             alt={alt}
                                             sx={{ width: '100%', borderRadius: 2, boxShadow: 3 }}
                                         />
-                                        <Typography variant="subtitle1" textAlign="center" mt={2}>
+                                        <Typography variant="subtitle1" textAlign="center">
                                             {caption}
                                         </Typography>
                                     </Grid>
                                 ))}
                             </Grid>
 
-
-                            {/* Bottom values/benefits */}
                             <Grid container spacing={3} justifyContent="center">
                                 {bottomImages.map(({ src }, idx) => (
                                     <Grid item xs={12} sm={6} md={3} key={idx} textAlign="center">
@@ -507,7 +517,11 @@ const LowCodePage = () => {
                 </Container>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ backgroundColor: '#f5f9fe', py: 8 }}>
+                <Box sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)', py: 8
+                }}>
                     <Box sx={{ textAlign: 'center', mb: 6 }}>
                         <DiamondIcon sx={{ color: '#38a4f8' }} />
                         <Typography variant="h4" fontWeight={700}>
@@ -623,43 +637,58 @@ const LowCodePage = () => {
             </FadeSection> */}
 
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
+
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    LowCode Brochure
+                                    Low-code IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

@@ -5,97 +5,71 @@ import ScrollToTopButton from '../components/ScrollToTopButton'
 import Header from '../layouts/Header'
 import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 const skillsData = [
     {
-        title: 'Network & Endpoint Security Skills',
+        title: 'Network & Endpoint Security',
         items: [
-            'Firewalls, Intrusion Detection/Prevention Systems',
-            'Antivirus, Anti-malware Software, Device Encryption',
-            'Network Forensics & Monitoring: Kali, Wireshark, Metasploit, NMAP, Aircrack-NG, OpenVas',
+            'Firewalls, IDS/IPS',
+            'Antivirus, Device Encryption',
+            'Wireshark, NMAP, Metasploit, OpenVas',
         ],
     },
     {
-        title: 'Cloud Security & Data Protection Skills',
+        title: 'Cloud Security & Data Protection',
         items: [
-            'Secure Cloud Configurations, Cloud Monitoring',
-            'Regular Backups, Data Encryption',
-            'Secure Cloud Practices (Perl, Python, JavaScript, SQL, Cloud Tech)',
-            'Secure Cloud Platforms (AWS, GCP, Azure, Private Cloud, Hybrid, ONPREM)',
-            'Adaptive Clientless Rendering (ACR), Secure Web Gateway',
-            'DevSecOps & CI/CD Security Integration',
+            'AWS, GCP, Azure, Hybrid',
+            'Data Encryption, Cloud Monitoring',
+            'DevSecOps Integration',
         ],
     },
     {
-        title: 'Security Awareness & Compliance Skill',
+        title: 'Security Awareness & Compliance',
         items: [
             'Employee Training, Phishing Simulations',
-            'Security Standards & Compliance: NIST Cybersecurity Framework, PCI DSS, ISO 27034, CIS Control 16',
+            'Compliance: NIST, PCI DSS, ISO 27034',
         ],
     },
     {
-        title: 'Threat Detection & Incident Response Skill',
+        title: 'Threat Detection & Incident Response',
         items: [
-            'SIEM (Security Information & Event Management) – Real-Time Monitoring, Auto Alert',
-            'Threat Intelligence – Threat Feeds, Threat Analysis',
-            'Vulnerability Management – Web, Application & Infrastructure Scanning (Nessus, Qualys, BurpSuite, OWASP ZAP)',
-            'Penetration Testing – Web, Cloud, and Mobile Security Testing',
+            'SIEM (Real-time Monitoring)',
+            'Threat Intelligence & Analysis',
+            'Vulnerability Scanning: Nessus, BurpSuite',
         ],
     },
     {
-        title: 'Identity & Access Management Skills',
+        title: 'Identity & Access Management',
         items: [
-            'Multi-Factor Authentication (MFA), Role-Based Access Control (RBAC)',
-            'Identity & Access Management: Microsoft, Duo, Okta',
+            'MFA, RBAC',
+            'Okta, Duo, Microsoft IAM',
         ],
     },
 ]
+
 const techData = [
     {
-        title: 'Programming Languages',
-        items: ['Perl', 'Python', 'Javascript', 'SQL', 'Cloud tech'],
+        title: 'Languages & Scripting',
+        items: ['Python', 'JavaScript', 'SQL'],
     },
     {
-        title: 'Standards',
-        items: [
-            'OWASP ASVS', 'MASVS', 'NIST (SP) 800–218', 'ISO 27034', 'CIS Control 16',
-            'PCI DSS', 'SANS', 'OSSTMM',
-        ],
+        title: 'Security Standards',
+        items: ['OWASP ASVS', 'NIST 800–218', 'PCI DSS', 'ISO 27034'],
     },
     {
-        title: 'Tools',
-        items: [
-            'Nessus, Qualys, BurpSuite, OWASP ZAP',
-            'SonarQube, MobSF',
-            'Aircrack-NG, OpenVas',
-            'Kali, WireShark, Metasploits, NMAP',
-        ],
+        title: 'Security Tools',
+        items: ['BurpSuite', 'Nessus', 'OWASP ZAP', 'Wireshark', 'Kali Linux'],
     },
     {
-        title: 'Platform',
-        items: ['Cloud (AWS, GCP, Azure, Private Cloud)', 'ONPREM', 'Hybrid'],
+        title: 'Cloud Platforms',
+        items: ['AWS', 'Azure', 'GCP', 'Hybrid Cloud'],
     },
     {
         title: 'Vulnerability Databases',
-        items: ['OWASP Top 10, OWASP Mobile Top 10', 'CVE', 'NIST', 'EXPLOIT DB'],
-    },
-    {
-        title: 'NIST Cybersecurity Framework',
-        items: [
-            'Data Loss Prevention',
-            'Cloud Access Security Broker (CASB)',
-            'Secure Browser Isolation',
-            'Secure Web Gateway, SSL Inspection',
-        ],
-    },
-    {
-        title: 'ISMAP',
-        items: [],
-    },
-    {
-        title: 'ACR (Adaptive Clientless Rendering)',
-        items: [],
+        items: ['OWASP Top 10', 'CVE', 'NIST'],
     },
 ]
+
 const TechBox = ({ title, items }: any) => (
     <Paper
         elevation={0}
@@ -113,7 +87,7 @@ const TechBox = ({ title, items }: any) => (
             {title}
         </Typography>
         <List dense sx={{ paddingTop: 0 }}>
-            {items.map((item: any, index: any) => (
+            {items?.map((item: any, index: any) => (
                 <ListItem key={index} disableGutters sx={{ alignItems: 'center', }}>
                     <ListItemIcon sx={{ minWidth: 20, mt: 0.5 }}>
                         <FiberManualRecordIcon sx={{ fontSize: 6, color: '#00AEEF' }} />
@@ -131,93 +105,102 @@ const SecurityApplicationDevelopment = () => {
         <>
             <Header />
             <FadeSection>
-                <Box sx={{ backgroundColor: '#1976d2', p: 4, color: 'white', mt: 18 }}>
+                <Box sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))'
+                    , p: 4, color: 'white', mt: 18
+                }}>
                     <Container>
                         <Grid container spacing={4} alignItems="flex-start">
                             {/* Left Content */}
                             <Grid item xs={12} md={5}>
-                                <Typography variant="h4" fontWeight="bold" gutterBottom>
-                                    Security Application<br />Development
-                                </Typography>
-                                <Typography variant="body1" sx={{ mb: 4 }}>
-                                    offers specialized security application development services designed to build robust,<br />
-                                    secure, and resilient software solutions.
-                                </Typography>
+                                <SlideInOnScroll>
+                                    <Box>
+                                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                                            Security Application<br />Development
+                                        </Typography>
+                                        <Typography variant="body1" sx={{ mb: 4 }}>
+                                            offers specialized security application development services designed to build robust,<br />
+                                            secure, and resilient software solutions.
+                                        </Typography>
 
-                                {/* Info Boxes */}
-                                <Grid container spacing={2} alignItems="stretch">
-                                    {/* Box 1 */}
-                                    <Grid item xs={6} sx={{ height: '100%' }}>
-                                        <Paper
-                                            sx={{
-                                                height: '100%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: 2,
-                                                p: 1.5,
-                                                borderRadius: 2,
-                                                backgroundColor: 'white',
-                                                color: 'black',
-                                            }}
-                                            elevation={3}
-                                        >
-                                            <Box
-                                                component="img"
-                                                src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20250331081457.355.webp"
-                                                alt="Experience"
-                                                sx={{ width: 30, height: 30 }}
-                                            />
-                                            <Box>
-                                                <Typography fontWeight="bold">10+ Years</Typography>
-                                                <Typography variant="body2">of experience</Typography>
-                                            </Box>
-                                        </Paper>
-                                    </Grid>
+                                        {/* Info Boxes */}
+                                        <Grid container spacing={2} alignItems="stretch">
+                                            {/* Box 1 */}
+                                            <Grid item xs={6} sx={{ height: '100%' }}>
+                                                <Paper
+                                                    sx={{
+                                                        height: '100%',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: 2,
+                                                        p: 1.5,
+                                                        borderRadius: 2,
+                                                        backgroundColor: 'white',
+                                                        color: 'black',
+                                                    }}
+                                                    elevation={3}
+                                                >
+                                                    <Box
+                                                        component="img"
+                                                        src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20250331081457.355.webp"
+                                                        alt="Experience"
+                                                        sx={{ width: 30, height: 30 }}
+                                                    />
+                                                    <Box>
+                                                        <Typography fontWeight="bold">10+ Years</Typography>
+                                                        <Typography variant="body2">of experience</Typography>
+                                                    </Box>
+                                                </Paper>
+                                            </Grid>
 
-                                    {/* Box 2 */}
-                                    <Grid item xs={6} sx={{ height: '100%' }}>
-                                        <Paper
-                                            sx={{
-                                                height: { xs: '87px', md: '100%' },
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: 2,
-                                                p: 1.5,
-                                                borderRadius: 2,
-                                                backgroundColor: 'white',
-                                                color: 'black',
-                                            }}
-                                            elevation={3}
-                                        >
-                                            <Box
-                                                component="img"
-                                                src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20250331081546.898.webp"
-                                                alt="Engineers"
-                                                sx={{ width: 30, height: 30 }}
-                                            />
-                                            <Box>
-                                                <Typography fontWeight="bold">150</Typography>
-                                                <Typography variant="body2">Engineers</Typography>
-                                            </Box>
-                                        </Paper>
-                                    </Grid>
-                                </Grid>
-
+                                            {/* Box 2 */}
+                                            <Grid item xs={6} sx={{ height: '100%' }}>
+                                                <Paper
+                                                    sx={{
+                                                        height: { xs: '87px', md: '100%' },
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: 2,
+                                                        p: 1.5,
+                                                        borderRadius: 2,
+                                                        backgroundColor: 'white',
+                                                        color: 'black',
+                                                    }}
+                                                    elevation={3}
+                                                >
+                                                    <Box
+                                                        component="img"
+                                                        src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20250331081546.898.webp"
+                                                        alt="Engineers"
+                                                        sx={{ width: 30, height: 30 }}
+                                                    />
+                                                    <Box>
+                                                        <Typography fontWeight="bold">150</Typography>
+                                                        <Typography variant="body2">Engineers</Typography>
+                                                    </Box>
+                                                </Paper>
+                                            </Grid>
+                                        </Grid>
+                                    </Box></SlideInOnScroll>
 
                             </Grid>
 
                             {/* Right Image */}
+
                             <Grid item xs={12} md={7}>
-                                <Box
-                                    component="img"
-                                    src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20250331080507.160.webp"
-                                    alt="Security Services"
-                                    sx={{
-                                        width: '100%',
-                                        borderRadius: 2,
-                                    }}
-                                />
+                                <SlideInOnScroll direction='right'>
+                                    <Box
+                                        component="img"
+                                        src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20250331080507.160.webp"
+                                        alt="Security Services"
+                                        sx={{
+                                            width: '100%',
+                                            borderRadius: 2,
+                                        }}
+                                    />
+                                </SlideInOnScroll>
                             </Grid>
+
                         </Grid>
                     </Container>
                 </Box>
@@ -273,9 +256,8 @@ const SecurityApplicationDevelopment = () => {
                                 <Grid container spacing={3} direction="column">
                                     <Grid item><TechBox {...techData[3]} /></Grid>
                                     <Grid item><TechBox {...techData[4]} /></Grid>
-                                    <Grid item><TechBox {...techData[5]} /></Grid>
-                                    <Grid item><TechBox {...techData[6]} /></Grid>
-                                    <Grid item><TechBox {...techData[7]} /></Grid>
+
+
                                 </Grid>
                             </Grid>
                         </Grid>

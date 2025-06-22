@@ -4,8 +4,6 @@ import Footer from '../layouts/Footer'
 import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import CloudIcon from '@mui/icons-material/Cloud'
 import WifiTetheringIcon from '@mui/icons-material/WifiTethering'
@@ -15,8 +13,7 @@ import CloudQueueIcon from '@mui/icons-material/CloudQueue'
 import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet'
 import CodeIcon from '@mui/icons-material/Code'
 import PublicIcon from '@mui/icons-material/Public'
-import BuildCircleIcon from '@mui/icons-material/BuildCircle'
-import LanIcon from '@mui/icons-material/Lan'
+
 const servicesData = [
     {
         title: '5G Core Development',
@@ -46,22 +43,16 @@ const servicesData = [
 
 
 const technologies = [
-    { icon: <CloudIcon fontSize="large" />, title: 'eMBB, uRLLC, mMTC' },
-    { icon: <WifiTetheringIcon fontSize="large" />, title: 'O–RAN (Open RAN)' },
-    { icon: <RouterIcon fontSize="large" />, title: 'Network Slicing' },
-    { icon: <DeveloperBoardIcon fontSize="large" />, title: 'Edge Computing' },
-    { icon: <CloudQueueIcon fontSize="large" />, title: 'VNF, NFV, K8S Cloud' },
-    { icon: <SettingsEthernetIcon fontSize="large" />, title: 'DevOps', desc: 'Jenkins, CI/CD' },
-    { icon: <CodeIcon fontSize="large" />, title: 'Programming', desc: 'C/C++, Java, Python, Go' },
-    { icon: <PublicIcon fontSize="large" />, title: 'SDN, Networking' },
-    { icon: <BuildCircleIcon fontSize="large" />, title: 'Automation', desc: 'Robot Framework, Python' },
-    {
-        icon: <LanIcon fontSize="large" />,
-        title: 'Protocols',
-        desc:
-            'HTTP/2, TLS, TCP, UDP, SCTP, IP, GTP, NG–AP, NAS, PFCP, RRC, PDCP, SDAP, RLC, FIAP, E2AP, XnAP',
-    },
-]
+  { icon: <CloudIcon fontSize="large" />, title: 'eMBB, uRLLC, mMTC' },
+  { icon: <WifiTetheringIcon fontSize="large" />, title: 'O–RAN (Open RAN)' },
+  { icon: <RouterIcon fontSize="large" />, title: 'Network Slicing' },
+  { icon: <DeveloperBoardIcon fontSize="large" />, title: 'Edge Computing' },
+  { icon: <CloudQueueIcon fontSize="large" />, title: 'Cloud-Native', desc: 'VNF, NFV, Kubernetes' },
+  { icon: <SettingsEthernetIcon fontSize="large" />, title: 'DevOps', desc: 'CI/CD, Jenkins, GitLab' },
+  { icon: <CodeIcon fontSize="large" />, title: 'Programming', desc: 'C/C++, Python, Go' },
+  { icon: <PublicIcon fontSize="large" />, title: 'Networking', desc: 'SDN, TCP/IP, TLS' },
+];
+
 
 const caseStudies = [
     {
@@ -230,6 +221,7 @@ const GPage = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
     const currentTab = tabData[selectedIndex]
 
+    const [hoveredItem, setHoveredItem] = useState(null)
 
     return (
         <>
@@ -237,7 +229,7 @@ const GPage = () => {
             <Box>
                 <FadeSection>
                     <Box mt={18} sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         color: 'white',
                         mt: 14,
                         py: 8,
@@ -247,22 +239,28 @@ const GPage = () => {
                     }}>
 
                         {/* Hex image grid */}
-                        <Container maxWidth="md" sx={{ textAlign: "center", }}>
+                        <Container maxWidth="md" sx={{ textAlign: "center", py: 6 }}>
                             <Typography variant="h2" fontWeight={700} gutterBottom>
                                 5G
                             </Typography>
-                            <Box
-                                component="img"
-                                src="/images/5g.png"
-                                alt="5G"
-                                sx={{
-                                    width: "100%",
-                                    borderRadius: 2,
-                                    boxShadow: 3,
-                                    mx: "auto"
-                                }}
-                            />
+
+                            <Typography variant="h5" fontWeight={500} color="text.secondary" gutterBottom>
+                                Empowering the Future with 5G Innovation
+                            </Typography>
+
+                            <Typography variant="body1" color="text.secondary" mb={4}>
+                                From Network Deployment to Smart Applications — delivers end-to-end 5G solutions across Telecom, Automotive, Healthcare, and more.
+                            </Typography>
+
+
+
+                            <Box>
+                                <Typography variant="body2" color="primary" sx={{ cursor: 'pointer' }}>
+                                    Explore Our 5G Services →
+                                </Typography>
+                            </Box>
                         </Container>
+
 
                     </Box>
                 </FadeSection>
@@ -331,44 +329,47 @@ const GPage = () => {
                         <Typography variant="h4" fontWeight="bold" gutterBottom>
                             Technologies
                         </Typography>
-                        <Container>
-                            <Grid container spacing={3} justifyContent="center" sx={{ mt: 2, px: 2 }}>
-                                {technologies.map((tech, index) => (
-                                    <Grid
-                                        item
-                                        xs={12}
-                                        sm={6}
-                                        md={tech.title === 'Protocols' ? 9 : 3}
-                                        lg={tech.title === 'Protocols' ? 9 : 3}
-                                        key={index}
-                                    >
+                            <Box sx={{ overflow: 'hidden', width: '100%', py: 4, backgroundColor: '#f7f9fc' }}>
+                                <Box
+                                    sx={{
+                                       display: 'flex',
+                                    width: 'max-content',
+                                    animation: 'scroll 40s linear infinite',
+                                    '@keyframes scroll': {
+                                        '0%': { transform: 'translateX(0)' },
+                                        '100%': { transform: 'translateX(-50%)' },
+                                    },
+                                    }}
+                                >
+                                    {[...technologies, ...technologies].map((tech, index) => (
                                         <Paper
+                                            key={index}
                                             elevation={3}
                                             sx={{
-                                                minHeight: 120,
+                                                minWidth: 240,
+                                                mx: 1.5,
                                                 p: 2,
                                                 textAlign: 'center',
                                                 border: '1px solid #e0e0e0',
                                                 borderRadius: '8px',
                                                 backgroundColor: '#fff',
                                                 color: '#000',
+                                                flexShrink: 0,
                                             }}
                                         >
-                                            <Box>{tech.icon}</Box>
+                                            <Box fontSize={32}>{tech.icon}</Box>
                                             <Typography variant="subtitle1" fontWeight="bold" sx={{ mt: 1 }}>
                                                 {tech.title}
                                             </Typography>
                                             {tech.desc && (
-                                                <Typography variant="body2" color="textSecondary">
+                                                <Typography variant="body2" color="text.secondary">
                                                     {tech.desc}
                                                 </Typography>
                                             )}
                                         </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
-
-                        </Container>
+                                    ))}
+                                </Box>
+                            </Box>
                     </Box>
 
                 </FadeSection>
@@ -392,8 +393,10 @@ const GPage = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection>
-                    <Container>
-                        <Box sx={{ p: 4, backgroundColor: '#f5f7fa' }}>
+                   
+                        <Box sx={{ p: 4,    background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)', }}>
                             <Box display="flex" justifyContent="center" alignItems="center" mb={1}>
                                 <Box
                                     component="img"
@@ -435,9 +438,9 @@ const GPage = () => {
                                 ))}
                             </Grid>
                         </Box>
-                    </Container>
+                   
                 </FadeSection>
-                <FadeSection id='Microsoft'>
+                {/* <FadeSection id='Microsoft'>
                     <Container>
                         <Box mt={3} p={5} >
                             <Box textAlign={"center"}>
@@ -489,53 +492,66 @@ const GPage = () => {
                             </Box>
                         </Box>
                     </Container>
-                </FadeSection>
+                </FadeSection> */}
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
-                        <Box
-                            sx={{
-                                background: '#009BFF',
-                                color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
-                                position: 'relative',
-                                zIndex: 1,
-                                mb: -15
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
+                    <Box
+                        sx={{
+                            background: '#009BFF',
+                            color: 'white',
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
+                            position: 'relative',
+                            zIndex: 1,
+                            mb: { xs: -8, sm: -10, md: -15 },
+                        }}
+                    >
+                        <Container>
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
+                                Download
+                            </Typography>
 
-                            }}
-                        >
-                            <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
-                                    Download
-                                </Typography>
-
-
-                                <Box mt={4} textAlign="center">
-                                    <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
-                                        download
-                                        underline="none"
-                                        sx={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: 1,
-                                            color: '#1976d2',
-                                            fontWeight: 'bold',
-                                            fontSize: '1.1rem',
-                                            '&:hover': {
-                                                textDecoration: 'underline',
-                                            },
-                                        }}
-                                    >
-                                        <FileDownloadIcon />
-                                        RPA Brochure
-                                    </Link>
-                                </Box>
-                            </Container>
-                        </Box>
-                    </Container>
-                </FadeSection>
+                            <Box mt={4} textAlign="center">
+                                <Link
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
+                                    download
+                                    underline="none"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
+                                        color: '#1976d2',
+                                        fontWeight: 'bold',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
+                                        '&:hover': {
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                                        },
+                                    }}
+                                >
+                                    <FileDownloadIcon />
+                                    5G IT Outsourcing
+                                </Link>
+                            </Box>
+                        </Container>
+                    </Box>
+                </Container>
+            </FadeSection>
 
             </Box>
             <ScrollToTopButton />

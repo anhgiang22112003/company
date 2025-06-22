@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Avatar, Box, Breadcrumbs, Collapse, Container, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Breadcrumbs, Collapse, Container, CssBaseline, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
 import { flexbox, Stack, styled, useTheme } from '@mui/system'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
@@ -22,8 +22,12 @@ import DnsIcon from '@mui/icons-material/Dns'
 import ResponsiveMenu from '../components/reponsiveMenu'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import IoTTopics from '../components/Iottopics'
-import { Label } from '@mui/icons-material'
 import ScrollDots from '../components/ScrollDots'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import 'swiper/css'
 const dataDev = [
     { title: 'CI/CD', img: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530092107.010.webp' },
     { title: 'LOG MANAGEMENT', img: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530092113.599.webp' },
@@ -54,28 +58,29 @@ const Microsoft = [
     {
         title: "Technologies",
         technologies: [
-            "C#, ASP.NET, ASP.NET MVC, TypeScript, Razor, .NET Core, VB.NET, EF, ADO.NET, VBA, WCF, WPF, WF, MS IoT, Machine Learning"
+            "C#", "ASP.NET Core", "TypeScript", ".NET Core", "Entity Framework", "WPF"
         ],
     },
     {
         title: "Server & Middleware",
         technologies: [
-            "SharePoint, SharePoint Online, MS Dynamics AX, MS Dynamics CRM, NAV, MS Dynamics 365, Project Server, TFS, Test ManagerApplication Insights, TeamCity, Octopus"
+            "SharePoint", "MS Dynamics 365", "TFS", "TeamCity"
         ],
     },
     {
         title: "Cloud",
         technologies: [
-            "Azure IoT Hub, SQL Azure, Azure Mobile, Signal R, Notification Hub, Azure Service Bus, Azure Monitor"
+            "Azure IoT Hub", "Azure Service Bus", "Azure Monitor", "SignalR"
         ],
     },
     {
         title: "Analytics & BI",
         technologies: [
-            "SSIS, SSAS, SSRS, BI Tools, SQL Server Data Tools"
+            "SSIS", "SSRS", "Power BI"
         ],
     },
 ]
+
 const skills = [
     { icon: <WifiIcon fontSize="large" />, title: 'O-RAN', desc: '(Open RAN)' },
     { icon: <DnsIcon fontSize="large" />, title: '5G Core' },
@@ -167,40 +172,36 @@ const machineLearningData = [
     {
         title: 'Reinforcement Learning',
         items: [
-            "Q-Learning", "Policy Gradient", "DQN", "Actor-Critic",
-            "A3C", "DDPG", "TD Learning", "SARSA"
+            "Q-Learning", "Policy Gradients", "Actor-Critic", "Deep Q Network (DQN)",
+            "Reward Shaping", "Exploration vs Exploitation", "Value Iteration", "Monte Carlo Tree Search"
         ]
-    }, {
-        title: 'Machine Learning',
+    },
+    // 👇 Dưới đây là 3 phần bạn cần thêm
+    {
+        title: 'Natural Language Processing',
         items: [
-            "Descriptive Statistics", "Deep Learning", "TensorFlow", "Keras",
-            "Yolo", "Model Optimization", "TensorRT", "OpenVINO",
-            "Supervised", "Unsupervised", "Transfer Learning", "Clustering"
+            "Tokenization", "Named Entity Recognition", "Text Classification",
+            "Word Embeddings (Word2Vec, GloVe)", "Transformers", "BERT", "GPT Models",
+            "Sentiment Analysis", "Machine Translation"
         ]
     },
     {
-        title: 'Reinforcement Learning',
+        title: 'Computer Vision',
         items: [
-            "Q-Learning", "Policy Gradient", "DQN", "Actor-Critic",
-            "A3C", "DDPG", "TD Learning", "SARSA"
-        ]
-    }, {
-        title: 'Machine Learning',
-        items: [
-            "Descriptive Statistics", "Deep Learning", "TensorFlow", "Keras",
-            "Yolo", "Model Optimization", "TensorRT", "OpenVINO",
-            "Supervised", "Unsupervised", "Transfer Learning", "Clustering"
+            "Image Classification", "Object Detection (YOLO, SSD)", "Semantic Segmentation",
+            "OpenCV", "Face Recognition", "OCR", "Data Augmentation", "Image Preprocessing"
         ]
     },
     {
-        title: 'Reinforcement Learning',
+        title: 'AI Tools & Frameworks',
         items: [
-            "Q-Learning", "Policy Gradient", "DQN", "Actor-Critic",
-            "A3C", "DDPG", "TD Learning", "SARSA"
+            "PyTorch", "Scikit-learn", "FastAI", "Hugging Face",
+            "MLflow", "ONNX", "Google Colab", "Weights & Biases",
+            "AutoML", "Apache Spark MLlib"
         ]
     }
-
 ]
+
 const HardwareData = [
     {
         title: 'Chipset',
@@ -298,43 +299,22 @@ const datas = [
             "AWS Kinesis Stream",
             "AWS Kinesis Firehose",
             "AWS EMR",
-            "SSIS",
-            "SSRS",
-            "AWS Glue",
-            "AWS SQS",
-            "AWS DMS",
-            "AWS Kinesis Stream",
-            "AWS Kinesis Firehose",
-            "AWS EMR",
         ],
     },
     {
         title: "BI and Data Visualization",
-        technologies: [
-            "BigQuery",
-            "Snowflake",
-            "Redshift",
-            "Azure Synapse",
-        ],
+        technologies: ["BigQuery", "Snowflake", "Redshift", "Azure Synapse"],
     },
     {
         title: "Programming",
-        technologies: [
-            "BigQuery",
-            "Snowflake",
-            "Redshift",
-            "Azure Synapse",
-        ],
+        technologies: ["BigQuery", "Snowflake", "Redshift", "Azure Synapse"],
     },
     {
         title: "Frameworks​",
-        technologies: [
-            "Databricks",
-            "Hadoop",
-            "Hive",
-        ],
+        technologies: ["Databricks", "Hadoop", "Hive"],
     },
 ]
+
 const leftData = [
     {
         title: 'J2EE',
@@ -377,37 +357,30 @@ const dataWeb = [
     {
         title: 'Frontend',
         items: [
-            'CSS3, AngularJS, Bootstrap & NodeJS',
             'ReactJS, React Native, Redux',
-            'LESS, SASS, EnyoJS, Moonstone, NoSQL',
-            'Backbone JS, Underscore JS, Require JS, jQuery',
-            'Durandal JS, KnockoutJS, Ext JS',
-            'EmberJS, NextJS'
+            'NextJS, CSS3, Bootstrap',
+            'SASS, jQuery'
         ],
     },
     {
         title: 'PHP Frameworks',
-        items: ['CodeIgniter, Symfony, Laravel, Ez, Zoop/Pear'],
+        items: ['Laravel, Symfony'],
     },
     {
         title: 'Python Frameworks',
-        items: [
-            'wxPython, Django, rabbitMQ, Celery, Mochikit, CherryPy, Kid, SQLObject'
-        ],
+        items: ['Django'],
     },
     {
         title: 'CMS Platforms',
-        items: ['Drupal, WordPress, Joomla, Typo3, Orchard'],
+        items: ['WordPress, Drupal'],
     },
     {
         title: 'E-Commerce Platforms',
-        items: ['Magento, osCommerce, Rails e-Commerce'],
+        items: ['Magento'],
     },
     {
         title: 'Ruby on Rails Ecosystem',
-        items: [
-            'Rails, ActiveMerchant, Devise, Resque, Canvas, Social Stream, Redis, Etherpad, Sphinx, Sunspot, Solr'
-        ],
+        items: ['Rails, Redis'],
     },
 ]
 const dataLowCode = {
@@ -417,13 +390,10 @@ const dataLowCode = {
         'Service Studio',
         'Integration Studio',
         'Architecture Dashboard',
-        'Service Center, Lifetime',
-        'Workflow Builder, Integration Builder, DB Connectors, CMF, BPT',
-        'Forge',
+
     ],
     Salesforce: [
-        'Visualforce and Apex',
-        'Lightning',
+
         'Salesforce Object Query Language',
         'Salesforce CPQ platform',
         'Sales Cloud',
@@ -434,13 +404,8 @@ const dataLowCode = {
 }
 
 const TechnologiesPage = () => {
-    const [activeMenu, setActiveMenu] = useState<string | null>(null)
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-    const handleClick = (techLabel: string) => {
-        console.log('Clicked:', techLabel)
-    }
-
     const centerX = isMobile ? 140 : 300
     const centerY = isMobile ? 140 : 300
     const radius = isMobile ? 130 : 220
@@ -476,28 +441,19 @@ const TechnologiesPage = () => {
         { id: "Hardware", label: "Hardware" },
         { id: "download", label: "download" },
     ]
-    const containerVariants = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.2, // Delay giữa mỗi item
-            },
-        },
-    }
 
-    const itemVariants = {
-        hidden: { opacity: 0, scale: 0.5, y: 20 },
-        visible: { opacity: 1, scale: 1, y: 0 },
-    }
     return (
         <>
 
             <Header />
             <ScrollDots sections={section} />
-            <Box bgcolor="#f5f5f5">
+            <Box bgcolor="#f5f5f5" sx={{
+                boxSizing: 'border-box',
+                '*': { boxSizing: 'border-box' },
+            }}>
                 <FadeSection>
 
-                    <Box bgcolor={"#1976d2"}>
+                    <Box py={isMobile ? 25 : 16} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))' }}>
                         <img
                             style={{ position: "absolute" }}
                             width={"30%"}
@@ -506,49 +462,71 @@ const TechnologiesPage = () => {
                         />
 
                         <Box
-                            bgcolor="#1976d2"
-                            py={isMobile ? 25 : 16}
+
                             position="relative"
                             sx={{
-                                width: isMobile ? 280 : 600,
-                                height: isMobile ? 280 : 600,
+                                width: isMobile ? 280 : 603,
+                                height: isMobile ? 280 : 603,
                                 mx: 'auto',
                                 borderRadius: '8px',
                                 textAlign: 'center',
                             }}
                         >
-
                             <Box sx={{ position: 'relative', width: '100%', height: '100%' }}>
 
-                                {technologies.map((tech, i) => {
-                                    const IconComponent = tech.icon as React.ElementType
-                                    const angle = (360 / technologies.length) * i
-                                    const rad = (angle * Math.PI) / 180
-                                    const x = centerX + radius * Math.cos(rad) - itemOffset
-                                    const y = centerY + radius * Math.sin(rad) - itemOffset
+                                {/* ✅ Vòng bao xoay toàn bộ item */}
+                                <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        animation: 'rotateOrbit 20s linear infinite',
+                                        '@keyframes rotateOrbit': {
+                                            '0%': { transform: 'rotate(0deg)' },
+                                            '100%': { transform: 'rotate(360deg)' },
+                                        },
+                                    }}
+                                >
+                                    {technologies.map((tech, i) => {
+                                        const IconComponent = tech.icon as React.ElementType
+                                        const angle = (360 / technologies.length) * i
+                                        const rad = (angle * Math.PI) / 180
+                                        const x = centerX + radius * Math.cos(rad) - itemOffset
+                                        const y = centerY + radius * Math.sin(rad) - itemOffset
 
-                                    return (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 30 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: i * 0.2, duration: 0.5 }}
-                                        >
-                                            <Item key={tech.label} sx={{ top: y, left: x }} small={isMobile}>
-                                                <IconComponent size={isMobile ? 20 : 30} color={tech.color} />
-                                                <Typography
-                                                    variant="caption"
-                                                    sx={{
-                                                        textAlign: 'center',
-                                                        mt: 0.5,
-                                                        fontSize: isMobile ? '0.7rem' : 'inherit'
-                                                    }}
-                                                >
-                                                    {tech.label}
-                                                </Typography>
-                                            </Item></motion.div>
-                                    )
-                                })}
+                                        return (
+                                            <motion.div
+                                                key={tech.label}
+                                                initial={{ opacity: 0, y: 30 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: i * 0.2, duration: 0.5 }}
+                                                style={{
+                                                    position: 'absolute',
+                                                    top: y,
+                                                    left: x,
+                                                }}
+                                            >
+                                                <Item small={isMobile}>
+                                                    <IconComponent size={isMobile ? 20 : 30} color={tech.color} />
+                                                    <Typography
+                                                        variant="caption"
+                                                        sx={{
+                                                            textAlign: 'center',
+                                                            mt: 0.5,
+                                                            fontSize: isMobile ? '0.7rem' : 'inherit',
+                                                        }}
+                                                    >
+                                                        {tech.label}
+                                                    </Typography>
+                                                </Item>
+                                            </motion.div>
+                                        )
+                                    })}
+                                </Box>
 
+                                {/* Trung tâm cố định */}
                                 <CenterCircle small={isMobile}>
                                     <Typography
                                         variant="h5"
@@ -575,6 +553,7 @@ const TechnologiesPage = () => {
                             </Box>
                         </Box>
                     </Box>
+
 
                 </FadeSection>
                 <FadeSection>
@@ -852,20 +831,76 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/*Ai Machine */}
                 <FadeSection id='AI & Machine Learning'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+
+                    <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={5} textAlign={"center"}>
+                        <Container>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                            <Typography fontWeight={"bold"} mb={6} variant='h4'>
                                 AI & Machine Learning
                             </Typography>
-                            <Box sx={{ px: 4, mb: 4 }}>
-                                <Grid container spacing={4}>
+                            <Box sx={{ px: 4, mb: 4, position: 'relative', }}>
+                                <Swiper
+                                    modules={[Navigation, Pagination, Autoplay]}
+                                    navigation={{
+                                        prevEl: '.custom-swiper-prev',
+                                        nextEl: '.custom-swiper-next',
+                                    }}
+                                    spaceBetween={20}
+
+                                    slidesPerView={1}
+                                    breakpoints={{
+                                        600: {
+                                            slidesPerView: 2,
+                                        },
+                                        900: {
+                                            slidesPerView: 3,
+                                        },
+                                    }}
+                                    autoplay={{
+                                        delay: 2000,
+                                        disableOnInteraction: false,
+                                    }}
+                                    loop
+                                >
                                     {machineLearningData.map((section, index) => (
-                                        <Grid item xs={12} sm={6} md={4} key={index}>
+                                        <SwiperSlide key={index}>
                                             <MachineLearningCard section={section} />
-                                        </Grid>
+                                        </SwiperSlide>
                                     ))}
-                                </Grid>
+                                </Swiper>
+                                <IconButton
+                                    className="custom-swiper-prev"
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: { xs: -20, sm: -40, md: -50 },
+                                        transform: 'translateY(-50%)',
+                                        zIndex: 10,
+                                        backgroundColor: 'white',
+                                        boxShadow: 1,
+                                        '&:hover': { backgroundColor: '#e0f2ff' },
+                                    }}
+                                >
+                                    <ArrowBackIosNewIcon />
+                                </IconButton>
+
+                                {/* Nút next */}
+                                <IconButton
+                                    className="custom-swiper-next"
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        right: { xs: -20, sm: -40, md: -50 },
+                                        transform: 'translateY(-50%)',
+                                        zIndex: 10,
+                                        backgroundColor: 'white',
+                                        boxShadow: 1,
+                                        '&:hover': { backgroundColor: '#e0f2ff' },
+                                    }}
+                                >
+                                    <ArrowForwardIosIcon />
+                                </IconButton>
+
                             </Box>
                             <Link href="/technologies/ai-ml-data-sciences">
                                 <Typography
@@ -877,7 +912,7 @@ const TechnologiesPage = () => {
                                         cursor: 'pointer',
                                         mt: 1,
                                         fontWeight: 600,
-                                        color: 'inherit',
+                                        color: 'white',
                                         transition: 'color 0.3s ease',
                                         '&::after': {
                                             content: '""',
@@ -909,9 +944,10 @@ const TechnologiesPage = () => {
                                     <ArrowForwardIcon />
                                 </Typography>
                             </Link>
-                        </Box>
+                        </Container>
+                    </Box>
 
-                    </Container>
+
                 </FadeSection>
                 {/**RPA */}
                 <FadeSection id='RPA'>
@@ -970,8 +1006,9 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/**5g */}
                 <FadeSection id="5G">
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+
+                    <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={5} textAlign={"center"}>
+                        <Container>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 5G
@@ -981,11 +1018,15 @@ const TechnologiesPage = () => {
                                     <Grid
                                         key={index}
                                         item
-                                        xs={6}        // 1 ô trên mobile
-                                        sm={6}         // 2 ô trên tablet nhỏ
-                                        md={4}         // 3 ô trên tablet lớn
-                                        lg={2.4}       // 5 ô trên desktop (2.4 * 5 = 12)
+                                        xs={6}
+                                        sm={6}
+                                        md={4}
+                                        lg={2.4}
                                         xl={2.4}
+                                        sx={{
+                                            display: 'flex',        // ensure full height
+                                            flexDirection: 'column',
+                                        }}
                                     >
                                         <Box
                                             sx={{
@@ -993,23 +1034,28 @@ const TechnologiesPage = () => {
                                                 borderRadius: 2,
                                                 textAlign: 'center',
                                                 p: {
-                                                    xs: 2,     // giảm padding trên mobile
-                                                    sm: 3,     // padding mặc định ở sm trở lên
+                                                    xs: 2,
+                                                    sm: 3,
                                                 },
                                                 minHeight: {
-                                                    xs: 120,
-                                                    sm: 140,
+                                                    xs: 140,
+                                                    sm: 180,
                                                 },
+                                                height: '100%',       // equal height
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'center', // center vertically
                                             }}
                                         >
                                             <Box sx={{ color: '#1ea7fd', mb: 1 }}>{item.icon}</Box>
+
                                             <Typography
                                                 fontWeight={600}
                                                 sx={{
                                                     fontSize: {
-                                                        xs: '14px',  // Mobile
-                                                        sm: '16px',  // Tablet nhỏ
-                                                        md: '18px',  // Tablet lớn
+                                                        xs: '14px',
+                                                        sm: '16px',
+                                                        md: '18px',
                                                     },
                                                 }}
                                             >
@@ -1023,10 +1069,11 @@ const TechnologiesPage = () => {
                                                     mt={1}
                                                     sx={{
                                                         fontSize: {
-                                                            xs: '12px', // Mobile
+                                                            xs: '12px',
                                                             sm: '14px',
                                                             md: '15px',
                                                         },
+                                                        mt: 'auto',
                                                     }}
                                                 >
                                                     {item.desc}
@@ -1036,6 +1083,7 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 ))}
                             </Grid>
+
                             <Link href='/technologies/5g'>
                                 <Typography
                                     variant="body2"
@@ -1046,7 +1094,7 @@ const TechnologiesPage = () => {
                                         cursor: 'pointer',
                                         mt: 4,
                                         fontWeight: 600,
-                                        color: 'inherit',
+                                        color: 'white',
                                         transition: 'color 0.3s ease',
                                         '&::after': {
                                             content: '""',
@@ -1059,12 +1107,12 @@ const TechnologiesPage = () => {
                                             transition: 'width 0.5s ease',
                                         },
                                         '&:hover': {
-                                            color: 'blue',
+                                            color: 'white',
                                             '&::after': {
                                                 width: '100%',
                                             },
                                             '& svg': {
-                                                color: 'blue',
+                                                color: 'white',
                                                 transition: 'color 0.3s ease',
                                             },
                                         },
@@ -1078,9 +1126,10 @@ const TechnologiesPage = () => {
                                     <ArrowForwardIcon />
                                 </Typography>
                             </Link>
-                        </Box>
+                        </Container>
+                    </Box>
 
-                    </Container>
+
                 </FadeSection>
                 {/**iot */}
                 <FadeSection id='LOT'>
@@ -1140,9 +1189,13 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/*cloud */}
                 <FadeSection id='Cloud'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+
+                    <Box mt={3} sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
+                    }} p={5} textAlign={"center"}>
+                        <Container> <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 Cloud
                             </Typography>
@@ -1188,7 +1241,7 @@ const TechnologiesPage = () => {
                                         cursor: 'pointer',
                                         mt: 4,
                                         fontWeight: 600,
-                                        color: 'inherit',
+                                        color: 'white',
                                         transition: 'color 0.3s ease',
                                         '&::after': {
                                             content: '""',
@@ -1220,8 +1273,9 @@ const TechnologiesPage = () => {
                                     <ArrowForwardIcon />
                                 </Typography>
                             </Link>
-                        </Box>
-                    </Container>
+                        </Container>
+                    </Box>
+
                 </FadeSection>
                 {/*DevOps */}
                 <FadeSection id='DevOps'>
@@ -1239,8 +1293,6 @@ const TechnologiesPage = () => {
                                                 width: '100%',
                                                 bgcolor: '#f5faff',
                                                 boxShadow: 1,
-
-
                                             }}
                                         >
                                             <Box
@@ -1315,14 +1367,16 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/* java*/}
                 <FadeSection id='Java'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                    Java
-                                </Typography>
-                            </Box>
+
+                    <Box mt={3} sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    }} p={5} >
+                        <Container> <Box textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                Java
+                            </Typography>
+                        </Box>
                             <Box
                                 sx={{
                                     backgroundColor: '#f5faff',
@@ -1371,11 +1425,9 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 </Grid>
                             </Box>
-                            <Box textAlign={"center"}>
+                        </Container>
+                    </Box>
 
-                            </Box>
-                        </Box>
-                    </Container>
                 </FadeSection>
                 {/* micosoft*/}
                 <FadeSection id='Microsoft'>
@@ -1448,142 +1500,137 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/* web development*/}
                 <FadeSection id='Web Development'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                    Web Development
-                                </Typography>
-                            </Box>
-                            <Box sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 2 }}>
-                                <Grid container spacing={2}>
-                                    {dataWeb.map((section, index) => (
-                                        <Grid item xs={12} sm={6} md={4} mb={3} key={index}>
-                                            <Box
-                                                sx={{
-                                                    bgcolor: '#f0f8ff',
-                                                    border: '1px solid #cce5ff',
-                                                    borderRadius: 2,
-                                                    p: 2,
-                                                    height: '100%',
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    justifyContent: 'flex-start',
-                                                }}
-                                            >
-                                                <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
-                                                    {section.title}
-                                                </Typography>
-                                                <Stack spacing={1}>
-                                                    {section.items.map((item, i) => (
-                                                        <Box key={i} display="flex" alignItems="flex-start">
-                                                            <FiberManualRecordIcon
-                                                                sx={{ fontSize: 8, color: '#1ea7fd', mt: '6px', mr: 1 }}
-                                                            />
-                                                            <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
-                                                                {item}
-                                                            </Typography>
-                                                        </Box>
-                                                    ))}
-                                                </Stack>
-                                            </Box>
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Box>
-                            <Box textAlign={"center"}>
 
-                            </Box>
+                    <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={5} ><Container>
+                        <Box textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                Web Development
+                            </Typography>
+                        </Box>
+                        <Box sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 2 }}>
+                            <Grid container spacing={2}>
+                                {dataWeb.map((section, index) => (
+                                    <Grid item xs={12} sm={6} md={4} mb={3} key={index}>
+                                        <Box
+                                            sx={{
+                                                bgcolor: '#f0f8ff',
+                                                border: '1px solid #cce5ff',
+                                                borderRadius: 2,
+                                                p: 2,
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'flex-start',
+                                            }}
+                                        >
+                                            <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1 }}>
+                                                {section.title}
+                                            </Typography>
+                                            <Stack spacing={1}>
+                                                {section.items.map((item, i) => (
+                                                    <Box key={i} display="flex" alignItems="flex-start">
+                                                        <FiberManualRecordIcon
+                                                            sx={{ fontSize: 8, color: '#1ea7fd', mt: '6px', mr: 1 }}
+                                                        />
+                                                        <Typography variant="body2" sx={{ lineHeight: 1.6 }}>
+                                                            {item}
+                                                        </Typography>
+                                                    </Box>
+                                                ))}
+                                            </Stack>
+                                        </Box>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
+                        <Box textAlign={"center"}>
+
                         </Box>
                     </Container>
+                    </Box>
+
                 </FadeSection>
                 {/*mobile*/}
                 <FadeSection id='Mobile'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                    Mobile
-                                </Typography>
-                            </Box>
+                    <Box mt={3} sx={{ minHeight: '450px', scrollMarginTop: '130px' }} bgcolor={"white"} p={7} >
+                        <Box textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                Mobile
+                            </Typography>
+                        </Box>
+                        <Box
+                            sx={{
+                                overflow: 'hidden',
+                                backgroundColor: '#f5faff',
+                                p: { xs: 2, sm: 3 },
+                                borderRadius: 2,
+                                position: 'relative',
+                                width: '100%',
+                            }}
+                        >
                             <Box
                                 sx={{
-                                    backgroundColor: '#f5faff',
-                                    p: { xs: 2, sm: 3, md: 4 },
-                                    borderRadius: 2,
-                                    boxShadow: 1,
-                                    maxWidth: 1300,
-                                    mx: 'auto',
+                                    display: 'flex',
+                                    width: 'max-content',
+                                    animation: 'scroll 20s linear infinite',
+                                    '@keyframes scroll': {
+                                        '0%': { transform: 'translateX(0)' },
+                                        '100%': { transform: 'translateX(-50%)' },
+                                    },
                                 }}
                             >
-                                {rows.map((row, rowIndex) => (
+                                {/* Lặp lại 2 lần để cuộn liên tục */}
+                                {[...dataMobile, ...dataMobile].map((item, i) => (
                                     <Box
-                                        key={rowIndex}
+                                        key={i}
                                         sx={{
                                             display: 'flex',
-                                            flexDirection: { xs: 'column', sm: 'row' },
-                                            gap: 2,
-                                            mb: 2,
+                                            alignItems: 'center',
+                                            border: '1px solid #cce5ff',
+                                            backgroundColor: '#e8f4fc',
+                                            borderRadius: 2,
+                                            padding: 2,
+                                            minWidth: 220,
+                                            marginRight: 2,
+                                            flexShrink: 0,
                                         }}
                                     >
-                                        {row.map((item, i) => (
-                                            <Box
-                                                key={i}
-                                                sx={{
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    border: '1px solid #cce5ff',
-                                                    backgroundColor: '#e8f4fc',
-                                                    borderRadius: 2,
-                                                    padding: 2,
-                                                    flex: 1,
-                                                    minWidth: 0,
-                                                }}
-                                            >
-                                                <Box
-                                                    component="img"
-                                                    src={item.img}
-                                                    alt={item.title}
-                                                    sx={{
-                                                        width: 40,
-                                                        height: 40,
-                                                        objectFit: 'contain',
-                                                        mr: 2,
-                                                        flexShrink: 0,
-                                                    }}
-                                                />
-                                                <Typography
-                                                    variant="body2"
-                                                    sx={{
-                                                        fontWeight: 500,
-                                                        wordBreak: 'break-word',
-                                                    }}
-                                                >
-                                                    {item.title}
-                                                </Typography>
-                                            </Box>
-                                        ))}
+                                        <Box
+                                            component="img"
+                                            src={item.img}
+                                            alt={item.title}
+                                            sx={{ width: 40, height: 40, objectFit: 'contain', mr: 2 }}
+                                        />
+                                        <Typography
+                                            variant="body2"
+                                            sx={{ fontWeight: 500, wordBreak: 'break-word' }}
+                                        >
+                                            {item.title}
+                                        </Typography>
                                     </Box>
                                 ))}
                             </Box>
-                            <Box textAlign={"center"}>
-
-                            </Box>
                         </Box>
-                    </Container>
+
+                    </Box>
+
                 </FadeSection>
                 {/*low code */}
                 <FadeSection id='Low code'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                    Low Code
-                                </Typography>
-                            </Box>
+
+                    <Box mt={3} sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
+                    }} p={5} >
+                        <Container> <Box textAlign={"center"}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                Low Code
+                            </Typography>
+                        </Box>
                             <Box
                                 sx={{
                                     border: '1px solid #ccc',
@@ -1691,7 +1738,7 @@ const TechnologiesPage = () => {
 
                                             mt: 4,
                                             fontWeight: 600,
-                                            color: 'inherit',
+                                            color: 'white',
                                             transition: 'color 0.3s ease',
                                             '&::after': {
                                                 content: '""',
@@ -1724,8 +1771,8 @@ const TechnologiesPage = () => {
                                     </Typography>
                                 </Link>
                             </Box>
-                        </Box>
-                    </Container>
+                        </Container>  </Box>
+
                 </FadeSection>
                 {/*hard were */}
                 <FadeSection id='Hardware'>
@@ -1793,49 +1840,58 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/*dowload code */}
                 <FadeSection id="download">
-                    <Container sx={{ mt: 4 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15,
-                                textAlign: "center"
-
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        Technical Competencies
+                                        Technologies IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

@@ -51,7 +51,7 @@ const SoftwareDevelopmentPage = () => {
         },
     ]
 
- 
+
     const services = [
         {
             title: "R&D",
@@ -60,7 +60,7 @@ const SoftwareDevelopmentPage = () => {
         },
         {
             title: "MVP Development",
-            description: "Create Minimum Viable Products to validate ideas.",
+            description: "Create Minimum Viable Products.",
             imageUrl: "https://tmastorage.azureedge.net/media/services/softwareDevelopment/ourService/mvp-development.webp",
         },
         {
@@ -110,7 +110,8 @@ const SoftwareDevelopmentPage = () => {
                     </Container>
                 </FadeSection>
                 <FadeSection id='about' >
-                    <Box >
+                    <Box
+                      >
                         <Box >
                             <Container sx={{ textAlign: "center" }}>
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
@@ -121,7 +122,7 @@ const SoftwareDevelopmentPage = () => {
                             </Container>
                         </Box>
                         <Container sx={{ mt: 4, mb: 4 }}>
-                            <Grid container spacing={4}>
+                            <Grid container spacing={1}>
                                 {services.map((service, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={index}>
                                         <Paper elevation={3} sx={{ padding: 3, borderRadius: 2, bgcolor: '#2196F3', color: 'white', textAlign: 'center' }}>
@@ -145,15 +146,20 @@ const SoftwareDevelopmentPage = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection id='about' >
-                    <Box sx={{ mt: 10 }}>
+                    <Box   sx={{
+                        p:5,
+                            background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                            backdropFilter: 'blur(6px)',
+                            WebkitBackdropFilter: 'blur(6px)',
+                        }}>
                         <Box >
-                            <Container sx={{ textAlign: "center" }}>
+                            <Box textAlign={"center"}>
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                                 <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                     Our Team
                                 </Typography>
                                 <Typography textAlign={"center"} >Our team of highly proficient software engineers excels in offshore software development services. Complying with international standards, we lead as the top ITO company in Vietnam, aiming to conquer key markets worldwide with our diverse skills and technology expertise.</Typography>
-                            </Container>
+                            </Box>
                         </Box>
                         <Container sx={{ mt: 4, mb: 4 }}>
 
@@ -195,47 +201,60 @@ const SoftwareDevelopmentPage = () => {
                         </Container>
                     </Box>
                 </FadeSection>
-              
+
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 16, md: 20 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                         Technical Competencies
+                                        Software IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

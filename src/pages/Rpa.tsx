@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Slide, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 const hexImages = [
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240521094225.100.webp',
     'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240521094233.103.webp',
@@ -215,7 +216,6 @@ const solutions = [
             'Debt reminder',
             'Insurance Claim Payment Process',
             'Finance report mismatches detection',
-            'Identity card & Driver\'s license parser',
             'Bank & Tax Statement OCR',
         ],
     },
@@ -254,7 +254,8 @@ const RpaPage = () => {
             <Box>
                 <FadeSection>
                     <Box mt={16} sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+
                         color: 'white',
                         py: 4,
                         clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
@@ -269,88 +270,37 @@ const RpaPage = () => {
                                 spacing={{ xs: 2, sm: 4 }} // giảm spacing trên mobile
                                 alignItems="center"
                                 justifyContent="center"
-                                sx={{ py: { xs: 2, md: 6 }, textAlign: { xs: 'center', md: 'left' } }}
+                                sx={{ py: { xs: 2, }, textAlign: { xs: 'center', md: 'left' } }}
                             >
                                 {/* Cột hình lục giác */}
-                                <Grid item xs={12} md={6}>
-                                    <Box
-                                        sx={{
-                                            display: 'grid',
-                                            gridTemplateColumns: {
-                                                xs: 'repeat(2, 100px)',  // mobile
-                                                sm: 'repeat(3, 120px)',  // tablet
-                                                md: 'repeat(3, 140px)',  // desktop
-                                            },
-                                            gap: '16px',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                             
-                                        }}
-                                    >
-                                        {hexImages.map((src, index) => (
-                                            <Box
-                                                key={index}
-                                                sx={{
-                                                    width: { xs: 100, sm: 120, md: 140 },
-                                                    height: { xs: 90, sm: 105, md: 120 },
-                                                    backgroundColor: src ? 'white' : 'transparent',
-                                                    clipPath:
-                                                        'polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%)',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center',
-                                                    transform: {
-                                                        xs: 'translateY(0)',
-                                                        md: `translateY(${Math.floor(index / 3) % 2 === 1 ? '48px' : '0'})`,
-                                                    },
-                                                    transition: 'transform 0.3s',
-                                                    '&:hover img': {
-                                                        transform: 'scale(1.1)',
-                                                    },
-                                                }}
-                                            >
-                                                {src && (
-                                                    <img
-                                                        src={src}
-                                                        alt={`hex-${index}`}
-                                                        style={{
-                                                            maxWidth: '80%',
-                                                            maxHeight: '80%',
-                                                            transition: 'transform 0.3s',
-                                                        }}
-                                                    />
-                                                )}
-                                            </Box>
-                                        ))}
-                                    </Box>
-                                </Grid>
+
 
                                 {/* Cột chữ RPA */}
-                                <Grid item xs={12} md={5}>
-                                    <Box sx={{ textAlign: { xs: 'center', md: 'left' }}}>
-                                        <Typography
-                                            variant="h4"
-                                            sx={{
-                                                fontWeight: 700,
 
-                                                transition: 'color 0.3s',
-                                                '&:hover': { color: '#00e5ff', cursor: 'pointer' },
-                                            }}
-                                        >
-                                            RPA Center
-                                        </Typography>
+                                <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+                                    <Typography
+                                        variant="h4"
+                                        sx={{
+                                            fontWeight: 700,
 
-                                        <Typography fontWeight={600} mb={1}>
-                                            Now your business processes can be automated
-                                        </Typography>
-                                        <Typography>✓ Arm all of your employees with virtual assistant</Typography>
-                                        <Typography>✓ Propelling digital transformation forward</Typography>
-                                        <Typography>✓ Your processes are now more intelligent with AI</Typography>
-                                    </Box>
-                                </Grid>
+                                            transition: 'color 0.3s',
+                                            '&:hover': { color: '#00e5ff', cursor: 'pointer' },
+                                        }}
+                                    >
+                                        RPA Center
+                                    </Typography>
+
+                                    <Typography fontWeight={600} mb={1}>
+                                        Now your business processes can be automated
+                                    </Typography>
+                                    <Typography>✓ Arm all of your employees with virtual assistant</Typography>
+                                    <Typography>✓ Propelling digital transformation forward</Typography>
+                                    <Typography>✓ Your processes are now more intelligent with AI</Typography>
+                                </Box>
+
                             </Grid>
                             <Grid container justifyContent="center" spacing={{ xs: 2, sm: 3 }}
-                                mt={{ xs: 2, sm: 3, md: 4 }} >
+                                mt={{ xs: 2, sm: 3, }} >
                                 {stats.map((stat, index) => (
                                     <Grid item key={index} xs={6} sm={4} md="auto">
                                         <Paper
@@ -386,11 +336,6 @@ const RpaPage = () => {
                                 ))}
                             </Grid>
                         </Container>
-
-                        {/* Stats */}
-
-
-
                     </Box>
                 </FadeSection>
                 <FadeSection >
@@ -418,114 +363,122 @@ const RpaPage = () => {
                     <Container sx={{ py: 8 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} md={5}>
-                                <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
-                                    Overview
-                                </Typography>
-                                <Typography sx={{ textAlign: 'justify' }}>
-                                    With a wide range of solutions for AI/ML, document parsing, object detection and popular tools (Automation Anywhere,Ui Path, Power Automate, Blueprism), RPA Center has provided automation solutions for a variety of industries, including finance, banking, logistics, human resources, and e-commerce.
-                                    RPA Center provides solutions for automation projects or dedicated teams for a full automation program with multiple projects.
+                                <SlideInOnScroll>
+                                    <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
+                                        Overview
+                                    </Typography>
+                                    <Typography sx={{ textAlign: 'justify' }}>
+                                        With a wide range of solutions for AI/ML, document parsing, object detection and popular tools (Automation Anywhere,Ui Path, Power Automate, Blueprism), RPA Center has provided automation solutions for a variety of industries, including finance, banking, logistics, human resources, and e-commerce.
+                                        RPA Center provides solutions for automation projects or dedicated teams for a full automation program with multiple projects.
 
-                                </Typography>
+                                    </Typography>
+                                </SlideInOnScroll>
                             </Grid>
                             <Grid item xs={12} md={1}></Grid>
                             <Grid item xs={12} md={6}>
-                                <Grid container spacing={2}>
-                                    <img width={"100%"} src="/images/overview.png" alt="overview" />
-                                </Grid>
+                                <SlideInOnScroll direction='right'>
+                                    <Grid container spacing={2}>
+                                        <img width={"100%"} src="/images/overview.png" alt="overview" />
+                                    </Grid></SlideInOnScroll>
                             </Grid>
                         </Grid>
                     </Container>
                 </FadeSection>
                 <FadeSection>
-                    <Box >
-                        <Container sx={{ textAlign: "center" }}>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
-                                RPA Process
-                            </Typography>
-                        </Container>
-                    </Box>
-                    <Box sx={{ backgroundColor: '#f4faff', p: 4 }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, flexWrap: 'wrap' }}>
-                            {steps.map((step, idx) => (
-                                <Box key={idx} sx={{ width: 260, textAlign: 'center', position: 'relative' }}>
-                                    {/* Arrow Title */}
-                                    <Box
-                                        sx={{
-                                            width: '100%',
-                                            height: 60,
-                                            backgroundColor: step.color,
-                                            clipPath: 'polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%)',
-                                            color: 'white',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            fontWeight: 'bold',
-                                            fontSize: '18px',
-                                        }}
-                                    >
-                                        {step.title}
-                                    </Box>
-
-                                    {/* Description */}
-                                    <Box
-                                        sx={{
-                                            backgroundColor: 'white',
-                                            border: '1px solid #e0e0e0',
-                                            padding: 2,
-                                            minHeight: 120,
-                                        }}
-                                    >
-                                        <List dense>
-                                            {step.items.map((item, i) => (
-                                                <ListItem key={i} disableGutters>
-                                                    <ListItemText
-                                                        primaryTypographyProps={{ fontSize: 14 }}
-                                                        primary={`• ${item}`}
-                                                    />
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </Box>
-
-                                    {/* Only show ArrowDownwardIcon for UNDERSTAND */}
-                                    {!(step.title === 'UNDERSTAND') && (
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-                                            <ArrowDownwardIcon sx={{ fontSize: 28, color: '#1E90FF' }} />
+                    <Box sx={{
+                        p:5,
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    }}>
+                        <Box >
+                            <Container sx={{ textAlign: "center" }}>
+                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                                <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
+                                    RPA Process
+                                </Typography>
+                            </Container>
+                        </Box>
+                        <Box sx={{ p: 4 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, flexWrap: 'wrap' }}>
+                                {steps.map((step, idx) => (
+                                    <Box key={idx} sx={{ width: 260, textAlign: 'center', position: 'relative' }}>
+                                        {/* Arrow Title */}
+                                        <Box
+                                            sx={{
+                                                width: '100%',
+                                                height: 60,
+                                                backgroundColor: step.color,
+                                                clipPath: 'polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%)',
+                                                color: 'white',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                fontWeight: 'bold',
+                                                fontSize: '18px',
+                                            }}
+                                        >
+                                            {step.title}
                                         </Box>
-                                    )}
 
-                                    {/* Details Box */}
-                                    <Box
-                                        sx={{
-                                            backgroundColor: '#eef6fd',
-                                            padding: 2,
-                                            mt: step.title === "UNDERSTAND" ? 5 : 1,
-                                            borderRadius: 1,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            gap: 1,
-                                        }}
-                                    >
-                                        {step.details.map((detail, i) =>
-                                            typeof detail === 'string' ? (
-                                                <Typography fontSize={14} key={i}>• {detail}</Typography>
-                                            ) : (
-                                                <Box key={i} sx={{ width: '100%' }}>
-                                                    {detail}
-                                                </Box>
-                                            )
+                                        {/* Description */}
+                                        <Box
+                                            sx={{
+                                                backgroundColor: 'white',
+                                                border: '1px solid #e0e0e0',
+                                                padding: 2,
+                                                minHeight: 120,
+                                            }}
+                                        >
+                                            <List dense>
+                                                {step.items.map((item, i) => (
+                                                    <ListItem key={i} disableGutters>
+                                                        <ListItemText
+                                                            primaryTypographyProps={{ fontSize: 14 }}
+                                                            primary={`• ${item}`}
+                                                        />
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Box>
+
+                                        {/* Only show ArrowDownwardIcon for UNDERSTAND */}
+                                        {!(step.title === 'UNDERSTAND') && (
+                                            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+                                                <ArrowDownwardIcon sx={{ fontSize: 28, color: '#1E90FF' }} />
+                                            </Box>
                                         )}
-                                    </Box>
-                                </Box>
-                            ))}
 
+                                        {/* Details Box */}
+                                        <Box
+                                            sx={{
+                                                backgroundColor: '#eef6fd',
+                                                padding: 2,
+                                                mt: step.title === "UNDERSTAND" ? 5 : 1,
+                                                borderRadius: 1,
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center',
+                                                gap: 1,
+                                            }}
+                                        >
+                                            {step.details.map((detail, i) =>
+                                                typeof detail === 'string' ? (
+                                                    <Typography fontSize={14} key={i}>• {detail}</Typography>
+                                                ) : (
+                                                    <Box key={i} sx={{ width: '100%' }}>
+                                                        {detail}
+                                                    </Box>
+                                                )
+                                            )}
+                                        </Box>
+                                    </Box>
+                                ))}
+
+                            </Box>
                         </Box>
                     </Box>
                 </FadeSection>
                 <FadeSection>
-                    <Box bgcolor={"#f5f5f5"}>
+                    <Box >
                         <Box mt={4} textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={3} variant='h4'>
@@ -678,46 +631,59 @@ const RpaPage = () => {
                         </Box>
                     </Container>
                 </FadeSection> */}
-                <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                 <FadeSection id="download">
+                    <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        RPA Brochure
+                                        RPA IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

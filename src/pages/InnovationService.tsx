@@ -8,7 +8,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 const bannerData = [
     {
@@ -212,7 +212,10 @@ const InnovationService = () => {
             <Header />
             <Box>
                 <FadeSection>
-                    <Box sx={{ bgcolor: '#f5f5f5', }}>
+                    <Box sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, #63a4ff)',
+
+                    }}>
                         <Container sx={{ py: 5 }}>
                             <Grid container mt={18} spacing={4} justifyContent="center">
                                 {bannerData.map((item, index) => (
@@ -305,160 +308,161 @@ const InnovationService = () => {
                 <FadeSection id="about">
                     <Box sx={{ p: 4 }}>
                         <Container>
-                        <Box sx={{ p: 6, position: 'relative' }}>
-  <Grid container spacing={4} alignItems="center" justifyContent="center">
-    {/* Left Column */}
-    <Grid item xs={12} md={5}>
-      <Box
-        sx={{
-          border: '1px solid #d0e5f7',
-          borderRadius: 2,
-          p: 2,
-          position: 'relative',
-        }}
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: -20,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
-            px: 2,
-            py: 0.5,
-            borderRadius: 1,
-            color: '#fff',
-            fontWeight: 'bold',
-          }}
-        >
-          Your Organization
-        </Box>
+                            <Box sx={{ p: 6, position: 'relative' }}>
+                                <Grid container spacing={4} alignItems="center" justifyContent="center">
+                                    {/* Left Column */}
+                                    <Grid item xs={12} md={5}>
+                                        <Box
+                                            sx={{
+                                                border: '1px solid #d0e5f7',
+                                                borderRadius: 2,
+                                                p: 2,
+                                                position: 'relative',
+                                            }}
+                                        >
+                                            <Box
+                                                sx={{
+                                                    position: 'absolute',
+                                                    top: -20,
+                                                    left: '50%',
+                                                    transform: 'translateX(-50%)',
+                                                    background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
+                                                    px: 2,
+                                                    py: 0.5,
+                                                    borderRadius: 1,
+                                                    color: '#fff',
+                                                    fontWeight: 'bold',
+                                                }}
+                                            >
+                                                Your Organization
+                                            </Box>
 
-        {['Industry Knowledge', 'Issues & Challenges', 'Innovation Goals'].map((text) => (
-          <Paper
-            key={text}
-            variant="outlined"
-            sx={{
-              p: { xs: 1, md: 2 },
-              mt: 2,
-              bgcolor: '#f5faff',
-              fontSize: { xs: '0.85rem', md: '1rem' },
-            }}
-          >
-            {text}
-          </Paper>
-        ))}
-      </Box>
-    </Grid>
+                                            {['Industry Knowledge', 'Issues & Challenges', 'Innovation Goals'].map((text) => (
+                                                <Paper
+                                                    key={text}
+                                                    variant="outlined"
+                                                    sx={{
+                                                        p: { xs: 1, md: 2 },
+                                                        mt: 2,
+                                                        bgcolor: '#f5faff',
+                                                        fontSize: { xs: '0.85rem', md: '1rem' },
+                                                    }}
+                                                >
+                                                    {text}
+                                                </Paper>
+                                            ))}
+                                        </Box>
+                                    </Grid>
 
-    {/* Arrow icons */}
-<Grid item xs={12} md={2} textAlign="center">
-  <Box
-    sx={{
-      display: 'flex',
-      flexDirection: { xs: 'column', md: 'row' },
-      justifyContent: 'center',
-      alignItems: 'center',
-      mt: 2,
-    }}
-  >
-    {/* Mobile: Mũi tên xuống trên cùng */}
-    <ArrowUpwardIcon
-      sx={{
-        fontSize: 32,
-        color: '#9cc8f7',
-        display: { xs: 'block', md: 'none' },
-        mb: -1,
-      }}
-    />
+                                    {/* Arrow icons */}
+                                    <Grid item xs={12} md={2} textAlign="center">
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexDirection: { xs: 'column', md: 'row' },
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                mt: 2,
+                                            }}
+                                        >
+                                            {/* Mobile: Mũi tên xuống trên cùng */}
+                                            <ArrowUpwardIcon
+                                                sx={{
+                                                    fontSize: 32,
+                                                    color: '#9cc8f7',
+                                                    display: { xs: 'block', md: 'none' },
+                                                    mb: -1,
+                                                }}
+                                            />
 
-    {/* PC: Mũi tên trái */}
-    <ArrowBackIcon
-      sx={{
-        fontSize: 32,
-        color: '#9cc8f7',
-        display: { xs: 'none', md: 'block' },
-      }}
-    />
+                                            {/* PC: Mũi tên trái */}
+                                            <ArrowBackIcon
+                                                sx={{
+                                                    fontSize: 32,
+                                                    color: '#9cc8f7',
+                                                    display: { xs: 'none', md: 'block' },
+                                                }}
+                                            />
 
-    {/* PC: Mũi tên phải */}
-    <ArrowForwardIcon
-      sx={{
-        fontSize: 32,
-        color: '#9cc8f7',
-        display: { xs: 'none', md: 'block' },
-      }}
-    />
+                                            {/* PC: Mũi tên phải */}
+                                            <ArrowForwardIcon
+                                                sx={{
+                                                    fontSize: 32,
+                                                    color: '#9cc8f7',
+                                                    display: { xs: 'none', md: 'block' },
+                                                }}
+                                            />
 
-    {/* Mobile: Mũi tên lên dưới cùng */}
-    <ArrowDownwardIcon
-      sx={{
-        fontSize: 32,
-        color: '#9cc8f7',
-        display: { xs: 'block', md: 'none' },
-        mt: -1,
-      }}
-    />
-  </Box>
-</Grid>
+                                            {/* Mobile: Mũi tên lên dưới cùng */}
+                                            <ArrowDownwardIcon
+                                                sx={{
+                                                    fontSize: 32,
+                                                    color: '#9cc8f7',
+                                                    display: { xs: 'block', md: 'none' },
+                                                    mt: -1,
+                                                }}
+                                            />
+                                        </Box>
+                                    </Grid>
 
 
-    {/* Right Column */}
-    <Grid item xs={12} md={5}>
-      <Box
-        sx={{
-          border: '1px solid #d0e5f7',
-          borderRadius: 2,
-          p: 2,
-          position: 'relative',
-        }}
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: -20,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
-            px: 2,
-            py: 0.5,
-            borderRadius: 1,
-            color: '#fff',
-            fontWeight: 'bold',
-          }}
-        >
-          IT
-        </Box>
+                                    {/* Right Column */}
+                                    <Grid item xs={12} md={5}>
+                                        <Box
+                                            sx={{
+                                                border: '1px solid #d0e5f7',
+                                                borderRadius: 2,
+                                                p: 2,
+                                                position: 'relative',
+                                            }}
+                                        >
+                                            <Box
+                                                sx={{
+                                                    position: 'absolute',
+                                                    top: -20,
+                                                    left: '50%',
+                                                    transform: 'translateX(-50%)',
+                                                    background: 'linear-gradient(to right, #0d6efd, #00c6ff)',
+                                                    px: 2,
+                                                    py: 0.5,
+                                                    borderRadius: 1,
+                                                    color: '#fff',
+                                                    fontWeight: 'bold',
+                                                }}
+                                            >
+                                                IT
+                                            </Box>
 
-        {[
-          'Skilled R&D team',
-          'Wide range of technologies and solutions',
-          'Intensive experience from many innovation projects',
-        ].map((text) => (
-          <Paper
-            key={text}
-            variant="outlined"
-            sx={{
-              p: { xs: 1, md: 2 },
-              mt: 2,
-              bgcolor: '#f5faff',
-              fontSize: { xs: '0.85rem', md: '1rem' },
-            }}
-          >
-            {text}
-          </Paper>
-        ))}
-      </Box>
-    </Grid>
-  </Grid>
-</Box>
+                                            {[
+                                                'Skilled R&D team',
+                                                'Wide range of technologies and solutions',
+                                                'Intensive experience from many innovation projects',
+                                            ].map((text) => (
+                                                <Paper
+                                                    key={text}
+                                                    variant="outlined"
+                                                    sx={{
+                                                        p: { xs: 1, md: 2 },
+                                                        mt: 2,
+                                                        bgcolor: '#f5faff',
+                                                        fontSize: { xs: '0.85rem', md: '1rem' },
+                                                    }}
+                                                >
+                                                    {text}
+                                                </Paper>
+                                            ))}
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
 
                         </Container>
                     </Box>
                 </FadeSection>
                 <FadeSection id='about' >
-                    <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                    <Box p={5} sx={{
                         mt: 2,
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                     }}
                     >
@@ -608,46 +612,59 @@ const InnovationService = () => {
                         </Box>
                     </Container>
                 </FadeSection>
-                <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                 <FadeSection id="download">
+                    <Container sx={{ mt: { xs: 10, sm: 10, md: 10 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        Software Testing Brochure
+                                        Innovation IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

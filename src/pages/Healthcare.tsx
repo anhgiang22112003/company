@@ -117,8 +117,6 @@ const insightsData = [
 ]
 
 const Healthcare = () => {
-    const [selectedIndex, setSelectedIndex] = useState(0)
-
     return (
         <>
             <CssBaseline />
@@ -127,8 +125,7 @@ const Healthcare = () => {
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
-
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         mt: 18,
                         py: 8,
                         clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
@@ -195,10 +192,7 @@ const Healthcare = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
-                }}
+                <Box p={2}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -208,10 +202,9 @@ const Healthcare = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Container sx={{ mb: { xs: 2, md: 4 } }}>
-                        <Box sx={{ p: { xs: 2, md: 4 } }}>
-                            <Container>
-                                <Grid container spacing={3} justifyContent="center">
+                    <Container sx={{ mb: { xs: 2, md: 2 } }}>
+                        <Box sx={{ p: { xs: 2, md: 2 } }}>
+                                <Grid container spacing={1} justifyContent="center">
                                     {servicesData.map((service, index) => (
                                         <Grid
                                             item
@@ -225,11 +218,11 @@ const Healthcare = () => {
                                             }}
                                         >
                                             <Paper
-                                                elevation={3}
+                                                elevation={1}
                                                 sx={{
                                                     width: '100%',
-                                                    maxWidth: 300,
-                                                    padding: { xs: 2, md: 3 },
+                                                   
+                                                    padding: { xs: 2, md: 2 },
                                                     bgcolor: '#2196F3',
                                                     color: 'white',
                                                     textAlign: 'center',
@@ -257,20 +250,19 @@ const Healthcare = () => {
                                         </Grid>
                                     ))}
                                 </Grid>
-                            </Container>
+                           
                         </Box>
                     </Container>
 
                 </Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Container>
-                    <Box p={5} sx={{
-                        mt: 4,
-
+       
+                    <Box p={3} sx={{
+                        background: 'linear-gradient(to bottom,rgb(41, 89, 137), rgba(14, 41, 70, 0.56))',
                     }}
                     >
-                        <Box sx={{ bgcolor: '#E3F2FD', p: 4 }}>
+                        <Box sx={{ p: 4 }}>
                             <Container>
                                 <Typography variant="h4" align="center" sx={{ mb: 4 }}>
                                     Areas of Expertise
@@ -292,7 +284,7 @@ const Healthcare = () => {
                             </Container>
                         </Box>
                     </Box>
-                </Container>
+               
             </FadeSection>
             <FadeSection>
                 <Box sx={{ p: 4 }}>
@@ -361,46 +353,59 @@ const Healthcare = () => {
                     </Container>
                 </Box>
             </FadeSection>
-            <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+              <FadeSection id="download">
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Software Testing Brochure
+                                    Healthcare IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

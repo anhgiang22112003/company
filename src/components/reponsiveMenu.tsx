@@ -20,7 +20,8 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
     const ITEMS_PER_PAGE = isMobile ? 2 : 7
     const totalPages = Math.ceil(sections.length / ITEMS_PER_PAGE)
     const [isAtBottom, setIsAtBottom] = useState(false)
-
+    const [isSticky, setIsSticky] = useState(false)
+    const menuRef = useRef<HTMLDivElement>(null)
     const visibleItems = sections.slice(menuPage * ITEMS_PER_PAGE, (menuPage + 1) * ITEMS_PER_PAGE)
 
     // Chuyển trang menu prev
@@ -40,6 +41,17 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
         }
         setActiveMenu(id)
     }
+    useEffect(() => {
+        const handleScroll = () => {
+            if (menuRef.current) {
+                const offsetTop = menuRef.current.getBoundingClientRect().top
+                setIsSticky(offsetTop <= 142) // header cao 140px
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     useEffect(() => {
         const bottomAnchor = document.getElementById('bottom-anchor')
@@ -92,7 +104,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
             {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.1,
+                threshold: 0.5,
             }
         )
         sections.forEach((sec) => {
@@ -106,10 +118,11 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
 
     return (
         <Box
+            ref={menuRef}
             sx={{
                 position: 'sticky',
-                top: 140,
-                 zIndex: 1100, // thấp hơn header
+                top: 142,
+                zIndex: 1100, // thấp hơn header
                 py: 1,
                 transform: isAtBottom ? 'translateY(-100%)' : 'translateY(0)',
                 transition: 'transform 0.3s ease',
@@ -117,7 +130,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
         >
 
             <Container>
-                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4, bgcolor: "white" }}>
+                <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4, bgcolor: isSticky ? '#1976d3' : 'white', }}>
                     <Box
                         sx={{
                             display: 'flex',
@@ -154,9 +167,9 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        color: isActive ? 'white' : 'black',
+                                        color: isActive ? 'black' : 'black',
                                         textAlign: 'center',
-                                        backgroundColor: isActive ? '#1976d2' : 'transparent',
+                                        backgroundColor: isActive ? 'white' : 'transparent',
                                         transition: 'color 0.3s ease-in-out',
                                         '&::before': {
                                             content: '""',
@@ -165,12 +178,12 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
                                             left: 0,
                                             width: isActive ? '100%' : '0%',
                                             height: '100%',
-                                            backgroundColor: '#1976d2',
+                                            backgroundColor: 'white',
                                             zIndex: 0,
                                             transition: 'width 0.4s ease-in-out',
                                             borderRadius: 1.5,
                                         }, '&:hover': {
-                                            color: 'white',
+                                            color: 'black',
                                             '&::before': {
                                                 width: '100%',
                                             },
@@ -199,7 +212,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
                             disabled={menuPage >= totalPages - 1}
                             size="small"
                             sx={{ visibility: menuPage >= totalPages - 1 ? 'hidden' : 'visible', }}
-                            
+
                         >
                             <ArrowForwardIosIcon fontSize="small" />
                         </IconButton>

@@ -19,18 +19,13 @@ import {
 import Footer from '../layouts/Footer'
 import Header from '../layouts/Header'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import CellTowerIcon from '@mui/icons-material/CellTower' // MUI v5
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import { styled } from '@mui/system'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import BusinessIcon from '@mui/icons-material/Business' // thay thế bằng icon tương ứng
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import ScrollDots from '../components/ScrollDots'
 import FadeSection from '../components/FadeSection'
-import StarIcon from '@mui/icons-material/Star'
 import GroupsIcon from '@mui/icons-material/Groups'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
@@ -38,7 +33,50 @@ import DevicesOtherIcon from '@mui/icons-material/DevicesOther'
 import VerifiedIcon from '@mui/icons-material/Verified'
 import ScienceIcon from '@mui/icons-material/Science'
 import Banner from '../components/banner'
+import ArticleCarousel from '../components/cardItemHome'
+import BlogSection from '../components/BlogSection'
+import CountUp from 'react-countup'
+import { useInView } from 'react-intersection-observer'
+import PeopleIcon from '@mui/icons-material/People'
+import BusinessIcon from '@mui/icons-material/Business'
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects'
+import GradeIcon from '@mui/icons-material/Grade'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
+const stats = [
+    {
+        icon: <PeopleIcon fontSize="large" />,
+        value: 13,
+        suffix: '%',
+        label: 'Developer Attrition Rates',
+        prefix: '<',
+    },
+    {
+        icon: <BusinessIcon fontSize="large" />,
+        value: 250,
+        suffix: '+',
+        label: 'Software Companies Served',
+    },
+    {
+        icon: <EmojiObjectsIcon fontSize="large" />,
+        value: 15,
+        suffix: '+',
+        label: 'Years of Digital Innovation',
+    },
+    {
+        icon: <GradeIcon fontSize="large" htmlColor="#FFD700" />,
+        value: 4.9,
+        suffix: '',
+        label: 'Average Review Rating on Clutch',
+    },
+]
 
 const data = [
     {
@@ -46,7 +84,7 @@ const data = [
         description:
             'Unified Communication. Network and Access Management. VoIP, SIP, Asterisk, Soft-Switch. 4G LTE. Wireless and Edge Router.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174411.019.webp",
-        href:'/industries/telecom'
+        href: '/industries/telecom'
 
     },
     {
@@ -54,35 +92,35 @@ const data = [
         description:
             'Electronic Medical Records. Health Insurance. Clinical Decision Support. Health Device Management & Control.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174421.677.webp",
-       href:"/industries/healthcare"
+        href: "/industries/healthcare"
     },
     {
         title: 'Finance',
         description:
             'Wealth Management. Capital Market. Financial Analyst Tool. Loans Manager. Dealer Manager.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174433.586.webp",
-       href:"/industries/finance"
+        href: "/industries/finance"
     },
     {
         title: 'Logistics & Transportation',
         description:
             'Smart Route. Traffic data Analysis. Asset Tracking System. Field Force Automation.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174443.755.webp",
-   href:"/industries/logistics"
+        href: "/industries/logistics"
     },
     {
         title: 'E-Commerce, Retail & Distribution',
         description:
             'Online and Mobile Store. Visual Product Catalogue. Full Back-Office Administration Tool.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174453.979.webp",
-  href:"/industries/e-commerce-retail" 
+        href: "/industries/e-commerce-retail"
     },
     {
         title: 'Automotive',
         description:
             'Smart Route. Traffic data Analysis. Visual Yellow Pages. Asset Tracking System. Field Force Automation.',
         img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_mobile_20240711174502.960.webp",
-    href:"/industries/automotive"
+        href: "/industries/automotive"
     },
 
 ]
@@ -142,23 +180,7 @@ const OutsourceHomePage: React.FC = () => {
             desc: 'Wealth Management. Capital Market. Financial Analyst Tool. Loans Manager. Dealer Manager.',
         },
     ]
-    // const banners = [
-    //     {
-    //         title: 'Giải pháp gia công phần mềm hàng đầu',
-    //         subtitle: 'Cung cấp dịch vụ chất lượng với chi phí tối ưu',
-    //         image: '/img/outsourcing1.jpg',
-    //     },
-    //     {
-    //         title: 'Đội ngũ chuyên gia giàu kinh nghiệm',
-    //         subtitle: 'Mang đến sản phẩm tốt nhất cho doanh nghiệp của bạn',
-    //         image: '/img/outsourcing2.jpg',
-    //     },
-    //     {
-    //         title: 'Tiết kiệm thời gian và chi phí',
-    //         subtitle: 'Tập trung vào kinh doanh, để chúng tôi lo về công nghệ',
-    //         image: '/img/outsourcing3.jpg',
-    //     },
-    // ]
+
 
     const services = [
         {
@@ -209,25 +231,14 @@ const OutsourceHomePage: React.FC = () => {
         },
     ]
 
-    const testimonialsData = [
-        {
-            text: 'Dịch vụ tuyệt vời, đội ngũ rất chuyên nghiệp và tận tâm.',
-            client: 'Nguyễn Văn A - CEO Công ty ABC',
-        },
-        {
-            text: 'Chúng tôi rất hài lòng với sản phẩm và tiến độ triển khai.',
-            client: 'Trần Thị B - Giám đốc điều hành Công ty XYZ',
-        },
-    ]
+
     const categories = [
         {
             img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154741.713.webp",
             title: 'Telecom',
             items: [
                 '5G Applications',
-                '4G MVNO LTE EPC & MANO',
                 'Network Transformation Solutions',
-                'Enterprise Communication Solution',
             ],
         },
         {
@@ -236,8 +247,6 @@ const OutsourceHomePage: React.FC = () => {
             items: [
                 'Vehicle Traffic Management',
                 'Navigation Solution',
-                'Route Information Lookup',
-                'Lane and Vehicle Detection',
             ],
         },
         {
@@ -246,29 +255,22 @@ const OutsourceHomePage: React.FC = () => {
             items: [
                 'Deal Management',
                 'Mobile Ecommerce',
-                'Cosmetic Ecommerce Platform',
-                'School Furniture Sales and Distribution Management System',
             ],
         },
         {
             img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154817.034.webp",
             title: 'Healthcare',
             items: [
-                " Remote Health Monitoring Platform",
-                "Health Information Systems Programme (HISP)",
-                "World Mosquito Program (WMP)",
+                "Remote Health Monitoring Platform",
                 "Clinical Research Tools",
-                "Fitness Solution"
             ],
         },
         {
             img: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240711154834.691.webp",
             title: 'Finance',
             items: [
-                "  Cash Flow Management Application​",
-                "Digital Product Trading",
+                "Cash Flow Management Application​",
                 "NFT Trading Platform​",
-                "Stable Coin​",
             ],
         },
         {
@@ -276,21 +278,11 @@ const OutsourceHomePage: React.FC = () => {
             title: 'Automotive',
             items: [
                 'Infotainment HMI',
-                'ECU MCU Modeling',
                 'AR Navigation',
-                'Traffic Management,'
             ],
         },
     ]
 
-
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setPrevIndex(currentIndex)
-    //         setCurrentIndex((prev) => (prev + 1) % banners.length)
-    //     }, 15000)
-    //     return () => clearInterval(interval)
-    // }, [currentIndex])
 
     useEffect(() => {
         setShowPrev(true)
@@ -305,40 +297,42 @@ const OutsourceHomePage: React.FC = () => {
             [index]: !prev[index],
         }))
     }
-    const sections = [  
+    const sections = [
         { id: 'overview', label: 'Overview' },
+        { id: 'technologies', label: 'Technologies' },
         { id: 'why', label: 'Why' },
         { id: 'services', label: 'Services' },
         { id: 'stories', label: 'Stories' },
         { id: 'industries', label: 'Industries' },
-        { id: 'technologies', label: 'Technologies' },
-        { id: 'feedback', label: 'Feedback' },
+        { id: 'blog', label: 'blog' },
         { id: 'footer', label: 'Footer' },
     ]
 
-
+    const { ref, inView } = useInView({ triggerOnce: true })
 
     return (
-        <>
+        <><Header />
             <CssBaseline />
-            <Header />
+
             <ScrollDots sections={sections} />
             {/* Banner chính */}
             <Banner />
             <FadeSection id="overview">
                 <Container sx={{ py: 8 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} md={5}>
+
+                        <Grid item xs={12} md={5}><SlideInOnScroll direction='left'>
                             <Typography variant="h4" sx={{ mb: 2, fontWeight: "bold" }}>
                                 Overview
                             </Typography>
                             <Typography sx={{ textAlign: 'justify' }}>
-                                 Solutions was established in 1997 to provide quality software outsourcing services to leading companies worldwide. With 4,000 engineers, we stand as one of Vietnam's largest software outsourcing companies. Our engineering team was selected from a large pool of Vietnam IT outsourcing; they are well-trained and have successfully completed numerous large and complex projects to provide world-class technology solutions to customers in 30 countries.
-                                 solutions and technology centers:
-                            </Typography>
+                                Solutions was established in 1997 to provide quality software outsourcing services to leading companies worldwide. With 4,000 engineers, we stand as one of Vietnam's largest software outsourcing companies. Our engineering team was selected from a large pool of Vietnam IT outsourcing; they are well-trained and have successfully completed numerous large and complex projects to provide world-class technology solutions to customers in 30 countries.
+                                solutions and technology centers:
+                            </Typography></SlideInOnScroll>
                         </Grid>
                         <Grid item xs={12} md={1}></Grid>
-                        <Grid item xs={12} md={6}>
+
+                        <Grid item xs={12} md={6}> <SlideInOnScroll direction='right'>
                             <Grid container spacing={2}>
                                 {images.map((src: any, index: any) => (
                                     <Grid item xs={12} sm={6} key={index}>
@@ -366,14 +360,16 @@ const OutsourceHomePage: React.FC = () => {
                                         </Box>
                                     </Grid>
                                 ))}
-                            </Grid>
+                            </Grid></SlideInOnScroll>
                         </Grid>
                     </Grid>
                 </Container>
             </FadeSection>
+            <FadeSection id='technologies'>
+                <ArticleCarousel />
+            </FadeSection>
             <FadeSection id="why">
                 <Container sx={{ py: 8 }}>
-
                     <Typography variant="h4" sx={{ fontWeight: "bold" }} align="center" gutterBottom>
                         Why GPH
                     </Typography>
@@ -437,52 +433,52 @@ const OutsourceHomePage: React.FC = () => {
 
                                     {/* Explore More Button */}
                                     <Link href="/about/why">
-                                    <button
-                                        style={{
-                                            position: "absolute",
-                                            bottom: 16,
-                                            right: 16,
-                                            background: "none",
-                                            border: "none",
-                                            color: "#1E40AF", // xanh nước biển
-                                            fontWeight: "bold",
-                                            fontSize: 16,
-                                            cursor: "pointer",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 6,
-                                            padding: 0,
-
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            const arrow = e.currentTarget.querySelector(".arrow")
-                                            if (arrow) {
-                                                (arrow as HTMLElement).style.transform = "translateX(5px)";
-                                                (arrow as HTMLElement).style.color = "#0ea5e9" // xanh nước biển sáng hơn
-                                            }
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            const arrow = e.currentTarget.querySelector(".arrow")
-                                            if (arrow) {
-                                                (arrow as HTMLElement).style.transform = "translateX(0)";
-                                                (arrow as HTMLElement).style.color = "#1E40AF"
-                                            }
-                                        }}
-                                    >
-                                        Explore More
-                                        <span
-                                            className="arrow"
+                                        <button
                                             style={{
-                                                display: "inline-block",
-                                                transition: "all 0.3s ease",
-                                                color: "#1E40AF",
-                                                fontSize: 20,
+                                                position: "absolute",
+                                                bottom: 16,
+                                                right: 16,
+                                                background: "none",
+                                                border: "none",
+                                                color: "#1E40AF", // xanh nước biển
                                                 fontWeight: "bold",
+                                                fontSize: 16,
+                                                cursor: "pointer",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: 6,
+                                                padding: 0,
+
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                const arrow = e.currentTarget.querySelector(".arrow")
+                                                if (arrow) {
+                                                    (arrow as HTMLElement).style.transform = "translateX(5px)";
+                                                    (arrow as HTMLElement).style.color = "#0ea5e9" // xanh nước biển sáng hơn
+                                                }
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                const arrow = e.currentTarget.querySelector(".arrow")
+                                                if (arrow) {
+                                                    (arrow as HTMLElement).style.transform = "translateX(0)";
+                                                    (arrow as HTMLElement).style.color = "#1E40AF"
+                                                }
                                             }}
                                         >
-                                            ➔
-                                        </span>
-                                    </button></Link>
+                                            Explore More
+                                            <span
+                                                className="arrow"
+                                                style={{
+                                                    display: "inline-block",
+                                                    transition: "all 0.3s ease",
+                                                    color: "#1E40AF",
+                                                    fontSize: 20,
+                                                    fontWeight: "bold",
+                                                }}
+                                            >
+                                                ➔
+                                            </span>
+                                        </button></Link>
                                 </Box>
                             </Grid>
                         ))}
@@ -493,7 +489,8 @@ const OutsourceHomePage: React.FC = () => {
                 <Box sx={{ position: 'relative', py: 8 }}>
                     <Box
                         sx={{
-                            background: "blue",
+                            background: 'linear-gradient(to bottom, rgba(59, 13, 243, 0.85), rgba(38, 90, 145, 0))',
+
                             position: 'absolute',
                             top: 0,
                             left: 0,
@@ -503,62 +500,61 @@ const OutsourceHomePage: React.FC = () => {
                             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 90%)', // Tạo hiệu ứng viền
                         }}
                     />
-                    <Container>
+                    <Container><SlideInOnScroll direction='right'>
                         <Grid container spacing={2}>
-                            <Grid  item xs={12} md={5}>
+
+                            <Grid item xs={12} md={5}>
                                 <Typography variant='h4' sx={{ fontWeight: "bold", color: "white" }}>Services</Typography>
                                 <Typography sx={{ color: "white" }} mt={2}>
                                     We provide end-to-end solutions from ideas to design, implementation, testing, deployment, maintenance and support, across Software Development, Software Testing, Digital Transformation, and Innovation as a Service.
                                 </Typography>
                             </Grid>
-                        </Grid>
-                        <img width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp" alt="" />
+
+                        </Grid></SlideInOnScroll>
+                        <SlideInOnScroll>
+                            <img width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp" alt="" />
+                        </SlideInOnScroll>
                     </Container>
                 </Box>
             </FadeSection>
             <FadeSection id='stories'>
-                <Container sx={{ py: 12 }}>
+                <Container sx={{}}>
                     <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>Our Success Stories</Typography>
                     <Typography textAlign={"center"}>Discover Solutions' sample projects, featuring success stories achieved by our software engineers. Witness the impact of our software outsourcing services on businesses and operations.</Typography>
-                    <Grid container sx={{ py: 6 }} spacing={2} alignItems="flex-start">
-                        {categories.map((cat, index) => {
-                            const hasExtra = cat.items.length > 3
-                            const visibleItems = cat.items.slice(0, 3)
-                            const hiddenItems = cat.items.slice(3)
-
-                            return (
-                                <Grid item xs={12} md={4} key={index}>
+                    <Box sx={{ position: 'relative', py: 6 }}>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            navigation={{
+                                prevEl: '.custom-swiper-prev',
+                                nextEl: '.custom-swiper-next',
+                            }}
+                            pagination={{ clickable: true }}
+                            autoplay={{ delay: 2000 }}
+                            spaceBetween={24}
+                            breakpoints={{
+                                0: { slidesPerView: 1 },
+                                600: { slidesPerView: 2 },
+                                960: { slidesPerView: 3 },
+                            }}
+                        >
+                            {categories.map((cat, index) => (
+                                <SwiperSlide key={index}>
                                     <Box
                                         sx={{
-                                            position: 'relative',
                                             backgroundColor: '#f5f9ff',
                                             borderRadius: 2,
                                             p: 3,
                                             height: '100%',
-                                            overflow: 'hidden',
-                                            '&::before': {
-                                                content: '""',
-                                                position: 'absolute',
-                                                top: 0,
-                                                left: 0,
-                                                width: '100%',
-                                                height: '100%',
-                                                border: '2px solid #1976d2',
-                                                borderRadius: 2,
-                                                opacity: 0,
-                                                transform: 'scale(0.9)',
-                                                transition: 'opacity 0.4s ease, transform 0.4s ease',
-                                                pointerEvents: 'none',
-                                            },
-                                            '&:hover::before': {
-                                                opacity: 1,
-                                                transform: 'scale(1)',
+                                            border: '2px solid transparent',
+                                            transition: '0.4s',
+                                            '&:hover': {
+                                                borderColor: '#1976d2',
                                             },
                                         }}
                                     >
                                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                            <img src={cat.img} width={"10%"} alt="" />
-                                            <Typography variant="h6" fontWeight="bold">
+                                            <img src={cat.img} width="10%" alt="" />
+                                            <Typography fontSize={"15px"} fontWeight="bold">
                                                 {cat.title}
                                             </Typography>
                                         </Box>
@@ -566,7 +562,7 @@ const OutsourceHomePage: React.FC = () => {
                                         <Divider sx={{ my: 1 }} />
 
                                         <List dense>
-                                            {visibleItems.map((item, i) => (
+                                            {cat.items.map((item, i) => (
                                                 <ListItem key={i} disableGutters>
                                                     <ListItemIcon sx={{ minWidth: 24 }}>
                                                         <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
@@ -574,36 +570,63 @@ const OutsourceHomePage: React.FC = () => {
                                                     <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
                                                 </ListItem>
                                             ))}
-
-                                            <Collapse in={!!expandedItems[index]} timeout="auto" unmountOnExit>
-                                                {hiddenItems.map((item, i) => (
-                                                    <ListItem key={i} disableGutters>
-                                                        <ListItemIcon sx={{ minWidth: 24 }}>
-                                                            <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
-                                                        </ListItemIcon>
-                                                        <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
-                                                    </ListItem>
-                                                ))}
-                                            </Collapse>
                                         </List>
-
-                                        {hasExtra && (
-                                            <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)' }}>
-                                                <IconButton size="small" onClick={() => toggleExpand(index)}>
-                                                    {expandedItems[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                                                </IconButton>
-                                            </Box>
-                                        )}
                                     </Box>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+
+                        {/* Prev Button */}
+                        <IconButton
+                            className="custom-swiper-prev"
+                            sx={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: { xs: -20, sm: -40, md: -50 },
+                                transform: 'translateY(-50%)',
+                                zIndex: 10,
+                                backgroundColor: 'white',
+                                boxShadow: 1,
+                                '&:hover': { backgroundColor: '#e0f2ff' },
+                            }}
+                        >
+                            <ArrowBackIosNewIcon />
+                        </IconButton>
+
+                        {/* Nút next */}
+                        <IconButton
+                            className="custom-swiper-next"
+                            sx={{
+                                position: 'absolute',
+                                top: '50%',
+                                right: { xs: -20, sm: -40, md: -50 },
+                                transform: 'translateY(-50%)',
+                                zIndex: 10,
+                                backgroundColor: 'white',
+                                boxShadow: 1,
+                                '&:hover': { backgroundColor: '#e0f2ff' },
+                            }}
+                        >
+                            <ArrowForwardIosIcon />
+                        </IconButton>
+                        <Box mt={3}>
+                            <div className="swiper-pagination" />
+                        </Box>
+                    </Box>
+
+
                 </Container>
             </FadeSection>
             <FadeSection id="industries" >
                 <Box sx={{ mx: 'auto', py: 4 }}>
-                    <Container>
+                    <Box
+                        sx={{
+                            p: 5,
+                            background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                            backdropFilter: 'blur(6px)',
+                            WebkitBackdropFilter: 'blur(6px)',
+                        }}
+                    >
                         <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>Industries</Typography>
                         <Typography textAlign={"center"}>Discover Solutions' sample projects, featuring success stories achieved by our software engineers. Witness the impact of our software outsourcing services on businesses and operations.</Typography>
                         <Grid sx={{ background: "#f4f8fe", }} container mt={2} spacing={3}>
@@ -612,7 +635,7 @@ const OutsourceHomePage: React.FC = () => {
                                     <StyledCard>
                                         <IconWrapper className="icon"><img width={"80%"} src={item.img} alt="" /></IconWrapper>
                                         <Box>
-                                            
+
                                             <Typography variant="h6" fontWeight="bold">
                                                 {item.title}
                                             </Typography>
@@ -620,182 +643,137 @@ const OutsourceHomePage: React.FC = () => {
                                                 {item.description}
                                             </Typography>
                                             <Link href={item.href}>
-                                            <Box
-                                                sx={{
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    mt: 2,
-                                                    fontWeight: 500,
-                                                    fontSize: '14px',
-                                                    transition: 'color 0.3s ease',
-                                                }}
-                                                className="explore"
-                                            >
-                                                Explore More
-                                                <ArrowForwardIcon fontSize="small" sx={{ ml: 1 }} />
-                                            </Box>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        mt: 2,
+                                                        fontWeight: 500,
+                                                        fontSize: '14px',
+                                                        transition: 'color 0.3s ease',
+                                                    }}
+                                                    className="explore"
+                                                >
+                                                    Explore More
+                                                    <ArrowForwardIcon fontSize="small" sx={{ ml: 1 }} />
+                                                </Box>
                                             </Link>
                                         </Box>
                                     </StyledCard>
                                 </Grid>
                             ))}
                         </Grid>
-                    </Container>
-                    <FadeSection id="technologies" >
-                        <Box id="technologies" sx={{ position: 'relative', py: 15 }}>
-                            <Box
-                                sx={{
-                                    background: "blue",
-                                    position: 'absolute',
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    zIndex: -1,
-                                    clipPath: 'polygon(0 10%, 100% 0, 100% 90%, 0% 100%)'
-                                }}
-                            />
-                            <Container sx={{ mt: 8 }}>
-                                <Typography variant='h4' textAlign={"center"} sx={{ fontWeight: "bold", color: "white" }}>
-                                    Technologies
-                                </Typography>
-                                <Typography sx={{ color: "white" }} mt={2} mb={4}>
-                                    We provide end-to-end solutions from ideas to design, implementation, testing, deployment, maintenance and support, across Software Development, Software Testing, Digital Transformation, and Innovation as a Service.
-                                </Typography>
-
-                                <Grid container spacing={3}>
-                                    {/* LEFT COLUMN – 4 tech cards */}
-                                    <Grid item xs={12} md={8}>
-                                        <Grid container spacing={3}>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">Microsoft Technologies</Typography>
-                                                    <Typography color="primary">600 Developers</Typography>
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">Java</Typography>
-                                                    <Typography color="primary">700 Developers</Typography>
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">Web – Mobile</Typography>
-                                                    <Typography color="primary">800 Developers</Typography>
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">Big Data & Analytics & AI/ML</Typography>
-                                                    <Typography color="primary">700 Developers</Typography>
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">C/C++, Embedded, IoT</Typography>
-                                                    <Typography color="primary">400 Developers</Typography>
-                                                </Box>
-                                            </Grid>
-                                            <Grid item xs={12} sm={6}>
-                                                <Box sx={{ background: "white", p: 5 }}>
-                                                    <Typography variant="h6" fontWeight="bold">Cloud, DevOps</Typography>
-                                                    <Typography color="primary">700 Engineers</Typography>
-                                                </Box>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-
-                                    {/* RIGHT COLUMN – 2 images stacked vertically */}
-                                    <Grid item xs={12} md={4}>
-                                        <Box mb={3}>
-                                            <img
-                                                width="100%"
-                                                style={{ borderRadius: 8 }}
-                                                src="https://tmastorage.azureedge.net/uploadfiles/Home/Technologies/Home_Technology_4.webp"
-                                                alt="Monitoring"
-                                            />
-                                        </Box>
-                                        <Box>
-                                            <img
-                                                width="100%"
-                                                style={{ borderRadius: 8 }}
-                                                src="https://tmastorage.azureedge.net/uploadfiles/Home/Technologies/Home_Technology_1.webp"
-                                                alt="Server"
-                                            />
-                                        </Box>
-                                    </Grid>
-                                </Grid>
-                            </Container>
-
-                        </Box>
+                    </Box>
+                    <FadeSection id="blog" >
+                        <BlogSection />
                     </FadeSection>
                 </Box>
             </FadeSection>
-            <FadeSection id="feedback">
-                <Box sx={{ bgcolor: '#f9f9f9', py: 8 }}>
-                    <Container>
-                        <Typography variant="h4" align="center" gutterBottom>
-                            Feedback
-                        </Typography>
-                        <Grid container justifyContent="center" sx={{ mt: 2 }}>
-                            <Grid item xs={12} md={8}>
-                                {testimonialsData.map(({ text, client }, i) => (
-                                    <Box key={i} sx={{ mb: i !== testimonialsData.length - 1 ? 4 : 0 }}>
-                                        <Typography sx={{ fontStyle: 'italic', fontSize: '1.1rem', mb: 1 }}>
-                                            “{text}”
-                                        </Typography>
-                                        <Typography sx={{ fontWeight: 'bold', color: '#ffcb05' }}>
-                                            – {client}
-                                        </Typography>
-                                    </Box>
-                                ))}
+            <FadeSection id='star'>
+                <Box
+                    ref={ref}
+                    sx={{
+                        background: '#001F3F',
+                        py: 6,
+                        color: 'white',
+                        textAlign: 'center',
+                        mb: 6
+                    }}
+                >
+                    <Grid container spacing={4} justifyContent="center">
+                        {stats.map((item, index) => (
+                            <Grid item xs={6} md={3} key={index}>
+                                <Box>
+                                    {item.icon}
+                                    <Typography variant="h5" fontWeight="bold" mt={1}>
+                                        {item.prefix}
+                                        {inView ? (
+                                            <CountUp
+                                                start={0}
+                                                end={item.value}
+                                                duration={2}
+                                                decimals={item.value % 1 !== 0 ? 1 : 0}
+                                            />
+                                        ) : (
+                                            '0'
+                                        )}
+                                        {item.suffix}
+                                    </Typography>
+                                    <Typography variant="body2">{item.label}</Typography>
+                                </Box>
                             </Grid>
-                        </Grid>
-                    </Container>
+                        ))}
+                    </Grid>
                 </Box>
             </FadeSection>
             <FadeSection id="What-clients">
-                <Container  >
+                <Container disableGutters maxWidth={false}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)', // ít nghiêng hơn ở mobile
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -23
-
+                            mb: { xs: -10, md: -23 }, // đỡ bị lấn nội dung bên dưới ở mobile
+                            textAlign: 'center',
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 What our clients say?
                             </Typography>
-                            <Typography textAlign="center" mt={2} maxWidth="md" mx="auto">
+
+                            <Typography
+                                mt={2}
+                                fontSize={{ xs: '0.95rem', sm: '1rem' }}
+                                maxWidth="md"
+                                mx="auto"
+                            >
                                 We sincerely appreciate our customers for their valuable feedback and support.
                                 Our top priority is to fulfill your business needs with our appropriate technology solutions.
                             </Typography>
 
-                            <Box mt={4} textAlign="center">
-                                <Typography sx={{ fontStyle: 'italic' }}>
+                            <Box mt={4}>
+                                <Typography
+                                    sx={{
+                                        fontStyle: 'italic',
+                                        fontSize: { xs: '0.95rem', sm: '1rem' },
+                                    }}
+                                >
                                     “The management team is attentive, responsive to feedback and demonstrates initiative
                                     in continually improving effectiveness.”
                                 </Typography>
-                                <Typography mt={2} fontWeight="bold">
+
+                                <Typography
+                                    mt={2}
+                                    fontWeight="bold"
+                                    fontSize={{ xs: '0.95rem', sm: '1rem' }}
+                                >
                                     Lori Ciaralli, Engineering Director, Network Management & Security, Ribbon Communications
                                 </Typography>
-                                <Typography>USA</Typography>
+
+                                <Typography fontSize={{ xs: '0.9rem', sm: '1rem' }}>
+                                    USA
+                                </Typography>
                             </Box>
                         </Container>
                     </Box>
                 </Container>
             </FadeSection>
 
+
             <ScrollToTopButton />
-            <Footer />
+            <Footer hasDownload={true} />
         </>
     )
 }

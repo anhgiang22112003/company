@@ -5,8 +5,7 @@ import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, L
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
-import ScrollDots from '../components/ScrollDots'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 
 import { Circle } from '@mui/icons-material' // Biểu tượng hình tròn
@@ -17,7 +16,6 @@ const testingServices = [
         items: [
             "Manage all aspects of product testing",
             "Product quality assurance consulting",
-            "Test solutions (process and tools)",
         ],
     },
     {
@@ -26,12 +24,7 @@ const testingServices = [
         items: [
             "Integration & system testing",
             "Performance testing",
-            "Regression testing",
-            "Compatibility testing",
-            "Installation & upgrading testing",
-            "Localization testing",
             "Security testing",
-            "Interoperability testing",
         ],
     },
     {
@@ -39,12 +32,11 @@ const testingServices = [
         imageUrl: "https://tmastorage.azureedge.net/media/services/softwareTesting/service/software_testing_service_test_automation.webp",
         items: [
             "Develop test automation tools/solutions",
-            "Enhance test automation coverage for regression",
             "Execute test scripts and report results",
-            "In-house automation framework available and customizable",
         ],
     },
 ]
+
 const expertiseAreas = [
     {
         title: "Telecom & Networks",
@@ -53,8 +45,6 @@ const expertiseAreas = [
             "Soft Switch, Carrier VoIP",
             "PBX and IP Telephony Systems",
             "Unified Communications",
-            "Contact Center",
-            "Billing, BSS/OSS, IP, WebRTC",
             "Wireless: 4G LTE, 5G, WiFi-6",
         ],
     },
@@ -63,12 +53,9 @@ const expertiseAreas = [
         imageUrl: "https://tmastorage.azureedge.net/media/services/softwareTesting/areaExpertise/software_testing_area_expertise_business_applications.webp",
         items: [
             "CRM",
-            "E-commerce, Retail and Distribution",
+            "E-commerce",
             "Finance & Insurance",
             "Healthcare",
-            "Education",
-            "Hospitality",
-            "Media & Publishing",
             "Logistics & Transportation",
         ],
     },
@@ -76,10 +63,11 @@ const expertiseAreas = [
         title: "Mobile Applications",
         imageUrl: "https://tmastorage.azureedge.net/media/services/softwareTesting/areaExpertise/software_testing_area_expertise_mobile_applications.webp",
         items: [
-            "iOS, Android, Windows Phone, Blackberry, HTML5",
+            "iOS, Android, HTML5",
         ],
     },
-]
+];
+
 
 const cloudApplications = {
     title: "Cloud Applications",
@@ -108,142 +96,44 @@ const tabData = [
         label: "4G MVNO LTE EPC & MANO",
         image: "https://tmastorage.azureedge.net/uploadfiles/Testing/Testing_8.webp",
         solutions: [
-            "Set up the test domain, environment",
-            "Verify all supported functionalities of the OTT services in various platforms: video/audio call, conference, message, voice, group call, presence",
-            "Verify push notification for active/passive push on android and iOS",
-            "Verify 2FA with 1 million subscribers via BOT tools",
-            "Verify media stream under different network conditions",
-            "Verify media stream switch back and forth between wifi and 4G/LTE",
-            "Verify interaction with Voice mail service, multi-party & collaboration and SIP client for Call-P service"
+            "Verify OTT services: video/audio call, message, group call",
+            "Push notification verification on Android & iOS",
+            "2FA verification with large subscriber base",
+            "Media stream testing under various network conditions",
         ]
     },
     {
         label: "Enable Network Transformation",
         image: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240325164259.128.webp",
         solutions: [
-            "Test strategy, test plan, test cases development",
-            "Feature verification and system verification",
-            "Solution regression",
+            "Test strategy & test case development",
+            "Feature & system verification",
             "Performance & capacity test",
-            "Customer documentation validation",
-            "Sanity and regression automation",
-            "Installation, migration, upgrade test",
-            "Security scan",
-            "Field issues verification"
+            "Automation for sanity and regression",
         ]
     },
     {
         label: "Billing Mediation Platform",
         image: "https://tmastorage.azureedge.net/uploadfiles/Testing/Testing_6.webp",
         solutions: [
-            "Development",
-            "New Features & Tools",
-            "Product Sustaining",
-            "Product & Solution Testing",
-            "Full testing including Performance and Security test",
-            "Automation and Manual",
-            "Production Services",
-            "Demo, deployment support"
+            "Product & solution testing",
+            "Automation & manual testing",
+            "Demo and deployment support",
         ]
     },
     {
         label: "Enterprise Communication Solution",
         image: "https://tmastorage.azureedge.net/uploadfiles/Testing/Testing_5.webp",
         solutions: [
-            "Software Testing",
-            "Test Tool Development",
-            "Att tool: automation frame work to executes procedure described in a scenario file",
-            "Ysim tool: simulate network devices and send message in any protocols",
-            "ICARUS: establish a big number of UE sessions",
-            "MP3: generate a big data traffic via LTE tunnel",
-            "Log collector tools: shsuite, pstat, dwdf, admf (for lawful intercept)"
+            "Software testing",
+            "Automation tool development",
+            "Network simulation tools (e.g. Ysim, MP3)",
         ]
     }
-]
+];
 
-const testingTools = [
-    {
-        title: "Test Case Tracking / Bug/Defect Tracking",
-        tools: [
-            "TCAT, Quality Center, Clarify, Remedy",
-            "Team Track, ClearQuest, Bugzilla, TestRails",
-            "Confluence and Wiki",
-            "JIRA, Azure DevOps, Asana, Redmine, Problem Reporting System (PRS)",
-            "Salesforce, TestLink",
-        ],
-    },
-    {
-        title: "GUI Test",
-        tools: [
-            "QTP, WinRunner, Silk Test, QA Run, Robot Test",
-        ],
-    },
-    {
-        title: "CLI Test",
-        tools: [
-            "TCL/Tk, Expect, Perl, Awk, Java, Unix shell, Fanfare, Python",
-        ],
-    },
-    {
-        title: "UI Test",
-        tools: [
-            "QTP (UFT), SilkTest, TestComplete, MS Test Professional, SoapUI, Selenium, Sikuli, AutoIT, Protractor",
-        ],
-    },
-    {
-        title: "Mobile Test",
-        tools: [
-            "UIAutomator, Selendroid, Appium, Calabash, LogCat, Mobile Log, Device Log Viewer, SBSetting, Pylot, Grinder",
-        ],
-    },
-    {
-        title: "Voice Test",
-        tools: [
-            "Crescendo (Voice path), VQuad (Voice quality), Hurricane (Signaling), SIPp (Signaling), TARTS, In-house speech path verification",
-        ],
-    },
-    {
-        title: "Automated Testing Tools",
-        tools: [
-            "RobotFramework, Cucumber, Katalon, MS Automation UI, TestShell Studio, TestNG, BDD Framework, Att, Twister, In-house Framework Tools (Hybrid Model)",
-        ],
-    },
-    {
-        title: "Performance and Traffic Test Tools",
-        tools: [
-            "IXIA, SmartBits, Ameritec, Hammer",
-            "Hurricane, NES, Fortissimo",
-            "Jmeter, Ysim, ICARUS, MP3, iPerl",
-        ],
-    },
-    {
-        title: "Instrument Control",
-        tools: [
-            "MatLab, Labview",
-        ],
-    },
-    {
-        title: "API Test",
-        tools: [
-            " NodeJS, PyrestTest, SOAPUI, Postman, Curl"
-        ],
-    },
-    {
-        title: "Security Testing",
-        tools: [
-            "Spectra2, SIPp, INES",
-            "IxExplorer/IxLoad, VLC, IXIA, Spirent",
-            "Nessus, Codenomicon, OpenVas, Cain Radius, SAML, USB Token",
-            "Qualys, OpenScap"
-        ],
-    },
-    {
-        title: "Penetration Testing",
-        tools: [
-            "Nessus, Kali, BurpSuite, Metasploits, NMAP, OWASP ZAP"
-        ],
-    },
-]
+
+
 
 
 const SoftwareTestingPage = () => {
@@ -295,26 +185,41 @@ const SoftwareTestingPage = () => {
                         <Container sx={{ mt: 6, mb: 4 }}>
                             <Grid container spacing={4}>
                                 {testingServices.map((service, index) => (
-                                    <Grid item xs={12} sm={4} key={index}>
-                                        <Paper elevation={3} sx={{ padding: 3, borderRadius: 2, bgcolor: '#E3F2FD', textAlign: 'center' }}>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                                <img
+                                    <Grid item xs={12} sm={6} md={4} key={index}>
+                                        <Paper
+                                            elevation={3}
+                                            sx={{
+                                                padding: 3,
+                                                borderRadius: 2,
+                                                bgcolor: '#E3F2FD',
+                                                textAlign: 'center',
+                                                height: '100%',
+                                                
+                                                
+                                                justifyContent: 'space-between',
+                                            }}
+                                        >
+                                            <Box sx={{ display: 'flex', alignItems: 'center',}}>
+                                                <Box
+                                                    component="img"
                                                     src={service.imageUrl}
                                                     alt={service.title}
-                                                    style={{ width: "10%", marginRight: 16 }}
+                                                    sx={{ width: "10%", objectFit: 'contain', mb: 1 }}
                                                 />
-                                                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                                                <Typography fontSize={15} fontWeight="bold">
                                                     {service.title}
                                                 </Typography>
                                             </Box>
                                             <Divider sx={{ mb: 2 }} />
-                                            <Box sx={{ listStyleType: 'none', pl: 0 }}>
+                                            <Box component="ul" sx={{ pl: 1, m: 0, textAlign: 'left' }}>
                                                 {service.items.map((item, idx) => (
-                                                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }} key={idx}>
-                                                        <Circle sx={{ color: '#00BFFF', fontSize: 12, mr: 1 }} />
-                                                        <Typography variant="body2" sx={{ textAlign: 'left' }}>
-                                                            {item}
-                                                        </Typography>
+                                                    <Box
+                                                        component="li"
+                                                        key={idx}
+                                                        sx={{ display: 'flex', alignItems: 'center', mb: 1 }}
+                                                    >
+                                                        <Circle sx={{ color: '#00BFFF', fontSize: 10, mr: 1 }} />
+                                                        <Typography variant="body2">{item}</Typography>
                                                     </Box>
                                                 ))}
                                             </Box>
@@ -323,12 +228,15 @@ const SoftwareTestingPage = () => {
                                 ))}
                             </Grid>
                         </Container>
+
                     </Box>
                 </FadeSection>
                 <FadeSection id='about' >
-                    <Box p={5} bgcolor={"blue"} sx={{
+                    <Box p={5} sx={{
                         mt: 10,
-                        bgcolor: "blue",
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
                         color: "white",
                         clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                     }}
@@ -486,81 +394,95 @@ const SoftwareTestingPage = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection id='Microsoft'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} variant='h4'>
-                                    Testing Tools
-                                </Typography>
-                            </Box>
-                            <Container sx={{ p: 5 }}>
-                                {testingTools.map((item, index) => (
-                                    <Grid
-                                        key={index}
-                                        container
-                                        item
-                                        spacing={2}
-                                        sx={{ mb: 2.3 }} // khoảng trắng nhỏ giữa mỗi block
-                                    >
-                                        <Grid p={2} item
-                                            xs={12}
-                                            md={4}
-                                            sx={{
-                                                bgcolor: "#1ea7fd",
-                                                color: "white",
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                textAlign: "center",
-                                                alignItems: "center",
-                                            }} bgcolor={"#1ea7fd"} fontSize={24} alignItems={"center"} fontWeight={700} color="white">
-                                            {item.title}
-                                        </Grid>
-                                        <Grid
-                                            item
-                                            xs={12}
-                                            md={8}
-                                            sx={{
-                                                bgcolor: "#f5f5f5",
-                                                p: 2,
-                                            }}
-                                        >
+                    <Box
+                        sx={{
+                            background: 'linear-gradient(180deg, #009BFF 0%,rgb(31, 58, 85) 100%)',
+                            boxShadow: '0 8px 30px rgba(0,0,0,0.2)',
+                            borderRadius: 3,
+                        }}>
+
+
+                        <Container sx={{ mt: 12 }}>
+                            <Box
+                                sx={{
+                                    borderRadius: 3,
+                                    overflow: 'hidden',
+                                    color: 'white',
+                                    px: { xs: 2, sm: 4 },
+                                    py: { xs: 6, sm: 8 },
+                                }}
+                            >
+                                <Box textAlign="center" mb={6}>
+                                    <img
+                                        src="https://www.tmasolutions.com/media/technologies/iconDecor.webp"
+                                        alt=""
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                    <Typography variant="h4" fontWeight="bold">
+                                        Testing Tools
+                                    </Typography>
+                                </Box>
+
+                                <Grid container spacing={4}>
+                                    {[
+                                        {
+                                            title: 'Bug Tracking',
+                                            tools: ['JIRA', 'Redmine', 'Azure DevOps', 'TestRails'],
+                                        },
+                                        {
+                                            title: 'UI & Mobile Test',
+                                            tools: ['Selenium', 'Appium', 'QTP', 'TestComplete'],
+                                        },
+                                        {
+                                            title: 'API & Automation',
+                                            tools: ['Postman', 'RobotFramework', 'Cucumber', 'SoapUI'],
+                                        },
+                                        {
+                                            title: 'Performance & Security',
+                                            tools: ['JMeter', 'IXIA', 'Nessus', 'BurpSuite'],
+                                        },
+                                    ].map((item, index) => (
+                                        <Grid item xs={12} md={6} key={index}>
                                             <Box
-                                                display="flex"
-                                                flexWrap="wrap"
-                                                gap={2} // khoảng cách giữa các item
+                                                sx={{
+                                                    bgcolor: 'white',
+                                                    color: '#333',
+                                                    borderRadius: 2,
+                                                    p: 3,
+                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                                                    height: '100%',
+                                                }}
                                             >
-                                                {item.tools.map((tech, i) => (
-                                                    <Box
-                                                        key={i}
-                                                        display="flex"
-                                                        alignItems="center"
-                                                    >
-                                                        <FiberManualRecordIcon
-                                                            sx={{ fontSize: 8, color: "green", mr: 1 }}
-                                                        />
-                                                        <Typography variant="body2">{tech}</Typography>
-                                                    </Box>
-                                                ))}
+                                                <Typography variant="h6" fontWeight="bold" mb={2} color="#1976d2">
+                                                    {item.title}
+                                                </Typography>
+                                                <Box display="flex" flexWrap="wrap" gap={2}>
+                                                    {item.tools.map((tech, i) => (
+                                                        <Box key={i} display="flex" alignItems="center" width="100%">
+                                                            <FiberManualRecordIcon sx={{ fontSize: 8, color: 'green', mr: 1 }} />
+                                                            <Typography variant="body2">{tech}</Typography>
+                                                        </Box>
+                                                    ))}
+                                                </Box>
                                             </Box>
                                         </Grid>
-                                    </Grid>
-                                ))}
+                                    ))}
+                                </Grid>
+                            </Box>
+                        </Container>
+                    </Box>
 
-                            </Container>
-                        </Box>
-                    </Container>
+
                 </FadeSection>
                 <FadeSection id='Microsoft'>
                     <Container>
-                        <Box mt={3} sx={{ bgcolor: "#f5f5f5" }} p={5}>
+                        <Box sx={{ bgcolor: "#f5f5f5" }} p={5}>
                             <Box textAlign="center">
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                                 <Typography fontWeight="bold" variant="h4">
                                     Case studies
                                 </Typography>
                             </Box>
-
                             <Box sx={{ width: "100%", p: 2 }}>
                                 {/* Buttons as menu */}
                                 <Box
@@ -639,45 +561,58 @@ const SoftwareTestingPage = () => {
 
                 </FadeSection>
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 16,  } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        Software Testing Brochure
+                                        Testing IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

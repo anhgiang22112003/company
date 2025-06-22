@@ -6,6 +6,7 @@ import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
 const caseStudies = [
     {
@@ -140,18 +141,16 @@ const telecomIcons = [
     }
 ]
 const developmentItems = [
-    `<b>Full-cycle IoT development:</b> Streamline your path from initial idea to ready solution with our end-to-end software development services, covering all stages of your digital transformation`,
-    `<b>IoT integrations:</b> Maximize the value of your IoT initiative by ensuring your software platform is compatible with existing infrastructure and legacy equipment`,
-    `<b>IoT acceleration:</b> Speed up your IoT solution development by using our IoT accelerator as a kick-off point to manage device connectivity based on predefined scenarios`,
-    `<b>User app development:</b> Explore the data your devices provide and manage them on the go with native mobile and web applications powered by an intelligent UX`,
+    `<b>End-to-end IoT development:</b> From idea to deployment, covering all stages of your digital transformation`,
+    `<b>IoT integration:</b> Ensure compatibility with existing systems and legacy devices`,
+    `<b>User app development:</b> Control and monitor devices via web & mobile apps with smart UX`,
 ]
+
 const testingItems = [
-    `<b>Black-box test type:</b> Black-box test type: functional, performance, stress test, end-to-end testing`,
-    `<b>Applications testing:</b> C/C++ API testing`,
-    `<b>Firmware testing:</b><br/>
-    • Testing for AT commands is based on ITU V.25 ter, 3GPP specifications and manufacturer’s specifications<br/>
-    • IoT cloud interaction testing: device management, firmware-over-the-air (FOTA), software-over-the-air (SOTA)`,
+    `<b>Black-box testing:</b> Functional, performance, and end-to-end testing`,
+    `<b>Firmware testing:</b> AT command compliance & IoT cloud interaction: FOTA, SOTA`,
 ]
+
 const features = [
     {
         icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240522094010.384.webp",
@@ -188,42 +187,40 @@ const technologies = [
     {
         title: 'Programming',
         items: [
-            'Edge computing, C/C++, Python, Java',
+            'C/C++, Python, Java, Edge Computing',
         ],
     },
     {
         title: 'Devices',
         items: [
-            'Mobile, sensor, GPS, light therapy device, beacon, electronic plug',
-            'ARM, Ar7240, RT-Linux, Android',
-            'Arduino, ESP, NVIDIA Jetson, Google Coral, Raspberry Pi, Google Coral, Xilinx, Sierra Wireless FX30, STM/ ARM/ AVR/ TI',
-            'Network simulators, oscilloscope, shielding box, temperature chamber',
+            'Sensor, GPS, Mobile, Beacon, Raspberry Pi, Arduino, NVIDIA Jetson, ESP32',
         ],
     },
     {
         title: 'Technologies',
         items: [
-            '2G/3G/4G/NB-IoT/5G, Bluetooth/BLE, Wifi, LoRa/LoRaWAN, Modbus, CAN, LIDAR, SLAM, MQTT, CoAP, LWM2M, AMQP',
+            'Bluetooth/BLE, Wi-Fi, 4G/5G, LoRaWAN, MQTT, Modbus, CAN',
         ],
     },
     {
         title: 'OS',
         items: [
-            'Android, RTOS, Yocto, Windows IoT Core, Linux, Raspberry Pi OS',
+            'Linux, RTOS, Android, Raspberry Pi OS',
         ],
     },
     {
         title: 'IoT Platform',
         items: [
-            'AWS IoT, Google Cloud IoT, Azure IoT Hub, Sierra Wireless Legato/Octave, Thingsboard',
+            'AWS IoT, Azure IoT Hub, Google Cloud IoT, Thingsboard',
         ],
     },
 ]
 
 
 
+
 const ServiceBox = ({ iconUrl, title, items }: any) => (
-    <Box bgcolor="#1e90ff" color="#fff" p={3} borderRadius={1.5} height="100%">
+    <Box bgcolor="#1e90ff" color="#fff" p={2} borderRadius={1.5} height="100%">
         <Box display="flex" alignItems="center" mb={2}>
             <Box
                 component="img"
@@ -264,7 +261,7 @@ const IotPage = () => {
                     <Box
 
                         sx={{
-                            backgroundColor: '#1976d2',
+                            background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                             color: 'white',
                             mt: 18,
                             py: 8,
@@ -371,18 +368,20 @@ const IotPage = () => {
                             <Box px={{ xs: 2, md: 8 }} py={6} bgcolor="#f9f9f9">
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={6}>
+                                        <SlideInOnScroll>
                                         <ServiceBox
                                             iconUrl="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240521144553.557.webp"
                                             title="IoT Development"
                                             items={developmentItems}
-                                        />
+                                        /></SlideInOnScroll>
                                     </Grid>
                                     <Grid item xs={12} md={6}>
+                                        <SlideInOnScroll direction='right'>
                                         <ServiceBox
                                             iconUrl="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240521144611.169.webp"
                                             title="IoT Testing"
                                             items={testingItems}
-                                        />
+                                        /></SlideInOnScroll>
                                     </Grid>
                                 </Grid>
                             </Box>
@@ -390,10 +389,14 @@ const IotPage = () => {
                     </Container>
                 </FadeSection>
                 <FadeSection>
-                    <Box bgcolor="#f6f9fc" px={{ xs: 2, md: 8 }} py={6}>
+                    <Box sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
+                    }} px={{ xs: 2, md: 8 }} py={6}>
                         <Container>
                             <Typography textAlign={"center"} variant="h5" fontWeight="bold" mb={4}>
-                                 IoT Platform (T-Connect)
+                                IoT Platform (T-Connect)
                             </Typography>
                             <Grid container spacing={4}>
                                 {features.map((item, index) => (
@@ -428,64 +431,64 @@ const IotPage = () => {
 
                 </FadeSection>
                 <FadeSection>
-                    <Container>
-                        <Box px={{ xs: 2, md: 8 }} py={6}>
-                            <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
-                                Solutions
-                            </Typography>
-                            <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="flex-start">
-                                <List sx={{ minWidth: 250, bgcolor: '#f7faff', borderRadius: 2, p: 0 }}>
-                                    {solutions.map((item, index) => (
-                                        <ListItemButton
-                                            key={index}
-                                            selected={selectedIndex === index}
-                                            onClick={() => setSelectedIndex(index)}
-                                            sx={{
-                                                py: 1.5,
-                                                px: 2,
-                                                '&.Mui-selected': {
-                                                    bgcolor: 'white',
-                                                    borderLeft: '4px solid #007FFF',
-                                                    color: '#007FFF',
-                                                },
-                                            }}
-                                        >
-                                            <ListItemIcon>
-                                                <Box
-                                                    component="img"
-                                                    src={item.icon}
-                                                    alt={item.label}
-                                                    sx={{ width: 24, height: 24 }}
-                                                />
-                                            </ListItemIcon>
-                                            <ListItemText primary={<Typography fontSize={14}>{item.label}</Typography>} />
-                                        </ListItemButton>
-                                    ))}
-                                </List>
 
-                                <Box flex={1} textAlign="center">
-                                    <Box
-                                        component="img"
-                                        src={solutions[selectedIndex].image}
-                                        alt={solutions[selectedIndex].label}
+                    <Box px={{ xs: 2, md: 8 }} py={6}>
+                        <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
+                            Solutions
+                        </Typography>
+                        <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="flex-start">
+                            <List sx={{ minWidth: 250, bgcolor: '#f7faff', borderRadius: 2, p: 0 }}>
+                                {solutions.map((item, index) => (
+                                    <ListItemButton
+                                        key={index}
+                                        selected={selectedIndex === index}
+                                        onClick={() => setSelectedIndex(index)}
                                         sx={{
-                                            maxWidth: '100%',
-                                            borderRadius: 2,
-                                            boxShadow: 2,
+                                            py: 1.5,
+                                            px: 2,
+                                            '&.Mui-selected': {
+                                                bgcolor: 'white',
+                                                borderLeft: '4px solid #007FFF',
+                                                color: '#007FFF',
+                                            },
                                         }}
-                                    />
-                                </Box>
-                            </Stack>
-                        </Box>
-                    </Container>
+                                    >
+                                        <ListItemIcon>
+                                            <Box
+                                                component="img"
+                                                src={item.icon}
+                                                alt={item.label}
+                                                sx={{ width: 24, height: 24 }}
+                                            />
+                                        </ListItemIcon>
+                                        <ListItemText primary={<Typography fontSize={14}>{item.label}</Typography>} />
+                                    </ListItemButton>
+                                ))}
+                            </List>
+
+                            <Box flex={1} textAlign="center"> <SlideInOnScroll direction='right'>
+                                <Box
+                                    component="img"
+                                    src={solutions[selectedIndex].image}
+                                    alt={solutions[selectedIndex].label}
+                                    sx={{
+                                        maxWidth: '100%',
+                                        borderRadius: 2,
+                                        boxShadow: 2,
+                                    }}
+                                /></SlideInOnScroll>
+                            </Box>
+                        </Stack>
+                    </Box>
+
                 </FadeSection>
                 <FadeSection>
-                    <Container>
-                        <Box px={{ xs: 2, md: 8 }} py={6} bgcolor="#f2f7ff">
-                            <Typography variant="h5" fontWeight="bold" textAlign="center" mb={4}>
-                                Technologies
-                            </Typography>
 
+                    <Box px={{ xs: 2, md: 8 }} py={6} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }}>
+                        <Typography variant="h5" fontWeight="bold" textAlign="center" mb={4}>
+                            Technologies
+                        </Typography>
+                        <Container>
                             <Grid container border="1px solid #d1e0ff" overflow="hidden">
                                 {technologies.map((tech, idx) => (
                                     <React.Fragment key={idx}>
@@ -533,9 +536,9 @@ const IotPage = () => {
                                         </Grid>
                                     </React.Fragment>
                                 ))}
-                            </Grid>
-                        </Box>
-                    </Container>
+                            </Grid></Container>
+                    </Box>
+
                 </FadeSection>
                 {/* <FadeSection id='Microsoft'>
                     <Container>
@@ -629,45 +632,58 @@ const IotPage = () => {
                     </Container>
                 </FadeSection> */}
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        IOT Brochure
+                                        IOT IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

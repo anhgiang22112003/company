@@ -19,6 +19,8 @@ import StorageIcon from '@mui/icons-material/Storage'
 import DatasetIcon from '@mui/icons-material/Dataset'
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+import { Masonry } from '@mui/lab'
 
 const items = [
     {
@@ -70,58 +72,59 @@ const techData = [
     {
         title: 'Data Integration',
         items: [
-            'Azure Database Migration Service, Azure Data Factory, Azure Event Hub, Azure Stream Analytics, Azure Synapse',
-            'AWS Kinesis Firehose, AWS Database Migration Service, AWS Glue, AWS Lambda, AWS Data Pipeline',
-            'Google Cloud Dataflow, Google Cloud Datastream',
-            'Apache Nifi, Apache Kafka, Apache Flume, Apache Airbyte, Debezium',
+            'Azure Data Factory, Azure Event Hub, Azure Synapse',
+            'AWS Glue, AWS Lambda, AWS Kinesis Firehose',
+            'Google Cloud Dataflow',
+            'Apache Kafka, Apache Nifi, Debezium',
         ],
     },
     {
         title: 'Data Storage',
         items: [
-            'Azure Blob Storage, Azure Data Lake Storage, SQL, Azure Cosmos DB',
-            'Amazon S3, Amazon DynamoDB, Amazon Redshift',
-            'HDFS, MinIO, ClickHouse, Apache Pinot, PostgreSQL, TimeScaleDB, MongoDB',
-            'Google BigQuery, Google Cloud Storage',
-            'Apache Iceberg, Apache HUDI, Delta Live Table',
+            'Azure Data Lake Storage, Azure Cosmos DB',
+            'Amazon S3, Amazon Redshift',
+            'PostgreSQL, MongoDB, ClickHouse',
+            'Google BigQuery',
+            'Delta Lake, Apache Iceberg',
         ],
     },
     {
         title: 'Data Processing & Analytics',
         items: [
-            'Azure Data Factory, Azure Databricks, Azure Synapse Analytics, Azure Functions, Azure HDInsight',
-            'AWS Glue, AWS EMR, AWS Lambda',
-            'Google Cloud Dataproc, Google Cloud DataPlex',
-            'Apache Flink, Apache Spark, Apache Beam, Apache Storm',
+            'Azure Databricks, Azure Synapse Analytics',
+            'AWS Glue, AWS EMR',
+            'Google Cloud Dataproc',
+            'Apache Spark, Apache Flink',
         ],
     },
     {
         title: 'Data Observability',
         items: [
-            'Azure Monitor, Azure Application Insights, Azure Firewall',
-            'Amazon CloudWatch, AWS X-Ray, AWS CloudTrail, IAM, KMS',
-            'Google Cloud Monitoring, Google Cloud Trace',
+            'Azure Monitor, Azure Application Insights',
+            'Amazon CloudWatch, AWS X-Ray',
+            'Google Cloud Monitoring',
             'Prometheus, Grafana, Datadog',
         ],
     },
     {
         title: 'Data Visualization & BI',
         items: [
-            'Azure Power BI, Azure ML, Azure Open AI, Azure AI Search',
-            'Amazon QuickSight, Amazon SageMaker',
-            'Google Data Studio, Google Looker',
-            'Tableau, Power BI, Apache Superset, Metabase, Grafana',
+            'Power BI, Azure Power BI',
+            'Amazon QuickSight',
+            'Google Looker',
+            'Tableau, Apache Superset, Metabase',
         ],
     },
     {
         title: 'Infrastructure & Platforms',
-        items: ['On-premises, AWS, Azure, Google, Databricks, Snowflake'],
+        items: ['AWS, Azure, Google Cloud, Databricks, Snowflake'],
     },
     {
         title: 'Programming Languages & Frameworks',
-        items: ['Scala, Java, R, Python, Panda, MapReduce, Spark, Flink'],
+        items: ['Python, Java, Scala, Spark, Flink'],
     },
 ]
+
 const servicesData = [
     {
         title: 'Data Migration',
@@ -154,14 +157,9 @@ const servicesData = [
 ]
 const rows = [
     {
-        feature: 'Service Model',
-        description:
-            'Supports both on-premises and multi-cloud environments, offering flexibility for deployment based on organizational needs.',
-    },
-    {
         feature: 'Supported Cloud Platforms',
         description:
-            'Compatible with a wide range of platforms including Azure, AWS, Google Cloud, Digital Ocean, as well as private clouds and enterprise data centers, ensuring broad interoperability.',
+            'Compatible with platforms like Azure, AWS, and Google Cloud, ensuring broad interoperability and cloud flexibility.',
     },
     {
         feature: 'Scalability',
@@ -169,61 +167,42 @@ const rows = [
             'Designed with horizontal scaling capabilities, allowing seamless expansion as data and user demands grow.',
     },
     {
-        feature: 'Vendor Lock-in',
-        description:
-            'No vendor lock-in, providing customers with full control and freedom to migrate or integrate systems.',
-    },
-    {
         feature: 'Query Interface',
         description:
-            'Offers multiple options like SQL, Spark Dataframe, and REST API to suit diverse analytical and development needs.',
+            'Supports SQL, Spark DataFrame, and REST APIs to serve different analytical and development needs.',
     },
     {
         feature: 'Data Structures',
         description:
-            'Capable of handling all types of data, including structured (e.g., relational databases), semi-structured (e.g., JSON, XML) and unstructured (raw, audio, video, logs, text, etc.)',
+            'Handles structured (SQL), semi-structured (JSON), and unstructured (logs, audio, video) data types efficiently.',
     },
     {
         feature: 'Services',
         description:
-            'Data lake, data warehouse, data lakehouse, data science, data analytics and AI/ML.',
+            'Includes core data services like data lake, data warehouse, lakehouse, analytics, and AI/ML workloads.',
     },
     {
         feature: 'Analytic Model',
         description:
-            'Supports Batch processing, Real-time analytics, and Streaming analytics for varied data processing needs.',
-    },
-    {
-        feature: 'AI/ML Capabilities',
-        description:
-            'Built-in AI/ML models provided by, designed to streamline predictive analysis and decision-making processes.',
+            'Supports batch and real-time analytics, including streaming for fast insights.',
     },
     {
         feature: 'BI & Reporting',
         description:
-            'Includes built-in reports and dynamic dashboards that offer real-time visualization and business intelligence insights.',
+            'Built-in dashboards and reporting tools deliver real-time business intelligence insights.',
     },
     {
         feature: 'Security & Governance',
         description:
-            'Features role-based access control to ensure secure and restricted access to sensitive data. Can be customized to meet customer’s needs.',
-    },
-    {
-        feature: 'Domain Specific',
-        description:
-            'Tailored solutions for specific industries such as: Networking, Telecom, Health Tech, Customer Insights.',
-    },
-    {
-        feature: 'Composable',
-        description:
-            'Fully customizable components, enabling organizations to adapt the platform to meet unique business requirements.',
+            'Includes role-based access control and governance features for secure data access and compliance.',
     },
     {
         feature: 'Easy to Use',
         description:
-            'Provides an intuitive drag-and-drop interface and customizable workflows, making it accessible even for non-technical users.',
+            'Offers a user-friendly interface with drag-and-drop features, making data workflows accessible to non-technical users.',
     },
 ]
+
 
 const BigDataAnalyticsPage = () => {
 
@@ -232,42 +211,43 @@ const BigDataAnalyticsPage = () => {
         <>
             <CssBaseline />
             <Header />
-            <FadeSection>
-                <Box
+            <Box
 
-                    sx={{
-                        backgroundColor: '#1976d2',
-                        color: 'white',
-                        mt: 18,
-                        py: 8,
-                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        overflow: 'hidden',
-                    }}
-                >
-                    <Box sx={{ position: "absolute" }}>
-                        <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
-                    </Box>
-                    <Container>
-                        <Grid container spacing={6} alignItems="center" justifyContent="center">
-                            {/* Left: Text and Icons */}
-                            <Grid item xs={12} md={6}>
-                                <Typography variant="h4" fontWeight="bold" mb={2}>
-                                    Big Data & Analytics
-                                </Typography>
-                                <Typography variant="body1" mb={4}>
-                                    Our BI, big data and analytics team has supported many customers in building BI and analytics solutions to process large amounts of business data and provide real-time reports for business decisions.​                                </Typography>
+                sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    color: 'white',
+                    mt: 18,
+                    py: 8,
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    overflow: 'hidden',
+                }}
+            >
 
-                                {telecomIcons.map((item, index) => (
-                                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                        <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
-                                        <Typography variant="body1">{item.title}</Typography>
-                                    </Box>
-                                ))}
-                            </Grid>
+                <Box sx={{ position: "absolute" }}>
+                    <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
+                </Box>
+                <Container>
+                    <Grid container spacing={6} alignItems="center" justifyContent="center">
+                        {/* Left: Text and Icons */}
+                        <Grid item xs={12} md={6}><SlideInOnScroll>
+                            <Typography variant="h4" fontWeight="bold" mb={2}>
+                                Big Data & Analytics
+                            </Typography>
+                            <Typography variant="body1" mb={4}>
+                                Our BI, big data and analytics team has supported many customers in building BI and analytics solutions to process large amounts of business data and provide real-time reports for business decisions.​                                </Typography>
 
-                            {/* Right: Hex Grid */}
-                            <Grid item xs={12} md={6}>
+                            {telecomIcons.map((item, index) => (
+                                <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                    <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
+                                    <Typography variant="body1">{item.title}</Typography>
+                                </Box>
+                            ))}</SlideInOnScroll>
+                        </Grid>
+
+                        {/* Right: Hex Grid */}
+                        <Grid item xs={12} md={6}>
+                            <SlideInOnScroll direction='right'>
                                 <Box
                                     sx={{
                                         display: 'flex',
@@ -277,12 +257,11 @@ const BigDataAnalyticsPage = () => {
                                     }}
                                 >
                                     <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20250321093607.455.webp" alt="" />
-                                </Box>
-                            </Grid>
+                                </Box></SlideInOnScroll>
                         </Grid>
-                    </Container>
-                </Box>
-            </FadeSection>
+                    </Grid>
+                </Container>
+            </Box>
             <FadeSection >
                 <Container>
                     <Box sx={{ px: 4, p: 2 }}>
@@ -304,10 +283,7 @@ const BigDataAnalyticsPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
-
-                }}
+                <Box p={5}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -318,7 +294,7 @@ const BigDataAnalyticsPage = () => {
                         </Container>
                     </Box>
                     <Box sx={{ p: 4 }}>
-                        <Container>
+                        
                             <Grid container spacing={2} justifyContent="center">
                                 {servicesData.map((service, index) => (
                                     <Grid item xs={12} sm={6} md={3} key={index}>
@@ -331,20 +307,20 @@ const BigDataAnalyticsPage = () => {
                                     </Grid>
                                 ))}
                             </Grid>
-                        </Container>
+                      
                     </Box>
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Box bgcolor={"#f5f5f5"}>
-                    <Container>
+                <Box p={4} bgcolor={"#f5f5f5"}>
+                    
                         <Container sx={{ textAlign: "center" }}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                 Technologies
                             </Typography>
                         </Container>
-                        <Box sx={{ backgroundColor: '#f5f9ff', px: 4, py: 8 }}>
+                        <Box sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', px: 4, py: 8 }}>
                             <Grid container spacing={3}>
                                 {techData.map((section, index) => (
                                     <Grid item xs={12} md={6} key={index}>
@@ -369,11 +345,11 @@ const BigDataAnalyticsPage = () => {
                                 ))}
                             </Grid>
                         </Box>
-                    </Container>
+                   
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ backgroundColor: '#1da1f2', py: 6, px: 2 }}>
+                <Box sx={{  py: 6, px: 2 }}>
                     <Box textAlign="center" mb={4}>
                         <Box
                             sx={{
@@ -385,42 +361,64 @@ const BigDataAnalyticsPage = () => {
                                 mb: 1,
                             }}
                         />
-                        <Typography variant="h4" fontWeight="bold" color="white">
+                        <Typography variant="h4" fontWeight="bold" >
                             Solutions
                         </Typography>
                     </Box>
-                    <Container>
-                        <Grid container spacing={3} justifyContent="center">
-                            {solutions.map((solution, index) => (
-                                <Grid item xs={12} sm={6} md={3} key={index}>
-                                    <Card
-                                        sx={{
-                                            height: 120,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            flexDirection: 'column',
-                                            boxShadow: 3,
-                                            borderRadius: 2,
-                                            textAlign: 'center',
-                                            px: 2,
-                                        }}
-                                    >
-                                        <CardContent sx={{ p: 0 }}>
-                                            <Box mb={1} color="primary.main">{solution.icon}</Box>
-                                            <Typography variant="body2" fontWeight={500}>
-                                                {solution.label}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
+
+                    <Box
+                        sx={{
+                            overflow: 'hidden',
+                            width: '100%',
+                            
+                            py: 2,
+                            position: 'relative',
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                width: 'max-content',
+                                animation: 'scroll 40s linear infinite',
+                                '@keyframes scroll': {
+                                    '0%': { transform: 'translateX(0)' },
+                                    '100%': { transform: 'translateX(-50%)' },
+                                },
+                            }}
+                        >
+                            {[...solutions, ...solutions].map((solution, index) => (
+                                <Card
+                                    key={index}
+                                    sx={{
+                                        minWidth: 200,
+                                        height: 100,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        flexDirection: 'column',
+                                        boxShadow: 2,
+                                        borderRadius: 2,
+                                        textAlign: 'center',
+                                        mx: 1,
+                                        flexShrink: 0,
+                                    }}
+                                >
+                                    <CardContent sx={{ p: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                        <Box mb={1}>{solution.icon}</Box>
+                                        <Typography variant="body2" fontWeight={500}>
+                                            {solution.label}
+                                        </Typography>
+                                    </CardContent>
+                                </Card>
                             ))}
-                        </Grid>
-                    </Container>
+                        </Box>
+                    </Box>
+
+
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ backgroundColor: '#f5f8ff', py: 8 }}>
+                <Box sx={{         background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))', py: 8 }}>
                     <Box textAlign="center" mb={5}>
                         <Container sx={{ textAlign: "center" }}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
@@ -469,7 +467,7 @@ const BigDataAnalyticsPage = () => {
                     </Box>
                 </Box>
             </FadeSection>
-            <FadeSection>
+            {/* <FadeSection>
                 <Box sx={{ backgroundColor: '#f5f8ff' }}>
                     <Box textAlign="center" mb={5}>
                         <Container sx={{ textAlign: "center" }}>
@@ -494,8 +492,8 @@ const BigDataAnalyticsPage = () => {
                         <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250403082001.211.webp" alt="" />
                     </Box>
                 </Box>
-            </FadeSection>
-            <FadeSection>
+            </FadeSection> */}
+            {/* <FadeSection>
                 <Box sx={{ backgroundColor: '#f5f8ff', mt: 4 }}>
                     <Box textAlign="center" mb={5}>
                         <Container sx={{ textAlign: "center" }}>
@@ -520,10 +518,10 @@ const BigDataAnalyticsPage = () => {
                         <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250403082047.792.webp" alt="" />
                     </Box>
                 </Box>
-            </FadeSection>
+            </FadeSection> */}
             <FadeSection>
-              
-                <Box sx={{ backgroundColor: '#f5f8ff', py: 6, px: 2,mt:4 }}>
+
+                <Box sx={{ backgroundColor: '#f5f8ff', py: 6, px: 2, mt: 4 }}>
                     <Typography
                         variant="h5"
                         fontWeight="bold"
@@ -533,81 +531,94 @@ const BigDataAnalyticsPage = () => {
                     >
                         Features
                     </Typography>
-  <Container>
-                    <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
-                        <Table>
-                            <TableHead>
-                                <TableRow sx={{ backgroundColor: '#2196f3' }}>
-                                    <TableCell sx={{ color: '#fff', fontWeight: 'bold', width: '25%' }}>
-                                        Features
-                                    </TableCell>
-                                    <TableCell sx={{ color: '#fff', fontWeight: 'bold' }}>
-                                        Data Platform
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {rows.map((row, idx) => (
-                                    <TableRow
-                                        key={idx}
-                                        sx={{
-                                            '&:nth-of-type(odd)': { backgroundColor: '#f9f9f9' },
-                                        }}
-                                    >
-                                        <TableCell sx={{ fontWeight: 600, color: '#0d47a1' }}>
-                                            {row.feature}
+                    <Container>
+                        <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
+                            <Table>
+                                <TableHead>
+                                    <TableRow sx={{ backgroundColor: '#2196f3' }}>
+                                        <TableCell sx={{ color: '#fff', fontWeight: 'bold', width: '25%' }}>
+                                            Features
                                         </TableCell>
-                                        <TableCell>{row.description}</TableCell>
+                                        <TableCell sx={{ color: '#fff', fontWeight: 'bold' }}>
+                                            Data Platform
+                                        </TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer> 
+                                </TableHead>
+                                <TableBody>
+                                    {rows.map((row, idx) => (
+                                        <TableRow
+                                            key={idx}
+                                            sx={{
+                                                '&:nth-of-type(odd)': { backgroundColor: '#f9f9f9' },
+                                            }}
+                                        >
+                                            <TableCell sx={{ fontWeight: 600, color: '#0d47a1' }}>
+                                                {row.feature}
+                                            </TableCell>
+                                            <TableCell>{row.description}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </Container>
                 </Box>
-               
+
             </FadeSection>
 
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Data Solution Brochure
+                                    Bigdata IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

@@ -20,8 +20,9 @@ export default function Banner() {
   return (
     <Box sx={{
       width: "100%", height: {
-        xs: '80vh', // mobile: 80% chiều cao viewport
-        md: '95vh' // pc: 100%
+        xs: '80vh',
+        md:"90%",
+        sm:"90%" // mobile: 80% chiều cao viewport
       }, mt: 8
     }}>
       <Swiper

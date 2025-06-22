@@ -1,47 +1,24 @@
 import React, { useState } from 'react'
-import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, Fade, Card, CardContent, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Chip, CardMedia, useMediaQuery, useTheme, IconButton } from '@mui/material'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
-import BiotechIcon from '@mui/icons-material/Biotech'
-import QueryStatsIcon from '@mui/icons-material/QueryStats'
-import ChatIcon from '@mui/icons-material/Chat'
-import AnalyticsIcon from '@mui/icons-material/Analytics'
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt'
-import MoveToInboxIcon from '@mui/icons-material/MoveToInbox'
-import TimelineIcon from '@mui/icons-material/Timeline'
-import HubIcon from '@mui/icons-material/Hub'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions'
 import InsightsIcon from '@mui/icons-material/Insights'
 import StorageIcon from '@mui/icons-material/Storage'
 import DatasetIcon from '@mui/icons-material/Dataset'
 import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
-const items = [
-    {
-        icon: <IntegrationInstructionsIcon fontSize="large" />,
-        text: 'Integrate enterprise data in minutes at scale instead of hours or weeks',
-    },
-    {
-        icon: <InsightsIcon fontSize="large" />,
-        text: 'Transform raw data into actionable insights in seconds, not hours',
-    },
-    {
-        icon: <StorageIcon fontSize="large" />,
-        text: "Maximize data warehouse's performance, cut costs, and enhance efficiency in no time",
-    },
-    {
-        icon: <DatasetIcon fontSize="large" />,
-        text: 'Visualize complex data effortlessly, turning numbers into narratives in real-time',
-    },
-    {
-        icon: <PrecisionManufacturingIcon fontSize="large" />,
-        text: 'Unlock business intelligence with integrated ML/AI solutions instantly',
-    },
-]
 
 const telecomIcons = [
     {
@@ -68,16 +45,8 @@ const solutions = [
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_plant.webp',
         items: [
             'Defect detection',
-            'Product sorting/classification',
-            'Packaging /barcode/label extraction',
-            'Management/inventory data extraction',
-            'Machine optimization',
             'Predictive maintenance',
-            'Personal protective equipment (PPE) detection',
-            'Smart locker',
-            'Emergency notification monitoring',
-            'Safety & security camera solutions',
-            'Worker/beauty/chemics access control',
+            'Machine optimization',
         ],
     },
     {
@@ -85,14 +54,8 @@ const solutions = [
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_healthcare.webp',
         items: [
             'Medical documents extraction',
-            'Sleep quality data analytics',
-            'Sleep syndromes detection',
-            'AI-based interaction using ECG',
-            'Customer service chatbot',
             'Smart call center assistant',
             'Patient fall detection',
-            'Patient taking medication activities detection',
-            'Tooth recognition & scoring',
         ],
     },
     {
@@ -100,137 +63,40 @@ const solutions = [
         icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094201.217.webp',
         items: [
             'Anomaly detection for cybersecurity threats',
-            'DDos attacks & service degradation in real time',
-            'Incident response',
-            'Automation and virtual assistants',
-            'AI-based recommendation tools for telecom services',
-            'Sentiment analysis',
-            'Self healing network for issue resolution',
-            'Automated root cause analysis and graph of network operation',
-            'Workflow forecast',
-            'Traffic flow prediction in network diagnostics',
+            'DDoS detection',
+            'AI-based recommendation tools',
         ],
     },
     {
         title: 'AI Solutions for Automotive',
         icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094212.170.webp',
         items: [
-            'Blind spot detection',
-            'Moving object detection',
-            'Speed /distance measurement',
             'Driver monitoring',
-            'Passenger detection',
-            'Lane detection',
-            'Vehicle detection',
-            'Pedestrian detection',
-            'License plate segmentation',
-            'Automatic parking/driving',
-            'Parking space detection',
-            'AI dashcam',
-            'ETA (Estimate Time of Arrival) with traffic prediction',
-            'POI (Point of Interest) recommendation',
-            'Road damage detection',
-            'Traffic light recognition',
-            'Traffic light color detection',
-            'Rear-parking detection',
-            'Violation detection',
             'License plates recognition',
-            'Audio enhancement for music/person/siren',
-            'Voice command & voice assistant',
-            'Driver interaction with infotainment controller',
+            'Voice command & assistant',
         ],
     },
     {
-        title: 'AI Solutions for Security & Safety',
-        icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094220.287.webp',
-        items: [
-            'Access control',
-            'Noise detection',
-            'License plate recognition',
-            'Parking lot detection',
-            'Weapon/explosive/wrongdoer detection',
-            'Children/Path detection',
-            'Intrusion detection',
-            'Smart locker',
-            'Emergency notification monitoring',
-            'Phishing email detection',
-            'Pedestrian control detection',
-            'Website spoofing prevention',
-        ],
-    },
-    {
-        title: 'AI Solutions for Ecommerce & Retails',
+        title: 'AI Solutions for Ecommerce & Retail',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_franchise.webp',
         items: [
-            'Smart locker',
-            'Multi-camera tracking',
-            'NFC & barcode detection',
-            'POS monitoring',
-            'Age & gender detection',
-            'People heatmap',
-            'Customer behavior & retail monitoring',
-            'Smart call center assistant',
-            'Warehouse access control',
-            'AI packaging assistant',
-            'Inventory level',
-            'Visual & voice search',
-            'Virtual try on',
+            'Customer behavior monitoring',
             'Product recommendation',
             'Chatbots and virtual assistants',
         ],
     },
     {
-        title: 'AI Solutions for Logistics',
-        icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094233.227.webp',
-        items: [
-            'Automatic container loading',
-            'AI packaging',
-            'Pallet/package defect detection',
-            'Product counting',
-            'Parking lot detection',
-            'Driver safety solutions',
-        ],
-    },
-    {
-        title: 'AI Solutions for Finance, Banking & Insurance',
+        title: 'AI Solutions for Finance & Banking',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_bank.webp',
         items: [
-            'Automated financial report',
             'Credit scoring & KYC assessment',
-            'Finance report/ information detection',
-            'Data extraction',
-            'Insurance claim payment process',
-            'Vault access control',
-            'Call center assistant',
-            'Identify and verify driver’s license parser',
-            'Bank KIs & statement OCR',
-        ],
-    },
-    {
-        title: 'AI Solutions for Agriculture',
-        icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094808.202.webp',
-        items: [
-            'Pest detection',
-            'Geolocation satellite detection',
-            'Drone security control',
-            'Tree disease detection',
-            'Environment monitoring',
-            'Soil data analytics',
-        ],
-    },
-    {
-        title: 'AI Solutions for Education & Recruitment',
-        icon: 'https://www.tmasolutions.com/uploadfiles/PageSection/section_content_image_20250425094324.502.webp',
-        items: [
-            'Course builder',
-            'Course finder assistant',
-            'Student behavior tracking',
-            'CRM/chatbot',
-            'Job recommendation',
-            'Auto grading assessment',
+            'Insurance claim processing',
+            'OCR for bank documents',
         ],
     },
 ]
+
+
 
 const services = [
     {
@@ -262,58 +128,53 @@ const technologies = [
     {
         title: 'Machine Learning (ML)',
         items: [
-            'Supervised ML: Linear Regression, SVM, Decision Tree, Gradient Boosted, LDA, UMAP',
-            'Unsupervised ML: PCA, t-SNE, UMAP, KNN, K-means clustering, Hierarchical clustering',
-            'Reinforcement Learning: Markov decision process, Q-learning and Deep Q-Networks',
-            'Predictive Analysis: ARIMA, SARIMA, Prophet, LSTMs, Transformer-based forecasting',
-            'Recommendation System: Collaborative Filtering, Content-based, Hybrid, Graph-based',
+            'Supervised ML: Linear Regression, Decision Tree, Gradient Boosted (XGBoost, LightGBM)',
+            'Unsupervised ML: PCA, K-means clustering, t-SNE',
+            'Predictive Analysis: ARIMA, Prophet, LSTMs',
+            'Recommendation System: Collaborative Filtering, Hybrid Filtering',
         ],
     },
     {
         title: 'Computer Vision (CV)',
         items: [
-            'Object Detection: YOLO v3, Faster R-CNN, SSD, DETR, SORT, DeepSort, ByteTrack',
-            'Pose Estimation: OpenPose, MediaPipe, DeepPose',
-            'Facial Recognition: FaceNet, ArcFace, Dlib',
-            'Optical Character Recognition (OCR): Tesseract, EasyOCR, PaddleOCR',
-            'Video Streaming & Analytics: NVIDIA DeepStream SDK, Gstreamer + OpenCV, FFmpeg, WebRTC',
-            'Audio & Signal Processing: Mel-Spectrograms, Sound waves processing: Fourier Transform, Dynamic Time Warping, Hubert',
+            'Object Detection: YOLOv5/v8, Faster R-CNN, SSD',
+            'Facial Recognition: FaceNet, ArcFace',
+            'OCR: Tesseract, PaddleOCR',
+            'Video Analytics: DeepStream SDK, OpenCV + GStreamer',
         ],
     },
     {
         title: 'Edge AI',
         items: [
-            'Edge AI Devices: Raspberry Pi, Jetson Nano, Intel NCS, MCU',
-            'Edge AI Frameworks: TensorRT, OpenVINO, ONNX, TensorFlow Lite, PyTorch Mobile, CoreML, ML Kit',
-            'NVIDIA Frameworks: Metropolis, DeepStream SDK, TAO Toolkit',
-            'Qualcomm Frameworks: Neural Processing SDK',
+            'Devices: Jetson Nano, Raspberry Pi',
+            'Frameworks: TensorRT, OpenVINO, TensorFlow Lite, CoreML',
         ],
     },
     {
         title: 'Generative AI | LLMs | NLP',
         items: [
-            'Chatbot: LLMs: Rasa, Botpress, TensorFlow, PyTorch, Dialogflow, MS Bot Framework, Transformers, Gemini, GPT, llama, Tulu, DeepSeek, open',
-            'AI Agent, Agentic AI, RAG-based LLMs: Langchain (LangGraph), LlamaIndex (llamafile Workflow), LangFuse, CrewAI, Prompt flow, Voiceflow',
-            'NLP: SpaCy, NLTK, TextBlob, ReGex',
+            'LLMs & Chatbot: OpenAI GPT, Gemini, LLaMA, Rasa, Langchain, LlamaIndex',
+            'Agentic AI: LangGraph, CrewAI, Prompt Flow',
+            'NLP: SpaCy, Transformers, ReGex',
         ],
     },
     {
         title: 'Speech & Voice Recognition',
         items: [
-            'Acoustic & Language Modeling: DNNs; CNNs; Transformers',
-            'Feature Extraction: MFCCs, PLP, Spectrograms',
-            'Frameworks: Google Speech-to-Text, Amazon Transcribe, IBM Watson Speech to Text, Microsoft Azure Speech, Deepgram, SpeechRecognition, DeepSpeech, Kaldi, Pytsx3, PyAudio',
+            'Frameworks: Google Speech-to-Text, Amazon Transcribe, Deepgram, DeepSpeech',
+            'Feature Extraction: MFCCs, Spectrograms',
         ],
     },
     {
         title: 'Cloud AI & Services',
         items: [
-            'LLM: Azure OpenAI Studio, OpenAI API, Bedrock (AWS), Vertex AI (Google Cloud)',
-            'AI & AI Avatar: Azure Avatar, Synthesia, Elai, Heygen, P-I-D',
-            'Machine Learning: AWS SageMaker, Azure ML Studio',
+            'LLM Hosting: OpenAI API, Azure OpenAI Studio, Vertex AI, Bedrock',
+            'ML Services: AWS SageMaker, Azure ML Studio',
+            'AI Avatar Tools: Synthesia, Heygen',
         ],
     },
 ]
+
 const caseStudies = [
     {
         image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611041847.860.webp',
@@ -376,7 +237,8 @@ const AiDataSciencesPage = () => {
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+
                         color: 'white',
                         mt: 18,
                         py: 8,
@@ -392,33 +254,35 @@ const AiDataSciencesPage = () => {
                         <Grid container spacing={6} alignItems="center" justifyContent="center">
                             {/* Left: Text and Icons */}
                             <Grid item xs={12} md={6}>
-                                <Typography variant="h4" fontWeight="bold" mb={2}>
-                                    AI/ML & Data Sciences
-                                </Typography>
-                                <Typography variant="body1" mb={4}>
-                                    We offer AI/ML & Data Sciences development services and solutions to businesses, empowering them to innovate, automate processes, and gain competitive edges.
-                                </Typography>
+                                <SlideInOnScroll>
+                                    <Typography variant="h4" fontWeight="bold" mb={2}>
+                                        AI/ML & Data Sciences
+                                    </Typography>
+                                    <Typography variant="body1" mb={4}>
+                                        We offer AI/ML & Data Sciences development services and solutions to businesses, empowering them to innovate, automate processes, and gain competitive edges.
+                                    </Typography>
 
-                                {telecomIcons.map((item, index) => (
-                                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                        <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
-                                        <Typography variant="body1">{item.title}</Typography>
-                                    </Box>
-                                ))}
+                                    {telecomIcons.map((item, index) => (
+                                        <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                            <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
+                                            <Typography variant="body1">{item.title}</Typography>
+                                        </Box>
+                                    ))}</SlideInOnScroll>
                             </Grid>
 
                             {/* Right: Hex Grid */}
                             <Grid item xs={12} md={6}>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center',
-                                        gap: 2,
-                                    }}
-                                >
-                                    <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20250226035353.985.webp" alt="" />
-                                </Box>
+                                <SlideInOnScroll direction='right'>
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            gap: 2,
+                                        }}
+                                    >
+                                        <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20250226035353.985.webp" alt="" />
+                                    </Box></SlideInOnScroll>
                             </Grid>
                         </Grid>
                     </Container>
@@ -445,9 +309,7 @@ const AiDataSciencesPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
-                }}
+                <Box p={5}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -472,7 +334,7 @@ const AiDataSciencesPage = () => {
                                                 overflow: 'hidden',
                                                 backgroundColor: '#f5f5f5',
                                                 '&:hover .overlay': {
-                                                    transform:  'translateY(100%)',
+                                                    transform: 'translateY(100%)',
                                                 },
                                                 '&:hover .content': {
                                                     opacity: 1,
@@ -548,53 +410,50 @@ const AiDataSciencesPage = () => {
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Container>
-                    <Box sx={{ py: 8, px: 2, backgroundColor: '#f5f8ff' }}>
-                        <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
-                            Technologies
-                        </Typography>
-                        <Typography align="center" sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}>
-                            With 10 years of experience, our team is familiar with a wide range of AI technologies and
-                            platforms, including Generative AI, Agentic AI, Smart Camera, Edge AI, Large Language Model
-                            (LLM), Computer Vision, Optical Character Recognition (OCR) technologies, etc.
-                        </Typography>
 
-                        <Grid container spacing={3}>
-                            {technologies.map((tech, index) => (
-                                <Grid item xs={12} md={6} lg={4} key={index}>
-                                    <Paper
-                                        elevation={3}
-                                        sx={{
-                                            p: 2,
-                                            height: '100%',
-                                            border: '1px solid #e0e0e0',
-                                            borderRadius: 2,
-                                        }}
-                                    >
-                                        <Typography variant="h6" fontWeight="bold" color="primary" gutterBottom>
-                                            {tech.title}
-                                        </Typography>
-                                        <List dense>
-                                            {tech.items.map((item, idx) => (
-                                                <ListItem key={idx} sx={{ pl: 0, alignItems: 'flex-start' }}>
-                                                    <ListItemText primary={`• ${item}`} />
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </Paper>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Box></Container>
+                <Box sx={{
+                    py: 8, px: 2, background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                }}>
+                    <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
+                        Technologies
+                    </Typography>
+
+
+                    <Grid container spacing={3}>
+                        {technologies.map((tech, index) => (
+                            <Grid item xs={12} md={6} lg={4} key={index}>
+                                <Paper
+                                    elevation={3}
+                                    sx={{
+                                        p: 2,
+                                        height: '100%',
+                                        border: '1px solid #e0e0e0',
+                                        borderRadius: 2,
+                                    }}
+                                >
+                                    <Typography variant="h6" fontWeight="bold" color="primary" gutterBottom>
+                                        {tech.title}
+                                    </Typography>
+                                    <List dense>
+                                        {tech.items.map((item, idx) => (
+                                            <ListItem key={idx} sx={{ pl: 0, alignItems: 'flex-start' }}>
+                                                <ListItemText primary={`• ${item}`} />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </Paper>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ py: 6, px: 2 }}>
-                    <Box textAlign="center" mb={4}>
+                <Box >
+                    <Box textAlign="center" >
                         <Box
                             sx={{
                                 width: 32,
                                 height: 32,
-
                                 margin: '0 auto',
                                 borderRadius: 1,
                                 mb: 1,
@@ -603,40 +462,98 @@ const AiDataSciencesPage = () => {
 
                     </Box>
                     <Container>
-                        <Box sx={{ px: 2, py: 8, backgroundColor: '#f0f4fb' }}>
+                        <Box sx={{ px: 2,p:4}}>
                             <Typography textAlign={"center"} variant="h4" fontWeight="bold" mb={4}>
                                 Industries
                             </Typography>
 
-                            <Grid container spacing={3}>
-                                {solutions.map((solution, index) => (
-                                    <Grid item xs={12} sm={6} md={4} key={index}>
-                                        <Paper
-                                            elevation={3}
-                                            sx={{
-                                                p: 2,
-                                                border: '1px solid #d0e0f0',
-                                                height: '100%',
-                                                borderRadius: 2,
-                                            }}
-                                        >
-                                            <Box display="flex" alignItems="center" mb={1}>
-                                                <img src={solution.icon} alt="icon" width={"10%"} style={{ marginRight: 8 }} />
-                                                <Typography variant="h6" fontWeight="bold">
-                                                    {solution.title}
-                                                </Typography>
-                                            </Box>
-                                            <List dense>
-                                                {solution.items.map((item, idx) => (
-                                                    <ListItem key={idx} sx={{ pl: 0 }}>
-                                                        <ListItemText primary={`• ${item}`} />
-                                                    </ListItem>
-                                                ))}
-                                            </List>
-                                        </Paper>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                            <Box position="relative">
+                                <Swiper
+                                    modules={[Autoplay, Navigation]}
+                                    spaceBetween={20}
+                                    slidesPerView={1}
+                                    breakpoints={{
+                                        600: { slidesPerView: 1 },
+                                        900: { slidesPerView: 2 },
+                                        1200: { slidesPerView: 3 },
+                                    }}
+                                    autoplay={{ delay: 2000, disableOnInteraction: false }}
+                                 navigation={{
+                                    prevEl: '.custom-swiper-prev',
+                                    nextEl: '.custom-swiper-next',
+                                }}
+                                     style={{ paddingBottom: 32 }}
+                                >
+                                    {solutions.map((solution, index) => (
+                                        <SwiperSlide key={index}>
+                                            <Paper
+                                                elevation={3}
+                                                sx={{
+                                                    p: 2,
+                                                    border: '1px solid #d0e0f0',
+                                                    height: '100%',
+                                                    borderRadius: 2,
+                                                    mb: 2,
+                                                }}
+                                            >
+                                                <Box display="flex" alignItems="center" mb={1}>
+                                                    <img
+                                                        src={solution.icon}
+                                                        alt="icon"
+                                                        width="10%"
+                                                        style={{ marginRight: 8 }}
+                                                    />
+                                                    <Typography fontSize={15} fontWeight="bold">
+                                                        {solution.title}
+                                                    </Typography>
+                                                </Box>
+                                                <List dense>
+                                                    {solution.items.map((item, idx) => (
+                                                        <ListItem key={idx} sx={{ pl: 0 }}>
+                                                            <ListItemText primary={`• ${item}`} />
+                                                        </ListItem>
+                                                    ))}
+                                                </List>
+                                            </Paper>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
+                                {/* Prev Button */}
+                               
+                            <IconButton
+                                className="custom-swiper-prev"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowBackIosNewIcon />
+                            </IconButton>
+
+                            {/* Nút next */}
+                            <IconButton
+                                className="custom-swiper-next"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    right: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowForwardIosIcon />
+                            </IconButton>
+                            </Box>
                         </Box>
                     </Container>
                 </Box>
@@ -709,45 +626,58 @@ const AiDataSciencesPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    AI Brochure
+                                    AiDataSciences IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

@@ -75,10 +75,11 @@ const ContactPage = () => {
     ]
     return (
         <>
-            {/* <CssBaseline /> */}
+            <CssBaseline />
             <Header />
             {/* <Box sx={{position: 'relative', height: '90vh', mb: 5, overflow: 'hidden', mt: 18}}> */}
-            <Box sx={{ minHeight: '80vh', bgcolor: '#00A1F1', p: 4, mt: 18 }}>
+            <Box sx={{ minHeight: '80vh',         background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+p: 4, mt: 18 }}>
                 <Grid container spacing={4}>
                     {/* Left Side - Contact Info */}
                     <Grid item xs={12} md={5} sx={{ color: 'white' }}>
@@ -230,7 +231,7 @@ const ContactPage = () => {
             </Box>
             <ScrollToTopButton />
             {/* </Box> */}
-            <Footer />
+            <Footer  hasDownload={true}/>
         </>
     )
 }

@@ -12,7 +12,7 @@ const MachineLearningCard = ({ section }: any) => {
         <Box
             sx={{
                 width: '100%',
-                maxWidth: 300,
+                
                 bgcolor: '#f5faff',
                 borderRadius: 2,
                 overflow: 'hidden',

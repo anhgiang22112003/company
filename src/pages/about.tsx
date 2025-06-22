@@ -12,46 +12,34 @@ import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents' // Icon hình cúp
 import ScrollDots from '../components/ScrollDots'
-import BusinessIcon from '@mui/icons-material/Business'
-import CodeIcon from '@mui/icons-material/Code'
-import SecurityIcon from '@mui/icons-material/Security'
-import PeopleIcon from '@mui/icons-material/People'
+import { styled } from '@mui/system'
+import IntegrityIcon from '@mui/icons-material/HandshakeOutlined' // Biểu tượng cho Integrity
+import ExcellenceIcon from '@mui/icons-material/EmojiEventsOutlined' // Biểu tượng cho Excellence
+import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined' // Biểu tượng cho Joy (vui vẻ)
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
-const hexagonStyle = {
-    position: 'relative',
-    width: '200px',
-    height: '115px',
-    backgroundColor: 'white', // Màu xanh nước biển
-    margin: '0 auto',
+const ValueItem = styled(Box)(({ theme }) => ({
+    backgroundColor: '#FFF', // Nền trắng cho mỗi card giá trị
+    borderRadius: theme.shape.borderRadius, // Sử dụng border-radius của theme
+    padding: theme.spacing(4), // Padding lớn hơn
+    textAlign: 'center',
+    height: '100%', // Đảm bảo chiều cao bằng nhau
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 2,
-    boxShadow: 2,
-    '&:before': {
-        content: '""',
-        position: 'absolute',
-        top: '-28px',
-        left: '0',
-        width: '0',
-        height: '0',
-        borderLeft: '100px solid transparent',
-        borderRight: '100px solid transparent',
-        borderBottom: '30px solid #00BFFF', // Màu xanh nước biển
+    justifyContent: 'flex-start',
+    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)', // Shadow nhẹ nhàng
+    border: '1px solid #E0E7EB', // Border mỏng
+    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+    '&:hover': {
+        transform: 'translateY(-5px)', // Hiệu ứng nhô lên khi hover
+        boxShadow: '0px 8px 25px rgba(0, 0, 0, 0.1)', // Shadow mạnh hơn khi hover
     },
-    '&:after': {
-        content: '""',
-        position: 'absolute',
-        bottom: '-28px',
-        left: '0',
-        width: '0',
-        height: '0',
-        borderLeft: '100px solid transparent',
-        borderRight: '100px solid transparent',
-        borderTop: '30px solid #00BFFF', // Màu xanh nước biển
-    },
-}
+}))
+
+// Styled Box cho container của icon
+
+
 const section = [
     { id: 'about', label: 'About' },
     { id: 'global-software', label: 'Global Software' },
@@ -91,20 +79,7 @@ const AboutPage = () => {
         },
     ]
 
-    const infoData = [
-        {
-            title: "Mission",
-            description: "Helping our customers succeed by providing effective and innovative software solutions.",
-        },
-        {
-            title: "Vision",
-            description: "Become a reliable and innovative software partner for all customers.",
-        },
-        {
-            title: "Core Values",
-            description: "Respect, Honesty, Commitment.",
-        },
-    ]
+
     const expertiseData = [
         "Telecom, 5G, IoT, Automotive",
         "Finance & Insurance",
@@ -169,6 +144,23 @@ const AboutPage = () => {
             imageUrl: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103855.372.webp",
         },
     ]
+    const values = [
+        {
+            icon: <IntegrityIcon />,
+            title: 'Integrity',
+            description: 'We believe in doing the right thing and following ethical business practices. At , we pride ourselves in transparency, we keep our promises, and we strive to always do good.'
+        },
+        {
+            icon: <ExcellenceIcon />,
+            title: 'Excellence',
+            description: 'Focusing on achieving excellence provides great business value and personal pride. At , we bring together great people who strive to meet very high standards.'
+        },
+        {
+            icon: <SentimentSatisfiedAltIcon />,
+            title: 'Joy',
+            description: 'Our teams prioritize positive work environments where innovation and challenges are met with enthusiasm. At , we enjoy the work we do, where we do it, and who we work with.'
+        },
+    ]
 
     return (
         <>
@@ -198,64 +190,100 @@ const AboutPage = () => {
                             </Container>
                         </Box>
                         <Container sx={{ mt: 6 }}>
-                            <Grid container spacing={3}>
-                                {cards.map((card, index) => (
-                                    <Grid
-                                        item
-                                        xs={12}      // mobile: 1 card mỗi hàng
-                                        sm={6}       // tablet: 2 cards mỗi hàng
-                                        md={3}       // PC: 4 cards mỗi hàng (vì 12 / 3 = 4)
-                                        lg={2.4}     // lớn hơn: 5 cards mỗi hàng
-                                        key={index}
-                                    >
-                                        <Box
-                                            sx={{
-                                                height: { xs: 'auto', md: '200px' }, // cao cố định trên PC, tự động ở mobile/tablet
-                                                border: '1px solid #e0e0e0',
-                                                borderRadius: 2,
-                                                padding: 3,
-                                                textAlign: 'center',
-                                                backgroundColor: 'white',
-                                                boxShadow: 1,
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                transition: 'transform 0.3s',
-                                                '&:hover': {
-                                                    transform: 'scale(1.05)',
-                                                },
-                                            }}
-                                        >
-                                            <Box
-                                                component="img"
-                                                src={card.image}
-                                                alt={card.title}
-                                                sx={{
-                                                    width: {
-                                                        xs: '25%',   // mobile
-                                                        sm: '25%',   // tablet
-                                                        md: '30%',   // PC
-                                                    },
-                                                    mb: 2,
-                                                }}
-                                            />
-                                            <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1 }}>
-                                                {card.title}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ mb: 2 }}>
-                                                {card.description}
-                                            </Typography>
-                                        </Box>
-                                    </Grid>
-                                ))}
-                            </Grid>
+                           <Grid container spacing={3}>
+  {cards.map((card, index) => (
+    <Grid
+      item
+      xs={12}
+      sm={6}
+      md={3}
+      lg={2.4}
+      key={index}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Box
+        sx={{
+          flexGrow: 1,
+          height: '100%',
+          border: '1px solid #e0e0e0',
+          borderRadius: 2,
+          padding: 3,
+          backgroundColor: 'white',
+          boxShadow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          transition: 'transform 0.3s',
+          '&:hover': {
+            transform: 'scale(1.05)',
+          },
+        }}
+      >
+        {/* Ảnh: giữ cùng chiều cao và canh giữa */}
+        <Box
+          component="img"
+          src={card.image}
+          alt={card.title}
+          sx={{
+            width: '20%',
+            objectFit: 'contain',
+           
+          }}
+        />
+
+        {/* Tiêu đề: giữ chiều cao đồng đều */}
+        <Typography
+          fontSize={17}
+          sx={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            height: 48, // chiều cao cố định cho tiêu đề (2 dòng)
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            
+          }}
+        >
+          {card.title}
+        </Typography>
+
+        {/* Mô tả: tự co giãn, không làm vỡ layout */}
+        <Typography
+          variant="body2"
+          sx={{
+            color: 'text.secondary',
+            textAlign: 'center',
+            
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            
+            WebkitBoxOrient: 'vertical',
+          }}
+        >
+          {card.description}
+        </Typography>
+      </Box>
+    </Grid>
+  ))}
+</Grid>
+
+
 
                         </Container>
                     </Box>
                 </FadeSection>
                 <FadeSection id='global-software'>
-                    <Box sx={{ background: "blue", position: 'relative' }}>
+                    <Box sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        
+                        position: 'relative'
+                    }}>
                         <img
                             src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/decor_left.8fb5f39e.webp"
                             alt="Decoration"
@@ -268,46 +296,40 @@ const AboutPage = () => {
                                 zIndex: 0,
                             }}
                         />
-                        <Container sx={{ mt: 6, mb: 4, p: 6 }}>
+                        <Container sx={{ mt: 6, p: 3 }}>
                             <Box textAlign={"center"}>
                                 <img width={"5%"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_header.734c55dc.webp" alt="" />
                             </Box>
                             <Typography variant="h5" align="center" sx={{ mb: 3, color: 'white' }}>
                                 Global Software Outsourcing Company
                             </Typography>
-                            <Typography variant="body1" align="center" sx={{ mb: 4, color: 'white' }}>
+                            <Typography variant="body1" align="center" sx={{  color: 'white' }}>
                                 Solutions, headquartered in Vietnam, is a leading software outsourcing company with a global footprint. Explore our 8 overseas offices (USA, Canada, Germany, Japan, Australia, Singapore) for outstanding IT solutions.
                             </Typography>
-                            <Grid
-                                container
-                                spacing={2}              // spacing ngang
-                                rowSpacing={4}           // spacing dọc riêng biệt cho mobile rõ hơn
-                                justifyContent="center"
+                            <Box
+                                sx={{
+                                    py: { xs: 6, md: 6 }, // Padding trên dưới lớn
+
+                                }}
                             >
-                                {infoData.map((item, index) => (
-                                    <Grid item xs={12} sm={4} key={index}>
-                                        <Box
-                                            sx={{
-                                                ...hexagonStyle,
-                                                mb: { xs: 3, sm: 0 }, // khoảng cách dưới khi là mobile
-                                            }}
-                                        >
-                                            <Typography
-                                                variant="h6"
-                                                sx={{ fontWeight: 'bold', textAlign: 'center' }}
-                                            >
-                                                {item.title}
-                                            </Typography>
-                                            <Typography
-                                                variant="body2"
-                                                sx={{ textAlign: 'center', padding: 1 }}
-                                            >
-                                                {item.description}
-                                            </Typography>
-                                        </Box>
+                                <Container maxWidth="lg">
+                                    <Grid container spacing={{ xs: 4, md: 6 }} justifyContent="center">
+                                        {values.map((value, index) => (
+                                            <Grid item xs={12} sm={6} md={4} key={index}>
+                                                <ValueItem>
+
+                                                    <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 1.5, color: '#333' }}>
+                                                        {value.title}
+                                                    </Typography>
+                                                    <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.6 }}>
+                                                        {value.description}
+                                                    </Typography>
+                                                </ValueItem>
+                                            </Grid>
+                                        ))}
                                     </Grid>
-                                ))}
-                            </Grid>
+                                </Container>
+                            </Box>
 
                         </Container>
                         <img
@@ -328,38 +350,42 @@ const AboutPage = () => {
                     <Container sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={6} md={6}>
-                                <Box>
-                                    <Grid item xs={12} md={12}>
-                                        <Box >
-                                            <img width={"10%"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_header.734c55dc.webp" alt="" />
+                                <SlideInOnScroll >
+                                    <Box>
+                                        <Grid item xs={12} md={12}>
+                                            <Box >
+                                                <img width={"10%"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_header.734c55dc.webp" alt="" />
+                                            </Box>
+                                            <Typography variant='h4' sx={{ fontWeight: "bold" }}>Our Expertise</Typography>
+                                            <Typography  >With Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs. With  Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs.</Typography>
+                                        </Grid>
+                                        <Box sx={{ listStyleType: 'disc', mt: 2 }}>
+                                            {expertiseData.map((item, index) => (
+                                                <Typography key={index} variant="body2" sx={{ mb: 1 }}>
+                                                    - {item}
+                                                </Typography>
+                                            ))}
                                         </Box>
-                                        <Typography variant='h4' sx={{ fontWeight: "bold" }}>Our Expertise</Typography>
-                                        <Typography  >With Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs. With  Solutions' expertise, we are one of the leading software outsourcing companies in Vietnam, housing a team of skilled engineers and catering to diverse industries' needs.</Typography>
-                                    </Grid>
-                                    <Box sx={{ listStyleType: 'disc', mt: 2 }}>
-                                        {expertiseData.map((item, index) => (
-                                            <Typography key={index} variant="body2" sx={{ mb: 1 }}>
-                                                - {item}
-                                            </Typography>
-                                        ))}
                                     </Box>
-                                </Box>
+                                </SlideInOnScroll>
                             </Grid>
                             <Grid item xs={12} sm={6} md={6}>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162903.598.webp" alt="Expertise 1" style={{ width: '100%', borderRadius: 8 }} />
+                                <SlideInOnScroll direction='right'>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162903.598.webp" alt="Expertise 1" style={{ width: '100%', borderRadius: 8 }} />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162921.295.webp" alt="Expertise 2" style={{ width: '100%', borderRadius: 8 }} />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162903.598.webp" alt="Expertise 3" style={{ width: '100%', borderRadius: 8 }} />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162940.000.webp" alt="Expertise 4" style={{ width: '100%', borderRadius: 8 }} />
+                                        </Grid>
                                     </Grid>
-                                    <Grid item xs={6}>
-                                        <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162921.295.webp" alt="Expertise 2" style={{ width: '100%', borderRadius: 8 }} />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162903.598.webp" alt="Expertise 3" style={{ width: '100%', borderRadius: 8 }} />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <img src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702162940.000.webp" alt="Expertise 4" style={{ width: '100%', borderRadius: 8 }} />
-                                    </Grid>
-                                </Grid>
+                                </SlideInOnScroll>
                             </Grid>
                         </Grid>
                     </Container>
@@ -532,7 +558,7 @@ const AboutPage = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection id='awards'>
-                    <Container sx={{ mt: 15, mb: 2 }}>
+                    <Container sx={{ mt: 5, mb: 2 }}>
                         <Box textAlign="center" >
                             <EmojiEventsIcon sx={{ fontSize: 60, color: '#FFD700', mb: 1 }} />
                             <Typography variant="h5" align="center" sx={{ mb: 4, fontWeight: 'bold' }}>
@@ -634,40 +660,53 @@ const AboutPage = () => {
                     </Container>
                 </FadeSection>
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 16, md: 20 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
@@ -679,6 +718,7 @@ const AboutPage = () => {
                         </Box>
                     </Container>
                 </FadeSection>
+
 
             </Box>
             <ScrollToTopButton />

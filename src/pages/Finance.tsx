@@ -6,6 +6,7 @@ import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord' // hình tròn nhỏ
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
 
 const telecomIcons = [
@@ -59,57 +60,41 @@ const menuItems = [
         content: [
             {
                 title: 'Retirement Plan',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625135319.800.webp",
-                items: ['Powerful platform having ability to create flexible administration procedures and innovative product design',
-                    'Optimized and flexible solutions to adapt diversified Client’s retirement plans​'],
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625135319.800.webp',
+                items: [
+                    'Flexible administration procedures',
+                    'Optimized solutions for retirement plans'
+                ],
             },
-            {
-                title: 'Model Portfolio Management',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625135331.035.webp",
-                items: ['Advanced tools supporting investment plan creation and maintenance to satisfy various financial goals',
-                    'Online seamless process​​',
-                    'Individual/Bulk process supported​​​​'],
-            },
-        ]
+        ],
     },
     {
         label: 'Capital Markets',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240624111022.827.webp',
         content: [
             {
-                title: 'Pre-Settlement',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625135319.800.webp",
-                items: ['Allow banks and brokers to perform international clearing, settlement, and corporate action',
-                    'Support all major ETC protocols out-of-the-box (e.g. Oasys, CTM, GETC, FIX, Iress)',
-                    'Support all settlement types including SWIFT 15022, 20022​'],
-            },
-            {
                 title: 'Clearing And Settlement​',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625140811.953.webp",
-                items: ['Provide post-execution and pre-settlement transaction processing',
-                    'Support multiple asset classes and markets for greater operational efficiency​'],
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625140811.953.webp',
+                items: [
+                    'Post-execution transaction processing',
+                    'Multi-asset & market support',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'Payment',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240624111038.590.webp',
         content: [
             {
-                title: 'Buy Now Pay Later',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112219.664.webp",
-                items: ['Merchant Portal',
-                    'Merchant Integration',
-                    'Admin Portal​'],
-            },
-            {
                 title: 'International Remittance',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112237.637.webp",
-                items: ['Local & international payments',
-                    'Multilingual and multi-currency',
-                    'No bank fee & best rate​​​​'],
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112237.637.webp',
+                items: [
+                    'Local & international payments',
+                    'Multi-currency support',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'AI Finance',
@@ -117,28 +102,21 @@ const menuItems = [
         content: [
             {
                 title: 'Document Intelligent',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112303.778.webp",
-                items: ['Auto labeling data & adaptability to change',
-                    'Custom data labeling & training',
-                    'Text detection and recognition',
-                    'Data regions and compliance​'],
-            },
-            {
-                title: 'AI and OCR',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112311.374.webp",
-                items: ['Efficiency & automation',
-                    'Enhanced accuracy & searchability',
-                    'Versatile document handling​​​​'],
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112303.778.webp',
+                items: [
+                    'Auto data labeling',
+                    'Text detection & recognition',
+                ],
             },
             {
                 title: 'AI Chatbot',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112328.999.webp",
-                items: ['Transcripts storing and retrieving',
-                    'Support multiple languages',
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112328.999.webp',
+                items: [
+                    'Multi-language support',
                     'Support long conversations',
-                    'Simplifying the user experience​​​​'],
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'Web 3',
@@ -146,43 +124,30 @@ const menuItems = [
         content: [
             {
                 title: 'NFT Trading Platform',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112340.736.webp",
-                items: ['Multidisciplinary applications',
-                    'Easy to integrate and develop',
-                    'Multiple payment methods',
+                icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112340.736.webp',
+                items: [
+                    'Multi-wallet & chain support',
                     'High security standards',
-                    'Support multiple wallet & chains​'],
+                ],
             },
-            {
-                title: 'Letter of Guarantee',
-                icon: "https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112351.529.webp",
-                items: ['Data access controller using smart contract',
-                    'Banks & beneficiaries application'],
-            },
-        ]
+        ],
     },
 ]
-const imageUrls = [
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112627.082.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112824.251.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112854.529.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112919.816.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112941.514.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113006.739.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113054.791.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113030.589.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113117.504.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113423.950.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113152.694.webp',
+
+const techItems = [
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112627.082.webp', label: 'Angular' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112824.251.webp', label: 'React.js' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112854.529.webp', label: 'Java' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112919.816.webp', label: 'Spring Boot' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112941.514.webp', label: 'Node.js' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113006.739.webp', label: 'Python' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113054.791.webp', label: 'Kotlin' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113030.589.webp', label: 'Django' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113117.504.webp', label: 'Solidity' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113423.950.webp', label: 'Scikit-learn' },
+    { url: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113152.694.webp', label: 'Ethereum' },
 ]
 
-const techLabels = [
-    'Angular', 'React.js', 'Java', 'Spring Boot',
-    'Node.js', 'Python', 'Kotlin', 'Django',
-    'Solidity', 'Scikit-learn', 'Ethereum', 'Hyperledger',
-    'Polygon', 'IPFS', 'TensorFlow', 'PyTorch',
-    'Azure', 'OpenAI', 'Hugging Face',
-]
 
 
 const Finance = () => {
@@ -193,42 +158,46 @@ const Finance = () => {
         <>
             <CssBaseline />
             <Header />
-            <FadeSection>
-                <Box
 
-                    sx={{
-                        backgroundColor: '#1976d2',
-                        color: 'white',
-                        mt: 18,
-                        py: 8,
-                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        overflow: 'hidden',
-                    }}
-                >
-                    <Box sx={{ position: "absolute" }}>
-                        <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
-                    </Box>
-                    <Container>
-                        <Grid container spacing={6} alignItems="center" justifyContent="center">
-                            {/* Left: Text and Icons */}
-                            <Grid item xs={12} md={6}>
-                                <Typography variant="h4" fontWeight="bold" mb={2}>
-                                    Finance
-                                </Typography>
-                                <Typography variant="body1" mb={4}>
-                                     Solutions offers a wide range of outsourcing fintech software development services tailored for the banking financial service and insurance sector (BFSI). Our banking & financial solutions empower businesses to excel in the dynamic fintech landscape                                </Typography>
+            <Box
+                sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    color: 'white',
+                    mt: 18,
+                    py: 8,
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    overflow: 'hidden',
+                }}
+            >
+                <Box sx={{ position: "absolute" }}>
+                    <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
+                </Box>
 
-                                {telecomIcons.map((item, index) => (
-                                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                        <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
-                                        <Typography variant="body1">{item.title}</Typography>
-                                    </Box>
-                                ))}
-                            </Grid>
+                <Container>
+                    <Grid container spacing={6} alignItems="center" justifyContent="center">
+                        {/* Left: Text and Icons */}
+                        <Grid item xs={12} md={6}>
+                            <SlideInOnScroll>
+                                <Box>
+                                    <Typography variant="h4" fontWeight="bold" mb={2}>
+                                        Finance
+                                    </Typography>
+                                    <Typography variant="body1" mb={4}>
+                                        Solutions offers a wide range of outsourcing fintech software development services tailored for the banking financial service and insurance sector (BFSI). Our banking & financial solutions empower businesses to excel in the dynamic fintech landscape                                </Typography>
 
-                            {/* Right: Hex Grid */}
-                            <Grid item xs={12} md={6}>
+                                    {telecomIcons.map((item, index) => (
+                                        <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                            <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
+                                            <Typography variant="body1">{item.title}</Typography>
+                                        </Box>
+                                    ))}</Box>
+                            </SlideInOnScroll>
+                        </Grid>
+
+                        {/* Right: Hex Grid */}
+                        <Grid item xs={12} md={6}>
+                            <SlideInOnScroll direction='right'>
                                 <Box
                                     sx={{
                                         display: 'flex',
@@ -239,11 +208,12 @@ const Finance = () => {
                                 >
                                     <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20241204095317.036.webp" alt="" />
                                 </Box>
-                            </Grid>
+                            </SlideInOnScroll>
                         </Grid>
-                    </Container>
-                </Box>
-            </FadeSection>
+                    </Grid>
+                </Container>
+            </Box>
+
             <FadeSection >
                 <Container>
                     <Box sx={{ px: 4, p: 2 }}>
@@ -267,7 +237,6 @@ const Finance = () => {
             <FadeSection id='about' >
                 <Box p={5} bgcolor={"#f5f5f5"} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                 }}
                 >
                     <Box >
@@ -316,9 +285,10 @@ const Finance = () => {
             </FadeSection>
 
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                <Box p={5} sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     mt: 4,
-                    
+
                 }}
                 >
                     <Box >
@@ -425,9 +395,8 @@ const Finance = () => {
                 </Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                <Box p={5} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                 }}
                 >
                     <Box >
@@ -440,92 +409,124 @@ const Finance = () => {
                                 Discover the future of finance with Solutions in Fintech Technologies. Our fintech solutions include advanced financial management software and groundbreaking banking and financial technology solutions, elevating businesses to new heights of efficiency.                            </Typography>
                         </Container>
                     </Box>
-                    <Container sx={{ mt: 4 }}>
-                        <Grid
-                            container
-                            spacing={2}
-                            justifyContent="center"
-                            sx={{ maxWidth: 1000, mx: 'auto', mt: 4 }}
-                        >
-                            {imageUrls.map((url, index) => (
-                                <Grid item xs={6} sm={4} md={3} key={index}>
-                                    <Box
-                                        sx={{
-                                            border: '1px solid #90caf9',
-                                            borderRadius: 2,
-                                            textAlign: 'center',
-                                            p: 2,
-                                            height: '100%',
-                                            transition: '0.3s',
-                                            '&:hover': {
-                                                boxShadow: 3,
-                                                transform: 'translateY(-4px)',
-                                            },
-                                        }}
-                                    >
-                                        <img
-                                            src={url}
-                                            alt={`tech-${index}`}
-                                            style={{ width: '50%', marginBottom: 8 }}
-                                        />
-                                        <Typography variant="subtitle2">
-                                            {techLabels[index] || `Tech ${index + 1}`}
-                                        </Typography>
-                                    </Box>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Container>
-                </Box>
-            </FadeSection>
-              <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Box sx={{
+                                overflow: 'hidden',
+                                backgroundColor: '#f5faff',
+                                p: { xs: 2, sm: 3 },
+                                borderRadius: 2,
+                                position: 'relative',
+                                width: '100%',
+                            }}>
                         <Box
                             sx={{
-                                background: '#009BFF',
-                                color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
-                                position: 'relative',
-                                zIndex: 1,
-                                mb: -15
-
-                            }}
+                                    display: 'flex',
+                                    width: 'max-content',
+                                    animation: 'scroll 40s linear infinite',
+                                    '@keyframes scroll': {
+                                        '0%': { transform: 'translateX(0)' },
+                                        '100%': { transform: 'translateX(-50%)' },
+                                    },
+                                }}
                         >
-                            <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
-                                    Download
-                                </Typography>
-
-
-                                <Box mt={4} textAlign="center">
-                                    <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
-                                        download
-                                        underline="none"
-                                        sx={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            gap: 1,
-                                            color: '#1976d2',
-                                            fontWeight: 'bold',
-                                            fontSize: '1.1rem',
-                                            '&:hover': {
-                                                textDecoration: 'underline',
-                                            },
-                                        }}
+                            {[...techItems, ...techItems].map((item, index) => (
+                                <Box
+                                    key={index}
+                                    sx={{
+                                        flex: '0 0 auto',
+                                        width: 180,
+                                        mx: 2,
+                                        height: 150,
+                                        backgroundColor: '#fff',
+                                        border: '1px solid #90caf9',
+                                        borderRadius: 2,
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center',
+                                        textAlign: 'center',
+                                        transition: '0.3s',
+                                        '&:hover': {
+                                            boxShadow: 3,
+                                            transform: 'translateY(-4px)',
+                                        },
+                                    }}
+                                >
+                                    <img src={item.url} alt={`tech-${index}`} style={{ width: '40%', objectFit: 'contain' }} />
+                                    <Typography
+                                        variant="subtitle2"
+                                        sx={{ mt: 1, fontWeight: 500, whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}
                                     >
-                                        <FileDownloadIcon />
-                                        Software Testing Brochure
-                                    </Link>
+                                        {item.label}
+                                    </Typography>
                                 </Box>
-                            </Container>
+                            ))}
                         </Box>
-                    </Container>
-                </FadeSection>
-            <ScrollToTopButton />
+                    </Box>
+                </Box>
+            </FadeSection>
+            <FadeSection id="download">
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
+                    <Box
+                        sx={{
+                            background: '#009BFF',
+                            color: 'white',
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
+                            position: 'relative',
+                            zIndex: 1,
+                            mb: { xs: -8, sm: -10, md: -15 },
+                        }}
+                    >
+                        <Container>
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
+                                Download
+                            </Typography>
+
+                            <Box mt={4} textAlign="center">
+                                <Link
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
+                                    download
+                                    underline="none"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
+                                        color: '#1976d2',
+                                        fontWeight: 'bold',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
+                                        '&:hover': {
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                                        },
+                                    }}
+                                >
+                                    <FileDownloadIcon />
+                                    Finance IT Outsourcing
+                                </Link>
+                            </Box>
+                        </Container>
+                    </Box>
+                </Container>
+            </FadeSection>
+
             <Footer />
+            <ScrollToTopButton />
         </>
     )
 }

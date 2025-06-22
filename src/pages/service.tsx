@@ -4,18 +4,17 @@ import Footer from '../layouts/Footer'
 import { Box, Breadcrumbs, Button, Collapse, Container, Divider, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
 import FadeSection from '../components/FadeSection'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import SchoolIcon from '@mui/icons-material/School'
-import EngineeringIcon from '@mui/icons-material/Engineering'
-import SupportAgentIcon from '@mui/icons-material/SupportAgent'
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import ScrollDots from '../components/ScrollDots'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
-import StorageIcon from '@mui/icons-material/Storage'
-import SecurityIcon from '@mui/icons-material/Security'
-import CloudIcon from '@mui/icons-material/Cloud'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 const servicesData = [
     {
         title: 'Software Development',
@@ -25,7 +24,7 @@ const servicesData = [
             'Enhance existing products',
             'Maintenance & Supporting',
             'Porting & Migration',
-            'Application re-design',
+
         ],
         icon: <img width={"20%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240702103842.723.webp" alt="Software Development" />,
     },
@@ -110,7 +109,7 @@ const categories = [
             "Health Information Systems Programme (HISP)",
             "World Mosquito Program (WMP)",
             "Clinical Research Tools",
-            "Fitness Solution"
+
         ],
     },
     {
@@ -151,7 +150,9 @@ const ServicePage = () => {
             <ScrollDots sections={sections} />
             <Box>
                 <FadeSection id='banner'>
-                    <Box mt={17} p={4} sx={{ background: "#1976d2" }} >
+                    <Box mt={17} p={4} sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    }} >
                         <Typography textAlign={"center"} variant='h4' color={"white"}>
                             Software Outsourcing Services
                         </Typography>
@@ -161,10 +162,12 @@ const ServicePage = () => {
                                 Solutions, the leading software outsourcing company in Vietnam, possesses several years of expertise in the software development life cycle (SDLC) process and agile approach. We can guarantee exceptional solutions, and craft tailored solutions for your needs.
                             </Typography>
                         </Container>
-                        <Container sx={{ mt: 2 }}>
-                            <img width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp" alt="" />
-                            <img style={{ marginTop: "10px" }} width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Service/service-2_20230626152321.745.webp" alt="" />
-                        </Container>
+                        <SlideInOnScroll>
+                            <Container sx={{ mt: 2 }}>
+                                <img width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp" alt="" />
+                                <img style={{ marginTop: "10px" }} width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Service/service-2_20230626152321.745.webp" alt="" />
+                            </Container>
+                        </SlideInOnScroll>
 
                     </Box>
                 </FadeSection>
@@ -187,13 +190,9 @@ const ServicePage = () => {
                     <Typography textAlign={"center"} variant='h4' >
                         Software Outsourcing Services
                     </Typography>
-                    <Container>
-                        <Typography textAlign={"center"}  >
-                            Solutions, the leading software outsourcing company in Vietnam, possesses several years of expertise in the software development life cycle (SDLC) process and agile approach. We can guarantee exceptional solutions, and craft tailored solutions for your needs.
-                        </Typography>
-                    </Container>
+
                     <Container sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={4}>
+                        <Grid container spacing={2}>
                             {servicesData.map((service, index) => (
                                 <Grid item xs={12} sm={6} md={3} key={index} sx={{ height: '100%' }}>
                                     <Paper
@@ -333,60 +332,59 @@ const ServicePage = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection id='CaseStudies'>
-                    <Box mt={10}>
+                    <Box sx={{
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
+                    }} p={3} mt={10}>
+
+                        <Box textAlign={"center"}>
+                            <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
+                        </Box>
+                        <Typography textAlign={"center"} variant='h4' >
+                            Case Studies
+                        </Typography>
                         <Container>
-                            <Box textAlign={"center"}>
-                                <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
-                            </Box>
-                            <Typography textAlign={"center"} variant='h4' >
-                               Case Studies
+                            <Typography textAlign={"center"}  >
+                                Discover Solutions' sample projects, featuring success stories achieved by our software engineers.
+                                Witness the impact of our software outsourcing services on businesses and operations.
                             </Typography>
-                            <Container>
-                                <Typography textAlign={"center"}  >
-                                    Discover Solutions' sample projects, featuring success stories achieved by our software engineers.
-                                    Witness the impact of our software outsourcing services on businesses and operations.
-                                </Typography>
-                            </Container>
-
-                            <Grid container sx={{ py: 8 }} spacing={2} alignItems="flex-start">
-                                {categories.map((cat, index) => {
-                                    const hasExtra = cat.items.length > 3
-                                    const visibleItems = cat.items.slice(0, 3)
-                                    const hiddenItems = cat.items.slice(3)
-
-                                    return (
-                                        <Grid item xs={12} md={4} key={index}>
+                        </Container>
+                        <Container>
+                            <Box sx={{ position: 'relative', py: 6 }}>
+                                <Swiper
+                                    modules={[Navigation, Pagination, Autoplay]}
+                                    navigation={{
+                                        prevEl: '.custom-swiper-prev',
+                                        nextEl: '.custom-swiper-next',
+                                    }}
+                                      
+                                    autoplay={{ delay: 2000 }}
+                                    spaceBetween={24}
+                                    breakpoints={{
+                                        0: { slidesPerView: 1 },
+                                        600: { slidesPerView: 2 },
+                                        960: { slidesPerView: 3 },
+                                    }}
+                                >
+                                    {categories.map((cat, index) => (
+                                        <SwiperSlide key={index}>
                                             <Box
                                                 sx={{
-                                                    position: 'relative',
                                                     backgroundColor: '#f5f9ff',
                                                     borderRadius: 2,
-                                                    p: 3,
+                                                    p: 2,
                                                     height: '100%',
-                                                    overflow: 'hidden',
-                                                    '&::before': {
-                                                        content: '""',
-                                                        position: 'absolute',
-                                                        top: 0,
-                                                        left: 0,
-                                                        width: '99%',
-                                                        height: '98%',
-                                                        border: '2px solid #1976d2',
-                                                        borderRadius: 2,
-                                                        opacity: 0,
-                                                        transform: 'scale(0.9)',
-                                                        transition: 'opacity 0.4s ease, transform 0.4s ease',
-                                                        pointerEvents: 'none',
-                                                    },
-                                                    '&:hover::before': {
-                                                        opacity: 1,
-                                                        transform: 'scale(1)',
+                                                    border: '2px solid transparent',
+                                                    transition: '0.4s',
+                                                    '&:hover': {
+                                                        borderColor: '#1976d2',
                                                     },
                                                 }}
                                             >
                                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                                    <img src={cat.img} width={"10%"} alt="" />
-                                                    <Typography variant="h6" fontWeight="bold">
+                                                    <img src={cat.img} width="10%" alt="" />
+                                                    <Typography fontSize={"15px"} fontWeight="bold">
                                                         {cat.title}
                                                     </Typography>
                                                 </Box>
@@ -394,7 +392,7 @@ const ServicePage = () => {
                                                 <Divider sx={{ my: 1 }} />
 
                                                 <List dense>
-                                                    {visibleItems.map((item, i) => (
+                                                    {cat.items.map((item, i) => (
                                                         <ListItem key={i} disableGutters>
                                                             <ListItemIcon sx={{ minWidth: 24 }}>
                                                                 <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
@@ -402,76 +400,122 @@ const ServicePage = () => {
                                                             <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
                                                         </ListItem>
                                                     ))}
-
-                                                    <Collapse in={!!expandedItems[index]} timeout="auto" unmountOnExit>
-                                                        {hiddenItems.map((item, i) => (
-                                                            <ListItem key={i} disableGutters>
-                                                                <ListItemIcon sx={{ minWidth: 24 }}>
-                                                                    <FiberManualRecordIcon fontSize="small" sx={{ color: '#c1c1c1' }} />
-                                                                </ListItemIcon>
-                                                                <ListItemText primary={item} primaryTypographyProps={{ fontSize: 14 }} />
-                                                            </ListItem>
-                                                        ))}
-                                                    </Collapse>
                                                 </List>
-
-                                                {hasExtra && (
-                                                    <Box sx={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)' }}>
-                                                        <IconButton size="small" onClick={() => toggleExpand(index)}>
-                                                            {expandedItems[index] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                                                        </IconButton>
-                                                    </Box>
-                                                )}
                                             </Box>
-                                        </Grid>
-                                    )
-                                })}
-                            </Grid></Container>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
+                                {/* Prev Button */}
+                                <IconButton
+                                    className="custom-swiper-prev"
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: { xs: -20, sm: -40, md: -50 },
+                                        transform: 'translateY(-50%)',
+                                        zIndex: 10,
+                                        backgroundColor: 'white',
+                                        boxShadow: 1,
+                                        '&:hover': { backgroundColor: '#e0f2ff' },
+                                    }}
+                                >
+                                    <ArrowBackIosNewIcon />
+                                </IconButton>
+
+                                {/* Nút next */}
+                                <IconButton
+                                    className="custom-swiper-next"
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        right: { xs: -20, sm: -40, md: -50 },
+                                        transform: 'translateY(-50%)',
+                                        zIndex: 10,
+                                        backgroundColor: 'white',
+                                        boxShadow: 1,
+                                        '&:hover': { backgroundColor: '#e0f2ff' },
+                                    }}
+                                >
+                                    <ArrowForwardIosIcon />
+                                </IconButton>
+                                
+                            </Box>
+
+                        </Container>
 
                     </Box>
 
                 </FadeSection>
                 <FadeSection id="Whatourclientssay">
-                    <Container  >
+
+                    <Container disableGutters maxWidth={false}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)', // ít nghiêng hơn ở mobile
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, md: 8 },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -23
-
+                                mb: { xs: -10, md: -23 }, // đỡ bị lấn nội dung bên dưới ở mobile
+                                textAlign: 'center',
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     What our clients say?
                                 </Typography>
-                                <Typography textAlign="center" mt={2} maxWidth="md" mx="auto">
+
+                                <Typography
+                                    mt={2}
+                                    fontSize={{ xs: '0.95rem', sm: '1rem' }}
+                                    maxWidth="md"
+                                    mx="auto"
+                                >
                                     We sincerely appreciate our customers for their valuable feedback and support.
                                     Our top priority is to fulfill your business needs with our appropriate technology solutions.
                                 </Typography>
 
-                                <Box mt={4} textAlign="center">
-                                    <Typography sx={{ fontStyle: 'italic' }}>
+                                <Box mt={4}>
+                                    <Typography
+                                        sx={{
+                                            fontStyle: 'italic',
+                                            fontSize: { xs: '0.95rem', sm: '1rem' },
+                                        }}
+                                    >
                                         “The management team is attentive, responsive to feedback and demonstrates initiative
                                         in continually improving effectiveness.”
                                     </Typography>
-                                    <Typography mt={2} fontWeight="bold">
+
+                                    <Typography
+                                        mt={2}
+                                        fontWeight="bold"
+                                        fontSize={{ xs: '0.95rem', sm: '1rem' }}
+                                    >
                                         Lori Ciaralli, Engineering Director, Network Management & Security, Ribbon Communications
                                     </Typography>
-                                    <Typography>USA</Typography>
+
+                                    <Typography fontSize={{ xs: '0.9rem', sm: '1rem' }}>
+                                        USA
+                                    </Typography>
                                 </Box>
                             </Container>
                         </Box>
                     </Container>
+
                 </FadeSection>
             </Box>
             <ScrollToTopButton />
-            <Footer />
+            <Footer hasDownload={true} />
         </>)
 }
 

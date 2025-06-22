@@ -7,6 +7,7 @@ import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
 const caseStudies = [
     {
@@ -33,30 +34,30 @@ const caseStudies = [
         link: 'https://example.com/case-study-6',
 
     },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044638.466.webp',
-        title: 'AI sound-based fault detection system in manufacturing',
-        tags: ['Manufacturing', 'Data Science & AI/ML', 'IoT'],
-        description: 'Utilize AI-based sound analysis to enhance real-time fault detection during value manufacturing, improving product quality.',
-        link: 'https://example.com/case-study-6',
+    // {
+    //     image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044638.466.webp',
+    //     title: 'AI sound-based fault detection system in manufacturing',
+    //     tags: ['Manufacturing', 'Data Science & AI/ML', 'IoT'],
+    //     description: 'Utilize AI-based sound analysis to enhance real-time fault detection during value manufacturing, improving product quality.',
+    //     link: 'https://example.com/case-study-6',
 
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044337.448.webp',
-        title: 'Enhance Credit Risk Analysis with AI/ML Technologies',
-        tags: ['Finance', 'Data Science & AI/ML'],
-        description: 'Provide credit scoring algorithm leveraging AI/ML models to enhance risk assessment from many data sources, reducing efforts.',
-        link: 'https://example.com/case-study-6',
+    // },
+    // {
+    //     image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044337.448.webp',
+    //     title: 'Enhance Credit Risk Analysis with AI/ML Technologies',
+    //     tags: ['Finance', 'Data Science & AI/ML'],
+    //     description: 'Provide credit scoring algorithm leveraging AI/ML models to enhance risk assessment from many data sources, reducing efforts.',
+    //     link: 'https://example.com/case-study-6',
 
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611045307.545.webp',
-        title: 'Pest Detection Solution Crop Protection With AI Technology',
-        tags: ['Agriculture', 'Data Science & AI/ML', 'IoT'],
-        description: 'Leverage AI to detect and identify pests and diseases in the field, supporting managing and monitoring.',
-        link: 'https://example.com/case-study-6',
+    // },
+    // {
+    //     image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611045307.545.webp',
+    //     title: 'Pest Detection Solution Crop Protection With AI Technology',
+    //     tags: ['Agriculture', 'Data Science & AI/ML', 'IoT'],
+    //     description: 'Leverage AI to detect and identify pests and diseases in the field, supporting managing and monitoring.',
+    //     link: 'https://example.com/case-study-6',
 
-    },
+    // },
 ]
 const devOpsItems: string[] = [
     'DevOps Center: 12 years of experience',
@@ -167,7 +168,7 @@ const DevOpsPage = () => {
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         color: 'white',
                         mt: 18,
                         py: 8,
@@ -183,96 +184,98 @@ const DevOpsPage = () => {
                         <Grid container spacing={6} alignItems="center" justifyContent="center">
                             {/* Left: Text and Icons */}
                             <Grid item xs={12} md={6}>
-                                <Box sx={{ color: 'white', }}>
-                                    <Typography variant="h5" fontWeight="bold" mb={1}>
-                                        DevOps
-                                    </Typography>
-                                    <Typography variant="body1" >
-                                        Our DevOps services help you deliver applications faster and make IT operations easier by automating end to end delivery pipeline and facilitating continuous integration and development across leading cloud platforms
-                                    </Typography>
+                                <SlideInOnScroll>
+                                    <Box sx={{ color: 'white', }}>
+                                        <Typography variant="h5" fontWeight="bold" mb={1}>
+                                            DevOps
+                                        </Typography>
+                                        <Typography variant="body1" >
+                                            Our DevOps services help you deliver applications faster and make IT operations easier by automating end to end delivery pipeline and facilitating continuous integration and development across leading cloud platforms
+                                        </Typography>
 
-                                    <List>
-                                        {devOpsItems.map((text, index) => (
-                                            <ListItem key={index} disableGutters>
-                                                <ListItemIcon sx={{ minWidth: '28px' }}>
-                                                    <RadioButtonUncheckedIcon sx={{ fontSize: 12, color: 'white' }} />
-                                                </ListItemIcon>
-                                                <ListItemText
-                                                    primary={text}
-                                                    primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }}
-                                                />
-                                            </ListItem>
-                                        ))}
-                                    </List>
-                                </Box>
+                                        <List>
+                                            {devOpsItems.map((text, index) => (
+                                                <ListItem key={index} disableGutters>
+                                                    <ListItemIcon sx={{ minWidth: '28px' }}>
+                                                        <RadioButtonUncheckedIcon sx={{ fontSize: 12, color: 'white' }} />
+                                                    </ListItemIcon>
+                                                    <ListItemText
+                                                        primary={text}
+                                                        primaryTypographyProps={{ variant: 'body2', sx: { color: 'white' } }}
+                                                    />
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </Box></SlideInOnScroll>
 
                             </Grid>
 
                             {/* Right: Hex Grid */}
                             <Grid item xs={12} md={6}>
-                                <Box
-                                    sx={{
-                                        position: 'relative',
-                                        width: {
-                                            xs: 200,  // Mobile nhỏ hơn
-                                            sm: 250,  // Tablet
-                                            md: 300,  // Desktop giữ nguyên
-                                        },
-                                        height: {
-                                            xs: 200,
-                                            sm: 270,
-                                            md: 310,
-                                        },
-                                        margin: 'auto',
-                                    }}
-                                >
-                                    {/* Center Image */}
+                                <SlideInOnScroll direction='right'>
                                     <Box
-                                        component="img"
-                                        src={centerImage}
-                                        alt="DevOps Center"
                                         sx={{
+                                            position: 'relative',
                                             width: {
-                                                xs: 100,
-                                                sm: 130,
-                                                md: 170,
+                                                xs: 200,  // Mobile nhỏ hơn
+                                                sm: 250,  // Tablet
+                                                md: 300,  // Desktop giữ nguyên
                                             },
                                             height: {
-                                                xs: 100,
-                                                sm: 130,
-                                                md: 170,
+                                                xs: 200,
+                                                sm: 270,
+                                                md: 310,
                                             },
-                                            position: 'absolute',
-                                            top: '50%',
-                                            left: '50%',
-                                            transform: 'translate(-50%, -50%)',
+                                            margin: 'auto',
                                         }}
-                                    />
-
-                                    {/* Surrounding Hex Images */}
-                                    {outerImages.map((src, index) => (
+                                    >
+                                        {/* Center Image */}
                                         <Box
-                                            key={index}
                                             component="img"
-                                            src={src}
-                                            alt={`Hex ${index + 1}`}
+                                            src={centerImage}
+                                            alt="DevOps Center"
                                             sx={{
                                                 width: {
-                                                    xs: 90,
-                                                    sm: 120,
-                                                    md: 150,
+                                                    xs: 100,
+                                                    sm: 130,
+                                                    md: 170,
                                                 },
                                                 height: {
-                                                    xs: 90,
-                                                    sm: 120,
-                                                    md: 150,
+                                                    xs: 100,
+                                                    sm: 130,
+                                                    md: 170,
                                                 },
                                                 position: 'absolute',
-                                                ...positions[index],
+                                                top: '50%',
+                                                left: '50%',
+                                                transform: 'translate(-50%, -50%)',
                                             }}
                                         />
-                                    ))}
-                                </Box>
+
+                                        {/* Surrounding Hex Images */}
+                                        {outerImages.map((src, index) => (
+                                            <Box
+                                                key={index}
+                                                component="img"
+                                                src={src}
+                                                alt={`Hex ${index + 1}`}
+                                                sx={{
+                                                    width: {
+                                                        xs: 90,
+                                                        sm: 120,
+                                                        md: 150,
+                                                    },
+                                                    height: {
+                                                        xs: 90,
+                                                        sm: 120,
+                                                        md: 150,
+                                                    },
+                                                    position: 'absolute',
+                                                    ...positions[index],
+                                                }}
+                                            />
+                                        ))}
+                                    </Box></SlideInOnScroll>
                             </Grid>
 
                         </Grid>
@@ -300,10 +303,7 @@ const DevOpsPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
-
-                }}
+                <Box p={3}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -355,51 +355,74 @@ const DevOpsPage = () => {
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Container>
-                    <Box sx={{ py: 8, px: 2, }}>
-                        <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
-                            Solutions
+
+                <Box sx={{
+                    py: 8, px: 2, background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                    backdropFilter: 'blur(6px)',
+                    WebkitBackdropFilter: 'blur(6px)',
+                }}>
+                    <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
+                        Solutions
+                    </Typography>
+                    <Box mb={3} textAlign={"center"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
+                        <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
+                            Provisioning Resources and CI Flow
                         </Typography>
-                        <Box mb={3} textAlign={"center"} bgcolor={"#D9D9D9"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
-                            <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
-                                Provisioning Resources and CI Flow
-                            </Typography>
-                            <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083027.855.webp " alt="" />
-                        </Box>
-                        <Box mb={3} textAlign={"center"} bgcolor={"#D9D9D9"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
-                            <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
-                                DevOps Project
-                            </Typography>
-                            <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083036.210.webp" alt="" />
-                        </Box>
-                        <Box mb={3} textAlign={"center"} bgcolor={"#D9D9D9"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
-                            <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
-                                DevOps Flow
-                            </Typography>
-                            <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083043.493.webp" alt="" />
-                        </Box>
-
-
+                        <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083027.855.webp " alt="" />
                     </Box>
-                </Container>
+                    <Box mb={3} textAlign={"center"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
+                        <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
+                            DevOps Project
+                        </Typography>
+                        <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083036.210.webp" alt="" />
+                    </Box>
+                    <Box mb={3} textAlign={"center"} border={"1px solid rgba(103, 156, 183, 0.9)"}>
+                        <Typography textAlign={"center"} fontWeight={"bold"} variant='h5' p={3}>
+                            DevOps Flow
+                        </Typography>
+                        <img width={"95%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240515083043.493.webp" alt="" />
+                    </Box>
+
+
+                </Box>
+
             </FadeSection>
 
             <FadeSection>
-                <Container>
-                    <Box sx={{ py: 6, backgroundColor: '#f3f7fd', textAlign: 'center' }}>
-                        <Typography variant="h4" fontWeight="bold" mb={4}>
-                            Technologies
-                        </Typography>
 
-                        <Grid container spacing={2} justifyContent="center">
-                            {techCategories.map((item, index) => (
-                                <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+                <Box sx={{ py: 6, backgroundColor: '#f3f7fd', textAlign: 'center' }}>
+                    <Typography variant="h4" fontWeight="bold" mb={4}>
+                        Technologies
+                    </Typography>
+
+                    <Box sx={{ overflow: 'hidden', py: 4, backgroundColor: '#f5f5f5' }}>
+                        <Box
+                             sx={{
+                                    display: 'flex',
+                                    width: 'max-content',
+                                    animation: 'scroll 20s linear infinite',
+                                    '@keyframes scroll': {
+                                        '0%': { transform: 'translateX(0)' },
+                                        '100%': { transform: 'translateX(-50%)' },
+                                    },
+                                }}
+                        >
+                            {[...techCategories, ...techCategories].map((item, index) => (
+                                <Box
+                                    key={index}
+                                    sx={{
+                                        width: 280,
+                                        minWidth: 280,
+                                        mx: 2,
+                                        flexShrink: 0,
+                                    }}
+                                >
                                     <Paper
                                         elevation={0}
                                         sx={{
                                             border: '1px solid #2196f3',
                                             borderRadius: '2px',
-                                            height: "100%",
+                                            height: '100%',
                                             p: 2,
                                             backgroundColor: '#fff',
                                         }}
@@ -411,6 +434,7 @@ const DevOpsPage = () => {
                                                 p: 1,
                                                 fontWeight: 'bold',
                                                 fontSize: '0.9rem',
+                                                textAlign: 'center',
                                             }}
                                         >
                                             {item.title}
@@ -422,11 +446,12 @@ const DevOpsPage = () => {
                                             sx={{ width: '100%', height: 'auto', mt: 1 }}
                                         />
                                     </Paper>
-                                </Grid>
+                                </Box>
                             ))}
-                        </Grid>
+                        </Box>
                     </Box>
-                </Container>
+                </Box>
+
             </FadeSection>
             <FadeSection>
                 <Container>
@@ -496,45 +521,58 @@ const DevOpsPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    DevOps Brochure
+                                    DevOps IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

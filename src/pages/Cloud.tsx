@@ -7,14 +7,13 @@ import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import CloudIcon from '@mui/icons-material/Cloud'
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 type CloudData = {
-  [category: string]: string[];
-};
+    [category: string]: string[]
+}
 
 interface CloudCompetencyTableProps {
-  title: string;
-  data: CloudData;
+    title: string
+    data: CloudData
 }
 const caseStudies = [
     {
@@ -128,25 +127,20 @@ const cloudDetails = [
     {
         label: 'Application development on cloud',
         description:
-            'Build and maintain a custom application by using cloud delivery platforms such as AWS, MS Azure, Google Cloud, IBM Watson, Salesforce, etc',
+            'Build and maintain custom applications using platforms like AWS, Azure, or Google Cloud',
     },
     {
         label: 'Cloud administration',
-        description: 'Implement a SaaS solution or transition a current application to a SaaS model',
-    },
-    {
-        label: 'Cloud application testing',
-        description: 'Porting application to cloud',
-    },
-    {
-        label: 'Porting application to cloud',
-        description: 'Solution to test cloud based applications',
+        description:
+            'Setup, configure, monitor and manage cloud infrastructure efficiently',
     },
     {
         label: 'SaaS implementation',
-        description: 'Setup, configure, monitor and manage cloud infrastructure',
+        description:
+            'Implement or migrate applications to the SaaS model for better scalability',
     },
 ]
+
 const cloudHighlights = [
     {
         icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240522154631.865.webp',
@@ -175,66 +169,66 @@ const skillMatrixData = [
     {
         title: 'AWS Services',
         content:
-            'EC2, ELB, Auto scaling, Elastic beanstalk, ECR, ECS, S3, RDS, AWS Lambda, AWS SQS/SNS, AWS Face recognizer, AWS Face comparison, Route 53',
+            'EC2, S3, RDS, Lambda, ECS, ECR, ELB, Auto Scaling, CloudWatch, Route 53',
     },
     {
-        title: 'Cloud Administrator',
+        title: 'Azure Services',
         content:
-            'Kubernetes, Container, App service, Function App, Blob Storage, Azure AD, Azure DevOps, SQL, Logic App, Monitor',
+            'App Service, Function App, Blob Storage, Azure AD, Azure DevOps, Monitor',
+    },
+    {
+        title: 'Cloud Administration',
+        content:
+            'Kubernetes, Containers, Terraform, Ansible, CI/CD pipelines, SQL',
     },
     {
         title: 'IBM Cloud',
         content:
-            'App engine, Container engine, Compute engine, Cloud storage, Identify/Security, IoT',
+            'Cloud Foundry, Watson AI, Cloud Object Storage, Identity & Access Management',
     },
     {
         title: 'OpenStack Services',
-        content: 'Keystone, Glance, Neutron, Nova, Cinder, Swift, Horizon',
-    },
-    {
-        title: 'Google Cloud',
-        content: 'Infomix, Dr Watson',
-    },
-    {
-        title: 'Azure Services',
-        content: 'Terraform, Ansible, Chef, Puppet',
+        content:
+            'Keystone, Nova, Neutron, Glance, Horizon',
     },
 ]
+
 const cloudData = [
     {
         title: 'Cloud Platform Competency – Amazon Web Services (AWS)',
         data: {
-            Compute: ['AWS EC2', 'AWS AMI', 'Auto scaling'],
-            Storage: ['AWS S3', 'AWS EBS'],
-            Database: ['AWS RDS', 'AWS ElastiCache'],
-            Networking: ['Elastic LB', 'CloudFront', 'Route 53', 'VPC'],
-            'Deployment & Management': ['Elastic Beanstalk', 'CloudFormation', 'IAM'],
-            'Application services': ['AWS Lambda', 'AWS SQS', 'AWS SES'],
+            Compute: ['EC2', 'Auto Scaling'],
+            Storage: ['S3'],
+            Database: ['RDS', 'ElastiCache'],
+            Networking: ['Elastic Load Balancer', 'Route 53', 'VPC'],
+            'Deployment & Management': ['CloudFormation', 'IAM'],
+            'Application services': ['Lambda', 'SQS'],
         },
     },
     {
         title: 'Cloud Platform Competency – Azure',
         data: {
-            Compute: ['Azure container', 'VM', 'HCI/insight'],
-            Storage: ['Blob Storage', 'Table', 'Queue', 'Caching'],
-            Database: ['Azure SQL', 'Azure Key Vault'],
-            Networking: ['Azure CDN', 'Traffic Manager', 'Azure Active Directory'],
-            'Deployment & Management': ['AKS - Azure Kubernetes Service', 'ACR - Azure Container Registry'],
-            'Application services': ['Web Role', 'Worker Role'],
+            Compute: ['Virtual Machines', 'AKS (Kubernetes)'],
+            Storage: ['Blob Storage'],
+            Database: ['Azure SQL', 'Key Vault'],
+            Networking: ['Azure CDN', 'Azure Active Directory'],
+            'Deployment & Management': ['Azure DevOps', 'Container Registry'],
+            'Application services': ['App Service', 'Function App'],
         },
     },
     {
         title: 'Cloud Platform Competency – Google Cloud Platform (GCP)',
         data: {
-            Compute: ['App Engine', 'Compute Engine', 'Kubernetes Engine', 'Cloud Function'],
-            Storage: ['Cloud Storage', 'Data encryption'],
-            Database: ['Cloud Datastore', 'Cloud SQL (MySQL)', 'Cloud SQL for Postgre'],
-            Networking: ['Cloud SDK', 'Cloud source repository', 'Cloud Load Balancer', 'Stackdriver'],
-            'Deployment & Management': ['Monitoring', 'Logging', 'Cloud endpoints', 'Cloud Pub/Sub'],
-            'Application services': ['Google Cloud Search', 'Chrome integration', 'G Suite'],
+            Compute: ['Compute Engine', 'Cloud Functions', 'GKE (Kubernetes Engine)'],
+            Storage: ['Cloud Storage'],
+            Database: ['Cloud SQL'],
+            Networking: ['Cloud Load Balancer', 'VPC'],
+            'Deployment & Management': ['Cloud Monitoring', 'Cloud Pub/Sub'],
+            'Application services': ['App Engine'],
         },
     },
 ]
+
 const CloudCompetencyTable = ({ title, data }: CloudCompetencyTableProps) => {
     return (
         <Box sx={{ mb: 6 }}>
@@ -258,7 +252,7 @@ const CloudCompetencyTable = ({ title, data }: CloudCompetencyTableProps) => {
                                         <List dense disablePadding>
                                             <ListItem disableGutters>
                                                 <ListItemIcon sx={{ minWidth: '28px' }}>
-                                                    <CheckBoxOutlineBlankIcon sx={{ fontSize: 14, color: '#0094ff' }} />
+                                                    <FiberManualRecordIcon sx={{ fontSize: 8, color: '#0094ff' }} />
                                                 </ListItemIcon>
                                                 <ListItemText
                                                     primaryTypographyProps={{ variant: 'body2' }}
@@ -413,59 +407,55 @@ const CloudPage = () => {
                     </Container>
                 </FadeSection>
                 <FadeSection id="service">
-                    <Container>
-                        <Box sx={{ padding: '20px 20px', textAlign: 'center' }}>
-                            <Box textAlign={"center"}>
-                                <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
-                            </Box>
-                            <Typography variant="h4" fontWeight="bold" gutterBottom>
-                                Services
-                            </Typography>
-                            <Box sx={{ p: 4 }}>
-                                {/* Grid of service cards */}
-                                <Grid container spacing={2}>
-                                    {/* Hàng trên: 4 item */}
-                                    {cloudServices.slice(0, 4).map((service, index) => (
-                                        <Grid item xs={12} sm={6} md={3} key={index}>
-                                            <Box
-                                                sx={{
-                                                    border: '1px solid #cce4ff',
-                                                    p: 2,
-                                                    textAlign: 'center',
-                                                    backgroundColor: '#fff',
-                                                    height: "70%"
-                                                }}
-                                            >
-                                                <img
-                                                    src={service.icon}
-                                                    alt={service.title}
-                                                    style={{ width: 50, height: 50, marginBottom: 8 }}
-                                                />
-                                                <Typography fontWeight="bold">{service.title}</Typography>
-                                            </Box>
-                                        </Grid>
-                                    ))}
 
-                                    {cloudServices.slice(4).map((service, index) => (
-                                        <Grid item xs={12} sm={6} md={4} key={index}>
-                                            <Box
-                                                sx={{
-                                                    border: '1px solid #cce4ff',
-                                                    p: 2,
-                                                    textAlign: 'center',
-                                                    backgroundColor: '#fff',
-                                                }}
-                                            >
-                                                <img
-                                                    src={service.icon}
-                                                    alt={service.title}
-                                                    style={{ width: 50, height: 50, marginBottom: 8 }}
-                                                />
-                                                <Typography fontWeight="bold">{service.title}</Typography>
-                                            </Box>
-                                        </Grid>
+                    <Box sx={{ padding: '20px 20px', textAlign: 'center' }}>
+                        <Box textAlign={"center"}>
+                            <img width={"3%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
+                        </Box>
+                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                            Services
+                        </Typography>
+                        <Box sx={{ p: 4 }}>
+                            {/* Grid of service cards */}
+                            <Box sx={{ overflow: 'hidden', py: 4, backgroundColor: '#f8fbff', width: "100%", position: 'relative', }}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        width: 'max-content',
+                                        animation: 'scroll 20s linear infinite',
+                                        '@keyframes scroll': {
+                                            '0%': { transform: 'translateX(0)' },
+                                            '100%': { transform: 'translateX(-50%)' },
+                                        },
+                                    }}
+                                >
+                                    {[...cloudServices, ...cloudServices].map((service, index) => (
+                                        <Box
+                                            key={index}
+                                            sx={{
+                                                width: 200,
+                                                minWidth: 200,
+                                                mx: 2,
+                                                textAlign: 'center',
+                                                border: '1px solid #cce4ff',
+                                                borderRadius: 2,
+                                                backgroundColor: '#fff',
+                                                p: 2,
+                                                flexShrink: 0,
+                                                boxShadow: 1,
+                                            }}
+                                        >
+                                            <img
+                                                src={service.icon}
+                                                alt={service.title}
+                                                style={{ width: 50, height: 50, marginBottom: 8 }}
+                                            />
+                                            <Typography fontWeight="bold">{service.title}</Typography>
+                                        </Box>
                                     ))}
-                                </Grid>
+                                </Box>
+                            </Box>
+                            <Container>
                                 <Table sx={{ mt: 4 }}>
                                     <TableBody>
                                         {cloudDetails.map((item, index) => (
@@ -491,73 +481,75 @@ const CloudPage = () => {
                                             </TableRow>
                                         ))}
                                     </TableBody>
-                                </Table>
-                            </Box>
+                                </Table></Container>
                         </Box>
-                    </Container>
+                    </Box>
+
                 </FadeSection>
                 <FadeSection>
-                    <Container>
-                        <Box sx={{ px: 4, py: 6, bgcolor: '#fff' }}>
-                            <Box textAlign={"center"}>
-                                <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
-                            </Box>
-                            <Typography variant="h5" align="center" fontWeight="bold" mb={4}>
-                                Skill Matrix
-                            </Typography>
 
-                            <Grid container spacing={3}>
-                                {skillMatrixData.map((item, index) => (
-                                    <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Box sx={{
+                        px: 4, py: 6, background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                        backdropFilter: 'blur(6px)',
+                        WebkitBackdropFilter: 'blur(6px)',
+                    }}>
+                        <Box textAlign={"center"}>
+                            <img width={"3%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
+                        </Box>
+                        <Typography variant="h5" align="center" fontWeight="bold" mb={4}>
+                            Skill Matrix
+                        </Typography>
+
+                        <Grid container spacing={3}>
+                            {skillMatrixData.map((item, index) => (
+                                <Grid item xs={12} sm={6} md={4} key={index}>
+                                    <Box
+                                        sx={{
+                                            border: '1px solid #bde0ff',
+                                            borderTop: 'none',
+                                            borderBottomRightRadius: '8px',
+                                            p: 0,
+                                            overflow: 'hidden',
+                                        }}
+                                    >
+                                        {/* Header */}
+                                        <Box sx={{ bgcolor: '#2196f3', py: 1.5 }}>
+                                            <Typography
+                                                variant="subtitle1"
+                                                color="white"
+                                                fontWeight="bold"
+                                                textAlign="center"
+                                            >
+                                                {item.title}
+                                            </Typography>
+                                        </Box>
+
+                                        {/* Body */}
                                         <Box
                                             sx={{
-                                                border: '1px solid #bde0ff',
-                                                borderTop: 'none',
+                                                p: 2,
+                                                minHeight: '100px',
+                                                borderTop: '1px solid #bde0ff',
                                                 borderBottomRightRadius: '8px',
-                                                p: 0,
-                                                overflow: 'hidden',
+                                                borderLeft: '1px solid #bde0ff',
+                                                borderRight: '1px solid #bde0ff',
+                                                borderBottom: '1px solid #bde0ff',
                                             }}
                                         >
-                                            {/* Header */}
-                                            <Box sx={{ bgcolor: '#2196f3', py: 1.5 }}>
-                                                <Typography
-                                                    variant="subtitle1"
-                                                    color="white"
-                                                    fontWeight="bold"
-                                                    textAlign="center"
-                                                >
-                                                    {item.title}
-                                                </Typography>
-                                            </Box>
-
-                                            {/* Body */}
-                                            <Box
-                                                sx={{
-                                                    p: 2,
-                                                    minHeight: '100px',
-                                                    borderTop: '1px solid #bde0ff',
-                                                    borderBottomRightRadius: '8px',
-                                                    borderLeft: '1px solid #bde0ff',
-                                                    borderRight: '1px solid #bde0ff',
-                                                    borderBottom: '1px solid #bde0ff',
-                                                }}
-                                            >
-                                                <Typography variant="body2" textAlign="center">
-                                                    {item.content}
-                                                </Typography>
-                                            </Box>
+                                            <Typography variant="body2" textAlign="center">
+                                                {item.content}
+                                            </Typography>
                                         </Box>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </Box>
-                    </Container>
-
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
 
                 </FadeSection>
                 <FadeSection>
                     <Container>
-                        <Box px={{ xs: 2, md: 8 }} py={6} bgcolor="#f2f7ff">
+                        <Box px={{ xs: 2, }} sx={{}}>
                             <Box textAlign={"center"}>
                                 <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
                             </Box>
@@ -666,45 +658,58 @@ const CloudPage = () => {
                 </FadeSection> */}
 
                 <FadeSection id="download">
-                    <Container sx={{ mt: 20 }} >
+                    <Container sx={{ mt: { xs: 12, sm: 10, md: 1 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',
                                 color: 'white',
-                                clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                                py: 8,
-                                px: 4,
+                                clipPath: {
+                                    xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                    md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                                },
+                                py: { xs: 5, sm: 6, },
+                                px: { xs: 2, sm: 4 },
                                 position: 'relative',
                                 zIndex: 1,
-                                mb: -15
-
+                                mb: { xs: -8, sm: -10, md: -15 },
                             }}
                         >
                             <Container>
-                                <Typography variant='h4' textAlign="center" fontWeight="bold">
+                                <Typography
+                                    variant="h4"
+                                    fontWeight="bold"
+                                    textAlign="center"
+                                    fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                                >
                                     Download
                                 </Typography>
 
-
                                 <Box mt={4} textAlign="center">
                                     <Link
-                                        href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                        href="/path-to-your-file/IT-Outsourcing.pdf"
                                         download
                                         underline="none"
                                         sx={{
                                             display: 'inline-flex',
                                             alignItems: 'center',
                                             gap: 1,
+                                            px: 2,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            backgroundColor: 'white',
                                             color: '#1976d2',
                                             fontWeight: 'bold',
-                                            fontSize: '1.1rem',
+                                            fontSize: { xs: '1rem', sm: '1.1rem' },
+                                            transition: 'all 0.2s ease',
                                             '&:hover': {
-                                                textDecoration: 'underline',
+                                                backgroundColor: '#e3f2fd',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                             },
                                         }}
                                     >
                                         <FileDownloadIcon />
-                                        Cloud Brochure
+                                        Cloud IT Outsourcing
                                     </Link>
                                 </Box>
                             </Container>

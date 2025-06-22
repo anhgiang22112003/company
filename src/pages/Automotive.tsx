@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, } from '@mui/material'
+import { Box, Grid, Typography, Avatar, Container, CssBaseline, Stack, Link, Paper, List, ListItemButton, ListItemIcon, ListItemText, Divider, ListItem, IconButton, } from '@mui/material'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import ScrollToTopButton from '../components/ScrollToTopButton'
@@ -9,8 +9,12 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload'
 import BusinessIcon from '@mui/icons-material/Business'
 import GroupAddIcon from '@mui/icons-material/GroupAdd'
 import LanguageIcon from '@mui/icons-material/Language'
-import StarIcon from '@mui/icons-material/Star' // icon cho từng item, bạn có thể thay đổi
-
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 const infoData = [
     {
         title: '8 Years of experience in Automotive software development',
@@ -35,22 +39,21 @@ const menuItems = [
         content: [
             {
                 title: 'Functionalities',
-                items: ['Infotainment embedded software and HMI applications: cluster, launcher, navigation, media player, camera, HVAC controllers',
+                items: [
+                    'Infotainment & HMI: cluster, navigation, camera, media player',
                     'Surround view camera',
-                    'Cluster ECU',
-                    'Power door ECU',
-                    'LTE & diagnostic module​'],
+                    'LTE & diagnostic module',
+                ],
             },
             {
                 title: 'Technologies',
-                items: ['Embedded Linux, RTOS',
-                    'C/C++, Matlab Simulink, Enterprise Architect, Ascet, SCADE',
-                    'CAN, LIN, USB, BT, ETH, SPI, UART, I2C, SOTA, FOTA',
-                    'QT, QML, QNX, Genevi, Yocto',
-                    'NaverMap, NaviCore, HERE, TomTom, MapBoxGL, Yelp',
-                    'MCU, Sensors, Radar, Lidar, Computer Vision​'],
+                items: [
+                    'Embedded Linux, RTOS, CAN, LIN',
+                    'C/C++, QT/QML, Yocto, QNX',
+                    'Map APIs: NaverMap, HERE, MapBoxGL',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'Door and Window Power System',
@@ -58,16 +61,19 @@ const menuItems = [
         content: [
             {
                 title: 'Functionalities',
-                items: ['Self-seat automatic and manual control',
-                    'Door opening and closing interlocking control',
-                    'Control link door key/wireless/smart door​'],
+                items: [
+                    'Automatic/manual seat control',
+                    'Smart door control',
+                ],
             },
             {
                 title: 'Technologies',
-                items: ['Matlab 2015a, Enterprise Architect 13',
-                    'Language: C++​'],
+                items: [
+                    'C++',
+                    'Matlab, Enterprise Architect',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'Car Controller System',
@@ -75,20 +81,20 @@ const menuItems = [
         content: [
             {
                 title: 'Functionalities',
-                items: ['Brake and accelerator pedal control',
-                    'Steering and gear management',
-                    'Lights management',
+                items: [
+                    'Brake, accelerator, steering control',
                     'ADAS: auto braking, collision warning',
-                    'Telematics: Develop web and mobile app to send/receive signals from automotive system via embedded wireless node (wifi,4G/5G)​'],
+                    'Telematics: web/mobile signal control',
+                ],
             },
             {
                 title: 'Technologies',
-                items: ['Software / Embedded RTOS for ECU',
-                    'Hardware / Embedded System',
-                    'MPC56xx, S32K14x, Jetson',
-                    'Lights, Radar, Lidar, Steering, Encoders, Parsers​'],
+                items: [
+                    'RTOS for ECU, Jetson, S32K',
+                    'Radar, Lidar, Lights',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'CarPilot Diagnostic',
@@ -96,20 +102,21 @@ const menuItems = [
         content: [
             {
                 title: 'Functionalities',
-                items: ['Mini device receives data from OBD-II port and communicate to server online, supports for 3x CAN, 2x LIN, 1xGMLAN',
-                    'Display vehicle status and diagnostic on website',
-                    'Send notification automatically to car owner when there is any error',
-                    'Location identification​'],
+                items: [
+                    'OBD-II data reader with CAN/LIN',
+                    'Diagnostic dashboard & notifications',
+                    'Vehicle tracking',
+                ],
             },
             {
                 title: 'Technologies',
-                items: ['Tools: Eclipse, VS Code, Gcc for arm, KiCad, ESP8266 NONOS SDK, AWS',
-                    'Database: PostgreSQL, OpenDBC file Encodes',
-                    'Language: Java, ReactJS, Cordova, MapBoxGL, JS/HTML/CSS, C',
-                    'Hardware: STM32F413, ELM327, ESP8266',
-                    'Basic protocol: CAN, LIN, GMLAN, SPI, Websocket​'],
+                items: [
+                    'Java, ReactJS, Cordova',
+                    'ESP8266, STM32F413',
+                    'CAN, LIN, GMLAN, Websocket',
+                ],
             },
-        ]
+        ],
     },
     {
         label: 'Navigation for Android Automotive OS',
@@ -117,42 +124,24 @@ const menuItems = [
         content: [
             {
                 title: 'Functionalities',
-                items: ['Social login',
-                    'Chat with bot for POI and nearby',
-                    'Search with quick and slow mode',
-                    'Suggest search keywords',
-                    'Navigation AV​'],
+                items: [
+                    'POI search with chatbot',
+                    'Social login & keyword suggestions',
+                    'Turn-by-turn navigation',
+                ],
             },
             {
                 title: 'Technologies',
-                items: ['Frontend: ReactJS , Cordova, Google Map, Mapbox, Android OS 7.0+',
-                    'Database: PostgreSQL 9.6',
-                    'Third-parties: Facebook SDK, Yelp API​'],
+                items: [
+                    'ReactJS, Android OS 7.0+',
+                    'Mapbox, Google Map, Yelp API',
+                ],
             },
-        ]
+        ],
     },
 ]
-const imageUrls = [
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112627.082.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112824.251.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112854.529.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112919.816.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121112941.514.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113006.739.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113054.791.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113030.589.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113117.504.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113423.950.webp',
-    'https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20250121113152.694.webp',
-]
 
-const techLabels = [
-    'Angular', 'React.js', 'Java', 'Spring Boot',
-    'Node.js', 'Python', 'Kotlin', 'Django',
-    'Solidity', 'Scikit-learn', 'Ethereum', 'Hyperledger',
-    'Polygon', 'IPFS', 'TensorFlow', 'PyTorch',
-    'Azure', 'OpenAI', 'Hugging Face',
-]
+
 const servicesData = [
     {
         title: 'R&D Prototyping',
@@ -188,13 +177,10 @@ const skillSetData = [
         title: 'Skill Set',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_skillset.webp',
         items: [
-            { label: 'Model-Based Development' },
-            { label: 'Android' },
-            { label: 'Mobile Apps' },
             { label: 'Python' },
-            { label: 'Wireless' },
+            { label: 'Android' },
             { label: 'Data Science AI/ML' },
-            { label: 'ECU, MCU Systems' },
+            { label: 'Model-Based Development' },
         ],
     },
     {
@@ -202,40 +188,38 @@ const skillSetData = [
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_tools.webp',
         items: [
             { label: 'Matlab-Simulink' },
-            { label: 'SCADE' },
-            { label: 'C/C++, OWIN, ONV' },
-            { label: 'Visual Studio Code, Git' },
-            { label: 'ESP32/ESP8266 Modules' },
+            { label: 'Visual Studio Code' },
+            { label: 'Git' },
+            { label: 'C/C++' },
         ],
     },
     {
         title: 'Protocols',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_protocols.webp',
         items: [
-            { label: 'CAN, LIN, UART, I2C, USB, TEL, HTTPS' },
-            { label: 'MQTT, Websocket, CAN, LIN, GNSS, GPS, LTE, 5G' },
+            { label: 'CAN, LIN, UART, I2C' },
+            { label: 'MQTT, HTTPS, 5G' },
         ],
     },
     {
         title: 'Model-based',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_model_based.webp',
         items: [
-            { label: 'Matlab Simulink' },
-            { label: 'Model Stateflow' },
-            { label: 'ASCET' },
+            { label: 'Simulink' },
+            { label: 'Stateflow' },
             { label: 'Model in Loop' },
-            { label: 'Software in Loop' },
         ],
     },
     {
         title: 'Hardware',
         icon: 'https://tmastorage.azureedge.net/uploadfiles/PageSection/icon_hardware.webp',
         items: [
-            { label: 'Embedded RTOS for RZ/V2L, RH850, S32K, STM32, S32R, S32K3, S32G' },
-            { label: 'Automotive Camera Front, Adaptive Cruise Control, Surrounding View System' },
+            { label: 'RTOS on RH850, STM32, S32K' },
+            { label: 'Automotive Camera Systems' },
         ],
     },
 ]
+
 
 
 const AutomotivePage = () => {
@@ -250,7 +234,7 @@ const AutomotivePage = () => {
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         color: 'white',
                         mt: 18,
                         py: 8,
@@ -315,8 +299,9 @@ const AutomotivePage = () => {
             </FadeSection>
             <FadeSection id='about' >
                 <Box p={5} sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
 
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
+
                 }}
                 >
                     <Box >
@@ -331,7 +316,7 @@ const AutomotivePage = () => {
                         </Container>
                     </Box>
                     <Container sx={{ mb: 4 }}>
-                        <Box sx={{ bgcolor: '#E3F2FD', p: 4 }}>
+                        <Box sx={{ p: 4 }}>
                             <Container>
                                 <Grid container spacing={1} justifyContent="center">
                                     {servicesData.map((service, index) => (
@@ -363,68 +348,125 @@ const AutomotivePage = () => {
                                     Our engineers are at the forefront of automotive technology, using their exceptional technical skills to design and develop high-rated automobile products. Stay competitive in the car industry with our advanced automotive software solutions                            </Typography>
                             </Container>
                         </Box>
-                        <Box sx={{ p: 4 }}>
-                            <Container>
-                                <Grid container spacing={4} justifyContent="center">
-                                    {skillSetData.map((category, index) => (
-                                        <Grid item xs={12} sm={6} md={4} key={index}>
-                                            <Paper
-                                                elevation={3}
-                                                sx={{
-                                                    p: 2,
-                                                    borderRadius: 3,
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    justifyContent: 'space-between',
+                        <Box sx={{ py: 6, position: 'relative', }}>
+                            <Swiper
+                                modules={[Navigation, Pagination, Autoplay]}
+                                navigation={{
+                                    prevEl: '.custom-swiper-prev',
+                                    nextEl: '.custom-swiper-next',
+                                }}
+                                spaceBetween={20}
+                                slidesPerView={1}
+                                pagination={{ clickable: true }}
+                                autoplay={{
+                                    delay: 2000, // 4 giây
+                                    disableOnInteraction: false, // vẫn tiếp tục auto sau khi người dùng vuốt
+                                }}
+                                breakpoints={{
+                                    600: { slidesPerView: 1.2 },
+                                    900: { slidesPerView: 2 },
+                                    1200: { slidesPerView: 3 },
+                                }}
+                                style={{ paddingBottom: 32 }}
+                            >
+                                {skillSetData.map((category, index) => (
+                                    <SwiperSlide key={index}>
+                                        <Paper
+                                            elevation={2}
+                                            sx={{
+                                                p: 2,
+                                                borderRadius: 3,
+                                                height: '100%',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'space-between',
+                                            }}
+                                        >
+                                            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                                <Box
+                                                    component="img"
+                                                    src={category.icon}
+                                                    alt={category.title}
+                                                    sx={{ width: 36, height: 36, mr: 1 }}
+                                                />
+                                                <Typography variant="h6" fontWeight="bold">
+                                                    {category.title}
+                                                </Typography>
+                                            </Box>
 
-                                                }}
-                                            > <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                                                    <Box
-                                                        component="img"
-                                                        src={category.icon}
-                                                        alt={category.title}
-                                                        sx={{ width: "10%" }}
-                                                    />
-                                                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                                                        {category.title}
-                                                    </Typography>
-                                                </Box>
+                                            <Divider sx={{ mb: 2 }} />
 
-                                                <Divider />
+                                            <List dense disablePadding>
+                                                {category.items.map((item, idx) => (
+                                                    <ListItem
+                                                        key={idx}
+                                                        disableGutters
+                                                        sx={{
+                                                            px: 0,
+                                                            py: 0.6,
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                        }}
+                                                    >
+                                                        <Box
+                                                            sx={{
+                                                                width: 8,
+                                                                height: 8,
+                                                                backgroundColor: 'primary.main',
+                                                                transform: 'rotate(45deg)',
+                                                                borderRadius: '2px',
+                                                                mr: 1.5,
+                                                            }}
+                                                        />
+                                                        <ListItemText
+                                                            primary={
+                                                                <Typography variant="body2" color="text.primary">
+                                                                    {item.label}
+                                                                </Typography>
+                                                            }
+                                                        />
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Paper>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
 
-                                                {/* Danh sách item */}
-                                                <List dense >
-                                                    {category.items.map((item, idx) => (
+                            <IconButton
+                                className="custom-swiper-prev"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowBackIosNewIcon />
+                            </IconButton>
 
-                                                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                            <Box
-                                                                sx={{
-                                                                    width: 5,
-                                                                    height: 5,
-                                                                    backgroundColor: 'primary.main',
-                                                                    transform: 'rotate(45deg)',
-                                                                    borderRadius: '2px',
-                                                                    mr: 1,
-                                                                }}
-                                                            />
-                                                            <ListItemText
-                                                                primary={
-                                                                    <Typography variant="body2" >
-                                                                        {item.label}
-                                                                    </Typography>
-                                                                }
-                                                            />
-                                                        </Box>
-
-
-                                                    ))}
-                                                </List>
-                                            </Paper>
-                                        </Grid>
-                                    ))}
-                                </Grid>
-                            </Container>
+                            {/* Nút next */}
+                            <IconButton
+                                className="custom-swiper-next"
+                                sx={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    right: { xs: -20, sm: -40, md: -50 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowForwardIosIcon />
+                            </IconButton>
                         </Box>
+
                     </Container>
                 </Box>
             </FadeSection>
@@ -505,7 +547,7 @@ const AutomotivePage = () => {
                                             }}
                                         >
                                             <Box display="flex" alignItems="center" mb={1}>
-                                               
+
                                                 <Typography variant="subtitle1" fontWeight="bold">
                                                     {service.title}
                                                 </Typography>
@@ -533,45 +575,58 @@ const AutomotivePage = () => {
                 </Box>
             </FadeSection>
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Software Testing Brochure
+                                    Automove IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

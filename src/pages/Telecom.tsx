@@ -4,6 +4,7 @@ import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
 const telecomIcons = [
     {
@@ -77,43 +78,47 @@ const TelecomBanner = () => {
         <>
             <CssBaseline />
             <Header />
-            <FadeSection>
-                <Box
 
-                    sx={{
-                        backgroundColor: '#1976d2',
-                        color: 'white',
-                        mt: 18,
-                        py: 8,
-                        clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                        overflow: 'hidden',
-                    }}
-                >
-                    <Box sx={{ position: "absolute" }}>
-                        <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
-                    </Box>
-                    <Container>
-                        <Grid container spacing={6} alignItems="center" justifyContent="center">
-                            {/* Left: Text and Icons */}
-                            <Grid item xs={12} md={6}>
-                                <Typography variant="h4" fontWeight="bold" mb={2}>
-                                    Telecom
-                                </Typography>
-                                <Typography variant="body1" mb={4}>
-                                    With more than 28 years of experience in the Telecom industry, Solutions stands as a leading telecom services provider and an expert in telecom software development. Our comprehensive suite of End-to-End Services and cutting-edge telecom applications are designed to fast-track your market readiness. Whether you require assistance in Enterprise Communications, Carrier Communications, Broadband Network, EMS/NMS/OSS/BSS, or 5G R&D Lab, our proficient team is at your service.
-                                </Typography>
+            <Box
 
-                                {telecomIcons.map((item, index) => (
-                                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                        <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
-                                        <Typography variant="body1">{item.title}</Typography>
-                                    </Box>
-                                ))}
-                            </Grid>
+                sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    color: 'white',
+                    mt: 18,
+                    py: 8,
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    overflow: 'hidden',
+                }}
+            >
+                <Box sx={{ position: "absolute" }}>
+                    <img width={"20%"} src="https://www.tmasolutions.com/media/industries/telecom/bg_right.webp" alt="" />
+                </Box>
+                <Container>
+                    <Grid container spacing={6} alignItems="center" justifyContent="center">
+                        {/* Left: Text and Icons */}
+                        <Grid item xs={12} md={6}>
+                            <SlideInOnScroll>
+                                <Box>
+                                    <Typography variant="h4" fontWeight="bold" mb={2}>
+                                        Telecom
+                                    </Typography>
+                                    <Typography variant="body1" mb={4}>
+                                        With more than 28 years of experience in the Telecom industry, Solutions stands as a leading telecom services provider and an expert in telecom software development. Our comprehensive suite of End-to-End Services and cutting-edge telecom applications are designed to fast-track your market readiness. Whether you require assistance in Enterprise Communications, Carrier Communications, Broadband Network, EMS/NMS/OSS/BSS, or 5G R&D Lab, our proficient team is at your service.
+                                    </Typography>
 
-                            {/* Right: Hex Grid */}
-                            <Grid item xs={12} md={6}>
+                                    {telecomIcons.map((item, index) => (
+                                        <Box key={index} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                            <Avatar src={item.src} sx={{ width: 56, height: 56, mr: 2 }} />
+                                            <Typography variant="body1">{item.title}</Typography>
+                                        </Box>
+                                    ))}
+                                </Box></SlideInOnScroll>
+                        </Grid>
+
+                        {/* Right: Hex Grid */}
+                        <Grid item xs={12} md={6}>
+                            <SlideInOnScroll direction='right'>
                                 <Box
                                     sx={{
                                         display: 'flex',
@@ -129,12 +134,12 @@ const TelecomBanner = () => {
                                         <HexImage src={hexagonImages[1]} />
                                         <HexImage src={hexagonImages[2]} />
                                     </Box>
-                                </Box>
-                            </Grid>
+                                </Box></SlideInOnScroll>
                         </Grid>
-                    </Container>
-                </Box>
-            </FadeSection>
+                    </Grid>
+                </Container>
+            </Box>
+
             <FadeSection >
                 <Container>
                     <Box sx={{ px: 4, p: 2 }}>
@@ -161,9 +166,10 @@ const TelecomBanner = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                <Box p={5} sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
+                    clipPath: "polygon(0 5%, 100% 0, 100% 100%, 0% 100%)"
                 }}
                 >
                     <Box >
@@ -222,9 +228,9 @@ const TelecomBanner = () => {
                                             alt={menuItems[selectedIndex].label}
                                             style={{
                                                 width: '100%',
-                                                
-                                                
-                                                
+
+
+
                                             }}
                                         />
                                     </Box>

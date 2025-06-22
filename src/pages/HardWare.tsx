@@ -6,8 +6,8 @@ import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
-import DiamondIcon from '@mui/icons-material/Diamond'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+
 
 const leftItems = [
     {
@@ -40,34 +40,6 @@ const rightItems = [
         content: 'USB, Ethernet, LCD, CF/MMC/SD',
     },
 ]
-const iconBoxWidth = 100
-const iconBoxHeight = 80
-const iconSpacing = 5 // khoảng cách từ trung tâm đến icon
-
-const positionMap = [
-    { top: '26%', left: -iconSpacing },   // Icon 0
-    { top: '45%', left: -iconSpacing },   // Icon 1
-    { top: '65%', left: -iconSpacing },   // Icon 2
-    { top: '85%', left: -iconSpacing },   // Icon 3
-    { top: '26%', right: -iconSpacing },  // Icon 4
-    { top: '45%', right: -iconSpacing },  // Icon 5
-    { top: '65%', right: -iconSpacing },  // Icon 6
-    { top: '85%', right: -iconSpacing },  // Icon 7
-]
-
-const connectorLine = (pos: any) => ({
-    content: '""',
-    position: 'absolute',
-    width: '140px', // tăng độ dài để nối đến khối trung tâm
-    height: '2px',
-    backgroundColor: '#fff',
-    top: '30%',
-    ...(pos.left !== undefined
-        ? { left: iconBoxWidth } // iconBoxWidth = 80
-        : { right: iconBoxWidth }),
-    transform: 'translateY(-50%)',
-    zIndex: 0,
-})
 const services = [
     {
         title: 'New Design',
@@ -98,56 +70,6 @@ const services = [
     },
 ]
 
-const caseStudies = [
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611041847.860.webp',
-        title: 'Boost productivity with AI-powered Smart Call Center Assistant',
-        tags: ['Telecom', 'E-Commerce & Retail'],
-        description: 'An application running on agent’s PC to capture real-time audio and provide suggestions for customers’ queries using GenAI',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611042037.731.webp',
-        title: 'Public safety monitoring with smart camera',
-        tags: ['Data Science & AI/ML', 'Public Safety'],
-        description: 'The solution integrates smart cameras equipped with edge AI to provide comprehensive real-time surveillance and alerts in public spaces.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611042651.146.webp',
-        title: 'Apply OCR in Healthcare solutions to automate data collection',
-        tags: ['Healthcare', 'Data Science & AI/ML'],
-        description: 'Extract health indexes such as blood pressure, blood glucose, body temperature from 30 medical devices, prescriptions, and in-body physical.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044638.466.webp',
-        title: 'AI sound-based fault detection system in manufacturing',
-        tags: ['Manufacturing', 'Data Science & AI/ML', 'IoT'],
-        description: 'Utilize AI-based sound analysis to enhance real-time fault detection during value manufacturing, improving product quality.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611044337.448.webp',
-        title: 'Enhance Credit Risk Analysis with AI/ML Technologies',
-        tags: ['Finance', 'Data Science & AI/ML'],
-        description: 'Provide credit scoring algorithm leveraging AI/ML models to enhance risk assessment from many data sources, reducing efforts.',
-        link: 'https://example.com/case-study-6',
-
-    },
-    {
-        image: 'https://tmastorage.azureedge.net/uploadfiles/CaseStudies/Thumbnails/casestudy_thumbnail_20240611045307.545.webp',
-        title: 'Pest Detection Solution Crop Protection With AI Technology',
-        tags: ['Agriculture', 'Data Science & AI/ML', 'IoT'],
-        description: 'Leverage AI to detect and identify pests and diseases in the field, supporting managing and monitoring.',
-        link: 'https://example.com/case-study-6',
-
-    },
-]
 
 const technologyItems = [
     {
@@ -185,16 +107,7 @@ const coreStats = [
     },
 ]
 
-const hardwareFields = [
-    { name: 'Healthcare', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110220.287.webp' },
-    { name: 'Manufacturing', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110251.683.webp' },
-    { name: 'Network', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110257.504.webp' },
-    { name: 'Smart city', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110303.808.webp' },
-    { name: 'Telecom', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110310.094.webp' },
-    { name: 'IoT', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110310.094.webp' },
-    { name: 'Automotive', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110325.921.webp' },
-    { name: 'Robotics', icon: 'https://tmastorage.azureedge.net/uploadfiles/Banner/banner_item_20240528110346.746.webp' },
-]
+
 const leftBlocks = [
     {
         title: 'Infrastructure',
@@ -259,11 +172,17 @@ const HardWarePage = () => {
             <CssBaseline />
             <Header />
             <FadeSection>
-                <Box mt={18} sx={{ backgroundColor: '#1976d2', py: 8, color: '#fff', position: 'relative' }}>
+                <Box mt={18} sx={{  background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                    color: 'white',
+                    mt: 18,
+                    py: 8,
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
+                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)', position: 'relative' }}>
                     <Container maxWidth="lg">
                         <Grid container spacing={6} alignItems="center">
                             {/* Left Content */}
                             <Grid item xs={12} md={6}>
+                                <SlideInOnScroll>
                                 <Typography variant="h4" fontWeight="bold" gutterBottom>
                                     Hardware Lab
                                 </Typography>
@@ -283,12 +202,14 @@ const HardWarePage = () => {
                                         </Grid>
                                     ))}
                                 </Grid>
+                                </SlideInOnScroll>
                             </Grid>
 
                             {/* Right Content */}
                             <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
+                                <SlideInOnScroll direction='right'>
                                 <img width={"100%"} src="https://tse1.mm.bing.net/th?id=OIP.Y3t0u1KPNLz7mLnk95hNjQHaEK&pid=Api&P=0&h=220" alt="" />
-                            </Grid>
+                            </SlideInOnScroll></Grid>
 
                         </Grid>
                     </Container>
@@ -361,7 +282,8 @@ const HardWarePage = () => {
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ px: 4, py: 8, backgroundColor: '#f4f8fd' }}>
+                <Box sx={{ px: 4, py: 8,        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+ }}>
                     <Container>
                         <Grid container spacing={4} alignItems="center">
                             {/* Left Content */}
@@ -684,44 +606,59 @@ const HardWarePage = () => {
                 </Container>
             </FadeSection> */}
 
-            <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+         <FadeSection id="download">
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
+
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Hardware Lab Brochure
+                                    HardWare IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

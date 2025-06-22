@@ -21,6 +21,7 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import SlideInOnScroll from '../components/SlideInOnScroll'
 
 const topSections = [
     { key: 'ecommerce', label: 'Ecommerce', icon: <ShoppingCartIcon />, content: ['Omni-Channel', 'Multi-pricing', 'CRM Integration'] },
@@ -37,44 +38,36 @@ const bottomSections = [
 
 
 const technologies = [
-    {
-        icon: <WidgetsIcon fontSize="small" />,
-        title: 'Platforms & Frameworks',
-        items: [
-            'SharePoint', 'osCommerce', 'Joomla', 'Typo3', 'OpenText',
-            'Magento', 'EC-CUBE', 'WordPress', 'Orchard', '3dcart',
-            'Intershop', 'SugarCRM', 'Drupal', 'Prestashop', 'Salesforce',
-        ],
-    },
-    {
-        icon: <SupportAgentIcon fontSize="small" />,
-        title: 'Support',
-        items: [
-            'Auto shipping (SMC3 Carrier Connect, Rateware)', 'IBiz E-Payment', 'Fax Integration (Biscom FaxCOM)',
-            'Address verification (Melissa USPS)', 'Cybersource', 'Gentran EDI solution',
-            'Voice Commerce', 'Headless Commerce', 'Augmented Reality (AR)',
-        ],
-    },
-    {
-        icon: <AssessmentIcon fontSize="small" />,
-        title: 'Analytics & Reporting',
-        items: [
-            'Cognos report', 'Jasper report', 'QlikView',
-            'SSRS', 'Pentaho BI', 'Hive',
-            'Data Warehousing (ROLAP, MOLAP, HOLAP)',
-            'Data-mining: Classification/Regression, Clustering, Association, Sequence Analysis',
-        ],
-    },
-    {
-        icon: <IntegrationInstructionsIcon fontSize="small" />,
-        title: 'Integration',
-        items: [
-            'Auto shipping (SMC3 Carrier Connect, Rateware)', 'SPA (Single Page App)', 'PWA (Progressive Web App)',
-            'BEX (Browser Extension)', 'SSR (Server-side Rendered App)', 'Hybrid Mobile App',
-            'Multi-platform', 'Desktop App',
-        ],
-    },
-]
+  {
+    icon: <WidgetsIcon fontSize="small" />,
+    title: 'Platforms & Frameworks',
+    items: [
+      'SharePoint', 'Magento', 'WordPress', 'Salesforce', 'Drupal',
+    ],
+  },
+  {
+    icon: <SupportAgentIcon fontSize="small" />,
+    title: 'Support',
+    items: [
+      'Auto shipping', 'E-Payment', 'Fax Integration', 'Address Verification', 'Headless Commerce',
+    ],
+  },
+  {
+    icon: <AssessmentIcon fontSize="small" />,
+    title: 'Analytics & Reporting',
+    items: [
+      'Cognos', 'QlikView', 'Pentaho BI', 'Hive', 'Data-mining',
+    ],
+  },
+  {
+    icon: <IntegrationInstructionsIcon fontSize="small" />,
+    title: 'Integration',
+    items: [
+      'SPA', 'PWA', 'SSR', 'Hybrid App', 'Desktop App',
+    ],
+  },
+];
+
 
 const telecomIcons = [
     {
@@ -194,11 +187,11 @@ const ECommerceRetail = () => {
         <>
             <CssBaseline />
             <Header />
-            <FadeSection>
+       
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         color: 'white',
                         mt: 18,
                         py: 8,
@@ -214,6 +207,7 @@ const ECommerceRetail = () => {
                         <Grid container spacing={6} alignItems="center" justifyContent="center">
                             {/* Left: Text and Icons */}
                             <Grid item xs={12} md={6}>
+                                <SlideInOnScroll>
                                 <Typography variant="h4" fontWeight="bold" mb={2}>
                                     Ecommerce, Retail & Distribution
                                 </Typography>
@@ -227,10 +221,12 @@ const ECommerceRetail = () => {
                                         <Typography variant="body1">{item.title}</Typography>
                                     </Box>
                                 ))}
+                                </SlideInOnScroll>
                             </Grid>
 
                             {/* Right: Hex Grid */}
                             <Grid item xs={12} md={6}>
+                                <SlideInOnScroll direction='right'>
                                 <Box
                                     sx={{
                                         display: 'flex',
@@ -240,12 +236,12 @@ const ECommerceRetail = () => {
                                     }}
                                 >
                                     <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/Banner/banner_20241108035547.944.webp" alt="" />
-                                </Box>
+                                </Box></SlideInOnScroll>
                             </Grid>
                         </Grid>
                     </Container>
                 </Box>
-            </FadeSection>
+            
             <FadeSection >
                 <Container>
                     <Box sx={{ px: 4, p: 2 }}>
@@ -267,10 +263,7 @@ const ECommerceRetail = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
-
-                }}
+                <Box p={3} sx={{}}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -284,7 +277,7 @@ const ECommerceRetail = () => {
                     </Box>
                     <Container sx={{ mb: 4 }}>
                         <Box sx={{ px: 4, py: 6 }}>
-                            <Grid container spacing={4}>
+                            <Grid container spacing={1}>
                                 {services.map((service, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={index}>
                                         <Box
@@ -321,8 +314,9 @@ const ECommerceRetail = () => {
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Container>
-                    <Box sx={{ backgroundColor: '#f5f9ff', px: 4, py: 8 }}>
+                
+                    <Box sx={{background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', px: 4, py: 8 }}>
+                        <Container>
                         <Grid sx={{ alignItems: "center" }} container spacing={4}>
                             {/* Left Description */}
                             <Grid item xs={12} md={4}>
@@ -370,7 +364,7 @@ const ECommerceRetail = () => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Box></Container>
+                    </Container></Box>
             </FadeSection>
             <FadeSection id='about' >
                 <Box p={5} sx={{
@@ -382,9 +376,9 @@ const ECommerceRetail = () => {
                         <Container sx={{ textAlign: "center" }}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
-                               Areas of Expertise
+                                Areas of Expertise
                             </Typography>
-                            
+
                         </Container>
                     </Box>
                     <Container sx={{ mt: 4 }}>
@@ -452,7 +446,7 @@ const ECommerceRetail = () => {
                     </Container>
                 </Box>
             </FadeSection>
-          
+
             <ScrollToTopButton />
             <Footer />
         </>

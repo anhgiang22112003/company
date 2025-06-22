@@ -70,7 +70,6 @@ const platforms = [
 ]
 
 const Insurance = () => {
-    const [selectedIndex, setSelectedIndex] = useState(0)
 
     return (
         <>
@@ -80,7 +79,8 @@ const Insurance = () => {
                 <Box
 
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+
                         color: 'white',
                         mt: 18,
                         py: 8,
@@ -150,8 +150,8 @@ const Insurance = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
-                    mt: 4,
+                <Box p={3} sx={{
+                   
                 }}
                 >
                     <Box >
@@ -162,14 +162,14 @@ const Insurance = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Container sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={4} justifyContent="center" sx={{ mt: 2 }}>
+                    <Container >
+                        <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
                             {services.map((service, index) => (
                                 <Grid item key={index} xs={12} sm={6} md={4}>
                                     <Box
                                         sx={{
                                             position: 'relative',
-                                            p: 3,
+                                            p: 2,
                                             borderRadius: 3,
                                             boxShadow: 3,
                                             height: '100%',
@@ -210,7 +210,7 @@ const Insurance = () => {
                                         </Box>
 
                                         {/* Nội dung thực */}
-                                        <Box display="flex" mb={5} flexDirection="column" gap={1}>
+                                        <Box display="flex"flexDirection="column" gap={1}>
                                             <Box key={index} display="flex" alignItems="flex-start" gap={1}>
                                                 <FiberManualRecordIcon sx={{ fontSize: 10, color: "#1E40AF", mt: "6px" }} />
                                                 <Typography sx={{ fontSize: 16, color: "#333", lineHeight: 1.6 }}>
@@ -227,9 +227,9 @@ const Insurance = () => {
                 </Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                <Box p={5} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                 }}
                 >
                     <Box >
@@ -294,10 +294,10 @@ const Insurance = () => {
                                     xs: '150px',     // chiều cao lớn hơn ở mobile
                                     md: 'auto',      // trở về mặc định ở desktop
                                 },
-                             
+
                             }}
                         />
-                        
+
                     </Container>
                 </Box>
             </FadeSection>
@@ -308,7 +308,7 @@ const Insurance = () => {
                         <Typography>
                             We develop mobile architecture that optimizes the interaction with customer and enhance employee productivity
                         </Typography>
-                     <Box
+                        <Box
                             component="img"
                             src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240625084744.650.webp"
                             alt=""
@@ -318,52 +318,65 @@ const Insurance = () => {
                                     xs: '150px',     // chiều cao lớn hơn ở mobile
                                     md: 'auto',      // trở về mặc định ở desktop
                                 },
-                               
+
                             }}
                         />
                     </Container>
                 </Box>
             </FadeSection>
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Software Testing Brochure
+                                    Insurance IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>

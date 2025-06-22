@@ -79,7 +79,7 @@ const LogisticsPage = () => {
             <FadeSection>
                 <Box
                     sx={{
-                        backgroundColor: '#1976d2',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                         mt: 18,
                         py: 8,
                         clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
@@ -168,10 +168,7 @@ const LogisticsPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
-                    mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
-                }}
+                <Box p={3} bgcolor={"#f5f5f5"} 
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -216,7 +213,7 @@ const LogisticsPage = () => {
             </FadeSection>
 
             <FadeSection id='about' >
-                <Box sx={{ bgcolor: '#E3F2FD', p: 2 }}>
+                <Box sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', p: 2 }}>
                     <Container>
                         <Container sx={{ textAlign: "center" }}>
                             <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/5G/decorServices.webp" alt="" />
@@ -226,7 +223,7 @@ const LogisticsPage = () => {
                             <Typography variant="body1" align="left" sx={{ mb: 4 }}>
                                 Our logistics management system and transportation management system are built on modern technology. We’re your partner in modernizing the sector.
                             </Typography></Container>
-                        <Grid container spacing={4} justifyContent="center">
+                        <Grid container spacing={2} justifyContent="center">
                             {technologiesData.map((tech, index) => (
                                 <Grid item xs={12} sm={6} md={4} key={index}>
                                     <Paper elevation={3} sx={{ padding: 3, textAlign: 'center' }}>
@@ -324,45 +321,58 @@ const LogisticsPage = () => {
                     </Container>
                 </FadeSection> */}
             <FadeSection id="download">
-                <Container sx={{ mt: 4 }} >
+                <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{
                             background: '#009BFF',
                             color: 'white',
-                            clipPath: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            py: 8,
-                            px: 4,
+                            clipPath: {
+                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)',
+                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
+                            },
+                            py: { xs: 5, sm: 6, md: 8 },
+                            px: { xs: 2, sm: 4 },
                             position: 'relative',
                             zIndex: 1,
-                            mb: -15
-
+                            mb: { xs: -8, sm: -10, md: -15 },
                         }}
                     >
                         <Container>
-                            <Typography variant='h4' textAlign="center" fontWeight="bold">
+                            <Typography
+                                variant="h4"
+                                fontWeight="bold"
+                                textAlign="center"
+                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
+                            >
                                 Download
                             </Typography>
 
-
                             <Box mt={4} textAlign="center">
                                 <Link
-                                    href="/path-to-your-file/IT-Outsourcing.pdf" // <-- Đường dẫn file
+                                    href="/path-to-your-file/IT-Outsourcing.pdf"
                                     download
                                     underline="none"
                                     sx={{
                                         display: 'inline-flex',
                                         alignItems: 'center',
                                         gap: 1,
+                                        px: 2,
+                                        py: 1.5,
+                                        borderRadius: 2,
+                                        backgroundColor: 'white',
                                         color: '#1976d2',
                                         fontWeight: 'bold',
-                                        fontSize: '1.1rem',
+                                        fontSize: { xs: '1rem', sm: '1.1rem' },
+                                        transition: 'all 0.2s ease',
                                         '&:hover': {
-                                            textDecoration: 'underline',
+                                            backgroundColor: '#e3f2fd',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
                                         },
                                     }}
                                 >
                                     <FileDownloadIcon />
-                                    Logistics Brochure
+                                    Logistics IT Outsourcing
                                 </Link>
                             </Box>
                         </Container>
