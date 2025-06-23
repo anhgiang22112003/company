@@ -283,7 +283,7 @@ const BigDataAnalyticsPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5}
+                <Box p={2}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -293,7 +293,8 @@ const BigDataAnalyticsPage = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Box sx={{ p: 4 }}>
+                    <Container>
+                    <Box >
                         
                             <Grid container spacing={2} justifyContent="center">
                                 {servicesData.map((service, index) => (
@@ -308,7 +309,7 @@ const BigDataAnalyticsPage = () => {
                                 ))}
                             </Grid>
                       
-                    </Box>
+                    </Box></Container>
                 </Box>
             </FadeSection>
             <FadeSection>

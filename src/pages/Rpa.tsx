@@ -386,21 +386,21 @@ const RpaPage = () => {
                 </FadeSection>
                 <FadeSection>
                     <Box sx={{
-                        p:5,
+                        p: 2.5,
                         background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     }}>
                         <Box >
                             <Container sx={{ textAlign: "center" }}>
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
+                                <Typography color={"white"} mb={2} variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                     RPA Process
                                 </Typography>
                             </Container>
                         </Box>
-                        <Box sx={{ p: 4 }}>
+                        <Box >
                             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, flexWrap: 'wrap' }}>
                                 {steps.map((step, idx) => (
-                                    <Box key={idx} sx={{ width: 260, textAlign: 'center', position: 'relative' }}>
+                                    <Box key={idx} sx={{ width: 260, textAlign: 'center', position: 'relative',  }}>
                                         {/* Arrow Title */}
                                         <Box
                                             sx={{
@@ -425,7 +425,12 @@ const RpaPage = () => {
                                                 backgroundColor: 'white',
                                                 border: '1px solid #e0e0e0',
                                                 padding: 2,
-                                                minHeight: 120,
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                justifyContent: 'center',
+                                                height: '100%',
+                                                maxHeight:120
+                                                
                                             }}
                                         >
                                             <List dense>
@@ -443,7 +448,7 @@ const RpaPage = () => {
                                         {/* Only show ArrowDownwardIcon for UNDERSTAND */}
                                         {!(step.title === 'UNDERSTAND') && (
                                             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
-                                                <ArrowDownwardIcon sx={{ fontSize: 28, color: '#1E90FF' }} />
+                                                <ArrowDownwardIcon sx={{ fontSize: 28, color: 'white' }} />
                                             </Box>
                                         )}
 
@@ -496,11 +501,10 @@ const RpaPage = () => {
                             background: 'linear-gradient(135deg, #1da1ff 0%, #1da1ff 100%)',
                             py: 10,
                             px: 2,
-                            transform: 'skewY(-3deg)',
                             mt: 8,
                         }}
                     >
-                        <Box sx={{ transform: 'skewY(3deg)', maxWidth: 1200, mx: 'auto' }}>
+                        <Box sx={{maxWidth: 1200, mx: 'auto' }}>
                             <Typography
                                 variant="h4"
                                 fontWeight="bold"
@@ -631,7 +635,7 @@ const RpaPage = () => {
                         </Box>
                     </Container>
                 </FadeSection> */}
-                 <FadeSection id="download">
+                <FadeSection id="download">
                     <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                         <Box
                             sx={{

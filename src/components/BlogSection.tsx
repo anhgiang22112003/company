@@ -1,10 +1,26 @@
-import React from 'react';
-import { Box, Typography, Grid, Card, CardMedia, CardContent, Button, Stack } from '@mui/material';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import React from 'react'
+import { Box, Typography, Grid, Card, CardMedia, CardContent, Button, Stack, GlobalStyles } from '@mui/material'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
 import SlideInOnScroll from './SlideInOnScroll'
+<GlobalStyles
+  styles={{
+    '.swiper-pagination': {
+      marginTop: '10px',
+      textAlign: 'center',
+    },
+    '.swiper-pagination-bullet': {
+      backgroundColor: '#1976d2',
+      opacity: 0.5,
+    },
+    '.swiper-pagination-bullet-active': {
+      backgroundColor: '#1976d2',
+      opacity: 1,
+    },
+  }}
+/>
 
 const BlogSection = () => {
   const slides = [
@@ -26,7 +42,7 @@ const BlogSection = () => {
       image: 'https://kms-technology.com/wp-content/uploads/2024/11/quality-assurance-concept-business-people-show-high-quality-assurance-mark-excellence-service-high-quality-business-excellence-good-service-premium-five-stars-premium-service-assurance-scaled.jpg',
       desc: 'Digital transformation strategies help small businesses stay competitive...'
     }
-  ];
+  ]
 
   return (
     <Box sx={{ p: { xs: 2, md: 6 }, maxWidth: 1200, mx: 'auto' }}>
@@ -34,28 +50,111 @@ const BlogSection = () => {
         Blogs and Resources
       </Typography>
 
-           <Grid container spacing={4}>
-           <Grid item xs={12} md={6}>
-            <SlideInOnScroll>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <SlideInOnScroll>
+            <Swiper
+              modules={[Navigation, Autoplay, Pagination]} // 👈 thêm Pagination
+              
+              pagination={{ clickable: true }} // 👈 bật pagination
+              autoplay={{ delay: 2000 }}
+              spaceBetween={20}
+              breakpoints={{
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 1 },
+                1024: { slidesPerView: 1 },
+              }}
+              style={{ paddingBottom: '30px' }} // 👈 chừa khoảng cho pagination
+            >
+              {slides.map((slide, idx) => (
+                <SwiperSlide key={idx}>
+                  <Card sx={{ borderRadius: 3 }}>
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={slide.image}
+                      alt={slide.title}
+                    />
+                    <CardContent>
+                      <Typography variant="caption" color="text.secondary">
+                        Addie Lawrence • {slide.date}
+                      </Typography>
+                      <Typography variant="h6" fontWeight="bold" gutterBottom>
+                        {slide.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {slide.desc}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
+            </Swiper></SlideInOnScroll>
+
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+
+          <Card sx={{ bgcolor: '#001F3F', color: 'white', borderRadius: 3, p: 2, height: '100%' }}>
+            <SlideInOnScroll direction='right'>
+              <Box height={"100%"}>
+                <Grid container spacing={2} alignItems="center" sx={{ height: '100%' }}>
+                  <Grid item xs={4}>
+                    <CardMedia
+                      component="img"
+                      image="https://kms-technology.com/wp-content/uploads/2025/01/cto-guide.webp"
+                      alt="AI Guide"
+                      sx={{ height: '100%', objectFit: 'contain' }}
+                    />
+                  </Grid>
+                  <Grid item xs={8}>
+                    <Typography variant="subtitle1" fontWeight="bold">
+                      CTO Guide: Choosing the Right AI Technology Stack
+                    </Typography>
+                    <Typography variant="body2" sx={{ mt: 1 }}>
+                      Clients want the most from their data, and AI helps streamline operations. This guide...
+                    </Typography>
+                    <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+                      Download Now
+                    </Button>
+                  </Grid>
+                </Grid></Box></SlideInOnScroll>
+          </Card>
+
+        </Grid>
+      </Grid>
+
+
+      {/* Swiper responsive */}
+      <SlideInOnScroll>
+        <Box mt={6}>
           <Swiper
-            modules={[Autoplay]}
-            autoplay={{ delay: 4000 }}
-            slidesPerView={1}
+            modules={[Navigation, Autoplay, Pagination]} // 👈 thêm Pagination
+            navigation
+            pagination={{ clickable: true }} // 👈 bật pagination
+            autoplay={{ delay: 3000 }}
+            spaceBetween={20}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 2 },
+            }}
+            style={{ paddingBottom: '40px' }} // 👈 chừa khoảng cho pagination
           >
             {slides.map((slide, idx) => (
               <SwiperSlide key={idx}>
                 <Card sx={{ borderRadius: 3 }}>
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="140"
                     image={slide.image}
                     alt={slide.title}
                   />
                   <CardContent>
                     <Typography variant="caption" color="text.secondary">
-                      Addie Lawrence • {slide.date}
+                      KMS Team • {slide.date}
                     </Typography>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                    <Typography fontWeight="bold">
                       {slide.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -65,98 +164,10 @@ const BlogSection = () => {
                 </Card>
               </SwiperSlide>
             ))}
-          </Swiper></SlideInOnScroll>
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mt: 1 }}>
-            {slides.map((_, idx) => (
-              <Box
-                key={idx}
-                sx={{
-                  width: 10,
-                  height: 10,
-                  bgcolor: 'blue',
-                  borderRadius: '50%',
-                  opacity: 0.4,
-                  transition: 'opacity 0.3s',
-                  '&:hover': { opacity: 1 },
-                }}
-              />
-            ))}
-          </Box>
-        </Grid>
-
-        <Grid item xs={12} md={6}>
-            
-          <Card sx={{ bgcolor: '#001F3F', color: 'white', borderRadius: 3, p: 2, height: '100%' }}>
-           <SlideInOnScroll direction='right'> 
-            <Box height={"100%"}>
-            <Grid container spacing={2} alignItems="center" sx={{ height: '100%' }}>
-              <Grid item xs={4}>
-                <CardMedia
-                  component="img"
-                  image="https://kms-technology.com/wp-content/uploads/2025/01/cto-guide.webp"
-                  alt="AI Guide"
-                  sx={{ height: '100%', objectFit: 'contain' }}
-                />
-              </Grid>
-              <Grid item xs={8}>
-                <Typography variant="subtitle1" fontWeight="bold">
-                  CTO Guide: Choosing the Right AI Technology Stack
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  Clients want the most from their data, and AI helps streamline operations. This guide...
-                </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 2 }}>
-                  Download Now
-                </Button>
-              </Grid>
-            </Grid></Box></SlideInOnScroll>
-          </Card>
-          
-        </Grid>
-      </Grid>
-
-
-      {/* Swiper responsive */}
-      <SlideInOnScroll>
-      <Box mt={6}>
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation
-          autoplay={{ delay: 3000 }}
-          spaceBetween={20}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 2 },
-          }}
-        >
-          {slides.map((slide, idx) => (
-            <SwiperSlide key={idx}>
-              <Card sx={{ borderRadius: 3 }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={slide.image}
-                  alt={slide.title}
-                />
-                <CardContent>
-                  <Typography variant="caption" color="text.secondary">
-                    KMS Team • {slide.date}
-                  </Typography>
-                  <Typography fontWeight="bold">
-                    {slide.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {slide.desc}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Box></SlideInOnScroll>
+          </Swiper>
+        </Box></SlideInOnScroll>
     </Box>
-  );
-};
+  )
+}
 
-export default BlogSection;
+export default BlogSection

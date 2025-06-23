@@ -93,7 +93,7 @@ const renderCard = ({ title, icon, items, bulletColor }: any) => (
 
 export default function IoTTopicsLayout() {
   return (
-    <Box p={{ xs: 2, sm: 4 }} sx={{ backgroundColor: '#f4faff' }}>
+    <Box p={{ xs: 2, sm: 4 }} >
       <Grid container spacing={3}>
         {cardSections.map((col, colIndex) => (
           <Grid item xs={12} md={4} key={colIndex}>

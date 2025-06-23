@@ -29,8 +29,6 @@ export default function Banner() {
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        navigation
-        loop
         style={{ width: "100%", height: "100%" }} // 👈 make swiper fill space
       >
         {banners.map((item, index) => (

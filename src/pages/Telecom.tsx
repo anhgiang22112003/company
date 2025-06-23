@@ -166,10 +166,9 @@ const TelecomBanner = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
+                <Box p={2} sx={{
                     background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 100%, 0% 100%)"
                 }}
                 >
                     <Box >
@@ -186,7 +185,7 @@ const TelecomBanner = () => {
                             <Grid container spacing={4}>
                                 {/* Menu bên trái */}
                                 <Grid item xs={12} md={4}>
-                                    <List component="nav" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                    <List component="nav" sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                                         {menuItems.map((item, index) => (
                                             <ListItemButton
                                                 key={item.label}
@@ -228,9 +227,7 @@ const TelecomBanner = () => {
                                             alt={menuItems[selectedIndex].label}
                                             style={{
                                                 width: '100%',
-
-
-
+                                                
                                             }}
                                         />
                                     </Box>

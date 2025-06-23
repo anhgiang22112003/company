@@ -347,7 +347,7 @@ const LowCodePage = () => {
             <FadeSection>
                 <Box
                     sx={{
-                        py: 8,
+                        py: 4,
                         background: 'linear-gradient(to bottom, #007cf0, #00dfd8)',
                         textAlign: 'center',
 
@@ -360,7 +360,7 @@ const LowCodePage = () => {
                                 component="img"
                                 src="https://www.tmasolutions.com/media/technologies/lowCode/icon_head_lowcode.webp"
                                 alt="Services Icon"
-                                sx={{ width: 30, mb: 1 }}
+                                sx={{ width: 54, mb: 1 }}
                             />
                             <Typography variant="h4" color="white" fontWeight="bold">
                                 Services
@@ -383,6 +383,7 @@ const LowCodePage = () => {
                                     768: { slidesPerView: 2 },
                                     1024: { slidesPerView: 3 },
                                 }}
+                                style={{ paddingBottom: '30px' }}
                             >
                                 {services.map((service, index) => (
                                     <SwiperSlide key={index}>
@@ -426,6 +427,7 @@ const LowCodePage = () => {
                                 className="custom-swiper-prev"
                                 sx={{
                                     position: 'absolute',
+                                    display: { xs: "none", md: "flex" },
                                     top: '50%',
                                     left: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',
@@ -443,6 +445,8 @@ const LowCodePage = () => {
                                 className="custom-swiper-next"
                                 sx={{
                                     position: 'absolute',
+                                    display: { xs: "none", md: "flex" },
+
                                     top: '50%',
                                     right: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',

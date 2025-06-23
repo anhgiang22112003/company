@@ -102,9 +102,9 @@ const LogisticsPage = () => {
                             alt=""
                             sx={{
                                 display: 'block',
-                                width: { xs: '600px', md: 'auto' },
+                                width: { xs: '670px', md: 'auto' },
                                 maxWidth: '100%',
-                                height: { xs: '220px', md: 'auto' }, // mobile ảnh cao hơn
+                                height: { xs: '250px', md: 'auto' }, // mobile ảnh cao hơn
 
                             }}
                         />
@@ -181,8 +181,8 @@ const LogisticsPage = () => {
                         </Container>
                     </Box>
                     <Container sx={{ mt: 4, mb: 4 }}>
-                        <Box sx={{ p: 4, }}>
-                            <Grid container spacing={3}>
+                        <Box sx={{ p: 2, }}>
+                            <Grid container spacing={2}>
                                 {data.map((item, index) => (
                                     <Grid item xs={12} sm={6} md={3} key={index}>
                                         <Box
@@ -215,9 +215,9 @@ const LogisticsPage = () => {
             <FadeSection id='about' >
                 <Box sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', p: 2 }}>
                     <Container>
-                        <Container sx={{ textAlign: "center" }}>
-                            <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/5G/decorServices.webp" alt="" />
-                            <Typography variant="h4" sx={{ mb: 4 }}>
+                        <Container  sx={{ textAlign: "center",color:"white" }}>
+                            <img width={"54px"} src="https://www.tmasolutions.com/media/technologies/5G/decorServices.webp" alt="" />
+                            <Typography variant="h4" sx={{ mb: 2 }}>
                                 Technologies
                             </Typography>
                             <Typography variant="body1" align="left" sx={{ mb: 4 }}>

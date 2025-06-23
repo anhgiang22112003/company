@@ -15,6 +15,7 @@ import 'swiper/css/pagination'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import SlideInOnScroll from '../components/SlideInOnScroll'
+import { click } from '@testing-library/user-event/dist/click'
 const servicesData = [
     {
         title: 'Software Development',
@@ -358,7 +359,7 @@ const ServicePage = () => {
                                         prevEl: '.custom-swiper-prev',
                                         nextEl: '.custom-swiper-next',
                                     }}
-                                      
+                                    pagination={{ clickable: true }} // 👈 bật pagination
                                     autoplay={{ delay: 2000 }}
                                     spaceBetween={24}
                                     breakpoints={{
@@ -366,6 +367,7 @@ const ServicePage = () => {
                                         600: { slidesPerView: 2 },
                                         960: { slidesPerView: 3 },
                                     }}
+                                    style={{ paddingBottom: '30px' }}
                                 >
                                     {categories.map((cat, index) => (
                                         <SwiperSlide key={index}>
@@ -411,6 +413,7 @@ const ServicePage = () => {
                                     className="custom-swiper-prev"
                                     sx={{
                                         position: 'absolute',
+                                        display: { xs: 'none', md: 'flex' },
                                         top: '50%',
                                         left: { xs: -20, sm: -40, md: -50 },
                                         transform: 'translateY(-50%)',
@@ -428,6 +431,7 @@ const ServicePage = () => {
                                     className="custom-swiper-next"
                                     sx={{
                                         position: 'absolute',
+                                        display: { xs: 'none', md: 'flex' },
                                         top: '50%',
                                         right: { xs: -20, sm: -40, md: -50 },
                                         transform: 'translateY(-50%)',
@@ -439,7 +443,7 @@ const ServicePage = () => {
                                 >
                                     <ArrowForwardIosIcon />
                                 </IconButton>
-                                
+
                             </Box>
 
                         </Container>

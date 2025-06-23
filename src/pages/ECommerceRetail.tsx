@@ -263,7 +263,7 @@ const ECommerceRetail = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={3} sx={{}}
+                <Box p={2} 
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -276,7 +276,7 @@ const ECommerceRetail = () => {
                         </Container>
                     </Box>
                     <Container sx={{ mb: 4 }}>
-                        <Box sx={{ px: 4, py: 6 }}>
+                        <Box sx={{ px: 2, py: 6 }}>
                             <Grid container spacing={1}>
                                 {services.map((service, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={index}>
@@ -367,7 +367,7 @@ const ECommerceRetail = () => {
                     </Container></Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
+                <Box p={2} sx={{
                     mt: 4,
                     clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                 }}
@@ -382,8 +382,8 @@ const ECommerceRetail = () => {
                         </Container>
                     </Box>
                     <Container sx={{ mt: 4 }}>
-                        <Box sx={{ maxWidth: 1200, mx: 'auto', p: 3 }}>
-                            <Box sx={{ maxWidth: 1000, mx: 'auto', p: 3 }}>
+                        <Box sx={{ maxWidth: 1200, mx: 'auto', p: 2 }}>
+                            <Box sx={{ maxWidth: 1000, mx: 'auto', p: 2 }}>
                                 {/* Hàng trên */}
                                 <Grid container spacing={2}>
                                     {topSections.map((sec) => (

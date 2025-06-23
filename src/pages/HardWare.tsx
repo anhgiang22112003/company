@@ -172,44 +172,46 @@ const HardWarePage = () => {
             <CssBaseline />
             <Header />
             <FadeSection>
-                <Box mt={18} sx={{  background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+                <Box mt={18} sx={{
+                    background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     color: 'white',
                     mt: 18,
                     py: 8,
                     clipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)',
-                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)', position: 'relative' }}>
+                    WebkitClipPath: 'polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%)', position: 'relative'
+                }}>
                     <Container maxWidth="lg">
                         <Grid container spacing={6} alignItems="center">
                             {/* Left Content */}
                             <Grid item xs={12} md={6}>
                                 <SlideInOnScroll>
-                                <Typography variant="h4" fontWeight="bold" gutterBottom>
-                                    Hardware Lab
-                                </Typography>
-                                <Typography variant="body1" mb={4}>
-                                    Hardware Lab has designed, integrated and tested hundreds of devices for IoT, telecom, network, healthcare, automotive, robotics, manufacturing and smart city.
-                                </Typography>
+                                    <Typography variant="h4" fontWeight="bold" gutterBottom>
+                                        Hardware Lab
+                                    </Typography>
+                                    <Typography variant="body1" mb={4}>
+                                        Hardware Lab has designed, integrated and tested hundreds of devices for IoT, telecom, network, healthcare, automotive, robotics, manufacturing and smart city.
+                                    </Typography>
 
-                                <Grid container spacing={2}>
-                                    {coreStats.map((item, index) => (
-                                        <Grid item xs={12} key={index} container alignItems="center" spacing={2}>
-                                            <Grid item>
-                                                <Avatar src={item.icon} alt={`icon-${index}`} sx={{ width: 48, height: 48 }} />
+                                    <Grid container spacing={2}>
+                                        {coreStats.map((item, index) => (
+                                            <Grid item xs={12} key={index} container alignItems="center" spacing={2}>
+                                                <Grid item>
+                                                    <Avatar src={item.icon} alt={`icon-${index}`} sx={{ width: 48, height: 48 }} />
+                                                </Grid>
+                                                <Grid item>
+                                                    <Typography variant="body1">{item.text}</Typography>
+                                                </Grid>
                                             </Grid>
-                                            <Grid item>
-                                                <Typography variant="body1">{item.text}</Typography>
-                                            </Grid>
-                                        </Grid>
-                                    ))}
-                                </Grid>
+                                        ))}
+                                    </Grid>
                                 </SlideInOnScroll>
                             </Grid>
 
                             {/* Right Content */}
                             <Grid item xs={12} md={6} sx={{ position: 'relative' }}>
                                 <SlideInOnScroll direction='right'>
-                                <img width={"100%"} src="https://tse1.mm.bing.net/th?id=OIP.Y3t0u1KPNLz7mLnk95hNjQHaEK&pid=Api&P=0&h=220" alt="" />
-                            </SlideInOnScroll></Grid>
+                                    <img width={"100%"} src="https://tse1.mm.bing.net/th?id=OIP.Y3t0u1KPNLz7mLnk95hNjQHaEK&pid=Api&P=0&h=220" alt="" />
+                                </SlideInOnScroll></Grid>
 
                         </Grid>
                     </Container>
@@ -282,19 +284,20 @@ const HardWarePage = () => {
                 </Box>
             </FadeSection>
             <FadeSection>
-                <Box sx={{ px: 4, py: 8,        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
- }}>
+                <Box sx={{
+                    px: 2, py: 4, background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                }}>
                     <Container>
                         <Grid container spacing={4} alignItems="center">
                             {/* Left Content */}
-                            <Grid item xs={12} md={5}>
+                            <Grid color={"white"} item xs={12} md={5}>
                                 <Box textAlign={"center"}>
                                     <img src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/iconSection.9d0bc79c.webp" alt="" />
                                 </Box>
                                 <Typography textAlign={"center"} variant="h4" fontWeight="bold" gutterBottom>
                                     Technologies
                                 </Typography>
-                                <Typography variant="body1" color="textSecondary">
+                                <Typography variant="body1" color="white">
                                     Possessing extensive knowledge of modern technologies, hardware team is able to provide
                                     customers with high-end hardware services, and to deliver an all-inclusive method to
                                     customers’ projects.
@@ -606,7 +609,7 @@ const HardWarePage = () => {
                 </Container>
             </FadeSection> */}
 
-         <FadeSection id="download">
+            <FadeSection id="download">
                 <Container sx={{ mt: { xs: 12, sm: 10, md: 10 } }}>
                     <Box
                         sx={{

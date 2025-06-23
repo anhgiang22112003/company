@@ -408,21 +408,21 @@ const CloudPage = () => {
                 </FadeSection>
                 <FadeSection id="service">
 
-                    <Box sx={{ padding: '20px 20px', textAlign: 'center' }}>
+                    <Box sx={{ textAlign: 'center' }}>
                         <Box textAlign={"center"}>
-                            <img width={"3%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
+                            <img width={"54px"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
                         </Box>
                         <Typography variant="h4" fontWeight="bold" gutterBottom>
                             Services
                         </Typography>
-                        <Box sx={{ p: 4 }}>
+                        <Box >
                             {/* Grid of service cards */}
                             <Box sx={{ overflow: 'hidden', py: 4, backgroundColor: '#f8fbff', width: "100%", position: 'relative', }}>
                                 <Box
                                     sx={{
                                         display: 'flex',
                                         width: 'max-content',
-                                        animation: 'scroll 20s linear infinite',
+                                        animation: 'scroll 18s linear infinite',
                                         '@keyframes scroll': {
                                             '0%': { transform: 'translateX(0)' },
                                             '100%': { transform: 'translateX(-50%)' },
@@ -456,7 +456,7 @@ const CloudPage = () => {
                                 </Box>
                             </Box>
                             <Container>
-                                <Table sx={{ mt: 4 }}>
+                                <Table sx={{ mt: 4,mb:4 }}>
                                     <TableBody>
                                         {cloudDetails.map((item, index) => (
                                             <TableRow key={index}>
@@ -465,7 +465,7 @@ const CloudPage = () => {
                                                         bgcolor: '#2196f3',
                                                         color: 'white',
                                                         fontWeight: 'bold',
-                                                        width: '250px',
+                                                        width: { md:'250px', xs:'150px'},
                                                     }}
                                                 >
                                                     {item.label}
@@ -494,7 +494,7 @@ const CloudPage = () => {
                         WebkitBackdropFilter: 'blur(6px)',
                     }}>
                         <Box textAlign={"center"}>
-                            <img width={"3%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
+                            <img width={"54px"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
                         </Box>
                         <Typography variant="h5" align="center" fontWeight="bold" mb={4}>
                             Skill Matrix
@@ -549,9 +549,9 @@ const CloudPage = () => {
                 </FadeSection>
                 <FadeSection>
                     <Container>
-                        <Box px={{ xs: 2, }} sx={{}}>
+                        <Box  sx={{mt:4}}>
                             <Box textAlign={"center"}>
-                                <img width={"5%"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
+                                <img width={"54"} src="https://www.tmasolutions.com/media/technologies/cloud/header/icon_cloud_heading.webp" alt="" />
                             </Box>
                             <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
                                 Technologies
@@ -658,7 +658,7 @@ const CloudPage = () => {
                 </FadeSection> */}
 
                 <FadeSection id="download">
-                    <Container sx={{ mt: { xs: 12, sm: 10, md: 1 } }}>
+                    <Container sx={{ mt: { xs: 1, sm: 10, md: 1 } }}>
                         <Box
                             sx={{
                                 background: '#009BFF',

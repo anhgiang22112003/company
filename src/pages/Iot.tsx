@@ -361,7 +361,7 @@ const IotPage = () => {
                 </FadeSection>
                 <FadeSection id="service">
                     <Container>
-                        <Box sx={{ padding: '20px 20px', textAlign: 'center' }}>
+                        <Box sx={{ textAlign: 'center' }}>
                             <Typography variant="h4" fontWeight="bold" gutterBottom>
                                 Services
                             </Typography>
@@ -437,7 +437,7 @@ const IotPage = () => {
                             Solutions
                         </Typography>
                         <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="flex-start">
-                            <List sx={{ minWidth: 250, bgcolor: '#f7faff', borderRadius: 2, p: 0 }}>
+                            <List sx={{ width:{xs:"100%", md:330}, bgcolor: '#f7faff', borderRadius: 2, p: 0 }}>
                                 {solutions.map((item, index) => (
                                     <ListItemButton
                                         key={index}
@@ -484,7 +484,7 @@ const IotPage = () => {
                 </FadeSection>
                 <FadeSection>
 
-                    <Box px={{ xs: 2, md: 8 }} py={6} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }}>
+                    <Box color={"white"} px={{ xs: 2, md: 8 }} py={6} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }}>
                         <Typography variant="h5" fontWeight="bold" textAlign="center" mb={4}>
                             Technologies
                         </Typography>

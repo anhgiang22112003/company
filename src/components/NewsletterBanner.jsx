@@ -51,7 +51,7 @@ const NewsletterBanner = () => {
               href="mailto:biz@.com.vn"
               style={{ color: 'white', textDecoration: 'underline' }}
             >
-              biz@tma.com.vn
+              biz@gph.com.vn
             </a>{' '}
             for detailed information.
           </Typography>

@@ -368,7 +368,7 @@ const IndustriePage = () => {
                             </Box>
                         </Container>
                     </Box>
-                    <Container>
+                   
                         <Box
                             px={4}
                             py={6}
@@ -454,7 +454,7 @@ const IndustriePage = () => {
                                 ))}
                             </Grid>
                         </Box>
-                    </Container>
+                    
                 </Box>
             </FadeSection>
             <FadeSection >
@@ -513,16 +513,17 @@ const IndustriePage = () => {
                     background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                     backdropFilter: 'blur(6px)',
                     WebkitBackdropFilter: 'blur(6px)',
+                    
                 }} textAlign="center" py={3} >
                     <Typography
                         variant="h4"
                         fontWeight="bold"
-
+                             color={"white"}
                         sx={{ display: 'inline-block', px: 2, py: 0.5, borderRadius: 1 }}
                     >
                         Case Studies
                     </Typography>
-                    <Typography variant="body1" mb={4}>
+                    <Typography color={"white"} variant="body1" mb={4}>
                         Discover Solutions’ sample projects, featuring success stories achieved by our software engineers.<br />
                         Witness the impact of our software outsourcing services on businesses and operations.
                     </Typography>
@@ -535,7 +536,7 @@ const IndustriePage = () => {
                                         prevEl: '.custom-swiper-prev',
                                         nextEl: '.custom-swiper-next',
                                     }}
-
+                         pagination={{clickable:true}}
                                     autoplay={{ delay: 2000 }}
                                     spaceBetween={24}
                                     breakpoints={{
@@ -543,6 +544,9 @@ const IndustriePage = () => {
                                         600: { slidesPerView: 2 },
                                         960: { slidesPerView: 3 },
                                     }}
+                                           style={{
+                        paddingBottom: '30px', // 👈 Thêm khoảng trống bên dưới cho pagination
+                    }}
                                 >
                                     {categories.map((cat, index) => (
                                         <SwiperSlide key={index}>
@@ -588,6 +592,7 @@ const IndustriePage = () => {
                                     className="custom-swiper-prev"
                                     sx={{
                                         position: 'absolute',
+                                        display: { xs: 'none', md: 'flex' },
                                         top: '50%',
                                         left: { xs: -20, sm: -40, md: -50 },
                                         transform: 'translateY(-50%)',
@@ -605,6 +610,7 @@ const IndustriePage = () => {
                                     className="custom-swiper-next"
                                     sx={{
                                         position: 'absolute',
+                                        display: { xs: 'none', md: 'flex' },
                                         top: '50%',
                                         right: { xs: -20, sm: -40, md: -50 },
                                         transform: 'translateY(-50%)',

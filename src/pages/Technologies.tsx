@@ -727,12 +727,12 @@ const TechnologiesPage = () => {
                 {/**big data */}
                 <FadeSection id='AllData Analytics'>
                     <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+                        <Box mt={3} bgcolor={"white"} p={2} textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} variant='h4'>
+                            <Typography fontWeight={"bold"} mb={2} variant='h4'>
                                 Big Data & Data Analytics
                             </Typography>
-                            <Container sx={{ p: 5 }}>
+                            <Container sx={{ p: 2 }}>
                                 {datas.map((item, index) => (
                                     <Grid
                                         key={index}
@@ -833,118 +833,119 @@ const TechnologiesPage = () => {
                 <FadeSection id='AI & Machine Learning'>
 
                     <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={5} textAlign={"center"}>
-                        <Container>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} mb={6} variant='h4'>
-                                AI & Machine Learning
-                            </Typography>
-                            <Box sx={{ px: 4, mb: 4, position: 'relative', }}>
-                                <Swiper
-                                    modules={[Navigation, Pagination, Autoplay]}
-                                    navigation={{
-                                        prevEl: '.custom-swiper-prev',
-                                        nextEl: '.custom-swiper-next',
-                                    }}
-                                    spaceBetween={20}
+                        <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                        <Typography fontWeight={"bold"} mb={6} variant='h4'>
+                            AI & Machine Learning
+                        </Typography>
+                        <Box sx={{ px: 2, mb: 4, position: 'relative', }}>
+                            <Swiper
+                                modules={[Navigation, Pagination, Autoplay]}
+                                navigation={{
+                                    prevEl: '.custom-swiper-prev',
+                                    nextEl: '.custom-swiper-next',
+                                }}
+                                spaceBetween={20}
+                                pagination={{ clickable: true }}
+                                slidesPerView={1}
+                                breakpoints={{
+                                    600: {
+                                        slidesPerView: 2,
+                                    },
+                                    900: {
+                                        slidesPerView: 4,
+                                    },
+                                }}
+                                autoplay={{
+                                    delay: 2000,
+                                    disableOnInteraction: false,
+                                }}
+                                loop
+                                style={{ paddingBottom: 30 }}
+                            >
+                                {machineLearningData.map((section, index) => (
+                                    <SwiperSlide key={index}>
+                                        <MachineLearningCard section={section} />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            <IconButton
+                                className="custom-swiper-prev"
+                                sx={{
+                                    position: 'absolute',
+                                    display: { xs: 'none', md: 'flex' },
+                                    top: '50%',
+                                    left: { xs: -20, sm: -40, md: -25 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowBackIosNewIcon />
+                            </IconButton>
 
-                                    slidesPerView={1}
-                                    breakpoints={{
-                                        600: {
-                                            slidesPerView: 2,
-                                        },
-                                        900: {
-                                            slidesPerView: 3,
-                                        },
-                                    }}
-                                    autoplay={{
-                                        delay: 2000,
-                                        disableOnInteraction: false,
-                                    }}
-                                    loop
-                                >
-                                    {machineLearningData.map((section, index) => (
-                                        <SwiperSlide key={index}>
-                                            <MachineLearningCard section={section} />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                                <IconButton
-                                    className="custom-swiper-prev"
-                                    sx={{
+                            {/* Nút next */}
+                            <IconButton
+                                className="custom-swiper-next"
+                                sx={{
+                                    position: 'absolute',
+                                    display: { xs: 'none', md: 'flex' },
+                                    top: '50%',
+                                    right: { xs: -20, sm: -40, md: -25 },
+                                    transform: 'translateY(-50%)',
+                                    zIndex: 10,
+                                    backgroundColor: 'white',
+                                    boxShadow: 1,
+                                    '&:hover': { backgroundColor: '#e0f2ff' },
+                                }}
+                            >
+                                <ArrowForwardIosIcon />
+                            </IconButton>
+
+                        </Box>
+                        <Link href="/technologies/ai-ml-data-sciences">
+                            <Typography
+                                variant="body2"
+                                sx={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    position: 'relative',
+                                    cursor: 'pointer',
+                                    mt: 1,
+                                    fontWeight: 600,
+                                    color: 'white',
+                                    transition: 'color 0.3s ease',
+                                    '&::after': {
+                                        content: '""',
                                         position: 'absolute',
-                                        top: '50%',
-                                        left: { xs: -20, sm: -40, md: -50 },
-                                        transform: 'translateY(-50%)',
-                                        zIndex: 10,
-                                        backgroundColor: 'white',
-                                        boxShadow: 1,
-                                        '&:hover': { backgroundColor: '#e0f2ff' },
-                                    }}
-                                >
-                                    <ArrowBackIosNewIcon />
-                                </IconButton>
-
-                                {/* Nút next */}
-                                <IconButton
-                                    className="custom-swiper-next"
-                                    sx={{
-                                        position: 'absolute',
-                                        top: '50%',
-                                        right: { xs: -20, sm: -40, md: -50 },
-                                        transform: 'translateY(-50%)',
-                                        zIndex: 10,
-                                        backgroundColor: 'white',
-                                        boxShadow: 1,
-                                        '&:hover': { backgroundColor: '#e0f2ff' },
-                                    }}
-                                >
-                                    <ArrowForwardIosIcon />
-                                </IconButton>
-
-                            </Box>
-                            <Link href="/technologies/ai-ml-data-sciences">
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        position: 'relative',
-                                        cursor: 'pointer',
-                                        mt: 1,
-                                        fontWeight: 600,
-                                        color: 'white',
-                                        transition: 'color 0.3s ease',
+                                        left: 0,
+                                        bottom: -2,
+                                        height: '2px',
+                                        backgroundColor: 'blue',
+                                        width: 0,
+                                        transition: 'width 0.5s ease',
+                                    },
+                                    '&:hover': {
+                                        color: 'blue',
                                         '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            left: 0,
-                                            bottom: -2,
-                                            height: '2px',
-                                            backgroundColor: 'blue',
-                                            width: 0,
-                                            transition: 'width 0.5s ease',
-                                        },
-                                        '&:hover': {
-                                            color: 'blue',
-                                            '&::after': {
-                                                width: '100%',
-                                            },
-                                            '& svg': {
-                                                color: 'blue',
-                                                transition: 'color 0.3s ease',
-                                            },
+                                            width: '100%',
                                         },
                                         '& svg': {
-                                            ml: 1,
+                                            color: 'blue',
                                             transition: 'color 0.3s ease',
                                         },
-                                    }}
-                                >
-                                    Explore More
-                                    <ArrowForwardIcon />
-                                </Typography>
-                            </Link>
-                        </Container>
+                                    },
+                                    '& svg': {
+                                        ml: 1,
+                                        transition: 'color 0.3s ease',
+                                    },
+                                }}
+                            >
+                                Explore More
+                                <ArrowForwardIcon />
+                            </Typography>
+                        </Link>
                     </Box>
 
 
@@ -1134,7 +1135,7 @@ const TechnologiesPage = () => {
                 {/**iot */}
                 <FadeSection id='LOT'>
                     <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+                        <Box mt={3} bgcolor={"white"} p={2} textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 Internet of Things (IoT)
@@ -1194,7 +1195,7 @@ const TechnologiesPage = () => {
                         background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                         backdropFilter: 'blur(6px)',
                         WebkitBackdropFilter: 'blur(6px)',
-                    }} p={5} textAlign={"center"}>
+                    }} p={2} textAlign={"center"}>
                         <Container> <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 Cloud
@@ -1230,7 +1231,21 @@ const TechnologiesPage = () => {
                                     </Grid>
                                 ))}
                             </Grid>
-                            <img width={"100%"} src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530090956.184.webp" alt="" />
+                            <Box
+                                component="img"
+                                src="https://tmastorage.azureedge.net/uploadfiles/PageSection/section_content_image_20240530090956.184.webp"
+                                alt=""
+                                sx={{
+                                    width: {
+                                        xs: '100%',  // 👉 mobile to hơn
+                                        sm: '100%',
+                                        md: '100%',  // 👉 PC giữ nguyên
+                                    },
+                                    maxWidth: 'none',
+                                    display: 'block',
+                                    mx: 'auto',     // căn giữa
+                                }}
+                            />
                             <Link href="/technologies/cloud">
                                 <Typography
                                     variant="body2"
@@ -1285,7 +1300,7 @@ const TechnologiesPage = () => {
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 DevOps
                             </Typography>
-                            <Grid container spacing={4}>
+                            <Grid container spacing={2}>
                                 {dataDev.map((item, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={index}>
                                         <Box
@@ -1370,7 +1385,7 @@ const TechnologiesPage = () => {
 
                     <Box mt={3} sx={{
                         background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
-                    }} p={5} >
+                    }} p={2} >
                         <Container> <Box textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
@@ -1380,7 +1395,7 @@ const TechnologiesPage = () => {
                             <Box
                                 sx={{
                                     backgroundColor: '#f5faff',
-                                    p: 3,
+                                    p: 2,
                                     boxShadow: 1,
                                     mx: 'auto',
                                 }}
@@ -1431,77 +1446,75 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/* micosoft*/}
                 <FadeSection id='Microsoft'>
-                    <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} variant='h4'>
-                                    Microsoft Technologies
-                                </Typography>
-                            </Box>
-                            <Container sx={{ p: 5 }}>
-                                {Microsoft.map((item, index) => (
-                                    <Grid
-                                        key={index}
-                                        container
-                                        item
-                                        spacing={2}
-                                        sx={{ mb: 2.3 }} // khoảng trắng nhỏ giữa mỗi block
-                                    >
-                                        <Grid p={2} item
-                                            xs={12}
-                                            md={4}
-                                            sx={{
-                                                bgcolor: "#1ea7fd",
-                                                color: "white",
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                alignItems: "center",
-                                            }} bgcolor={"#1ea7fd"} fontSize={24} alignItems={"center"} fontWeight={700} color="white">
-                                            {item.title}
-                                        </Grid>
-                                        <Grid
-                                            item
-                                            xs={12}
-                                            md={8}
-                                            sx={{
-                                                bgcolor: "#f5f5f5",
-                                                p: 2,
-                                            }}
-                                        >
-                                            <Box
-                                                display="flex"
-                                                flexWrap="wrap"
-                                                gap={2} // khoảng cách giữa các item
-                                            >
-                                                {item.technologies.map((tech, i) => (
-                                                    <Box
-                                                        key={i}
-                                                        display="flex"
-                                                        alignItems="center"
-                                                    >
-                                                        <FiberManualRecordIcon
-                                                            sx={{ fontSize: 8, color: "green", mr: 1 }}
-                                                        />
-                                                        <Typography variant="body2">{tech}</Typography>
-                                                    </Box>
-                                                ))}
-                                            </Box>
-                                        </Grid>
-                                    </Grid>
-                                ))}
-                                <Box textAlign={"center"}>
-
-
-                                </Box>
-                            </Container>
+                    <Box mt={3} bgcolor={"white"} p={2} >
+                        <Box textAlign={"center"} mb={5}>
+                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                            <Typography fontWeight={"bold"} variant='h4'>
+                                Microsoft Technologies
+                            </Typography>
                         </Box>
-                    </Container>
+                        <Container>
+                            {Microsoft.map((item, index) => (
+                                <Grid
+                                    key={index}
+                                    container
+                                    item
+                                    spacing={2}
+                                    sx={{ mb: 2.3 }} // khoảng trắng nhỏ giữa mỗi block
+                                >
+                                    <Grid p={2} item
+                                        xs={12}
+                                        md={4}
+                                        sx={{
+                                            bgcolor: "#1ea7fd",
+                                            color: "white",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }} bgcolor={"#1ea7fd"} fontSize={24} alignItems={"center"} fontWeight={700} color="white">
+                                        {item.title}
+                                    </Grid>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={8}
+                                        sx={{
+                                            bgcolor: "#f5f5f5",
+                                            p: 2,
+                                        }}
+                                    >
+                                        <Box
+                                            display="flex"
+                                            flexWrap="wrap"
+                                            gap={2} // khoảng cách giữa các item
+                                        >
+                                            {item.technologies.map((tech, i) => (
+                                                <Box
+                                                    key={i}
+                                                    display="flex"
+                                                    alignItems="center"
+                                                >
+                                                    <FiberManualRecordIcon
+                                                        sx={{ fontSize: 8, color: "green", mr: 1 }}
+                                                    />
+                                                    <Typography variant="body2">{tech}</Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            ))}
+                            <Box textAlign={"center"}>
+
+
+                            </Box>
+                        </Container>
+                    </Box>
                 </FadeSection>
                 {/* web development*/}
                 <FadeSection id='Web Development'>
 
-                    <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={5} ><Container>
+                    <Box mt={3} sx={{ background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))', }} p={2} >
                         <Box textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
@@ -1511,7 +1524,7 @@ const TechnologiesPage = () => {
                         <Box sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 2 }}>
                             <Grid container spacing={2}>
                                 {dataWeb.map((section, index) => (
-                                    <Grid item xs={12} sm={6} md={4} mb={3} key={index}>
+                                    <Grid item xs={12} sm={6} md={4} mb={2} key={index}>
                                         <Box
                                             sx={{
                                                 bgcolor: '#f0f8ff',
@@ -1547,13 +1560,13 @@ const TechnologiesPage = () => {
                         <Box textAlign={"center"}>
 
                         </Box>
-                    </Container>
+
                     </Box>
 
                 </FadeSection>
                 {/*mobile*/}
                 <FadeSection id='Mobile'>
-                    <Box mt={3} sx={{ minHeight: '450px', scrollMarginTop: '130px' }} bgcolor={"white"} p={7} >
+                    <Box mt={3} sx={{ minHeight: { md: '450px', xs: 350 }, scrollMarginTop: '130px' }} bgcolor={"white"} p={1} >
                         <Box textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
@@ -1578,6 +1591,10 @@ const TechnologiesPage = () => {
                                     '@keyframes scroll': {
                                         '0%': { transform: 'translateX(0)' },
                                         '100%': { transform: 'translateX(-50%)' },
+                                    },
+                                    // Tăng tốc độ khi ở màn hình nhỏ (mobile)
+                                    '@media (max-width: 600px)': {
+                                        animation: 'scroll 15s linear infinite',
                                     },
                                 }}
                             >
@@ -1624,160 +1641,162 @@ const TechnologiesPage = () => {
                         background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                         backdropFilter: 'blur(6px)',
                         WebkitBackdropFilter: 'blur(6px)',
-                    }} p={5} >
-                        <Container> <Box textAlign={"center"}>
+                    }} p={2} >
+                        <Container>
+                        <Box textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 Low Code
                             </Typography>
                         </Box>
-                            <Box
-                                sx={{
-                                    border: '1px solid #ccc',
-                                    borderRadius: 2,
-                                    overflow: 'hidden',
-                                    maxWidth: '100%',
-                                    bgcolor: '#f9f9f9',
-                                }}
-                            >
-                                {/* Header */}
-                                <Box sx={{ backgroundColor: '#007BFF', color: 'white', p: 2 }}>
-                                    <Typography variant="h5" fontWeight={700} align="center">
-                                        Platforms
-                                    </Typography>
-                                </Box>
+                        <Box
+                            sx={{
+                                border: '1px solid #ccc',
+                                borderRadius: 2,
+                                overflow: 'hidden',
+                                maxWidth: '100%',
+                                bgcolor: '#f9f9f9',
+                            }}
+                        >
+                            {/* Header */}
+                            <Box sx={{ backgroundColor: '#007BFF', color: 'white', p: 2 }}>
+                                <Typography variant="h5" fontWeight={700} align="center">
+                                    Platforms
+                                </Typography>
+                            </Box>
 
-                                {!isMobile ? (
-                                    // ==================== DESKTOP LAYOUT ====================
-                                    <>
-                                        {/* Column Titles */}
-                                        <Grid container>
-                                            {Object.keys(dataLowCode).map((key, index) => (
-                                                <Grid
-                                                    item
-                                                    xs={12}
-                                                    sm={4}
-                                                    key={index}
+                            {!isMobile ? (
+                                // ==================== DESKTOP LAYOUT ====================
+                                <>
+                                    {/* Column Titles */}
+                                    <Grid container>
+                                        {Object.keys(dataLowCode).map((key, index) => (
+                                            <Grid
+                                                item
+                                                xs={12}
+                                                sm={4}
+                                                key={index}
+                                                sx={{
+                                                    backgroundColor: '#E3F2FD',
+                                                    p: 2,
+                                                    borderBottom: '1px solid #ccc',
+                                                    textAlign: 'center',
+                                                    fontWeight: 'bold',
+                                                }}
+                                            >
+                                                {key}
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+
+                                    {/* Content */}
+                                    <Grid container>
+                                        {Object.entries(dataLowCode).map(([title, items], index) => (
+                                            <Grid item xs={12} sm={4} key={index} sx={{ p: 2 }}>
+                                                <List dense disablePadding>
+                                                    {items.map((item, idx) => (
+                                                        <ListItem key={idx} sx={{ py: 0.5, alignItems: 'center' }}>
+                                                            <ListItemIcon sx={{ minWidth: 24 }}>
+                                                                <FiberManualRecordIcon sx={{ fontSize: 8 }} />
+                                                            </ListItemIcon>
+                                                            <ListItemText
+                                                                primary={<Typography variant="body2">{item}</Typography>}
+                                                            />
+                                                        </ListItem>
+                                                    ))}
+                                                </List>
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                </>
+                            ) : (
+                                // ==================== MOBILE LAYOUT ====================
+                                <Box sx={{ p: 2 }}>
+                                    <Stack spacing={3}>
+                                        {Object.entries(dataLowCode).map(([title, items], index) => (
+                                            <Box key={index} sx={{ display: 'flex' }}>
+                                                <Typography
                                                     sx={{
-                                                        backgroundColor: '#E3F2FD',
-                                                        p: 2,
-                                                        borderBottom: '1px solid #ccc',
-                                                        textAlign: 'center',
-                                                        fontWeight: 'bold',
+                                                        fontWeight: 600,
+                                                        minWidth: 120,
+                                                        mr: 2,
+                                                        color: '#000',
                                                     }}
                                                 >
-                                                    {key}
-                                                </Grid>
-                                            ))}
-                                        </Grid>
-
-                                        {/* Content */}
-                                        <Grid container>
-                                            {Object.entries(dataLowCode).map(([title, items], index) => (
-                                                <Grid item xs={12} sm={4} key={index} sx={{ p: 2 }}>
-                                                    <List dense disablePadding>
-                                                        {items.map((item, idx) => (
-                                                            <ListItem key={idx} sx={{ py: 0.5, alignItems: 'center' }}>
-                                                                <ListItemIcon sx={{ minWidth: 24 }}>
-                                                                    <FiberManualRecordIcon sx={{ fontSize: 8 }} />
-                                                                </ListItemIcon>
-                                                                <ListItemText
-                                                                    primary={<Typography variant="body2">{item}</Typography>}
-                                                                />
-                                                            </ListItem>
-                                                        ))}
-                                                    </List>
-                                                </Grid>
-                                            ))}
-                                        </Grid>
-                                    </>
-                                ) : (
-                                    // ==================== MOBILE LAYOUT ====================
-                                    <Box sx={{ p: 2 }}>
-                                        <Stack spacing={3}>
-                                            {Object.entries(dataLowCode).map(([title, items], index) => (
-                                                <Box key={index} sx={{ display: 'flex' }}>
-                                                    <Typography
-                                                        sx={{
-                                                            fontWeight: 600,
-                                                            minWidth: 120,
-                                                            mr: 2,
-                                                            color: '#000',
-                                                        }}
-                                                    >
-                                                        {title}
-                                                    </Typography>
-                                                    <Box>
-                                                        {items.map((item, idx) => (
-                                                            <Box
-                                                                key={idx}
-                                                                sx={{ display: 'flex', alignItems: 'center', mb: 1 }}
-                                                            >
-                                                                <FiberManualRecordIcon
-                                                                    sx={{ fontSize: 6, color: '#007BFF', mr: 1 }}
-                                                                />
-                                                                <Typography variant="body2">{item}</Typography>
-                                                            </Box>
-                                                        ))}
-                                                    </Box>
+                                                    {title}
+                                                </Typography>
+                                                <Box>
+                                                    {items.map((item, idx) => (
+                                                        <Box
+                                                            key={idx}
+                                                            sx={{ display: 'flex', alignItems: 'center', mb: 1 }}
+                                                        >
+                                                            <FiberManualRecordIcon
+                                                                sx={{ fontSize: 6, color: '#007BFF', mr: 1 }}
+                                                            />
+                                                            <Typography variant="body2">{item}</Typography>
+                                                        </Box>
+                                                    ))}
                                                 </Box>
-                                            ))}
-                                        </Stack>
-                                    </Box>
-                                )}
-                            </Box>
-                            <Box textAlign={"center"}>
-                                <Link href="/technologies/low-code">
-                                    <Typography
-                                        variant="body2"
-                                        sx={{
-                                            display: 'inline-flex',
-                                            alignItems: 'center',
-                                            position: 'relative',
-                                            cursor: 'pointer',
+                                            </Box>
+                                        ))}
+                                    </Stack>
+                                </Box>
+                            )}
+                        </Box>
+                        <Box textAlign={"center"}>
+                            <Link href="/technologies/low-code">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        cursor: 'pointer',
 
-                                            mt: 4,
-                                            fontWeight: 600,
-                                            color: 'white',
-                                            transition: 'color 0.3s ease',
+                                        mt: 4,
+                                        fontWeight: 600,
+                                        color: 'white',
+                                        transition: 'color 0.3s ease',
+                                        '&::after': {
+                                            content: '""',
+                                            position: 'absolute',
+                                            left: 0,
+                                            bottom: -2,
+                                            height: '2px',
+                                            backgroundColor: 'blue',
+                                            width: 0,
+                                            transition: 'width 0.5s ease',
+                                        },
+                                        '&:hover': {
+                                            color: 'blue',
                                             '&::after': {
-                                                content: '""',
-                                                position: 'absolute',
-                                                left: 0,
-                                                bottom: -2,
-                                                height: '2px',
-                                                backgroundColor: 'blue',
-                                                width: 0,
-                                                transition: 'width 0.5s ease',
-                                            },
-                                            '&:hover': {
-                                                color: 'blue',
-                                                '&::after': {
-                                                    width: '100%',
-                                                },
-                                                '& svg': {
-                                                    color: 'blue',
-                                                    transition: 'color 0.3s ease',
-                                                },
+                                                width: '100%',
                                             },
                                             '& svg': {
-                                                ml: 1,
+                                                color: 'blue',
                                                 transition: 'color 0.3s ease',
                                             },
-                                        }}
-                                    >
-                                        Explore More
-                                        <ArrowForwardIcon />
-                                    </Typography>
-                                </Link>
-                            </Box>
-                        </Container>  </Box>
+                                        },
+                                        '& svg': {
+                                            ml: 1,
+                                            transition: 'color 0.3s ease',
+                                        },
+                                    }}
+                                >
+                                    Explore More
+                                    <ArrowForwardIcon />
+                                </Typography>
+                            </Link>
+                        </Box>
+</Container>
+                    </Box>
 
                 </FadeSection>
                 {/*hard were */}
                 <FadeSection id='Hardware'>
                     <Container>
-                        <Box mt={3} bgcolor={"white"} p={5} textAlign={"center"}>
+                        <Box mt={3} bgcolor={"white"} p={2} textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
                                 Hardware Integration

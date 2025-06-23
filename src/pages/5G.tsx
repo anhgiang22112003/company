@@ -325,7 +325,7 @@ const GPage = () => {
                 <FadeSection>
 
                     <Box sx={{ backgroundColor: '#1aa3ff', py: 6, textAlign: 'center', color: '#fff' }}>
-                        <img width={"3%"} src="https://www.tmasolutions.com/media/technologies/5G/decorServices.webp" alt="" />
+                        <img width={"45px"} src="https://www.tmasolutions.com/media/technologies/5G/decorServices.webp" alt="" />
                         <Typography variant="h4" fontWeight="bold" gutterBottom>
                             Technologies
                         </Typography>
@@ -404,7 +404,7 @@ const GPage = () => {
                                     alt="5G Lab Icon"
                                     sx={{ width: 40, height: 40, mr: 1 }}
                                 />
-                                <Typography variant="h5" fontWeight="bold">
+                                <Typography color={"white"} variant="h5" fontWeight="bold">
                                     5G Lab Components
                                 </Typography>
                             </Box>

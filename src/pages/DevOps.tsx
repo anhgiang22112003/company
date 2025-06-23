@@ -357,6 +357,7 @@ const DevOpsPage = () => {
             <FadeSection>
 
                 <Box sx={{
+                     color:"white",
                     py: 8, px: 2, background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                     backdropFilter: 'blur(6px)',
                     WebkitBackdropFilter: 'blur(6px)',
@@ -455,7 +456,7 @@ const DevOpsPage = () => {
             </FadeSection>
             <FadeSection>
                 <Container>
-                    <Box sx={{ px: 4, py: 6, backgroundColor: '#f7fafd' }}>
+                    <Box sx={{ px: 4, py: 6, }}>
                         <Typography variant="h4" fontWeight="bold" mb={4} textAlign="center">
                             Case Studies
                         </Typography>

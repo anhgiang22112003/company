@@ -147,7 +147,7 @@ const SoftwareDevelopmentPage = () => {
                 </FadeSection>
                 <FadeSection id='about' >
                     <Box   sx={{
-                        p:5,
+                        p:2,
                             background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                             backdropFilter: 'blur(6px)',
                             WebkitBackdropFilter: 'blur(6px)',
@@ -163,7 +163,7 @@ const SoftwareDevelopmentPage = () => {
                         </Box>
                         <Container sx={{ mt: 4, mb: 4 }}>
 
-                            <Grid container spacing={4}>
+                            <Grid container spacing={1}>
                                 {engineers.map((engineer, index) => (
                                     <Grid item xs={12} sm={6} md={4} key={index}>
                                         <Paper elevation={3} sx={{ padding: 3, borderRadius: 2, textAlign: 'center' }}>

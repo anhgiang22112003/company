@@ -305,7 +305,7 @@ const AutomotivePage = () => {
                 }}
                 >
                     <Box >
-                        <Container sx={{ textAlign: "center" }}>
+                        <Container sx={{ textAlign: "center",color:"white" }}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                 Services
@@ -315,9 +315,8 @@ const AutomotivePage = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Container sx={{ mb: 4 }}>
-                        <Box sx={{ p: 4 }}>
-                            <Container>
+                        <Box sx={{ p: 2 }}>
+                           
                                 <Grid container spacing={1} justifyContent="center">
                                     {servicesData.map((service, index) => (
                                         <Grid item xs={12} sm={6} md={3} key={index}>
@@ -330,9 +329,8 @@ const AutomotivePage = () => {
                                         </Grid>
                                     ))}
                                 </Grid>
-                            </Container>
+                            
                         </Box>
-                    </Container>
                 </Box>
             </FadeSection>
             <FadeSection>
@@ -367,7 +365,7 @@ const AutomotivePage = () => {
                                     900: { slidesPerView: 2 },
                                     1200: { slidesPerView: 3 },
                                 }}
-                                style={{ paddingBottom: 32 }}
+                                style={{ paddingBottom: 28 }}
                             >
                                 {skillSetData.map((category, index) => (
                                     <SwiperSlide key={index}>
@@ -437,6 +435,7 @@ const AutomotivePage = () => {
                                 className="custom-swiper-prev"
                                 sx={{
                                     position: 'absolute',
+                                     display: { xs: 'none', md: 'flex' },
                                     top: '50%',
                                     left: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',
@@ -454,6 +453,7 @@ const AutomotivePage = () => {
                                 className="custom-swiper-next"
                                 sx={{
                                     position: 'absolute',
+                                     display: { xs: 'none', md: 'flex' },
                                     top: '50%',
                                     right: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',
@@ -471,9 +471,8 @@ const AutomotivePage = () => {
                 </Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
+                <Box p={2} sx={{
                     mt: 4,
-                    clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0% 100%)"
                 }}
                 >
                     <Box >

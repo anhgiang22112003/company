@@ -118,7 +118,7 @@ const Insurance = () => {
                                 fontWeight: 'bold',
                                 textShadow: '2px 2px 6px rgba(0,0,0,0.5)',
                                 fontSize: {
-                                    xs: '18px',      // nhỏ hơn ở mobile
+                                    xs: '16px',      // nhỏ hơn ở mobile
                                     md: '28px',      // mặc định to ở desktop
                                 },
                             }}
@@ -169,7 +169,7 @@ const Insurance = () => {
                                     <Box
                                         sx={{
                                             position: 'relative',
-                                            p: 2,
+                                            p: 3,
                                             borderRadius: 3,
                                             boxShadow: 3,
                                             height: '100%',
@@ -227,7 +227,7 @@ const Insurance = () => {
                 </Box>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} sx={{
+                <Box p={2} sx={{
                     mt: 4,
                     background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                 }}

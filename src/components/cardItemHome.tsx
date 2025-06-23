@@ -6,7 +6,25 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import SwiperCore from 'swiper'
-import { Navigation, Autoplay } from 'swiper/modules'
+import { Navigation, Autoplay, Pagination } from 'swiper/modules'
+import { GlobalStyles } from '@mui/material'
+
+<GlobalStyles
+    styles={{
+        '.swiper-pagination': {
+            marginTop: '10px',
+            textAlign: 'center',
+        },
+        '.swiper-pagination-bullet': {
+            backgroundColor: '#1976d2',
+            opacity: 0.5,
+        },
+        '.swiper-pagination-bullet-active': {
+            backgroundColor: '#1976d2',
+            opacity: 1,
+        },
+    }}
+/>
 
 // Kích hoạt module
 SwiperCore.use([Navigation, Autoplay])
@@ -88,18 +106,21 @@ const ArticleCarousel = () => {
                 End-to-End Technology Solutions
             </Typography>
 
-            <Box sx={{ position: 'relative' }}>
+
+
+            <Box sx={{ position: 'relative', pb: 6 }}>
                 <Swiper
-                    modules={[Navigation, Autoplay]} // <== Quan trọng
+                    modules={[Navigation,Pagination, Autoplay]}
                     spaceBetween={20}
-                    slidesPerView={isMobile ? 1 : isTablet?2:4}
+                    slidesPerView={isMobile ? 1 : isTablet ? 2 : 4}
                     loop
-                    autoplay={{ delay: 4000 }}
+                    autoplay={{ delay: 2000 }}
+                    pagination={{ clickable: true }}
                     navigation={{
                         prevEl: prevRef.current,
                         nextEl: nextRef.current,
                     }}
-                    onBeforeInit={(swiper:any) => {
+                    onBeforeInit={(swiper: any) => {
                         if (
                             swiper.params &&
                             swiper.params.navigation &&
@@ -109,7 +130,9 @@ const ArticleCarousel = () => {
                             swiper.params.navigation.nextEl = nextRef.current
                         }
                     }}
-
+                    style={{
+                        paddingBottom: '30px', // 👈 Thêm khoảng trống bên dưới cho pagination
+                    }}
                 >
                     {articles.map((article) => (
                         <SwiperSlide key={article.id}>
@@ -162,15 +185,16 @@ const ArticleCarousel = () => {
                             </Card>
                         </SwiperSlide>
                     ))}
-
                 </Swiper>
-                <IconButton
 
+                {/* Prev Button (PC only) */}
+                <IconButton
                     ref={prevRef}
                     sx={{
+                        display: { xs: 'none', md: 'flex' },
                         position: 'absolute',
                         top: '50%',
-                        left: { xs: -40, md: -40 },
+                        left: -40,
                         transform: 'translateY(-50%)',
                         zIndex: 10,
                         bgcolor: 'rgba(255,255,255,0.9)',
@@ -181,12 +205,14 @@ const ArticleCarousel = () => {
                     <ArrowBackIos />
                 </IconButton>
 
+                {/* Next Button (PC only) */}
                 <IconButton
                     ref={nextRef}
                     sx={{
+                        display: { xs: 'none', md: 'flex' },
                         position: 'absolute',
                         top: '50%',
-                        right: { xs: -40, md: -40 },
+                        right: -40,
                         transform: 'translateY(-50%)',
                         zIndex: 10,
                         bgcolor: 'rgba(255,255,255,0.9)',
@@ -197,7 +223,7 @@ const ArticleCarousel = () => {
                     <ArrowForwardIos />
                 </IconButton>
 
-                {/* Navigation Buttons */}
+                {/* Pagination spacing */}
 
             </Box>
         </Box>

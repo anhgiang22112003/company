@@ -203,7 +203,7 @@ const Healthcare = () => {
                         </Container>
                     </Box>
                     <Container sx={{ mb: { xs: 2, md: 2 } }}>
-                        <Box sx={{ p: { xs: 2, md: 2 } }}>
+                        <Box >
                                 <Grid container spacing={1} justifyContent="center">
                                     {servicesData.map((service, index) => (
                                         <Grid
@@ -258,13 +258,13 @@ const Healthcare = () => {
             </FadeSection>
             <FadeSection id='about' >
        
-                    <Box p={3} sx={{
+                    <Box p={2} sx={{
                         background: 'linear-gradient(to bottom,rgb(41, 89, 137), rgba(14, 41, 70, 0.56))',
                     }}
                     >
-                        <Box sx={{ p: 4 }}>
+                        <Box >
                             <Container>
-                                <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+                                <Typography color={"white"} variant="h4" align="center" sx={{ mb: 4 }}>
                                     Areas of Expertise
                                 </Typography>
                                 <Grid container spacing={2} justifyContent="center">

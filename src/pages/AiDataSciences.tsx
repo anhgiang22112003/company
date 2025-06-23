@@ -309,7 +309,7 @@ const AiDataSciencesPage = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5}
+                <Box p={2}
                 >
                     <Box >
                         <Container sx={{ textAlign: "center" }}>
@@ -319,7 +319,7 @@ const AiDataSciencesPage = () => {
                             </Typography>
                         </Container>
                     </Box>
-                    <Box sx={{ p: 4 }}>
+                    <Box >
                         <Container>
                             <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
                                 {services.map((service, index) => (
@@ -462,16 +462,17 @@ const AiDataSciencesPage = () => {
 
                     </Box>
                     <Container>
-                        <Box sx={{ px: 2,p:4}}>
+                        <Box sx={{ px: 2,p:2}}>
                             <Typography textAlign={"center"} variant="h4" fontWeight="bold" mb={4}>
                                 Industries
                             </Typography>
 
                             <Box position="relative">
                                 <Swiper
-                                    modules={[Autoplay, Navigation]}
+                                    modules={[Autoplay, Navigation,Pagination]}
                                     spaceBetween={20}
                                     slidesPerView={1}
+                                    pagination={{clickable:true}}
                                     breakpoints={{
                                         600: { slidesPerView: 1 },
                                         900: { slidesPerView: 2 },
@@ -482,7 +483,7 @@ const AiDataSciencesPage = () => {
                                     prevEl: '.custom-swiper-prev',
                                     nextEl: '.custom-swiper-next',
                                 }}
-                                     style={{ paddingBottom: 32 }}
+                                     style={{ paddingBottom: 28 }}
                                 >
                                     {solutions.map((solution, index) => (
                                         <SwiperSlide key={index}>
@@ -525,6 +526,7 @@ const AiDataSciencesPage = () => {
                                 className="custom-swiper-prev"
                                 sx={{
                                     position: 'absolute',
+                                    display:{xs:"none",md:"flex"},
                                     top: '50%',
                                     left: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',
@@ -542,6 +544,8 @@ const AiDataSciencesPage = () => {
                                 className="custom-swiper-next"
                                 sx={{
                                     position: 'absolute',
+                                                                        display:{xs:"none",md:"flex"},
+
                                     top: '50%',
                                     right: { xs: -20, sm: -40, md: -50 },
                                     transform: 'translateY(-50%)',

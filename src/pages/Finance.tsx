@@ -235,7 +235,7 @@ const Finance = () => {
                 </Container>
             </FadeSection>
             <FadeSection id='about' >
-                <Box p={5} bgcolor={"#f5f5f5"} sx={{
+                <Box p={2} bgcolor={"#f5f5f5"} sx={{
                     mt: 4,
                 }}
                 >
@@ -285,14 +285,14 @@ const Finance = () => {
             </FadeSection>
 
             <FadeSection id='about' >
-                <Box p={5} sx={{
+                <Box p={2} sx={{
                     background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
                     mt: 4,
 
                 }}
                 >
                     <Box >
-                        <Container sx={{ textAlign: "center" }}>
+                        <Box sx={{ textAlign: "center", color:"white" }}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                 Domain of Expertise
@@ -300,7 +300,7 @@ const Finance = () => {
                             <Typography textAlign={"center"} >
                                 With a focus on fintech software development outsourcing services, pioneers innovative banking and financial technology solutions. Our use of the latest technology drives increased productivity for finance companies, encompassing investments and operational aspects.
                             </Typography>
-                        </Container>
+                        </Box>
                     </Box>
                     <Container sx={{ mt: 4 }}>
                         <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>

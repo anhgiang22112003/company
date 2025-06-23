@@ -19,8 +19,6 @@ import {
 import Footer from '../layouts/Footer'
 import Header from '../layouts/Header'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import { styled } from '@mui/system'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ScrollToTopButton from '../components/ScrollToTopButton'
@@ -486,36 +484,76 @@ const OutsourceHomePage: React.FC = () => {
                 </Container>
             </FadeSection>
             <FadeSection id="services">
-                <Box sx={{ position: 'relative', py: 8 }}>
+                <Box sx={{ position: 'relative', py: { xs: 6, md: 15 } }}>
+                    {/* Gradient Background */}
                     <Box
                         sx={{
                             background: 'linear-gradient(to bottom, rgba(59, 13, 243, 0.85), rgba(38, 90, 145, 0))',
-
                             position: 'absolute',
                             top: 0,
                             left: 0,
                             right: 0,
                             bottom: 0,
                             zIndex: -1,
-                            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 90%)', // Tạo hiệu ứng viền
+                            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 90%)',
                         }}
                     />
-                    <Container><SlideInOnScroll direction='right'>
-                        <Grid container spacing={2}>
 
-                            <Grid item xs={12} md={5}>
-                                <Typography variant='h4' sx={{ fontWeight: "bold", color: "white" }}>Services</Typography>
-                                <Typography sx={{ color: "white" }} mt={2}>
-                                    We provide end-to-end solutions from ideas to design, implementation, testing, deployment, maintenance and support, across Software Development, Software Testing, Digital Transformation, and Innovation as a Service.
+                    <Grid
+                        container
+                        spacing={1}
+                        alignItems="center"
+                        justifyContent="center"
+                        sx={{ px: { xs: 2, sm: 4, md: 9 }, textAlign: { xs: 'center', md: 'left' } }}
+                    >
+                        {/* Text Section */}
+                        <Grid item xs={12} md={5}>
+                            <SlideInOnScroll direction="right">
+                                <Typography
+                                    variant="h4"
+                                    sx={{
+                                        fontWeight: 'bold',
+                                        color: 'white',
+                                        fontSize: { xs: '1.8rem', md: '2.5rem' },
+                                    }}
+                                >
+                                    Services
                                 </Typography>
-                            </Grid>
+                                <Typography
+                                    sx={{
+                                        color: 'white',
+                                        mt: 2,
+                                        fontSize: { xs: '1rem', md: '1.1rem' },
+                                        lineHeight: 1.7,
+                                    }}
+                                >
+                                    We provide end-to-end solutions from ideas to design, implementation, testing, deployment,
+                                    maintenance and support, across Software Development, Software Testing, Digital
+                                    Transformation, and Innovation as a Service.
+                                </Typography>
+                            </SlideInOnScroll>
+                        </Grid>
 
-                        </Grid></SlideInOnScroll>
-                        <SlideInOnScroll>
-                            <img width={"98%"} src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp" alt="" />
-                        </SlideInOnScroll>
-                    </Container>
+                        {/* Image Section */}
+                        <Grid item xs={12} md={7}>
+                            <SlideInOnScroll>
+                                <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
+                                    <img
+                                        src="https://tmastorage.azureedge.net/uploadfiles/Home/Services/page_home_section_service_desktop.webp"
+                                        alt="Services"
+                                        style={{
+                                            width: '100%',
+                                        
+                                            height: 'auto',
+                                           
+                                        }}
+                                    />
+                                </Box>
+                            </SlideInOnScroll>
+                        </Grid>
+                    </Grid>
                 </Box>
+
             </FadeSection>
             <FadeSection id='stories'>
                 <Container sx={{}}>
@@ -579,8 +617,11 @@ const OutsourceHomePage: React.FC = () => {
                         {/* Prev Button */}
                         <IconButton
                             className="custom-swiper-prev"
+                            
                             sx={{
                                 position: 'absolute',
+                                    display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
+
                                 top: '50%',
                                 left: { xs: -20, sm: -40, md: -50 },
                                 transform: 'translateY(-50%)',
@@ -598,6 +639,8 @@ const OutsourceHomePage: React.FC = () => {
                             className="custom-swiper-next"
                             sx={{
                                 position: 'absolute',
+                                    display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
+
                                 top: '50%',
                                 right: { xs: -20, sm: -40, md: -50 },
                                 transform: 'translateY(-50%)',
@@ -627,42 +670,90 @@ const OutsourceHomePage: React.FC = () => {
                             WebkitBackdropFilter: 'blur(6px)',
                         }}
                     >
-                        <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>Industries</Typography>
-                        <Typography textAlign={"center"}>Discover Solutions' sample projects, featuring success stories achieved by our software engineers. Witness the impact of our software outsourcing services on businesses and operations.</Typography>
-                        <Grid sx={{ background: "#f4f8fe", }} container mt={2} spacing={3}>
-                            {data.map((item, index) => (
-                                <Grid item xs={12} sm={6} key={index}>
-                                    <StyledCard>
-                                        <IconWrapper className="icon"><img width={"80%"} src={item.img} alt="" /></IconWrapper>
-                                        <Box>
-
-                                            <Typography variant="h6" fontWeight="bold">
-                                                {item.title}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ mt: 1 }}>
-                                                {item.description}
-                                            </Typography>
-                                            <Link href={item.href}>
-                                                <Box
-                                                    sx={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        mt: 2,
-                                                        fontWeight: 500,
-                                                        fontSize: '14px',
-                                                        transition: 'color 0.3s ease',
+                        <Typography color={"white"} variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>Industries</Typography>
+                        <Typography color={"white"} textAlign={"center"}>Discover Solutions' sample projects, featuring success stories achieved by our software engineers. Witness the impact of our software outsourcing services on businesses and operations.</Typography>
+                        <Box>
+                            <Grid sx={{ background: "#f4f8fe" }} container mt={2} spacing={2}>
+                                {data.map((item, index) => (
+                                    <Grid item xs={12} sm={6} key={index}>
+                                        <StyledCard
+                                            sx={{
+                                                p: 3,
+                                                display: 'flex',
+                                                gap: 3,
+                                                alignItems: 'flex-start',
+                                                flexDirection: { xs: 'column', md: 'row' },
+                                                minHeight: { md: 180 },
+                                            }}
+                                        >
+                                            <IconWrapper
+                                                className="icon"
+                                                sx={{
+                                                    minWidth: 80,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                }}
+                                            >
+                                                <img
+                                                    src={item.img}
+                                                    alt=""
+                                                    style={{
+                                                        maxWidth: '60px',
+                                                        height: 'auto',
                                                     }}
-                                                    className="explore"
+                                                />
+                                            </IconWrapper>
+
+                                            <Box sx={{ flex: 1 }}>
+                                                <Typography
+                                                    variant="h6"
+                                                    fontWeight="bold"
+                                                    fontSize={{ xs: '1.1rem', md: '1.3rem' }}
                                                 >
-                                                    Explore More
-                                                    <ArrowForwardIcon fontSize="small" sx={{ ml: 1 }} />
-                                                </Box>
-                                            </Link>
-                                        </Box>
-                                    </StyledCard>
-                                </Grid>
-                            ))}
-                        </Grid>
+                                                    {item.title}
+                                                </Typography>
+
+                                                <Typography
+                                                    variant="body1"
+                                                    sx={{
+                                                        mt: 1.5,
+                                                        fontSize: { xs: '0.95rem', md: '1rem' },
+                                                        lineHeight: 1.6,
+                                                        color: '#444',
+                                                    }}
+                                                >
+                                                    {item.description}
+                                                </Typography>
+
+                                                <Link href={item.href} underline="none">
+                                                    <Box
+                                                        sx={{
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            mt: 2,
+                                                            fontWeight: 500,
+                                                            fontSize: '15px',
+                                                            color: '#1976d2',
+                                                            transition: 'color 0.3s ease',
+                                                            '&:hover': {
+                                                                color: '#004ba0',
+                                                            },
+                                                        }}
+                                                        className="explore"
+                                                    >
+                                                        Explore More
+                                                        <ArrowForwardIcon fontSize="small" sx={{ ml: 1 }} />
+                                                    </Box>
+                                                </Link>
+                                            </Box>
+                                        </StyledCard>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
+
+
                     </Box>
                     <FadeSection id="blog" >
                         <BlogSection />
@@ -673,7 +764,8 @@ const OutsourceHomePage: React.FC = () => {
                 <Box
                     ref={ref}
                     sx={{
-                        background: '#001F3F',
+                        background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+
                         py: 6,
                         color: 'white',
                         textAlign: 'center',

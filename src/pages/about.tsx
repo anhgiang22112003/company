@@ -587,7 +587,7 @@ const AboutPage = () => {
                                             sx={{
                                                 position: 'absolute',
                                                 top: 0,
-                                                left: 22,
+                                                left: 40,
                                                 width: '78%',
                                                 height: '100%',
                                                 //   backgroundColor: 'rgba(0, 0, 0, 0.45)',
@@ -632,7 +632,7 @@ const AboutPage = () => {
                                             sx={{
                                                 position: 'absolute',
                                                 top: 0,
-                                                left: 22,
+                                                left: 40,
                                                 width: '78%',
                                                 height: '100%',
                                                 //   backgroundColor: 'rgba(0, 0, 0, 0.45)',

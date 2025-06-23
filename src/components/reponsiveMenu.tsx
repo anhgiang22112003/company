@@ -45,7 +45,7 @@ const ResponsiveMenu = ({ sections }: ResponsiveMenuProps) => {
         const handleScroll = () => {
             if (menuRef.current) {
                 const offsetTop = menuRef.current.getBoundingClientRect().top
-                setIsSticky(offsetTop <= 142) // header cao 140px
+                setIsSticky(offsetTop <= 143) // header cao 140px
             }
         }
 
