@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-import { Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Avatar, Box, Breadcrumbs, Button, Container, Divider, Fade, Grid, IconButton, Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, Stack, Tab, Tabs, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import FadeSection from '../components/FadeSection'
 import FileDownloadIcon from '@mui/icons-material/FileDownload'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import SlideInOnScroll from '../components/SlideInOnScroll'
+
 const caseStudies = [
     {
         label: 'Digital Health',
@@ -185,7 +188,7 @@ const DigitalTransformation = () => {
                     </Box>
                 </FadeSection>
                 <FadeSection id='about' >
-                    <Box p={5} sx={{
+                    <Box p={2} sx={{
                         mt: 10,
                         background: 'linear-gradient(180deg, #009BFF 0%,rgb(31, 58, 85) 100%)',
                         boxShadow: '0 8px 30px rgba(0,0,0,0.2)',
@@ -194,16 +197,16 @@ const DigitalTransformation = () => {
                     }}
                     >
                         <Box >
-                            <Box sx={{ textAlign: "center" }}>
+                            <Box color={"white"} sx={{ textAlign: "center" }}>
                                 <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
+                                <Typography  variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>
                                     Digital Transformation Services
                                 </Typography>
                                 <Typography textAlign={"center"} >Accelerate digital transformation for your enterprise with Solutions.</Typography>
                             </Box>
                         </Box>
                         <Container sx={{ mt: 4, mb: 4 }}>
-                            <Box sx={{ p: 4, }}>
+                            <Box >
                                 <Grid container spacing={1}>
                                     {data.map((item, index) => (
                                         <Grid item xs={12} sm={6} md={3} key={index}>
@@ -240,98 +243,154 @@ const DigitalTransformation = () => {
 
                 <FadeSection id='Microsoft'>
                     <Container>
-                        <Box mt={3} p={5} >
-                            <Box textAlign={"center"}>
-                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                                <Typography fontWeight={"bold"} variant='h4'>
+                        <Box mt={6}>
+                            <Box textAlign="center" mb={4}>
+                                <img
+                                    src="https://www.tmasolutions.com/media/technologies/iconDecor.webp"
+                                    alt=""
+                                />
+                                <Typography fontWeight="bold" variant="h4">
                                     Case studies
                                 </Typography>
                             </Box>
-                            <Box sx={{ p: 4 }}>
-                                <Stack
-                                    direction={isMobile ? undefined : "row"}
-                                    flexWrap={isMobile ? undefined : { xs: "wrap", sm: "nowrap" }}
-                                    justifyContent={{ xs: "center", sm: "flex-start" }}
-                                    spacing={2}
-                                    mb={2}
+
+                            <Paper elevation={3} sx={{ p: 4, borderRadius: 3 }}>
+                                {/* Menu list như phần Services */}
+                                <List
+                                    component="nav"
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                        justifyContent: 'flex-start',
+                                        gap: 1,
+                                        mb: 4,
+                                        flexWrap: 'wrap',
+                                    }}
                                 >
-                                    {caseStudies.map((tab, index) => (
-                                        <Button
-                                            key={index}
-                                            variant={tabIndex === index ? "contained" : "outlined"}
+                                    {caseStudies.map((item, index) => (
+                                        <ListItemButton
+                                            key={item.label}
+                                            selected={tabIndex === index}
                                             onClick={() => setTabIndex(index)}
                                             sx={{
-                                                px: 3,
-                                                py: 1.2,
                                                 borderRadius: 2,
-                                                minWidth: 160,
-                                                boxShadow: tabIndex === index ? 3 : 0,
-                                                transition: "all 0.3s ease",
-                                                whiteSpace: "nowrap",
+                                                bgcolor:
+                                                    tabIndex === index ? 'primary.main' : 'transparent',
+                                                color: tabIndex === index ? 'white' : 'black',
+                                                px: 2,
+                                                py: 1,
+                                                minWidth: 140,
+                                                '&:hover': {
+                                                    bgcolor: 'primary.light',
+                                                    color: 'white',
+                                                },
                                             }}
                                         >
-                                            <Typography fontSize={13} fontWeight="bold">
-                                                {tab.label}
-                                            </Typography>
-                                        </Button>
+                                            {/* Nếu có icon, dùng Avatar */}
+                                            <ListItemIcon sx={{ minWidth: 32 }}>
+                                                <Avatar
+                                                    src={item.image}
+                                                    variant="square"
+                                                    sx={{ width: 24, height: 24 }}
+                                                />
+                                            </ListItemIcon>
+                                            <ListItemText
+                                                primary={
+                                                    <Typography variant="body2" noWrap>
+                                                        {item.label}
+                                                    </Typography>
+                                                }
+                                            />
+                                        </ListItemButton>
                                     ))}
-                                </Stack>
+                                </List>
 
-
+                                {/* Content area */}
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} md={6}>
-                                        <Stack spacing={3}>
-                                            <Box>
-                                                <Typography variant="subtitle1" fontWeight="bold">
-                                                    Customer’s needs
-                                                </Typography>
-                                                <List dense>
-                                                    {study.needs.map((need, idx) => (
-                                                        <ListItem key={idx} sx={{ pl: 0 }}>
-                                                            <ListItemText
-                                                                primary={
-                                                                    <Typography variant="body2" color="text.secondary">
-                                                                        {need}
-                                                                    </Typography>
-                                                                }
+                                        <SlideInOnScroll>
+                                        <Box
+                                            sx={{
+                                                border: '1px solid #d6e9ff',
+                                                borderRadius: 1,
+                                                padding: 2,
+                                                backgroundColor: '#f9fcff',
+                                                minHeight: 220,
+                                            }}
+                                        >
+                                            <Typography variant="subtitle1" fontWeight="bold" mb={1}>
+                                                Customer’s needs
+                                            </Typography>
+                                            <Divider sx={{ mb: 2 }} />
+                                            <List dense disablePadding>
+                                                {study.needs.map((item, i) => (
+                                                    <ListItem key={i} disableGutters sx={{ pl: 0 }}>
+                                                        <ListItemIcon sx={{ minWidth: 20 }}>
+                                                            <FiberManualRecordIcon
+                                                                sx={{ fontSize: 8, color: '#339dff' }}
                                                             />
-                                                        </ListItem>
-                                                    ))}
-                                                </List>
-                                            </Box>
-                                            <Box>
-                                                <Typography variant="subtitle1" fontWeight="bold">
-                                                    Solutions
-                                                </Typography>
-                                                <List dense>
-                                                    {study.solutions.map((solution, idx) => (
-                                                        <ListItem key={idx} sx={{ pl: 0 }}>
-                                                            <ListItemText
-                                                                primary={
-                                                                    <Typography variant="body2" color="text.secondary">
-                                                                        {solution}
-                                                                    </Typography>
-                                                                }
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            primary={<Typography variant="body2">{item}</Typography>}
+                                                        />
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Box>
+
+                                        <Box
+                                            sx={{
+                                                border: '1px solid #d6e9ff',
+                                                borderRadius: 1,
+                                                padding: 2,
+                                                backgroundColor: '#f9fcff',
+                                                mt: 3,
+                                                minHeight: 220,
+                                            }}
+                                        >
+                                            <Typography variant="subtitle1" fontWeight="bold" mb={1}>
+                                                Solutions
+                                            </Typography>
+                                            <Divider sx={{ mb: 2 }} />
+                                            <List dense disablePadding>
+                                                {study.solutions.map((item, i) => (
+                                                    <ListItem key={i} disableGutters sx={{ pl: 0 }}>
+                                                        <ListItemIcon sx={{ minWidth: 20 }}>
+                                                            <FiberManualRecordIcon
+                                                                sx={{ fontSize: 8, color: '#339dff' }}
                                                             />
-                                                        </ListItem>
-                                                    ))}
-                                                </List>
-                                            </Box>
-                                        </Stack>
+                                                        </ListItemIcon>
+                                                        <ListItemText
+                                                            primary={<Typography variant="body2">{item}</Typography>}
+                                                        />
+                                                    </ListItem>
+                                                ))}
+                                            </List>
+                                        </Box>
+                                        </SlideInOnScroll>
                                     </Grid>
 
                                     <Grid item xs={12} md={6}>
+                                        <SlideInOnScroll direction='right'>
                                         <Box
                                             component="img"
                                             src={study.image}
                                             alt={study.label}
-                                            sx={{ width: '100%', maxWidth: 500, display: 'block', mx: 'auto' }}
-                                        />
+                                            sx={{
+                                                width: '100%',
+                                                maxWidth: 500,
+                                                display: 'block',
+                                                mx: 'auto',
+                                                borderRadius: 2,
+                                                boxShadow: 3,
+                                            }}
+                                        /></SlideInOnScroll>
                                     </Grid>
                                 </Grid>
-                            </Box>
+                            </Paper>
                         </Box>
                     </Container>
+
                 </FadeSection>
                 <FadeSection id="download">
                     <Container sx={{ mt: { xs: 12, sm: 16, md: 2 } }}>

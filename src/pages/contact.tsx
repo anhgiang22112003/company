@@ -78,8 +78,10 @@ const ContactPage = () => {
             <CssBaseline />
             <Header />
             {/* <Box sx={{position: 'relative', height: '90vh', mb: 5, overflow: 'hidden', mt: 18}}> */}
-            <Box sx={{ minHeight: '80vh',         background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
-p: 4, mt: 18 }}>
+            <Box sx={{
+                minHeight: '80vh', background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
+                p: {md:8 , xs:2}, mt: 18
+            }}>
                 <Grid container spacing={4}>
                     {/* Left Side - Contact Info */}
                     <Grid item xs={12} md={5} sx={{ color: 'white' }}>
@@ -112,7 +114,7 @@ p: 4, mt: 18 }}>
                         <Box>
                             <Typography variant="h6" fontWeight={700} display="flex" alignItems="center" gap={1}>
                                 <LocationOnIcon fontSize="small" />
-                                 Tower address
+                                Tower address
                             </Typography>
                             <Typography>
                                 Street #10, Quality Tech Solution Complex (QTSC), District 12, Ho Chi Minh City
@@ -126,95 +128,96 @@ p: 4, mt: 18 }}>
 
                     {/* Right Side - Form with Paper-Like Style */}
                     <Grid item xs={12} md={7}>
-                        <Box
-                            sx={{
-                                p: 4,
-                                bgcolor: 'white',
-                                borderRadius: '16px',
-                                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                clipPath: 'polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0% 95%)',
-                            }}
-                        >
-                            <Typography variant="h5" fontWeight={700} mb={3}>Business Enquiries</Typography>
+<Box
+  sx={{
+    p: 4,
+    bgcolor: 'white',
+    borderRadius: '16px',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+    position: 'relative',
+    overflow: 'hidden',
+    clipPath: 'polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0% 95%)',
+  }}
+>
+  <Typography variant="h5" fontWeight={700} mb={3}>
+    Business Enquiries
+  </Typography>
 
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} md={6}>
-                                    <TextField fullWidth label="Name" placeholder="ex. John Doe" required />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <TextField fullWidth label="Company" placeholder="ex.Solutions" required />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <TextField fullWidth label="Email" placeholder="ex. example@mail.com" required />
-                                </Grid>
-                                <Grid item xs={12} md={6}>
-                                    <FormControl fullWidth>
-                                        <InputLabel>Country</InputLabel>
-                                        <Select MenuProps={{ disableScrollLock: true }} defaultValue="US" required>
-                                            <MenuItem value="US">United States</MenuItem>
-                                            <MenuItem value="VN">Vietnam</MenuItem>
-                                            <MenuItem value="JP">Japan</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <FormControl fullWidth>
-                                        <InputLabel>Code</InputLabel>
-                                        <Select MenuProps={{ disableScrollLock: true }} value={countryCode} onChange={(e) => setCountryCode(e.target.value)}>
-                                            <MenuItem value="+1">+1</MenuItem>
-                                            <MenuItem value="+84">+84</MenuItem>
-                                            <MenuItem value="+81">+81</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <TextField fullWidth label="Phone" placeholder="0123456789" />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Enquiry"
-                                        placeholder="Enter your enquiry"
-                                        multiline
-                                        minRows={3}
-                                        required
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                checked={agreed}
-                                                onChange={(e) => setAgreed(e.target.checked)}
-                                            />
-                                        }
-                                        label="Your submission of personal information above serves as consent for Solutions to reach out to you."
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Typography variant="body2">
-                                        Check out our <span style={{ color: '#00A1F1', textDecoration: 'underline' }}>Privacy Policy</span> to learn more about how we handle your personal data.
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={12} sx={{ textAlign: 'right', mt: 2 }}>
-                                    <Button variant="contained" disabled={!agreed}>Submit</Button>
-                                </Grid>
-                            </Grid>
-                        </Box>
+  <Grid container spacing={2}>
+    <Grid item xs={12} md={6}>
+      <TextField fullWidth label="First name *" placeholder="e.g. John" required />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField fullWidth label="Last name *" placeholder="e.g. Doe" required />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField fullWidth label="Company" placeholder="e.g. KMS Technology" />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField
+        fullWidth
+        label="Company email address *"
+        placeholder="e.g. example@company.com"
+        required
+      />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField fullWidth label="Job title" placeholder="e.g. Software Engineer" />
+    </Grid>
+    <Grid item xs={12} md={6}>
+      <TextField fullWidth label="Phone number *" placeholder="0123456789" required />
+    </Grid>
+    <Grid item xs={12}>
+      <TextField
+        fullWidth
+        label="How can we help you?"
+        placeholder="Enter your enquiry"
+        multiline
+        minRows={3}
+        required
+      />
+    </Grid>
+    <Grid item xs={12}>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={agreed}
+            onChange={(e) => setAgreed(e.target.checked)}
+          />
+        }
+        label="Your submission of personal information above serves as consent for Solutions to reach out to you."
+      />
+    </Grid>
+    <Grid item xs={12}>
+      <Typography variant="body2">
+        Check out our{' '}
+        <span style={{ color: '#00A1F1', textDecoration: 'underline' }}>
+          Privacy Policy
+        </span>{' '}
+        to learn more about how we handle your personal data.
+      </Typography>
+    </Grid>
+    <Grid item xs={12} sx={{ textAlign: 'right', mt: 2 }}>
+      <Button variant="contained" disabled={!agreed}>
+        Submit
+      </Button>
+    </Grid>
+  </Grid>
+</Box>
+
+
                     </Grid>
                 </Grid>
             </Box>
             <Container>
-            <Box sx={{ mt: 2, px: 4, p: 2 }}>
-                <Breadcrumbs separator="›" aria-label="breadcrumb">
-                    <Link underline="hover" color="#00A1F1" href="/">
-                        <Typography fontWeight={700}>Home</Typography>
-                    </Link>
-                    <Typography color="text.primary">Contact Us</Typography>
-                </Breadcrumbs>
-            </Box>
+                <Box sx={{ mt: 2, px: 4, p: 2 }}>
+                    <Breadcrumbs separator="›" aria-label="breadcrumb">
+                        <Link underline="hover" color="#00A1F1" href="/">
+                            <Typography fontWeight={700}>Home</Typography>
+                        </Link>
+                        <Typography color="text.primary">Contact Us</Typography>
+                    </Breadcrumbs>
+                </Box>
             </Container>
             <Box mb={-20}>
                 <iframe
@@ -231,7 +234,7 @@ p: 4, mt: 18 }}>
             </Box>
             <ScrollToTopButton />
             {/* </Box> */}
-            <Footer  hasDownload={true}/>
+            <Footer hasDownload={true} />
         </>
     )
 }

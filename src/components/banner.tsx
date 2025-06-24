@@ -10,18 +10,19 @@ import MapBanner from "./ClientsBanner"
 import NewsletterBanner from "./NewsletterBanner"
 import InfoBanner from "./SolutionsBanner"
 
-const banners = [
-  <MapBanner key="map" />,
-  <NewsletterBanner key="news" />,
-  <InfoBanner key="info" />,
-]
 
-export default function Banner() {
+
+export default function Banner({onScrollToContact}:any) {
+  const banners = [
+  <MapBanner key="map" />,
+  <NewsletterBanner onScrollToContacts={onScrollToContact} key="news" />,
+  // <InfoBanner key="info" />,
+]
   return (
     <Box sx={{
       width: "100%", height: {
         xs: '80vh',
-        md:"90%",
+        md:"70%",
         sm:"90%" // mobile: 80% chiều cao viewport
       }, mt: 8
     }}>

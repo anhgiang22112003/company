@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Card, CardContent, CardMedia, Typography, Box, IconButton, Paper, Chip, useMediaQuery, useTheme } from '@mui/material'
+import { Card, CardContent, CardMedia, Typography, Box, IconButton, Paper, Chip, useMediaQuery, useTheme, Link } from '@mui/material'
 import { ArrowBackIos, ArrowForwardIos, AccessTime, Person } from '@mui/icons-material'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -45,7 +45,8 @@ const ArticleCarousel = () => {
             author: "Digital Engineering",
             readTime: "3 min read",
             category: "Services",
-            publishDate: "Today"
+            publishDate: "Today",
+            href: "services/testing"
         },
         {
             id: 2,
@@ -53,10 +54,8 @@ const ArticleCarousel = () => {
             excerpt:
                 "Achieve successful digital transformation by leveraging AI and ML to drive intelligent automation and data-driven insights.",
             image: "https://kms-technology.com/wp-content/uploads/2024/06/AI-and-Machine-Learning.webp",
-            author: "Digital Engineering",
-            readTime: "4 min read",
-            category: "Services",
-            publishDate: "Today"
+            category: "Technologies",
+            href: "technologies/ai-ml-data-sciences"
         },
         {
             id: 3,
@@ -64,33 +63,55 @@ const ArticleCarousel = () => {
             excerpt:
                 "Optimize, integrate, and secure your data with data management services, including warehousing, data lakes, governance, and analytics.",
             image: "https://kms-technology.com/wp-content/uploads/2024/05/data-analytics-solutions-e1742789351378.jpeg",
-            author: "Digital Engineering",
-            readTime: "4 min read",
-            category: "Services",
-            publishDate: "Today"
+            category: "Technologies",
+            href: "technologies/big-data-analytics"
         },
         {
             id: 4,
-            title: "Mobile App Development",
+            title: "Software Development",
             excerpt:
                 "Build sleek, high-performing mobile apps with seamless user experiences through our expert design and development services.",
-            image: "https://kms-technology.com/wp-content/uploads/2025/01/mobile-app-testing-e1744281310310.webp",
-            author: "Digital Engineering",
-            readTime: "5 min read",
+            image: "https://tse2.mm.bing.net/th?id=OIP.vpNAoso6RVXKtwP8ELDF7gHaD7&pid=Api&P=0&h=220",
+
             category: "Services",
-            publishDate: "Today"
+
+            href: "services/software-development"
         },
+
         {
             id: 5,
-            title: "Mobile App Development",
+            title: "Cloud Solutions",
             excerpt:
-                "Build sleek, high-performing mobile apps with seamless user experiences through our expert design and development services.",
-            image: "https://kms-technology.com/wp-content/uploads/2025/01/ongoing-maintenance-e1742854045389.webp",
-            author: "Digital Engineering",
-            readTime: "5 min read",
+                "Harness the power of the cloud to scale efficiently, ensure high availability, and enhance business agility with our expert services.",
+            image: "https://tse2.mm.bing.net/th?id=OIP.HjTaU2AJkvV-Ub779QWVoAHaE8&pid=Api&P=0&h=220",
+
+            category: "Technologies",
+            href: "technologies/cloud"
+        },
+        {
+            id: 6,
+            title: "Low-Code Development",
+            excerpt:
+                "Accelerate application delivery with intuitive, low-code platforms tailored to your business needs and workflows.",
+            image: "https://tse3.mm.bing.net/th?id=OIP.nOVpT0E2IdvqX0bHt_jZZAHaFU&pid=Api&P=0&h=220", // bạn có thể thay URL phù hợp
+
+            category: "Technologies",
+
+            href: "technologies/low-code"
+        },
+        {
+            id: 7,
+            title: "Digital Transformation",
+            excerpt:
+                "Empower your organization to evolve with cutting-edge technologies and data-driven strategies for a successful digital journey.",
+            image: "https://tse1.mm.bing.net/th?id=OIP.wKmW8-7WeI0mggEmZ0V-CwHaEK&pid=Api&P=0&h=220", // cập nhật URL hình ảnh nếu cần
+
             category: "Services",
-            publishDate: "Today"
+
+            href: "services/digital-transformation"
         }
+
+
     ]
 
     return (
@@ -110,7 +131,7 @@ const ArticleCarousel = () => {
 
             <Box sx={{ position: 'relative', pb: 6 }}>
                 <Swiper
-                    modules={[Navigation,Pagination, Autoplay]}
+                    modules={[Navigation, Pagination, Autoplay]}
                     spaceBetween={20}
                     slidesPerView={isMobile ? 1 : isTablet ? 2 : 4}
                     loop
@@ -139,6 +160,9 @@ const ArticleCarousel = () => {
                             <Card
                                 sx={{
                                     width: '100%',
+                                    minHeight: { xs: 360, sm: 380, md: 350 }, // responsive height
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                     borderRadius: 3,
                                     overflow: 'hidden',
                                     position: 'relative',
@@ -152,39 +176,53 @@ const ArticleCarousel = () => {
                                 />
                                 <CardContent
                                     sx={{
+                                        flex: 1,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: 1, // hoặc 2 tuỳ bạn muốn khoảng cách lớn nhỏ
                                         p: 2,
                                         background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.6))',
-                                        backdropFilter: 'blur(6px)',
-                                        WebkitBackdropFilter: 'blur(6px)',
+                                        backdropFilter: 'blur(2px)',
+                                        WebkitBackdropFilter: 'blur(2px)'
                                     }}
                                 >
-                                    <Chip
-                                        label={article.category}
-                                        color="primary"
-                                        size="small"
-                                        sx={{ mb: 1, fontWeight: 'bold' }}
-                                    />
-                                    <Typography variant="h6" gutterBottom>
-                                        {article.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{ minHeight: 50 }}>
+                                    <Box>
+                                        <Chip
+                                            label={article.category}
+                                            color="primary"
+                                            size="small"
+                                            sx={{ mb: 1, fontWeight: 'bold' }}
+                                        />
+                                        <Typography variant="h6" gutterBottom>
+                                            <a
+                                                href={article.href}
+                                                style={{ textDecoration: 'none', color: 'inherit', fontWeight: 600 }}
+                                            >
+                                                {article.title}
+                                            </a>
+                                        </Typography>
+                                    </Box>
+
+                                    <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                        sx={{
+                                            mt: 1,
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: 3,
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                        }}
+                                    >
                                         {article.excerpt}
                                     </Typography>
-                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                            <Person fontSize="small" color="action" />
-                                            <Typography variant="caption">{article.author}</Typography>
-                                        </Box>
-                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                            <AccessTime fontSize="small" color="action" />
-                                            <Typography variant="caption">{article.readTime}</Typography>
-                                        </Box>
-                                        <Typography variant="caption">{article.publishDate}</Typography>
-                                    </Box>
                                 </CardContent>
                             </Card>
+
                         </SwiperSlide>
                     ))}
+
                 </Swiper>
 
                 {/* Prev Button (PC only) */}

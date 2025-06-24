@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
     Box,
     Button,
@@ -47,6 +47,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ContactSection from '../components/ContactSection'
 
 const stats = [
     {
@@ -303,10 +304,17 @@ const OutsourceHomePage: React.FC = () => {
         { id: 'stories', label: 'Stories' },
         { id: 'industries', label: 'Industries' },
         { id: 'blog', label: 'blog' },
+         { id: 'contactSection', label: 'ContactSection' },
         { id: 'footer', label: 'Footer' },
+       
     ]
 
     const { ref, inView } = useInView({ triggerOnce: true })
+   const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };;
 
     return (
         <><Header />
@@ -314,7 +322,7 @@ const OutsourceHomePage: React.FC = () => {
 
             <ScrollDots sections={sections} />
             {/* Banner chính */}
-            <Banner />
+            <Banner onScrollToContact={scrollToContact}  />
             <FadeSection id="overview">
                 <Container sx={{ py: 8 }}>
                     <Grid container spacing={2}>
@@ -367,7 +375,7 @@ const OutsourceHomePage: React.FC = () => {
                 <ArticleCarousel />
             </FadeSection>
             <FadeSection id="why">
-                <Container sx={{ py: 8 }}>
+                <Container sx={{ py: 1 }}>
                     <Typography variant="h4" sx={{ fontWeight: "bold" }} align="center" gutterBottom>
                         Why GPH
                     </Typography>
@@ -543,9 +551,9 @@ const OutsourceHomePage: React.FC = () => {
                                         alt="Services"
                                         style={{
                                             width: '100%',
-                                        
+
                                             height: 'auto',
-                                           
+
                                         }}
                                     />
                                 </Box>
@@ -617,10 +625,10 @@ const OutsourceHomePage: React.FC = () => {
                         {/* Prev Button */}
                         <IconButton
                             className="custom-swiper-prev"
-                            
+
                             sx={{
                                 position: 'absolute',
-                                    display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
+                                display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
 
                                 top: '50%',
                                 left: { xs: -20, sm: -40, md: -50 },
@@ -639,7 +647,7 @@ const OutsourceHomePage: React.FC = () => {
                             className="custom-swiper-next"
                             sx={{
                                 position: 'absolute',
-                                    display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
+                                display: { xs: 'none', sm: 'flex' }, // 👈 Ẩn ở mobile
 
                                 top: '50%',
                                 right: { xs: -20, sm: -40, md: -50 },
@@ -798,7 +806,7 @@ const OutsourceHomePage: React.FC = () => {
                     </Grid>
                 </Box>
             </FadeSection>
-            <FadeSection id="What-clients">
+            {/* <FadeSection id="What-clients">
                 <Container disableGutters maxWidth={false}>
                     <Box
                         sx={{
@@ -861,11 +869,12 @@ const OutsourceHomePage: React.FC = () => {
                         </Container>
                     </Box>
                 </Container>
-            </FadeSection>
+            </FadeSection> */}
 
 
+            <FadeSection  id='contactSection'><Box  ref={contactRef}><ContactSection /></Box></FadeSection>
             <ScrollToTopButton />
-            <Footer hasDownload={true} />
+           <FadeSection><Footer /></FadeSection> 
         </>
     )
 }
