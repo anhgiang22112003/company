@@ -14,6 +14,7 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
+    TextField,
     Typography,
 } from '@mui/material'
 import Footer from '../layouts/Footer'
@@ -304,17 +305,17 @@ const OutsourceHomePage: React.FC = () => {
         { id: 'stories', label: 'Stories' },
         { id: 'industries', label: 'Industries' },
         { id: 'blog', label: 'blog' },
-         { id: 'contactSection', label: 'ContactSection' },
+        { id: 'contactSection', label: 'ContactSection' },
         { id: 'footer', label: 'Footer' },
-       
+
     ]
 
     const { ref, inView } = useInView({ triggerOnce: true })
-   const contactRef = useRef<HTMLDivElement>(null);
+    const contactRef = useRef<HTMLDivElement>(null)
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };;
+    const scrollToContact = () => {
+        contactRef.current?.scrollIntoView({ behavior: 'smooth' })
+    };;
 
     return (
         <><Header />
@@ -322,7 +323,7 @@ const OutsourceHomePage: React.FC = () => {
 
             <ScrollDots sections={sections} />
             {/* Banner chính */}
-            <Banner onScrollToContact={scrollToContact}  />
+            <Banner onScrollToContact={scrollToContact} />
             <FadeSection id="overview">
                 <Container sx={{ py: 8 }}>
                     <Grid container spacing={2}>
@@ -676,19 +677,21 @@ const OutsourceHomePage: React.FC = () => {
                             background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                             backdropFilter: 'blur(6px)',
                             WebkitBackdropFilter: 'blur(6px)',
+                            
                         }}
                     >
                         <Typography color={"white"} variant='h4' sx={{ fontWeight: "bold", textAlign: "center" }}>Industries</Typography>
                         <Typography color={"white"} textAlign={"center"}>Discover Solutions' sample projects, featuring success stories achieved by our software engineers. Witness the impact of our software outsourcing services on businesses and operations.</Typography>
                         <Box>
-                            <Grid sx={{ background: "#f4f8fe" }} container mt={2} spacing={2}>
+                            <Grid sx={{ background: "#f4f8fe",borderTopLeftRadius: '60px',
+                            borderBottomRightRadius: '60px', }} container mt={2} spacing={2}>
                                 {data.map((item, index) => (
                                     <Grid item xs={12} sm={6} key={index}>
                                         <StyledCard
                                             sx={{
-                                                p: 3,
+                                                p: 2,
                                                 display: 'flex',
-                                                gap: 3,
+                                                gap: 2,
                                                 alignItems: 'flex-start',
                                                 flexDirection: { xs: 'column', md: 'row' },
                                                 minHeight: { md: 180 },
@@ -707,7 +710,7 @@ const OutsourceHomePage: React.FC = () => {
                                                     src={item.img}
                                                     alt=""
                                                     style={{
-                                                        maxWidth: '60px',
+                                                        maxWidth: '50px',
                                                         height: 'auto',
                                                     }}
                                                 />
@@ -806,75 +809,79 @@ const OutsourceHomePage: React.FC = () => {
                     </Grid>
                 </Box>
             </FadeSection>
-            {/* <FadeSection id="What-clients">
-                <Container disableGutters maxWidth={false}>
-                    <Box
-                        sx={{
-                            background: '#009BFF',
-                            color: 'white',
-                            clipPath: {
-                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)', // ít nghiêng hơn ở mobile
-                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            },
-                            py: { xs: 5, sm: 6, md: 8 },
-                            px: { xs: 2, sm: 4 },
-                            position: 'relative',
-                            zIndex: 1,
-                            mb: { xs: -10, md: -23 }, // đỡ bị lấn nội dung bên dưới ở mobile
-                            textAlign: 'center',
-                        }}
-                    >
-                        <Container>
-                            <Typography
-                                variant="h4"
-                                fontWeight="bold"
-                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
-                            >
-                                What our clients say?
-                            </Typography>
+            <FadeSection>
+                <Box sx={{ background: '#1976d2', py: { xs: 4, md: 6 } }}>
+                    <Container>
+                        <Grid container spacing={1} alignItems="center">
+                            {/* LEFT: Text Section */}
+                            <Grid item xs={12} md={6}>
+                                <Box sx={{ color: 'white' }}>
+                                    <Typography variant="h4" fontWeight="bold" gutterBottom>
+                                        Technology Insights Right to <br /> Your Inbox
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        Subscribe to our resource to stay in the loop with news, trends, <br />
+                                        and key highlights in today’s software industry.
+                                    </Typography>
+                                </Box>
+                            </Grid>
 
-                            <Typography
-                                mt={2}
-                                fontSize={{ xs: '0.95rem', sm: '1rem' }}
-                                maxWidth="md"
-                                mx="auto"
-                            >
-                                We sincerely appreciate our customers for their valuable feedback and support.
-                                Our top priority is to fulfill your business needs with our appropriate technology solutions.
-                            </Typography>
-
-                            <Box mt={4}>
-                                <Typography
+                            {/* RIGHT: Subscribe Form */}
+                            <Grid item xs={12} md={6}>
+                                <Box
                                     sx={{
-                                        fontStyle: 'italic',
-                                        fontSize: { xs: '0.95rem', sm: '1rem' },
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: 1,
+                                        maxWidth: 400,
+                                        width: '100%',
+                                        color: 'white',
+                                        ml: 'auto',
                                     }}
                                 >
-                                    “The management team is attentive, responsive to feedback and demonstrates initiative
-                                    in continually improving effectiveness.”
-                                </Typography>
+                                    <Typography variant="body2" fontWeight={500}>
+                                        Email address <span style={{ color: 'red' }}>*</span>
+                                    </Typography>
+                                    <TextField
+                                        placeholder="Your Email Address"
+                                        variant="outlined"
+                                        fullWidth
+                                        InputProps={{
+                                            sx: {
+                                                bgcolor: '#102a43',
+                                                borderRadius: 0,
+                                                color: 'white',
+                                            },
+                                        }}
+                                        InputLabelProps={{
+                                            sx: { color: 'white' },
+                                        }}
+                                    />
+                                    <Button
+                                        variant="contained"
+                                        sx={{
+                                            bgcolor: '#29b6f6',
+                                            textTransform: 'none',
+                                            fontWeight: 600,
+                                            width: 'fit-content',
+                                            px: 3,
+                                            '&:hover': {
+                                                bgcolor: '#0288d1',
+                                            },
+                                        }}
+                                    >
+                                        Subscribe
+                                    </Button>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
 
-                                <Typography
-                                    mt={2}
-                                    fontWeight="bold"
-                                    fontSize={{ xs: '0.95rem', sm: '1rem' }}
-                                >
-                                    Lori Ciaralli, Engineering Director, Network Management & Security, Ribbon Communications
-                                </Typography>
-
-                                <Typography fontSize={{ xs: '0.9rem', sm: '1rem' }}>
-                                    USA
-                                </Typography>
-                            </Box>
-                        </Container>
-                    </Box>
-                </Container>
-            </FadeSection> */}
-
-
-            <FadeSection  id='contactSection'><Box  ref={contactRef}><ContactSection /></Box></FadeSection>
+            </FadeSection>
+            <FadeSection id='contactSection'><Box ref={contactRef}><ContactSection /></Box></FadeSection>
             <ScrollToTopButton />
-           <FadeSection><Footer /></FadeSection> 
+            <FadeSection><Footer /></FadeSection>
         </>
     )
 }

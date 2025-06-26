@@ -21,7 +21,6 @@ let theme = createTheme({
   },
 });
 
-// ⚡ Thêm tính năng responsive font
 theme = responsiveFontSizes(theme);
 
 export default theme;

@@ -252,7 +252,6 @@ const Header: React.FC = () => {
         }
     }, [openMenuIndex])
 
-
     // Tính toán vị trí menu con
 
 
@@ -275,12 +274,14 @@ const Header: React.FC = () => {
     // === RENDER ===
     return (
         <>
+        
             <Box
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 sx={{ position: 'relative' }}
             >
-                 {/* Menu Desktop */}
+                {/* Menu Desktop */}
+                
                 <AppBar
                     position="fixed"
                     elevation={0} // Start with no shadow
@@ -498,7 +499,7 @@ const Header: React.FC = () => {
                                 <Box
                                     sx={{
                                         position: 'absolute',
-                                        top: -18,
+                                        top: -18.5,
                                         left: `${arrowLeft}px`,
                                         transform: 'translateX(-50%)',
                                         zIndex: 1401,
@@ -507,7 +508,6 @@ const Header: React.FC = () => {
                                         borderLeft: '19px solid transparent',
                                         borderRight: '19px solid transparent',
                                         borderBottom: `19px solid ${isScrolled ? ' #667eea' : 'white'}`,
-
                                         filter: 'drop-shadow(0 -2px 3px rgba(0,0,0,0.08))',
                                     }}
                                 />
@@ -515,8 +515,9 @@ const Header: React.FC = () => {
                                 {/* Modern Header */}
                                 <Box
                                     sx={{
-                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                        color: 'white',
+                                                                           
+
+                                        color: isScrolled ?'white':'black',
                                         p: 1,
                                         position: 'relative',
                                         overflow: 'hidden',
@@ -527,12 +528,12 @@ const Header: React.FC = () => {
                                             left: 0,
                                             right: 0,
                                             bottom: 0,
-                                            background: 'linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%)',
+                                            background: isScrolled ? "#667eea": 'white',
                                         }
                                     }}
                                 >
                                     <Typography
-                                        variant="h6"
+                                        
                                         sx={{
                                             textAlign: 'center',
                                             fontWeight: 700,
@@ -566,7 +567,7 @@ const Header: React.FC = () => {
                                                     underline="none"
                                                     sx={{
                                                         display: 'flex',
-                                                        flexDirection: 'column',
+                                                        flexDirection: 'row', // ✅ nằm cùng hàng
                                                         alignItems: 'center',
                                                         gap: 1,
                                                         p: 1,
@@ -578,7 +579,7 @@ const Header: React.FC = () => {
                                                         border: '1px solid transparent',
                                                         position: 'relative',
                                                         overflow: 'hidden',
-                                                        minHeight: '90px',
+                                                        minHeight: '50px',
                                                         background: 'rgba(255,255,255,0.8)',
                                                         '&::before': {
                                                             content: '""',
@@ -602,7 +603,7 @@ const Header: React.FC = () => {
                                                             right: 0,
                                                             bottom: 0,
                                                             borderRadius: '10px',
-                                                            background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%)',
+                                                            background: '#667eea',
                                                             opacity: 0,
                                                             transition: 'opacity 0.9s ease',
                                                             zIndex: 1,
@@ -658,8 +659,8 @@ const Header: React.FC = () => {
                                                             <Box
                                                                 className="submenu-icon-bg"
                                                                 sx={{
-                                                                    width: '100%',
-                                                                    height: '100%',
+                                                                    width: '46px',
+                                                                    height: '46px',
                                                                     borderRadius: '8px',
                                                                     display: 'flex',
                                                                     alignItems: 'center',
@@ -690,7 +691,7 @@ const Header: React.FC = () => {
                                                             textAlign: 'center',
                                                             transition: 'all 0.3s ease',
                                                             lineHeight: 1.3,
-                                                            fontSize: '0.85rem',
+                                                            fontSize: '0.75rem',
                                                         }}
                                                     >
                                                         {item.label}
@@ -815,7 +816,9 @@ const Header: React.FC = () => {
                                         href={item.href}
                                         underline="none"
                                         color="inherit" // Kế thừa màu trắng từ Drawer
-                                        style={{ flex: 1, textDecoration: 'none' }} // Ensure no underline
+                                        style={{
+                                            flex: 1, textDecoration: 'none', pointerEvents: item.hasSubMenu ? 'none' : 'auto', // ✅ Ngăn Link bắt sự kiện click nếu có submenu
+                                        }} // Ensure no underline
                                     >
                                         <ListItemText
                                             primary={item.label}
@@ -830,12 +833,9 @@ const Header: React.FC = () => {
                                         <IconButton
                                             size="small"
                                             onClick={(event) => {
-                                                event.stopPropagation() // Ngăn sự kiện click lan ra ListItem
-                                                if (openMenuIndex === index) {
-                                                    setOpenMenuIndex(null)
-                                                } else {
-                                                    setOpenMenuIndex(index)
-                                                }
+                                                event.stopPropagation() // ✅ Ngăn ListItem bị click
+                                                event.preventDefault()  // ✅ Ngăn xử lý mặc định
+                                                setOpenMenuIndex(openMenuIndex === index ? null : index)
                                             }}
                                             sx={{ color: 'white' }} // Icon màu trắng
                                         >

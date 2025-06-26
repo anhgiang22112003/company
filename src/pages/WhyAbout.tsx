@@ -226,9 +226,9 @@ const WhyTMALayout = () => {
         </FadeSection>
       </FadeSection>
       <FadeSection>
-        <Box sx={{ py: 6, textAlign: 'center', backgroundColor: '#f7fbff' }}>
+        <Box sx={{ py: 2, textAlign: 'center', backgroundColor: '#f7fbff' }}>
           <Box textAlign={"center"}>
-            <img width={"3%"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_section.84cf50a7.webp" alt="" />
+            <img width={"54px"} src="https://tmastorage.azureedge.net/cdn/en/_next/static/media/icon_section.84cf50a7.webp" alt="" />
           </Box>
           <Typography variant="h4" fontWeight="bold" gutterBottom>
             Intensive R&D Capabilities
@@ -240,12 +240,12 @@ const WhyTMALayout = () => {
           <Container>
             <Grid container spacing={2} justifyContent="center">
               {centers.map((center, index) => (
-                <Grid key={index} item xs={12} mb={3} sm={6} md={4} lg={2.4}>
+                <Grid key={index} item xs={12} sm={6} md={4} lg={2.4}>
                   <Box
                     sx={{
                       background: '#fff',
                       borderRadius: 2,
-                      p: 3,
+                      p: 2,
                       boxShadow: '0 0 15px rgba(0,0,0,0.05)',
                       height: '90%',
                       textAlign: 'center',

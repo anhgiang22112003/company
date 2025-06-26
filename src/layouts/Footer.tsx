@@ -5,7 +5,7 @@ const Footer = ({ hasDownload = false }) => {
     <Box
       id="footer"
       sx={{
-        background: 'linear-gradient(to bottom, #1976d2, rgba(10, 75, 149, 0.56))',
+        background: ' #1976d2',
         color: 'white',
         px: 4,
         py: 6,
@@ -86,7 +86,7 @@ const Footer = ({ hasDownload = false }) => {
               },
             }}
           >
-            <Link underline="hover" href="/contact">Contact Us</Link>
+            <Link underline="hover" color={"white"} href="/contact">Contact Us</Link>
           </Button>
 
           <Typography mt={3} fontWeight="bold">Connect with us</Typography>

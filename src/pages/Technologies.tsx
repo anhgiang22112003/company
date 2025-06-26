@@ -1566,7 +1566,7 @@ const TechnologiesPage = () => {
                 </FadeSection>
                 {/*mobile*/}
                 <FadeSection id='Mobile'>
-                    <Box mt={3} sx={{ minHeight: { md: '450px', xs: 350 }, scrollMarginTop: '130px' }} bgcolor={"white"} p={1} >
+                    <Box mt={3} sx={{ minHeight: { md: '500px', xs: 350 }, scrollMarginTop: '150px' }} bgcolor={"white"} p={1} >
                         <Box textAlign={"center"}>
                             <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
                             <Typography fontWeight={"bold"} mb={4} variant='h4'>
@@ -1577,7 +1577,7 @@ const TechnologiesPage = () => {
                             sx={{
                                 overflow: 'hidden',
                                 backgroundColor: '#f5faff',
-                                p: { xs: 2, sm: 3 },
+                                p: { xs: 2, sm: 10 },
                                 borderRadius: 2,
                                 position: 'relative',
                                 width: '100%',

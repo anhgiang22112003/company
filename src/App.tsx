@@ -40,7 +40,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='contact' element={<ContactPage />} />

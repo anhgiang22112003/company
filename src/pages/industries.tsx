@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
 import FadeSection from '../components/FadeSection'
-import { Avatar, Box, Breadcrumbs, Container, Divider, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, Typography } from '@mui/material'
+import { Avatar, Box, Breadcrumbs, Button, Container, Divider, Grid, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Paper, TextField, Typography } from '@mui/material'
 import './hexagon.css'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
@@ -100,43 +100,43 @@ const categories = [
 ]
 const industries = [
     {
-        icon: <WifiIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Telecom.webp",
         title: 'Telecom',
         href: '/industries/telecom',
         description: 'Unified Communication, Network and Access Management, Carrier VoIP, SIP, Asterisk, Soft Switch, 4G LTE, 5G Open RAN, Wireless and Edge Router.',
     },
     {
-        icon: <HealthAndSafetyIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Insurance.webp",
         title: 'Insurance',
         href: '/industries/insurance',
         description: 'AutoCare Insurance, AutoCare Tracking, Quotation Tool, Sales Support Tool, Sales Agent Learning Tool.',
     },
     {
-        icon: <StoreIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/E-Commerce-Retail.webp",
         title: 'E-Commerce & Retail',
         href: '/industries/e-commerce-retail',
         description: 'Mobile Ecommerce, Cosmetic Ecommerce Platform, School Furniture Sales and Distribution Management System.',
     },
     {
-        icon: <AttachMoneyIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Finance.webp",
         title: 'Finance',
         href: '/industries/finance',
         description: 'Web3, Asset Management, Embedded Finance, Institutional Capital Markets, Payment.',
     },
     {
-        icon: <LocalShippingIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Logistics.webp",
         title: 'Logistics',
         href: '/industries/logistics',
         description: 'Supply chain and logistics automation, fleet and vehicle management, inventory & warehouse management.',
     },
     {
-        icon: <DirectionsCarIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Automotive.webp",
         title: 'Automotive',
         href: '/industries/automotive',
         description: 'AR Navigation, ECU MCU Modeling, ECU Monitoring System Development, Surround View Camera ECU Development.',
     },
     {
-        icon: <HealthAndSafetyIcon />,
+        icon: "https://tmastorage.azureedge.net/uploadfiles/icon-sub-menu/industries/Healthcare.webp",
         title: 'Healthcare',
         href: '/industries/healthcare',
         description: 'Remote health monitoring, Patient analytics, Pharmacy automation, Fitness solutions, GNOME sequencing.',
@@ -179,56 +179,6 @@ const IndustriePage = () => {
             </Box>
         </motion.div>
     )
-
-
-
-
-    const CategoryCard = ({ icon, title, items }: any) => (
-        <Paper
-            elevation={3}
-            sx={{
-                padding: 2,
-                borderRadius: 2,
-                border: '2px solid transparent',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                    border: '2px solid #1976d2',
-                    boxShadow: '0 4px 20px rgba(25, 118, 210, 0.2)',
-                },
-            }}
-        >
-            <Box display="flex" flexDirection="column" alignItems="center">
-                {icon}
-                <Typography variant="h6" fontWeight="bold" mt={1}>
-                    {title}
-                </Typography>
-            </Box>
-            <Divider
-                sx={{
-                    marginY: 1,
-                    height: '2px',
-                    backgroundColor: '#e0e0e0',
-                    transition: 'background-color 0.3s ease',
-                    '.MuiPaper-root:hover &': {
-                        backgroundColor: '#1976d2',
-                    }
-                }}
-            />
-            <List dense>
-                {items?.map((item: any, index: any) => (
-                    <ListItem key={index} sx={{ paddingY: 0.5 }}>
-                        <ListItemText primary={item} />
-                    </ListItem>
-                ))}
-            </List>
-        </Paper>
-    )
-    const mobileItems = [
-        items[0], // đầu tiên
-        items[1], // thứ 2
-        items[9], // đẩy thằng cuối lên thứ 3
-        ...items.slice(2, 9), // còn lại từ 2 đến 8
-    ]
 
     return (
         <>
@@ -368,93 +318,95 @@ const IndustriePage = () => {
                             </Box>
                         </Container>
                     </Box>
-                   
-                        <Box
-                            px={4}
-                            py={6}
 
-                            sx={{
-                                backgroundColor: '#f9fbfd',
-                                borderTopLeftRadius: '60px',
-                                borderBottomRightRadius: '60px',
-                                boxShadow: '0px 4px 20px rgba(0,0,0,0.05)', // Nhẹ nhàng nổi lên
-                            }}
-                        >
-                            <Grid container spacing={4}>
-                                {industries.map((item, index) => (
-                                    <Grid item xs={12} md={6} key={index}>
-                                        <Stack direction="row" spacing={2} alignItems="flex-start">
-                                            <Avatar
-                                                sx={{
-                                                    bgcolor: '#e6f1fc',
-                                                    color: '#1976d2',
-                                                    transition: 'all 0.3s ease',
-                                                    '&:hover': {
-                                                        bgcolor: '#1976d2',
-                                                        color: '#fff',
-                                                        transform: 'scale(1.2)',
+                    <Box
+                        px={4}
+                        py={6}
+                        sx={{
+                            backgroundColor: '#f9fbfd',
+                            borderTopLeftRadius: '60px',
+                            borderBottomRightRadius: '60px',
+                            boxShadow: '0px 4px 20px rgba(0,0,0,0.05)', // Nhẹ nhàng nổi lên
+                        }}
+                    >
+                        <Grid container spacing={4}>
+                            {industries.map((item, index) => (
+                                <Grid item xs={12} md={6} key={index}>
+                                    <Stack direction="row" spacing={2} alignItems="flex-start">
+                                        <Avatar
+                                            sx={{
+                                                bgcolor: '#e6f1fc',
+                                                color: '#1976d2',
+                                                width: 54,           // 👈 tăng kích thước
+                                                height: 54,
+                                                transition: 'all 0.3s ease',
+                                                '&:hover': {
+                                                    bgcolor: '#1976d2',
+                                                    color: '#fff',
+                                                    transform: 'scale(1.2)',
+                                                    cursor: 'pointer',
+                                                },
+                                            }}
+                                        >
+                                            <img width="60%" src={item.icon} alt="" /> {/* 👈 giữ icon gọn bên trong */}
+                                        </Avatar>
+
+                                        <Box>
+                                            <Typography variant="subtitle1" fontWeight="bold">
+                                                {item.title}
+                                            </Typography>
+                                            <Typography variant="body2" color="text.secondary" mt={0.5}>
+                                                {item.description}
+                                            </Typography>
+                                            <Link href={item.href}>
+                                                <Typography
+                                                    variant="body2"
+                                                    sx={{
+                                                        display: 'inline-flex',
+                                                        alignItems: 'center',
+                                                        position: 'relative',
                                                         cursor: 'pointer',
-                                                    },
-                                                }}
-                                            >
-                                                {item.icon}
-                                            </Avatar>
-                                            <Box>
-                                                <Typography variant="subtitle1" fontWeight="bold">
-                                                    {item.title}
-                                                </Typography>
-                                                <Typography variant="body2" color="text.secondary" mt={0.5}>
-                                                    {item.description}
-                                                </Typography>
-                                                <Link href={item.href}>
-                                                    <Typography
-                                                        variant="body2"
-                                                        sx={{
-                                                            display: 'inline-flex',
-                                                            alignItems: 'center',
-                                                            position: 'relative',
-                                                            cursor: 'pointer',
-                                                            mt: 1,
-                                                            fontWeight: 600,
-                                                            color: 'inherit',
-                                                            transition: 'color 0.3s ease',
+                                                        mt: 1,
+                                                        fontWeight: 600,
+                                                        color: 'inherit',
+                                                        transition: 'color 0.3s ease',
+                                                        '&::after': {
+                                                            content: '""',
+                                                            position: 'absolute',
+                                                            left: 0,
+                                                            bottom: -2,
+                                                            height: '2px',
+                                                            backgroundColor: 'blue',
+                                                            width: 0,
+                                                            transition: 'width 0.5s ease',
+                                                        },
+                                                        '&:hover': {
+                                                            color: 'blue',
                                                             '&::after': {
-                                                                content: '""',
-                                                                position: 'absolute',
-                                                                left: 0,
-                                                                bottom: -2,
-                                                                height: '2px',
-                                                                backgroundColor: 'blue',
-                                                                width: 0,
-                                                                transition: 'width 0.5s ease',
-                                                            },
-                                                            '&:hover': {
-                                                                color: 'blue',
-                                                                '&::after': {
-                                                                    width: '100%',
-                                                                },
-                                                                '& svg': {
-                                                                    color: 'blue',
-                                                                    transition: 'color 0.3s ease',
-                                                                },
+                                                                width: '100%',
                                                             },
                                                             '& svg': {
-                                                                ml: 1,
+                                                                color: 'blue',
                                                                 transition: 'color 0.3s ease',
                                                             },
-                                                        }}
-                                                    >
-                                                        Explore More
-                                                        <ArrowForwardIcon />
-                                                    </Typography>
-                                                </Link>
-                                            </Box>
-                                        </Stack>
-                                    </Grid>
-                                ))}
-                            </Grid>
-                        </Box>
-                    
+                                                        },
+                                                        '& svg': {
+                                                            ml: 1,
+                                                            transition: 'color 0.3s ease',
+                                                        },
+                                                    }}
+                                                >
+                                                    Explore More
+                                                    <ArrowForwardIcon />
+                                                </Typography>
+                                            </Link>
+                                        </Box>
+                                    </Stack>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
                 </Box>
             </FadeSection>
             <FadeSection >
@@ -513,12 +465,12 @@ const IndustriePage = () => {
                     background: 'linear-gradient(to bottom, #1976d2, rgba(149, 10, 138, 0.56))',
                     backdropFilter: 'blur(6px)',
                     WebkitBackdropFilter: 'blur(6px)',
-                    
+
                 }} textAlign="center" py={3} >
                     <Typography
                         variant="h4"
                         fontWeight="bold"
-                             color={"white"}
+                        color={"white"}
                         sx={{ display: 'inline-block', px: 2, py: 0.5, borderRadius: 1 }}
                     >
                         Case Studies
@@ -536,7 +488,7 @@ const IndustriePage = () => {
                                         prevEl: '.custom-swiper-prev',
                                         nextEl: '.custom-swiper-next',
                                     }}
-                         pagination={{clickable:true}}
+                                    pagination={{ clickable: true }}
                                     autoplay={{ delay: 2000 }}
                                     spaceBetween={24}
                                     breakpoints={{
@@ -544,9 +496,9 @@ const IndustriePage = () => {
                                         600: { slidesPerView: 2 },
                                         960: { slidesPerView: 3 },
                                     }}
-                                           style={{
-                        paddingBottom: '30px', // 👈 Thêm khoảng trống bên dưới cho pagination
-                    }}
+                                    style={{
+                                        paddingBottom: '30px', // 👈 Thêm khoảng trống bên dưới cho pagination
+                                    }}
                                 >
                                     {categories.map((cat, index) => (
                                         <SwiperSlide key={index}>
@@ -629,72 +581,77 @@ const IndustriePage = () => {
                     </Container>
                 </Box>
             </FadeSection>
-            <FadeSection id="What-clients">
-                <Container disableGutters maxWidth={false}>
-                    <Box
-                        sx={{
-                            background: '#009BFF',
-                            color: 'white',
-                            clipPath: {
-                                xs: 'polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%)', // ít nghiêng hơn ở mobile
-                                md: 'polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%)',
-                            },
-                            py: { xs: 5, sm: 6, md: 8 },
-                            px: { xs: 2, sm: 4 },
-                            position: 'relative',
-                            zIndex: 1,
-                            mb: { xs: -10, md: -23 }, // đỡ bị lấn nội dung bên dưới ở mobile
-                            textAlign: 'center',
-                        }}
-                    >
-                        <Container>
-                            <Typography
-                                variant="h4"
-                                fontWeight="bold"
-                                fontSize={{ xs: '1.5rem', sm: '1.8rem', md: '2rem' }}
-                            >
-                                What our clients say?
-                            </Typography>
+            <FadeSection>
+                <Box sx={{ background: '#1976d2', py: { xs: 4, md: 6 } }}>
+                    <Container>
+                        <Grid container spacing={1} alignItems="center">
+                            {/* LEFT: Text Section */}
+                            <Grid item xs={12} md={6}>
+                                <Box sx={{ color: 'white' }}>
+                                    <Typography variant="h4" fontWeight="bold" gutterBottom>
+                                        Technology Insights Right to <br /> Your Inbox
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        Subscribe to our resource to stay in the loop with news, trends, <br />
+                                        and key highlights in today’s software industry.
+                                    </Typography>
+                                </Box>
+                            </Grid>
 
-                            <Typography
-                                mt={2}
-                                fontSize={{ xs: '0.95rem', sm: '1rem' }}
-                                maxWidth="md"
-                                mx="auto"
-                            >
-                                We sincerely appreciate our customers for their valuable feedback and support.
-                                Our top priority is to fulfill your business needs with our appropriate technology solutions.
-                            </Typography>
-
-                            <Box mt={4}>
-                                <Typography
+                            {/* RIGHT: Subscribe Form */}
+                            <Grid item xs={12} md={6}>
+                                <Box
                                     sx={{
-                                        fontStyle: 'italic',
-                                        fontSize: { xs: '0.95rem', sm: '1rem' },
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: 1,
+                                        maxWidth: 400,
+                                        width: '100%',
+                                        color: 'white',
+                                        ml: 'auto',
                                     }}
                                 >
-                                    “The management team is attentive, responsive to feedback and demonstrates initiative
-                                    in continually improving effectiveness.”
-                                </Typography>
-
-                                <Typography
-                                    mt={2}
-                                    fontWeight="bold"
-                                    fontSize={{ xs: '0.95rem', sm: '1rem' }}
-                                >
-                                    Lori Ciaralli, Engineering Director, Network Management & Security, Ribbon Communications
-                                </Typography>
-
-                                <Typography fontSize={{ xs: '0.9rem', sm: '1rem' }}>
-                                    USA
-                                </Typography>
-                            </Box>
-                        </Container>
-                    </Box>
-                </Container>
+                                    <Typography variant="body2" fontWeight={500}>
+                                        Email address <span style={{ color: 'red' }}>*</span>
+                                    </Typography>
+                                    <TextField
+                                        placeholder="Your Email Address"
+                                        variant="outlined"
+                                        fullWidth
+                                        InputProps={{
+                                            sx: {
+                                                bgcolor: '#102a43',
+                                                borderRadius: 0,
+                                                color: 'white',
+                                            },
+                                        }}
+                                        InputLabelProps={{
+                                            sx: { color: 'white' },
+                                        }}
+                                    />
+                                    <Button
+                                        variant="contained"
+                                        sx={{
+                                            bgcolor: '#29b6f6',
+                                            textTransform: 'none',
+                                            fontWeight: 600,
+                                            width: 'fit-content',
+                                            px: 3,
+                                            '&:hover': {
+                                                bgcolor: '#0288d1',
+                                            },
+                                        }}
+                                    >
+                                        Subscribe
+                                    </Button>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </Box>
             </FadeSection>
             <ScrollToTopButton />
-            <Footer hasDownload={true} />
+            <Footer />
         </>
     )
 }
