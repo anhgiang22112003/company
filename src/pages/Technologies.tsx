@@ -108,8 +108,15 @@ const technologies = [
     { label: 'Mobile', icon: FaMobileAlt, color: '#fd7e14' },
     { label: 'Web Dev', icon: FaCode, color: '#343a40' },
 ]
-
-const Item = styled(Box)(({ theme, small }) => ({
+interface ItemProps {
+    small?: boolean
+}
+interface CenterCircleProps {
+  small?: boolean
+}
+const Item = styled(Box, {
+    shouldForwardProp: (prop) => prop !== 'small',
+})<ItemProps>(({ theme, small }) => ({
     position: 'absolute',
     width: small ? 60 : 100,
     height: small ? 60 : 100,
@@ -129,27 +136,29 @@ const Item = styled(Box)(({ theme, small }) => ({
     },
 }))
 
-const CenterCircle = styled(Box)(({ small }) => ({
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    width: small ? 180 : 310,
-    height: small ? 180 : 310,
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: '#ffffff',
-    border: '4px solid #007bff',
-    borderRadius: '50%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    padding: small ? 8 : 12,
-    overflow: 'hidden',
-    boxSizing: 'border-box',
-    zIndex: 2,
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.24)',
-    fontSize: small ? '0.9rem' : 'initial',
+const CenterCircle = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'small',
+})<CenterCircleProps>(({ small }) => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  width: small ? 180 : 310,
+  height: small ? 180 : 310,
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: '#ffffff',
+  border: '4px solid #007bff',
+  borderRadius: '50%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  padding: small ? 8 : 12,
+  overflow: 'hidden',
+  boxSizing: 'border-box',
+  zIndex: 2,
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.24)',
+  fontSize: small ? '0.9rem' : 'initial',
 }))
 
 const data = [
@@ -1643,153 +1652,153 @@ const TechnologiesPage = () => {
                         WebkitBackdropFilter: 'blur(6px)',
                     }} p={2} >
                         <Container>
-                        <Box textAlign={"center"}>
-                            <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
-                            <Typography fontWeight={"bold"} mb={4} variant='h4'>
-                                Low Code
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                border: '1px solid #ccc',
-                                borderRadius: 2,
-                                overflow: 'hidden',
-                                maxWidth: '100%',
-                                bgcolor: '#f9f9f9',
-                            }}
-                        >
-                            {/* Header */}
-                            <Box sx={{ backgroundColor: '#007BFF', color: 'white', p: 2 }}>
-                                <Typography variant="h5" fontWeight={700} align="center">
-                                    Platforms
+                            <Box textAlign={"center"}>
+                                <img src="https://www.tmasolutions.com/media/technologies/iconDecor.webp" alt="" />
+                                <Typography fontWeight={"bold"} mb={4} variant='h4'>
+                                    Low Code
                                 </Typography>
                             </Box>
+                            <Box
+                                sx={{
+                                    border: '1px solid #ccc',
+                                    borderRadius: 2,
+                                    overflow: 'hidden',
+                                    maxWidth: '100%',
+                                    bgcolor: '#f9f9f9',
+                                }}
+                            >
+                                {/* Header */}
+                                <Box sx={{ backgroundColor: '#007BFF', color: 'white', p: 2 }}>
+                                    <Typography variant="h5" fontWeight={700} align="center">
+                                        Platforms
+                                    </Typography>
+                                </Box>
 
-                            {!isMobile ? (
-                                // ==================== DESKTOP LAYOUT ====================
-                                <>
-                                    {/* Column Titles */}
-                                    <Grid container>
-                                        {Object.keys(dataLowCode).map((key, index) => (
-                                            <Grid
-                                                item
-                                                xs={12}
-                                                sm={4}
-                                                key={index}
-                                                sx={{
-                                                    backgroundColor: '#E3F2FD',
-                                                    p: 2,
-                                                    borderBottom: '1px solid #ccc',
-                                                    textAlign: 'center',
-                                                    fontWeight: 'bold',
-                                                }}
-                                            >
-                                                {key}
-                                            </Grid>
-                                        ))}
-                                    </Grid>
-
-                                    {/* Content */}
-                                    <Grid container>
-                                        {Object.entries(dataLowCode).map(([title, items], index) => (
-                                            <Grid item xs={12} sm={4} key={index} sx={{ p: 2 }}>
-                                                <List dense disablePadding>
-                                                    {items.map((item, idx) => (
-                                                        <ListItem key={idx} sx={{ py: 0.5, alignItems: 'center' }}>
-                                                            <ListItemIcon sx={{ minWidth: 24 }}>
-                                                                <FiberManualRecordIcon sx={{ fontSize: 8 }} />
-                                                            </ListItemIcon>
-                                                            <ListItemText
-                                                                primary={<Typography variant="body2">{item}</Typography>}
-                                                            />
-                                                        </ListItem>
-                                                    ))}
-                                                </List>
-                                            </Grid>
-                                        ))}
-                                    </Grid>
-                                </>
-                            ) : (
-                                // ==================== MOBILE LAYOUT ====================
-                                <Box sx={{ p: 2 }}>
-                                    <Stack spacing={3}>
-                                        {Object.entries(dataLowCode).map(([title, items], index) => (
-                                            <Box key={index} sx={{ display: 'flex' }}>
-                                                <Typography
+                                {!isMobile ? (
+                                    // ==================== DESKTOP LAYOUT ====================
+                                    <>
+                                        {/* Column Titles */}
+                                        <Grid container>
+                                            {Object.keys(dataLowCode).map((key, index) => (
+                                                <Grid
+                                                    item
+                                                    xs={12}
+                                                    sm={4}
+                                                    key={index}
                                                     sx={{
-                                                        fontWeight: 600,
-                                                        minWidth: 120,
-                                                        mr: 2,
-                                                        color: '#000',
+                                                        backgroundColor: '#E3F2FD',
+                                                        p: 2,
+                                                        borderBottom: '1px solid #ccc',
+                                                        textAlign: 'center',
+                                                        fontWeight: 'bold',
                                                     }}
                                                 >
-                                                    {title}
-                                                </Typography>
-                                                <Box>
-                                                    {items.map((item, idx) => (
-                                                        <Box
-                                                            key={idx}
-                                                            sx={{ display: 'flex', alignItems: 'center', mb: 1 }}
-                                                        >
-                                                            <FiberManualRecordIcon
-                                                                sx={{ fontSize: 6, color: '#007BFF', mr: 1 }}
-                                                            />
-                                                            <Typography variant="body2">{item}</Typography>
-                                                        </Box>
-                                                    ))}
-                                                </Box>
-                                            </Box>
-                                        ))}
-                                    </Stack>
-                                </Box>
-                            )}
-                        </Box>
-                        <Box textAlign={"center"}>
-                            <Link href="/technologies/low-code">
-                                <Typography
-                                    variant="body2"
-                                    sx={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        position: 'relative',
-                                        cursor: 'pointer',
+                                                    {key}
+                                                </Grid>
+                                            ))}
+                                        </Grid>
 
-                                        mt: 4,
-                                        fontWeight: 600,
-                                        color: 'white',
-                                        transition: 'color 0.3s ease',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            left: 0,
-                                            bottom: -2,
-                                            height: '2px',
-                                            backgroundColor: 'blue',
-                                            width: 0,
-                                            transition: 'width 0.5s ease',
-                                        },
-                                        '&:hover': {
-                                            color: 'blue',
+                                        {/* Content */}
+                                        <Grid container>
+                                            {Object.entries(dataLowCode).map(([title, items], index) => (
+                                                <Grid item xs={12} sm={4} key={index} sx={{ p: 2 }}>
+                                                    <List dense disablePadding>
+                                                        {items.map((item, idx) => (
+                                                            <ListItem key={idx} sx={{ py: 0.5, alignItems: 'center' }}>
+                                                                <ListItemIcon sx={{ minWidth: 24 }}>
+                                                                    <FiberManualRecordIcon sx={{ fontSize: 8 }} />
+                                                                </ListItemIcon>
+                                                                <ListItemText
+                                                                    primary={<Typography variant="body2">{item}</Typography>}
+                                                                />
+                                                            </ListItem>
+                                                        ))}
+                                                    </List>
+                                                </Grid>
+                                            ))}
+                                        </Grid>
+                                    </>
+                                ) : (
+                                    // ==================== MOBILE LAYOUT ====================
+                                    <Box sx={{ p: 2 }}>
+                                        <Stack spacing={3}>
+                                            {Object.entries(dataLowCode).map(([title, items], index) => (
+                                                <Box key={index} sx={{ display: 'flex' }}>
+                                                    <Typography
+                                                        sx={{
+                                                            fontWeight: 600,
+                                                            minWidth: 120,
+                                                            mr: 2,
+                                                            color: '#000',
+                                                        }}
+                                                    >
+                                                        {title}
+                                                    </Typography>
+                                                    <Box>
+                                                        {items.map((item, idx) => (
+                                                            <Box
+                                                                key={idx}
+                                                                sx={{ display: 'flex', alignItems: 'center', mb: 1 }}
+                                                            >
+                                                                <FiberManualRecordIcon
+                                                                    sx={{ fontSize: 6, color: '#007BFF', mr: 1 }}
+                                                                />
+                                                                <Typography variant="body2">{item}</Typography>
+                                                            </Box>
+                                                        ))}
+                                                    </Box>
+                                                </Box>
+                                            ))}
+                                        </Stack>
+                                    </Box>
+                                )}
+                            </Box>
+                            <Box textAlign={"center"}>
+                                <Link href="/technologies/low-code">
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            position: 'relative',
+                                            cursor: 'pointer',
+
+                                            mt: 4,
+                                            fontWeight: 600,
+                                            color: 'white',
+                                            transition: 'color 0.3s ease',
                                             '&::after': {
-                                                width: '100%',
+                                                content: '""',
+                                                position: 'absolute',
+                                                left: 0,
+                                                bottom: -2,
+                                                height: '2px',
+                                                backgroundColor: 'blue',
+                                                width: 0,
+                                                transition: 'width 0.5s ease',
+                                            },
+                                            '&:hover': {
+                                                color: 'blue',
+                                                '&::after': {
+                                                    width: '100%',
+                                                },
+                                                '& svg': {
+                                                    color: 'blue',
+                                                    transition: 'color 0.3s ease',
+                                                },
                                             },
                                             '& svg': {
-                                                color: 'blue',
+                                                ml: 1,
                                                 transition: 'color 0.3s ease',
                                             },
-                                        },
-                                        '& svg': {
-                                            ml: 1,
-                                            transition: 'color 0.3s ease',
-                                        },
-                                    }}
-                                >
-                                    Explore More
-                                    <ArrowForwardIcon />
-                                </Typography>
-                            </Link>
-                        </Box>
-</Container>
+                                        }}
+                                    >
+                                        Explore More
+                                        <ArrowForwardIcon />
+                                    </Typography>
+                                </Link>
+                            </Box>
+                        </Container>
                     </Box>
 
                 </FadeSection>
