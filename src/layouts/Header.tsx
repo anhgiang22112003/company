@@ -817,7 +817,7 @@ const Header: React.FC = () => {
                                         underline="none"
                                         color="inherit" // Kế thừa màu trắng từ Drawer
                                         style={{
-                                            flex: 1, textDecoration: 'none', pointerEvents: item.hasSubMenu ? 'none' : 'auto', // ✅ Ngăn Link bắt sự kiện click nếu có submenu
+                                            flex: 1, textDecoration: 'none', // ✅ Ngăn Link bắt sự kiện click nếu có submenu
                                         }} // Ensure no underline
                                     >
                                         <ListItemText
